@@ -24,7 +24,11 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.finlit.kipmoneyquest"
+      "package": "com.finlit.kipmoneyquest",
+      "blockedPermissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
       "output": "server",
@@ -49,7 +53,7 @@
       [
         "expo-audio",
         {
-          "microphonePermission": false,
+          "microphonePermission": "Kip doesn’t record audio. The photo picker only needs this if you film a video.",
           "recordAudioAndroid": false
         }
       ],
@@ -58,8 +62,8 @@
         "expo-image-picker",
         {
           "photosPermission": "Kip uses a photo you pick as your profile picture. It stays on this phone.",
-          "cameraPermission": false,
-          "microphonePermission": false
+          "cameraPermission": "Kip can use the camera to take your profile picture. Photos stay on this phone.",
+          "microphonePermission": "Kip doesn’t record audio. The photo picker only needs this if you film a video."
         }
       ]
     ],
