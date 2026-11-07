@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Kip: Money Quest · World 2 Snowball Valley</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-variant": "#2d3543",
+            "on-secondary-container": "#382700",
+            "surface-container": "#18202d",
+            "on-tertiary-container": "#5c3faa",
+            "on-secondary-fixed-variant": "#5d4200",
+            "surface-bright": "#323948",
+            "inverse-primary": "#006c44",
+            "surface-dim": "#0b1420",
+            "secondary-fixed-dim": "#f3be53",
+            "primary-fixed": "#5cfeb1",
+            "on-tertiary": "#381385",
+            "surface-tint": "#34e197",
+            "on-surface-variant": "#bbcabe",
+            "on-primary-container": "#00613c",
+            "outline": "#859489",
+            "secondary": "#f3be53",
+            "on-error": "#690005",
+            "on-tertiary-fixed": "#21005e",
+            "on-surface": "#dbe2f5",
+            "primary-container": "#38e399",
+            "error-container": "#93000a",
+            "surface-container-highest": "#2d3543",
+            "inverse-on-surface": "#29313f",
+            "background": "#0b1420",
+            "tertiary-fixed-dim": "#cebdff",
+            "tertiary-container": "#d0bfff",
+            "outline-variant": "#3c4a40",
+            "tertiary": "#eae0ff",
+            "on-primary-fixed-variant": "#005232",
+            "on-background": "#dbe2f5",
+            "secondary-container": "#b78920",
+            "on-primary": "#003821",
+            "primary-fixed-dim": "#34e197",
+            "secondary-fixed": "#ffdea5",
+            "surface-container-low": "#141c29",
+            "tertiary-fixed": "#e8ddff",
+            "on-primary-fixed": "#002112",
+            "surface-container-high": "#222a38",
+            "inverse-surface": "#dbe2f5",
+            "on-error-container": "#ffdad6",
+            "primary": "#6bffb6",
+            "on-tertiary-fixed-variant": "#4f319c",
+            "on-secondary-fixed": "#261900",
+            "on-secondary": "#412d00",
+            "surface-container-lowest": "#060e1b",
+            "surface": "#0b1420",
+            "error": "#ffb4ab"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.75rem",
+            "gutter": "1rem",
+            "space-2xl": "3rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2rem",
+            "space-xs": "0.5rem",
+            "margin": "1.25rem",
+            "space-md": "1rem",
+            "space-2xs": "0.25rem"
+          },
+          "fontFamily": {
+            "label-currency-sm": ["Space Grotesk"],
+            "body-lg": ["Outfit"],
+            "headline-lg": ["Space Grotesk"],
+            "display-hero-mobile": ["Space Grotesk"],
+            "label-badge": ["Space Grotesk"],
+            "body-md": ["Outfit"],
+            "headline-md": ["Space Grotesk"],
+            "label-btn": ["Space Grotesk"],
+            "headline-sm": ["Space Grotesk"],
+            "display-hero": ["Space Grotesk"],
+            "body-sm": ["Outfit"],
+            "label-currency-lg": ["Space Grotesk"]
+          },
+          "fontSize": {
+            "label-currency-sm": ["15px", { "lineHeight": "20px", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "500" }],
+            "headline-lg": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+            "display-hero-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+            "label-badge": ["11px", { "lineHeight": "14px", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "label-btn": ["15px", { "lineHeight": "20px", "fontWeight": "700" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "display-hero": ["40px", { "lineHeight": "48px", "fontWeight": "700" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "label-currency-lg": ["24px", { "lineHeight": "28px", "fontWeight": "700" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    /* Chunky Arcade Button Depth */
+    .btn-chunky-primary {
+      background-color: #38e399;
+      box-shadow: 0 4px 0 0 #1EAC70, 0 8px 20px rgba(56, 227, 153, 0.35);
+      transition: all 0.08s ease-in-out;
+    }
+    .btn-chunky-primary:active {
+      transform: translateY(4px);
+      box-shadow: 0 0 0 0 #1EAC70, 0 2px 10px rgba(56, 227, 153, 0.2);
+    }
+    .btn-chunky-secondary {
+      background-color: #f3be53;
+      box-shadow: 0 4px 0 0 #b78920, 0 8px 20px rgba(243, 190, 83, 0.3);
+      transition: all 0.08s ease-in-out;
+    }
+    .btn-chunky-secondary:active {
+      transform: translateY(4px);
+      box-shadow: 0 0 0 0 #b78920;
+    }
+    /* Pulse glow for current node */
+    @keyframes pulse-ring {
+      0% { transform: scale(0.95); opacity: 0.8; box-shadow: 0 0 0 0 rgba(107, 255, 182, 0.6); }
+      70% { transform: scale(1.05); opacity: 1; box-shadow: 0 0 0 16px rgba(107, 255, 182, 0); }
+      100% { transform: scale(0.95); opacity: 0.8; box-shadow: 0 0 0 0 rgba(107, 255, 182, 0); }
+    }
+    .active-node-glow {
+      animation: pulse-ring 2.4s infinite cubic-bezier(0.4, 0, 0.6, 1);
+    }
+    /* Clean Tortoise Cutout Blend */
+    .mascot-blend {
+      mix-blend-mode: multiply;
+      filter: drop-shadow(0 10px 14px rgba(6, 14, 27, 0.75));
+    }
+    /* Hide scrollbar for smooth gaming container */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface antialiased font-body-md select-none flex justify-center min-h-screen">
+<!-- Mobile Viewport Canvas 390px x 844px -->
+<div class="relative w-full max-w-[390px] h-[844px] overflow-hidden bg-surface-dim shadow-2xl flex flex-col justify-between">
+<!-- Scenic Background: Snowball Valley with frosted navy dark overlay for high contrast readability -->
+<div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+<img alt="Snowball Valley Background" class="w-full h-full object-cover object-top scale-105 filter brightness-75 contrast-110" src="https://lh3.googleusercontent.com/aida/AEtjO1XrvWTeXUglP5Rk9YGV3ckJO5MdyekLPz-SdhAPFn1gqIAo0MwMegV9Uvsxx7Kv9v3zVptxsP6NoRhbfvx-0xu57lp9U9GFXtKHSlpFObiGdZCptO-kSSv5SIu1hs4Qkkf2DUesaZ0zsOhruheT9DDo6yTwenqca8OkgGvErOTYk2ckqHuP5L9IN4sG2LVrsXIAXUTcL2k-K8TTaJL578LTHREE2u80rYLK7YPNLFh8PsALMcB2IpB6tUI"/>
+<!-- Dark Frosted Arcade Midnight Scrim -->
+<div class="absolute inset-0 bg-gradient-to-b from-[#08101cd4] via-[#0b1420b8] to-[#060e1bf2] backdrop-blur-[6px]"></div>
+<!-- Ambient Cyan & Indigo Glow Orbs -->
+<div class="absolute top-24 -left-12 w-48 h-48 bg-primary/10 rounded-full blur-3xl"></div>
+<div class="absolute top-[420px] -right-12 w-56 h-56 bg-secondary/10 rounded-full blur-3xl"></div>
+</div>
+<!-- FIXED TOP SECTION: Top Bar & Stats Island -->
+<header class="relative z-30 pt-3 px-4 pb-2 bg-surface-container-low/85 backdrop-blur-xl border-b border-outline-variant/30 shadow-[0_8px_24px_rgba(7,11,18,0.65)]">
+<!-- iOS Status Bar Buffer -->
+<div class="h-5 flex items-center justify-between px-1 mb-1 text-[11px] text-on-surface-variant font-medium">
+<span>9:41</span>
+<div class="flex items-center space-x-1.5">
+<span class="material-symbols-outlined text-[13px] leading-none" data-icon="signal_cellular_4_bar">signal_cellular_4_bar</span>
+<span class="material-symbols-outlined text-[13px] leading-none" data-icon="wifi">wifi</span>
+<span class="material-symbols-outlined text-[14px] leading-none" data-icon="battery_full">battery_full</span>
+</div>
+</div>
+<!-- Main Header Row -->
+<div class="flex items-center justify-between h-11">
+<!-- Brand & Game Title -->
+<div class="flex items-center space-x-2">
+<div class="w-8 h-8 rounded-xl bg-surface-container-high border border-outline-variant/40 flex items-center justify-center text-primary shadow-[inset_0_1px_1px_rgba(255,255,255,0.15)]">
+<span class="material-symbols-outlined text-lg" data-icon="shield" style="font-variation-settings: 'FILL' 1;">shield</span>
+</div>
+<div>
+<span class="block font-headline-sm text-headline-sm text-on-surface tracking-wide leading-none font-bold">Learn</span>
+<span class="text-[10px] font-headline-sm text-primary tracking-wider uppercase font-semibold">Kip: Money Quest</span>
+</div>
+</div>
+<!-- Simulated Tokens & User Profile Avatar -->
+<div class="flex items-center space-x-2.5">
+<!-- ₹ Currency Counter Badge -->
+<div class="flex items-center space-x-1.5 bg-surface-container-lowest/85 border border-secondary/40 px-2.5 py-1 rounded-full shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
+<span class="text-sm leading-none">🪙</span>
+<span class="font-label-currency-sm text-label-currency-sm text-secondary tracking-tight">3,450</span>
+</div>
+<!-- Profile Avatar Button -->
+<button aria-label="Profile" class="w-9 h-9 rounded-full bg-surface-container-high border border-primary/30 flex items-center justify-center relative overflow-hidden active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-on-surface-variant text-xl" data-icon="person">person</span>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-primary rounded-full border-2 border-surface-container-lowest"></span>
+</button>
+</div>
+</div>
+<!-- Stat Row Chips (Daily Streak, Coins, FinIQ) -->
+<div class="grid grid-cols-3 gap-2 mt-2">
+<!-- Streak Chip -->
+<div class="flex items-center justify-center space-x-1.5 bg-surface-container/85 border border-outline-variant/30 py-1 px-2 rounded-lg shadow-sm">
+<span class="text-sm">🔥</span>
+<span class="font-label-badge text-label-badge text-on-surface font-bold">9</span>
+<span class="text-[10px] font-body-sm text-on-surface-variant">Streak</span>
+</div>
+<!-- Coins Chip -->
+<div class="flex items-center justify-center space-x-1.5 bg-surface-container/85 border border-outline-variant/30 py-1 px-2 rounded-lg shadow-sm">
+<span class="text-sm">🪙</span>
+<span class="font-label-badge text-label-badge text-secondary font-bold">340</span>
+<span class="text-[10px] font-body-sm text-on-surface-variant">Coins</span>
+</div>
+<!-- FinIQ Gauge Chip -->
+<div class="flex items-center justify-center space-x-1.5 bg-surface-container/85 border border-primary/30 py-1 px-2 rounded-lg shadow-sm">
+<span class="text-sm">💡</span>
+<span class="font-label-badge text-label-badge text-primary font-bold">431</span>
+<span class="text-[10px] font-body-sm text-primary-fixed-dim">FinIQ</span>
+</div>
+</div>
+</header>
+<!-- SCROLLABLE QUEST CANVAS: Winding Path & Chapters -->
+<main class="relative z-10 flex-1 overflow-y-auto no-scrollbar px-4 pt-3 pb-28">
+<!-- Future You Progression Card (Frosted Navy Glass 85%) -->
+<section class="bg-surface-container/85 backdrop-blur-xl border border-outline-variant/30 rounded-2xl p-3.5 shadow-[0_12px_32px_-4px_rgba(7,11,18,0.7)] mb-4">
+<div class="flex items-center space-x-3">
+<!-- Future Goal Icon Avatar -->
+<div class="w-11 h-11 rounded-xl bg-surface-container-high border border-primary/30 flex items-center justify-center text-primary relative shrink-0 shadow-inner">
+<span class="material-symbols-outlined text-2xl" data-icon="laptop_mac">laptop_mac</span>
+<span class="absolute -top-1 -right-1 text-xs">✨</span>
+</div>
+<!-- Goal Info & Tier Progress -->
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between mb-0.5">
+<h3 class="font-headline-sm text-[14px] text-on-surface font-bold truncate">Goal: New laptop by 25</h3>
+<span class="font-label-badge text-[10px] text-secondary bg-secondary/15 px-1.5 py-0.5 rounded border border-secondary/30">Tier 2</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center justify-between mb-1.5">
+<span>FinIQ 431</span>
+<span class="text-primary font-semibold">Starter → Saver</span>
+</p>
+<!-- Sleek Progression Bar towards Saver Tier -->
+<div class="w-full h-2 bg-surface-container-lowest rounded-full overflow-hidden p-0.5 border border-outline-variant/30">
+<div class="h-full bg-gradient-to-r from-primary-fixed-dim via-primary to-secondary rounded-full relative" style="width: 68%;">
+<span class="absolute right-0 top-0 bottom-0 w-1.5 bg-white rounded-full opacity-80 animate-pulse"></span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- World Header Card: Chapter 2 Snowball Valley -->
+<section class="bg-surface-container-low/90 backdrop-blur-2xl border border-outline-variant/35 rounded-2xl p-4 shadow-[0_16px_36px_-6px_rgba(4,7,12,0.85)] mb-6 text-center relative overflow-hidden">
+<!-- Subtle Top Glow Bar -->
+<div class="absolute top-0 left-1/4 right-1/4 h-[2px] bg-gradient-to-r from-transparent via-primary/70 to-transparent"></div>
+<!-- Chapter Pill Badge -->
+<div class="inline-flex items-center space-x-1.5 bg-surface-container-high/80 border border-primary/30 px-3 py-1 rounded-full mb-2">
+<span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+<span class="font-label-badge text-label-badge text-primary uppercase tracking-widest font-bold">CHAPTER 2 · Snowball Valley</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface leading-snug font-bold">Compounding, consistency and SIPs</h2>
+<div class="mt-2.5 flex items-center justify-center space-x-3 text-on-surface-variant font-body-sm text-body-sm">
+<span class="flex items-center text-secondary font-semibold">
+<span class="text-secondary text-sm mr-1">⭐</span> 2 / 6 Stars Cleared
+          </span>
+<span class="text-outline-variant">•</span>
+<span class="text-primary-fixed-dim flex items-center"><span class="material-symbols-outlined text-[15px] mr-1" data-icon="ac_unit">ac_unit</span> World 2 of 10</span>
+</div>
+</section>
+<!-- WINDING QUEST PATH CANVAS -->
+<div class="relative w-full py-4 min-h-[520px]">
+<!-- Curved SVG Winding Guide Road -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none z-0" fill="none" viewbox="0 0 358 520">
+<!-- Road Glow -->
+<path d="M 179 40 C 90 90, 80 140, 179 190 C 280 240, 270 300, 179 360 C 100 410, 120 460, 179 490" stroke="rgba(107, 255, 182, 0.18)" stroke-linecap="round" stroke-width="12"></path>
+<!-- Road Core Line with Dashed Styling -->
+<path d="M 179 40 C 90 90, 80 140, 179 190 C 280 240, 270 300, 179 360 C 100 410, 120 460, 179 490" opacity="0.65" stroke="#6bffb6" stroke-dasharray="6 8" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+<!-- NODE 1 (Completed): Interest on interest -->
+<div class="relative z-10 flex items-center justify-center mb-10">
+<div class="flex flex-col items-center group cursor-pointer">
+<div class="w-14 h-14 rounded-2xl bg-secondary-container border-2 border-secondary flex items-center justify-center shadow-[0_4px_0_0_#5d4200,0_8px_16px_rgba(243,190,83,0.3)] relative">
+<span class="material-symbols-outlined text-on-secondary font-bold text-2xl" data-icon="check" style="font-variation-settings: 'FILL' 1;">check</span>
+<!-- Cleared 3 Stars Pill -->
+<div class="absolute -bottom-2.5 bg-surface-container-lowest border border-secondary/50 rounded-full px-1.5 py-0.2 flex space-x-0.5 text-[9px] text-secondary">
+<span>★</span><span>★</span><span>★</span>
+</div>
+</div>
+<span class="mt-3.5 font-label-badge text-label-badge text-on-surface-variant font-semibold bg-surface-container/70 px-2 py-0.5 rounded-md border border-outline-variant/30">
+              1. Interest on interest
+            </span>
+</div>
+</div>
+<!-- NODE 2 (Completed): Time is the secret ingredient -->
+<div class="relative z-10 flex items-center justify-start pl-6 mb-12">
+<div class="flex flex-col items-center group cursor-pointer">
+<div class="w-14 h-14 rounded-2xl bg-secondary-container border-2 border-secondary flex items-center justify-center shadow-[0_4px_0_0_#5d4200,0_8px_16px_rgba(243,190,83,0.3)] relative">
+<span class="material-symbols-outlined text-on-secondary font-bold text-2xl" data-icon="check" style="font-variation-settings: 'FILL' 1;">check</span>
+<!-- Cleared 3 Stars Pill -->
+<div class="absolute -bottom-2.5 bg-surface-container-lowest border border-secondary/50 rounded-full px-1.5 py-0.2 flex space-x-0.5 text-[9px] text-secondary">
+<span>★</span><span>★</span><span>★</span>
+</div>
+</div>
+<span class="mt-3.5 font-label-badge text-label-badge text-on-surface-variant font-semibold bg-surface-container/70 px-2 py-0.5 rounded-md border border-outline-variant/30 max-w-[140px] text-center truncate">
+              2. Time is secret ingredient
+            </span>
+</div>
+</div>
+<!-- NODE 3 (ACTIVE CURRENT NODE): SIP: investing on autopilot WITH MASCOT KIP -->
+<div class="relative z-20 flex items-center justify-between px-2 mb-14">
+<!-- Active Lesson Node Button -->
+<div class="flex flex-col items-start pl-4">
+<div class="relative">
+<!-- Pulsating Neon Outer Aura -->
+<div class="absolute -inset-2 rounded-full bg-primary/30 active-node-glow blur-sm"></div>
+<!-- Big Chunky Neon Play Node -->
+<button aria-label="Start Lesson 3" class="relative w-18 h-18 w-[72px] h-[72px] rounded-full bg-primary text-on-primary flex flex-col items-center justify-center shadow-[0_5px_0_0_#1EAC70,0_12px_28px_rgba(56,227,153,0.5)] border-2 border-white/60 active:translate-y-1 active:shadow-none transition-all">
+<span class="material-symbols-outlined text-3xl font-black leading-none" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+<span class="font-label-badge text-[10px] font-black uppercase tracking-wider mt-0.5">LESSON 3</span>
+</button>
+</div>
+<!-- Active Title Banner -->
+<div class="mt-3 bg-surface-container-high/90 border border-primary/50 px-2.5 py-1 rounded-xl shadow-lg">
+<span class="block font-headline-sm text-[13px] text-primary font-bold">SIP: Autopilot Wealth</span>
+<span class="block font-body-sm text-[10px] text-on-surface-variant">Recommended · 4 mins</span>
+</div>
+</div>
+<!-- MASCOT KIP (Mint tortoise with round navy glasses, shell, backpack) & Speech Bubble -->
+<div class="relative flex flex-col items-center pr-2">
+<!-- Speech Bubble Pointing Down/Left toward the CTA -->
+<div class="relative mb-1 bg-surface-bright/95 border-2 border-primary text-primary-fixed font-headline-sm text-xs font-bold px-2.5 py-1 rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.5)] flex items-center space-x-1 animate-bounce">
+<span>Start here!</span>
+<span>⚡</span>
+<!-- Little tail for speech bubble -->
+<div class="absolute -bottom-1.5 left-4 w-2.5 h-2.5 bg-surface-bright border-b-2 border-r-2 border-primary rotate-45"></div>
+</div>
+<!-- Mascot Image: Scaled & cleanly blended without box wrapper -->
+<div class="w-32 h-36 relative flex items-center justify-center">
+<img alt="Kip the Mint-Green Tortoise Financial Guide" class="w-full h-full object-contain mascot-blend select-none pointer-events-none transform translate-y-1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdAHLcRT9NegVbXOewUrc6nCsYSl566nt1QJgR9Z4KoSbTeZujF-YOTij9hnqzFHPL-Re-kJiMU_szHAnLRBJOxtGrn5NfKBQxhX5v5QHeW0hpvCF_w3zJdGRtJ1vcuRHdGVONvV8BPqqTm3BfPwm52W6esri8FhW-hy0NYoO_MpzZg4hDGrDjlLquwyoy4dHpBLfXgWbwCD6k4TOMySv6JaAfrTO8nQdLeXRxvGnoej2O-cs9c9Be5MGbPvZ9a5py8d91CE3GbGaZ"/>
+</div>
+</div>
+</div>
+<!-- NODE 4 (Locked): Lump sum vs SIP -->
+<div class="relative z-10 flex items-center justify-end pr-8 mb-12">
+<div class="flex flex-col items-center opacity-70 group">
+<div class="w-13 h-13 w-[52px] h-[52px] rounded-2xl bg-surface-container/70 border border-outline-variant/40 backdrop-blur-md flex items-center justify-center shadow-md text-on-surface-variant">
+<span class="material-symbols-outlined text-xl" data-icon="lock" style="font-variation-settings: 'FILL' 1;">lock</span>
+</div>
+<span class="mt-2.5 font-label-badge text-label-badge text-on-surface-variant font-medium bg-surface-container/60 px-2 py-0.5 rounded-md border border-outline-variant/20">
+              4. Lump sum vs SIP
+            </span>
+</div>
+</div>
+<!-- NODE 5 (Locked): Don't break the snowball -->
+<div class="relative z-10 flex items-center justify-start pl-10 mb-12">
+<div class="flex flex-col items-center opacity-70 group">
+<div class="w-13 h-13 w-[52px] h-[52px] rounded-2xl bg-surface-container/70 border border-outline-variant/40 backdrop-blur-md flex items-center justify-center shadow-md text-on-surface-variant">
+<span class="material-symbols-outlined text-xl" data-icon="lock" style="font-variation-settings: 'FILL' 1;">lock</span>
+</div>
+<span class="mt-2.5 font-label-badge text-label-badge text-on-surface-variant font-medium bg-surface-container/60 px-2 py-0.5 rounded-md border border-outline-variant/20">
+              5. Don't break snowball
+            </span>
+</div>
+</div>
+<!-- NODE 6 (Locked Boss Node): The Long Game -->
+<div class="relative z-10 flex flex-col items-center justify-center mb-6">
+<div class="relative flex flex-col items-center">
+<!-- Boss Climax Badge -->
+<div class="w-16 h-16 rounded-2xl bg-surface-container-high/90 border-2 border-secondary/50 backdrop-blur-lg flex flex-col items-center justify-center shadow-[0_8px_20px_rgba(243,190,83,0.15)] relative">
+<span class="text-2xl leading-none">👑</span>
+<span class="material-symbols-outlined text-xs text-secondary mt-0.5" data-icon="swords">swords</span>
+<div class="absolute -top-2 -right-2 bg-secondary text-on-secondary text-[9px] font-bold px-1.5 py-0.2 rounded-full border border-surface-container-lowest">
+                BOSS
+              </div>
+</div>
+<span class="mt-2.5 font-label-btn text-xs text-secondary font-bold bg-surface-container/85 border border-secondary/40 px-3 py-1 rounded-xl shadow-md">
+              BOSS QUEST: The Long Game
+            </span>
+</div>
+</div>
+</div>
+</main>
+<!-- FLOATING ACTION LAYER (Above Bottom Tab Bar) -->
+<div class="absolute bottom-16 left-0 right-0 z-40 px-4 py-2 pointer-events-none flex items-center justify-between">
+<!-- Left Floating Chip: 📚 1 review due -->
+<button aria-label="Review due" class="pointer-events-auto flex items-center space-x-1.5 bg-surface-container-high/95 backdrop-blur-xl border border-secondary/40 px-3 py-1.5 rounded-full shadow-[0_6px_20px_rgba(0,0,0,0.4)] active:scale-95 transition-transform">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="text-sm">📚</span>
+<span class="font-label-badge text-label-badge text-secondary font-bold">1 review due</span>
+</button>
+<!-- Right Chunky Tactile Arcade Button: Kip Run ▶ -->
+<button aria-label="Play Kip Run" class="pointer-events-auto btn-chunky-secondary flex items-center space-x-1.5 px-4 py-2 rounded-xl text-on-secondary font-label-btn text-label-btn font-extrabold tracking-wide">
+<span class="material-symbols-outlined text-lg leading-none" data-icon="sprint">sprint</span>
+<span>Kip Run</span>
+<span class="text-xs">▶</span>
+</button>
+</div>
+<!-- GLASS BOTTOM TAB BAR (Docked full-width bottom-0, Frosted Navy Glass 85%) -->
+<nav class="relative z-50 bg-surface-container/85 backdrop-blur-2xl border-t border-outline-variant/25 px-3 pt-2 pb-5 flex justify-around items-center shadow-[0_-8px_32px_rgba(4,7,12,0.85)]">
+<!-- Tab 1: Learn (ACTIVE) -->
+<button aria-current="page" aria-label="Learn Tab" class="flex flex-col items-center justify-center bg-primary text-on-primary rounded-xl px-4 py-1 shadow-[0_4px_0_0_#1EAC70] active:translate-y-1 active:shadow-none min-w-[64px]">
+<span class="material-symbols-outlined text-xl" data-icon="sports_esports" style="font-variation-settings: 'FILL' 1;">sports_esports</span>
+<span class="font-label-badge text-[11px] font-bold tracking-tight">Learn</span>
+</button>
+<!-- Tab 2: Cards -->
+<button aria-label="Cards Tab" class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors px-3 py-1 min-w-[60px] active:scale-95">
+<span class="material-symbols-outlined text-xl" data-icon="style">style</span>
+<span class="font-label-badge text-[11px] font-medium tracking-tight">Cards</span>
+</button>
+<!-- Tab 3: League -->
+<button aria-label="League Tab" class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors px-3 py-1 min-w-[60px] active:scale-95">
+<span class="material-symbols-outlined text-xl" data-icon="trophy">trophy</span>
+<span class="font-label-badge text-[11px] font-medium tracking-tight">League</span>
+</button>
+<!-- Tab 4: You (Profile) -->
+<button aria-label="You Tab" class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors px-3 py-1 min-w-[60px] active:scale-95">
+<span class="material-symbols-outlined text-xl" data-icon="person">person</span>
+<span class="font-label-badge text-[11px] font-medium tracking-tight">You</span>
+</button>
+</nav>
+<!-- iOS Home Indicator Pill -->
+<div class="absolute bottom-1 left-1/2 -translate-x-1/2 w-32 h-1 bg-white/20 rounded-full pointer-events-none z-50"></div>
+</div>
+</body></html>

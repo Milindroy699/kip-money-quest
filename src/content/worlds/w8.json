@@ -1,0 +1,425 @@
+{
+  "id": "w8",
+  "index": 8,
+  "title": "Analyst HQ",
+  "tagline": "Fundamentals, charts and options",
+  "principle": "Fundamental ratios, technical charts, and option strategies",
+  "product": "P/E, P/B, ROE, debt-to-equity; candles, support, moving averages; covered call, protective put, straddle",
+  "philosophy": "Analysis beats tips",
+  "color": "#4338CA",
+  "track": "builder",
+  "lessons": [
+    {
+      "id": "w8-l1",
+      "title": "Price vs profit: P/E",
+      "subtitle": "What are you paying for?",
+      "capability": "Calculate P/E and P/B and explain what a high or low P/E suggests.",
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "dash",
+          "mood": "cheer",
+          "lines": [
+            "This share is only ₹50 and that one is ₹2,000. The ₹50 one is cheaper!"
+          ]
+        },
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "think",
+          "lines": [
+            "A share price alone tells you nothing. What matters is what you get for it.",
+            "P/E compares the price with the company's yearly profit per share."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "ratioCalc",
+          "title": "Move the price",
+          "caption": "Slide the share price. Watch the P/E and P/B change.",
+          "predict": {
+            "question": "A P/E of 50 means you pay ₹50 for every…",
+            "options": [
+              "₹1 of yearly profit",
+              "₹1 of sales",
+              "Share you own"
+            ],
+            "correct": 0,
+            "reveal": "₹50 for every ₹1 of profit the company makes in a year. Buyers expect lots of growth."
+          }
+        },
+        {
+          "type": "quiz",
+          "question": "Company A: price ₹200, profit per share ₹10. Its P/E is…",
+          "options": [
+            {
+              "text": "20",
+              "why": "Yes. 200 ÷ 10 = 20.",
+              "correct": true
+            },
+            {
+              "text": "2,000",
+              "why": "That's multiplying. P/E is price divided by earnings."
+            },
+            {
+              "text": "10",
+              "why": "That's the earnings, not the ratio."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "A very high P/E usually means…",
+          "options": [
+            {
+              "text": "Buyers expect big growth",
+              "why": "Right. If the growth doesn't come, the price can fall hard.",
+              "correct": true
+            },
+            {
+              "text": "The company is losing money",
+              "why": "Loss-making firms have no meaningful P/E."
+            },
+            {
+              "text": "It's a bargain",
+              "why": "High P/E is the opposite of cheap."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "title": "In real life",
+          "realLife": "The NSE and BSE websites show each company's P/E. The Nifty 50 as a whole has often traded at around 20 to 25 times earnings.",
+          "mission": "Look up the P/E of a company whose product you use. Is it above or below 25?",
+          "deeper": "P/B (price to book) compares the price with the company's net assets per share. It's most useful for banks and asset-heavy businesses."
+        }
+      ]
+    },
+    {
+      "id": "w8-l2",
+      "title": "Ratio Detective",
+      "subtitle": "Debt, quality and growth",
+      "capability": "Use P/E, debt-to-equity, ROE and growth together to judge a company.",
+      "unlockCards": [
+        "fundamentals"
+      ],
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "dash",
+          "mood": "cheer",
+          "lines": [
+            "HypeTech AI is all over my feed! It has to be a great buy!"
+          ]
+        },
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "think",
+          "lines": [
+            "Let's open the case files. Look at debt, how well each company uses its money (ROE), and how fast profits grow.",
+            "No single number solves the case."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "ratioDetective",
+          "title": "Case files: hype and debt",
+          "caption": "Read the files. Accuse the suspect.",
+          "params": {
+            "cases": "hype,debt"
+          }
+        },
+        {
+          "type": "quiz",
+          "question": "Debt-to-equity of 3 means the company…",
+          "options": [
+            {
+              "text": "Owes 3× what its owners put in",
+              "why": "Yes. Heavy debt is dangerous when rates rise or sales fall.",
+              "correct": true
+            },
+            {
+              "text": "Has ₹3 of cash",
+              "why": "It's a ratio of debt to equity, not a cash figure."
+            },
+            {
+              "text": "Is 3 years old",
+              "why": "Nothing to do with age."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "ROE (return on equity) tells you…",
+          "options": [
+            {
+              "text": "How much profit it makes on owners' money",
+              "why": "Right. High ROE with little debt is a sign of a quality business.",
+              "correct": true
+            },
+            {
+              "text": "The share price",
+              "why": "ROE is about profit, not price."
+            },
+            {
+              "text": "The dividend",
+              "why": "Dividends are a separate number."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "title": "Card unlocked: Fundamentals",
+          "realLife": "Listed companies publish quarterly results and annual reports, free on the NSE and BSE websites. Analysts read them to check whether a price makes sense.",
+          "cardId": "fundamentals",
+          "deeper": "Fundamental analysts also study cash flow, because profits on paper can differ from cash in the bank. Big gaps between the two are a warning sign."
+        }
+      ]
+    },
+    {
+      "id": "w8-l3",
+      "title": "Reading charts",
+      "subtitle": "Candles, support and averages",
+      "capability": "Read a candlestick chart, spot support, and use a moving average.",
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "dash",
+          "mood": "cheer",
+          "lines": [
+            "My friend draws lines on charts and says he can see the future!"
+          ]
+        },
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "think",
+          "lines": [
+            "Charts show what buyers and sellers did. Patterns can hint at behaviour, but they never promise what's next."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "candles",
+          "title": "The candle chart",
+          "caption": "Switch on the support line and the moving average."
+        },
+        {
+          "type": "play",
+          "mode": "chart",
+          "durationSec": 90,
+          "brief": "Chart Surfer! Ride the newest edge of the chart. Jump the hot tips and news gaps, and when it pauses, read the pattern: up or down?"
+        },
+        {
+          "type": "quiz",
+          "question": "A red (falling) candle means the price…",
+          "options": [
+            {
+              "text": "Closed lower than it opened",
+              "why": "Yes. Green closes higher, red closes lower.",
+              "correct": true
+            },
+            {
+              "text": "Hit zero",
+              "why": "Just a down day."
+            },
+            {
+              "text": "Paid a dividend",
+              "why": "Candles don't show dividends."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "What does a moving average do?",
+          "options": [
+            {
+              "text": "Smooths out daily noise to show the trend",
+              "why": "Right. It averages the last few closing prices.",
+              "correct": true
+            },
+            {
+              "text": "Predicts tomorrow's price",
+              "why": "It only looks backwards."
+            },
+            {
+              "text": "Shows company profits",
+              "why": "That's fundamental data, not a chart line."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "title": "In real life",
+          "realLife": "Candlestick charts were first used by Japanese rice traders in the 1700s. Technical analysis studies price and volume; fundamental analysis studies the business. Many long-term investors use charts only to avoid buying in a frenzy.",
+          "deeper": "Support is a price where buyers have stepped in before; resistance is where sellers have. When a level breaks, it often flips: old resistance becomes new support."
+        }
+      ]
+    },
+    {
+      "id": "w8-l4",
+      "title": "Options as shapes",
+      "subtitle": "The Payoff Puzzle",
+      "capability": "Build a protective put and a covered call, and read their payoff shapes.",
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "dash",
+          "mood": "think",
+          "lines": [
+            "Calls, puts, strikes, premiums… options sound like a different language."
+          ]
+        },
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "talk",
+          "lines": [
+            "Think in shapes instead. Every option strategy is a line showing what you make or lose at each price.",
+            "Match the shape, and you understand the strategy."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "payoff",
+          "title": "The Payoff Puzzle",
+          "caption": "Pick legs to match the target shape.",
+          "params": {
+            "puzzles": "protective,covered"
+          }
+        },
+        {
+          "type": "quiz",
+          "question": "A protective put gives you…",
+          "options": [
+            {
+              "text": "A floor under your losses",
+              "why": "Yes. Below the strike, the put pays out, like insurance.",
+              "correct": true
+            },
+            {
+              "text": "Unlimited gains for free",
+              "why": "It costs a premium and doesn't add gains."
+            },
+            {
+              "text": "A guaranteed profit",
+              "why": "Nothing guarantees a profit."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "A covered call earns you income now, but…",
+          "options": [
+            {
+              "text": "Caps your gains above the strike",
+              "why": "Right. You sold away the upside above ₹110.",
+              "correct": true
+            },
+            {
+              "text": "Doubles your losses",
+              "why": "Losses are the same as owning the share, minus the income."
+            },
+            {
+              "text": "Is risk-free",
+              "why": "You still own the share's downside."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "title": "In real life",
+          "realLife": "Options on Indian shares and indices trade on the NSE. Professionals mainly use them to shape risk, like these puzzles. Remember SEBI's finding: most individuals who trade them speculatively lose money.",
+          "deeper": "The strike is the agreed price; the premium is what the option costs. A call is the right to buy at the strike; a put is the right to sell at it."
+        }
+      ]
+    },
+    {
+      "id": "w8-l5",
+      "title": "Boss: The Analyst's Exam",
+      "subtitle": "Value traps and big moves",
+      "capability": "Spot a value trap and choose an options shape for an uncertain event.",
+      "boss": true,
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "dash",
+          "mood": "cheer",
+          "lines": [
+            "I found a share with a P/E of 6! It must be the bargain of the century!"
+          ]
+        },
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "think",
+          "lines": [
+            "Maybe. Or maybe it's cheap for a reason. Final case files, then one last puzzle."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "ratioDetective",
+          "title": "Final case files",
+          "caption": "Quality or a trap?",
+          "params": {
+            "cases": "quality,trap"
+          }
+        },
+        {
+          "type": "concept",
+          "widget": "payoff",
+          "title": "The big-move puzzle",
+          "caption": "Build a shape that profits if the price moves a lot, either way.",
+          "params": {
+            "puzzles": "straddle"
+          }
+        },
+        {
+          "type": "quiz",
+          "question": "A share with a low P/E, falling profits and high debt is probably…",
+          "options": [
+            {
+              "text": "A value trap",
+              "why": "Yes. Cheap because the business is shrinking.",
+              "correct": true
+            },
+            {
+              "text": "A sure bargain",
+              "why": "A low price can be a warning, not a gift."
+            },
+            {
+              "text": "Risk-free",
+              "why": "High debt and falling profits are the opposite."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Which beats a hot tip?",
+          "options": [
+            {
+              "text": "Reading the numbers yourself",
+              "why": "Right. Analysis beats tips.",
+              "correct": true
+            },
+            {
+              "text": "A louder tip",
+              "why": "Volume isn't evidence."
+            },
+            {
+              "text": "A chart line alone",
+              "why": "Charts help, but they don't tell you what the business is worth."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "title": "World complete: Analyst HQ",
+          "realLife": "You can read a company's ratios, a price chart and an option's payoff shape. Most importantly, you can check a tip instead of trusting it."
+        }
+      ]
+    }
+  ]
+}

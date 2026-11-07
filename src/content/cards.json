@@ -1,0 +1,603 @@
+[
+  {
+    "id": "cash",
+    "name": "Cash",
+    "kind": "asset",
+    "rarity": "common",
+    "emoji": "💵",
+    "stats": {
+      "return": 1,
+      "risk": 2,
+      "liquidity": 5,
+      "lockIn": 1,
+      "complexity": 1
+    },
+    "oneLiner": "Notes and coins. Instant to spend, but The Melt shrinks it every year.",
+    "realLife": "Cash earns nothing. With inflation around 4–6% a year in India, its buying power falls every year you hold it.",
+    "goodFor": [
+      "Daily spending",
+      "Tiny emergencies"
+    ],
+    "watchOut": [
+      "Inflation",
+      "Losing it"
+    ],
+    "regulator": "Issued by the RBI",
+    "world": 0
+  },
+  {
+    "id": "savings",
+    "name": "Savings Account",
+    "kind": "asset",
+    "rarity": "common",
+    "emoji": "🏦",
+    "stats": {
+      "return": 1,
+      "risk": 1,
+      "liquidity": 5,
+      "lockIn": 1,
+      "complexity": 1
+    },
+    "oneLiner": "A bank account that pays a little interest, usually less than inflation.",
+    "realLife": "Most banks pay roughly 2.5–4% a year. Deposits are insured by DICGC up to ₹5 lakh per depositor per bank. Minors can open one with a parent or guardian.",
+    "goodFor": [
+      "Emergency fund",
+      "Money you need soon"
+    ],
+    "watchOut": [
+      "Real return is often negative"
+    ],
+    "regulator": "RBI",
+    "world": 1
+  },
+  {
+    "id": "fd",
+    "name": "Fixed Deposit",
+    "kind": "asset",
+    "rarity": "common",
+    "emoji": "🔒",
+    "stats": {
+      "return": 2,
+      "risk": 1,
+      "liquidity": 3,
+      "lockIn": 2,
+      "complexity": 1
+    },
+    "oneLiner": "Lock money with a bank for a fixed time at a fixed rate.",
+    "realLife": "Bank FDs lock a rate for 7 days to 10 years. Breaking one early usually costs a small penalty. Insured by DICGC up to ₹5 lakh per depositor per bank. Interest is taxable.",
+    "goodFor": [
+      "Goals 1–3 years away",
+      "Safety"
+    ],
+    "watchOut": [
+      "Barely beats inflation after tax",
+      "Early-withdrawal penalty"
+    ],
+    "regulator": "RBI",
+    "world": 1
+  },
+  {
+    "id": "rd",
+    "name": "Recurring Deposit",
+    "kind": "asset",
+    "rarity": "common",
+    "emoji": "📅",
+    "stats": {
+      "return": 2,
+      "risk": 1,
+      "liquidity": 3,
+      "lockIn": 2,
+      "complexity": 1
+    },
+    "oneLiner": "A monthly FD: put in a fixed amount every month for a fixed time.",
+    "realLife": "Banks and post offices offer RDs from ₹100 a month. It builds the SIP habit with FD-like safety and FD-like returns.",
+    "goodFor": [
+      "Building the monthly habit",
+      "Short goals"
+    ],
+    "watchOut": [
+      "Low growth over long periods"
+    ],
+    "regulator": "RBI / India Post",
+    "world": 2
+  },
+  {
+    "id": "ppf",
+    "name": "Public Provident Fund",
+    "kind": "asset",
+    "rarity": "rare",
+    "emoji": "🏛️",
+    "stats": {
+      "return": 2,
+      "risk": 1,
+      "liquidity": 1,
+      "lockIn": 5,
+      "complexity": 2
+    },
+    "oneLiner": "A government-backed savings scheme with a 15-year lock-in and tax-free interest.",
+    "realLife": "The government sets the PPF rate every quarter. You can invest ₹500 to ₹1.5 lakh a year, and partial withdrawals open from year 7. A parent can open one for a minor.",
+    "goodFor": [
+      "Very long goals",
+      "Guaranteed, tax-free growth"
+    ],
+    "watchOut": [
+      "Money is locked for 15 years"
+    ],
+    "regulator": "Government of India",
+    "world": 2
+  },
+  {
+    "id": "indexFund",
+    "name": "Index Fund",
+    "kind": "asset",
+    "rarity": "rare",
+    "emoji": "🧺",
+    "stats": {
+      "return": 4,
+      "risk": 3,
+      "liquidity": 4,
+      "lockIn": 1,
+      "complexity": 2
+    },
+    "oneLiner": "Buy a whole basket of companies in one go, at a very low cost.",
+    "realLife": "A Nifty 50 index fund owns India's 50 largest listed companies in the same proportions as the index. Costs (expense ratios) are often well under 0.5% a year. Prices swing in the short term.",
+    "goodFor": [
+      "Long-term goals (7+ years)",
+      "SIPs"
+    ],
+    "watchOut": [
+      "Short-term falls of 20–40% happen"
+    ],
+    "regulator": "SEBI",
+    "world": 2
+  },
+  {
+    "id": "sip",
+    "name": "SIP",
+    "kind": "strategy",
+    "rarity": "common",
+    "emoji": "🐢",
+    "traits": [
+      "Invest a fixed amount every month",
+      "Buys more units when prices are low",
+      "Builds discipline: no timing needed"
+    ],
+    "oneLiner": "Systematic Investment Plan: invest a fixed amount on a fixed date, automatically.",
+    "realLife": "Most mutual funds in India accept SIPs from about ₹100–₹500 a month. Consistency matters more than the amount.",
+    "goodFor": [
+      "Beginners",
+      "Monthly income",
+      "Long goals"
+    ],
+    "watchOut": [
+      "Stopping and restarting breaks the snowball"
+    ],
+    "world": 2
+  },
+  {
+    "id": "lumpSum",
+    "name": "Lump Sum",
+    "kind": "strategy",
+    "rarity": "common",
+    "emoji": "💰",
+    "traits": [
+      "Invest all at once",
+      "Wins in steadily rising markets",
+      "Feels painful if prices fall right after"
+    ],
+    "oneLiner": "Invest a big amount in one go, like a gift or bonus.",
+    "realLife": "When you get a big amount (e.g. birthday money), you can invest it at once or spread it as a SIP over a few months. Both beat leaving it idle.",
+    "goodFor": [
+      "Windfalls",
+      "Long horizons"
+    ],
+    "watchOut": [
+      "Timing regret",
+      "Bigger short-term swings"
+    ],
+    "world": 2
+  },
+  {
+    "id": "govBond",
+    "name": "Government Bond",
+    "kind": "asset",
+    "rarity": "rare",
+    "emoji": "📜",
+    "mentor": "Bondi the Elephant",
+    "stats": {
+      "return": 2,
+      "risk": 1,
+      "liquidity": 3,
+      "lockIn": 3,
+      "complexity": 2
+    },
+    "oneLiner": "Lend money to the government. It pays you fixed interest and returns your money later.",
+    "realLife": "Individuals can buy government securities through RBI Retail Direct. Prices move when interest rates change.",
+    "goodFor": [
+      "Stability",
+      "Steady income"
+    ],
+    "watchOut": [
+      "Prices fall when rates rise"
+    ],
+    "regulator": "RBI",
+    "world": 4
+  },
+  {
+    "id": "mutualFund",
+    "name": "Mutual Fund",
+    "kind": "asset",
+    "rarity": "rare",
+    "emoji": "🤝",
+    "stats": {
+      "return": 4,
+      "risk": 3,
+      "liquidity": 4,
+      "lockIn": 1,
+      "complexity": 2
+    },
+    "oneLiner": "Many investors pool money, and a professional manager invests it for them.",
+    "realLife": "Each unit has a NAV (price). Funds charge an expense ratio every year. ELSS funds have a 3-year lock-in.",
+    "goodFor": [
+      "Diversification",
+      "SIPs"
+    ],
+    "watchOut": [
+      "Fees",
+      "Picking funds on past returns alone"
+    ],
+    "regulator": "SEBI",
+    "world": 4
+  },
+  {
+    "id": "gold",
+    "name": "Gold",
+    "kind": "asset",
+    "rarity": "rare",
+    "emoji": "🥇",
+    "mentor": "Goldie the Magpie",
+    "stats": {
+      "return": 3,
+      "risk": 3,
+      "liquidity": 4,
+      "lockIn": 1,
+      "complexity": 2
+    },
+    "oneLiner": "A commodity that often holds value when inflation or fear spikes.",
+    "realLife": "Besides jewellery, Indians can own gold through gold ETFs, gold mutual funds, and government Sovereign Gold Bonds when they are on offer.",
+    "goodFor": [
+      "Diversifying",
+      "Inflation shocks"
+    ],
+    "watchOut": [
+      "Long flat periods",
+      "Making charges on jewellery"
+    ],
+    "regulator": "SEBI (ETFs) / RBI (SGBs)",
+    "world": 4
+  },
+  {
+    "id": "stock",
+    "name": "Stocks",
+    "kind": "asset",
+    "rarity": "epic",
+    "emoji": "📈",
+    "stats": {
+      "return": 5,
+      "risk": 5,
+      "liquidity": 4,
+      "lockIn": 1,
+      "complexity": 3
+    },
+    "oneLiner": "Own a slice of one company. Share its growth and its troubles.",
+    "realLife": "Shares trade on the NSE and BSE through a demat account. Minors can hold a demat account operated by a guardian. Single companies can fall a long way.",
+    "goodFor": [
+      "Long-term growth",
+      "Learning how businesses work"
+    ],
+    "watchOut": [
+      "One company can crash",
+      "Tips are not research"
+    ],
+    "regulator": "SEBI",
+    "world": 4
+  },
+  {
+    "id": "reit",
+    "name": "REIT",
+    "kind": "asset",
+    "rarity": "epic",
+    "emoji": "🏢",
+    "mentor": "Rita the Beaver",
+    "stats": {
+      "return": 3,
+      "risk": 3,
+      "liquidity": 3,
+      "lockIn": 1,
+      "complexity": 3
+    },
+    "oneLiner": "Own a small slice of rent-paying office buildings and malls.",
+    "realLife": "Real Estate Investment Trusts are listed on Indian exchanges and must pay out most of their income to unit holders.",
+    "goodFor": [
+      "Real-estate exposure with small amounts",
+      "Regular income"
+    ],
+    "watchOut": [
+      "Interest-rate moves",
+      "Vacant offices"
+    ],
+    "regulator": "SEBI",
+    "world": 4
+  },
+  {
+    "id": "derivative",
+    "name": "Futures & Options",
+    "kind": "asset",
+    "rarity": "legendary",
+    "emoji": "🐙",
+    "mentor": "Fizz the Octopus",
+    "stats": {
+      "return": 3,
+      "risk": 5,
+      "liquidity": 4,
+      "lockIn": 1,
+      "complexity": 5
+    },
+    "oneLiner": "Contracts whose value depends on another asset. Great for hedging, dangerous for gambling.",
+    "realLife": "A SEBI study found about 9 in 10 individual F&O traders lost money over FY22–FY24. Professionals mostly use options to hedge risk, like insurance.",
+    "goodFor": [
+      "Hedging (insurance)",
+      "Advanced strategies"
+    ],
+    "watchOut": [
+      "Leverage magnifies losses",
+      "Most speculators lose"
+    ],
+    "regulator": "SEBI",
+    "world": 5
+  },
+  {
+    "id": "crypto",
+    "name": "Crypto",
+    "kind": "asset",
+    "rarity": "epic",
+    "emoji": "🪙",
+    "stats": {
+      "return": 3,
+      "risk": 5,
+      "liquidity": 4,
+      "lockIn": 1,
+      "complexity": 4
+    },
+    "oneLiner": "Digital tokens like bitcoin. Prices swing wildly and differ across exchanges.",
+    "realLife": "In India, gains on crypto (virtual digital assets) are taxed at 30% with 1% TDS on transfers. Exchanges are not regulated like stock exchanges. Studied here as a case of speculation and arbitrage.",
+    "goodFor": [
+      "Learning about speculation and arbitrage"
+    ],
+    "watchOut": [
+      "Huge swings",
+      "Scams",
+      "Heavy tax"
+    ],
+    "world": 6
+  },
+  {
+    "id": "peVc",
+    "name": "Private Equity & VC",
+    "kind": "asset",
+    "rarity": "legendary",
+    "emoji": "🚀",
+    "mentor": "Vee the Fox",
+    "stats": {
+      "return": 5,
+      "risk": 5,
+      "liquidity": 1,
+      "lockIn": 5,
+      "complexity": 5
+    },
+    "oneLiner": "Back private companies and startups before they list. Most fail; a few win big.",
+    "realLife": "In India, most people access PE and VC through Alternative Investment Funds, which usually need at least ₹1 crore and lock money for years.",
+    "goodFor": [
+      "Very long horizons",
+      "Understanding startups"
+    ],
+    "watchOut": [
+      "Money locked for 7–10 years",
+      "Most bets fail"
+    ],
+    "regulator": "SEBI (AIFs)",
+    "world": 9
+  },
+  {
+    "id": "emergencyFund",
+    "name": "Emergency Fund",
+    "kind": "strategy",
+    "rarity": "common",
+    "emoji": "🧯",
+    "oneLiner": "Money kept ready for surprises, so you never have to sell investments in a hurry.",
+    "realLife": "A common rule of thumb is 3–6 months of expenses, kept in a savings account or a liquid fund you can get the same day. For a teen it can be much smaller: enough for a broken phone or a lost bus pass.",
+    "goodFor": [
+      "Surprise expenses",
+      "Sleeping well when markets fall"
+    ],
+    "watchOut": [
+      "Too much in cash melts with inflation",
+      "Not for shopping"
+    ],
+    "world": 3,
+    "traits": [
+      "Kept somewhere instant",
+      "Used only for real surprises",
+      "Refilled after you use it"
+    ]
+  },
+  {
+    "id": "elss",
+    "name": "ELSS Fund",
+    "kind": "asset",
+    "rarity": "rare",
+    "emoji": "🧾",
+    "stats": {
+      "return": 4,
+      "risk": 4,
+      "liquidity": 1,
+      "lockIn": 4,
+      "complexity": 3
+    },
+    "oneLiner": "A share-market mutual fund that saves tax, with a 3-year lock-in.",
+    "realLife": "ELSS (Equity Linked Savings Scheme) funds invest mostly in shares. Under the old tax regime, up to ₹1.5 lakh a year counts for a Section 80C deduction. Each investment is locked for 3 years, the shortest lock among 80C options.",
+    "goodFor": [
+      "Long goals",
+      "Saving tax once you earn"
+    ],
+    "watchOut": [
+      "Swings like the share market",
+      "Can't touch it for 3 years"
+    ],
+    "regulator": "SEBI",
+    "world": 3
+  },
+  {
+    "id": "assetAllocation",
+    "name": "Asset Allocation",
+    "kind": "strategy",
+    "rarity": "rare",
+    "emoji": "🏰",
+    "traits": [
+      "Split money across shares, bonds, gold and cash",
+      "More time to the goal, more room for shares",
+      "Decides most of how bumpy the ride is"
+    ],
+    "oneLiner": "Choose how much goes into each kind of asset, to fit your goal.",
+    "realLife": "Multi-asset and balanced advantage funds in India manage a mix for you. A simple DIY version is an index fund plus a debt fund in your chosen split.",
+    "goodFor": [
+      "Every investor",
+      "Matching risk to a goal"
+    ],
+    "watchOut": [
+      "Drifts over time: rebalance yearly",
+      "No mix removes all risk"
+    ],
+    "world": 5
+  },
+  {
+    "id": "hedge",
+    "name": "Hedge",
+    "kind": "strategy",
+    "rarity": "epic",
+    "emoji": "🛡️",
+    "traits": [
+      "Pay a small cost to limit a big loss",
+      "Insurance for investments",
+      "Lowers risk; doesn't add return"
+    ],
+    "oneLiner": "A position that gains when your main holding loses.",
+    "realLife": "Farmers lock crop prices with futures, airlines hedge fuel, and investors buy put options as crash insurance. In India these trade on the NSE, BSE and NCDEX.",
+    "goodFor": [
+      "Protecting a big holding",
+      "Businesses with price risk"
+    ],
+    "watchOut": [
+      "Always costs something",
+      "Easy to get wrong"
+    ],
+    "regulator": "SEBI",
+    "world": 5
+  },
+  {
+    "id": "buyAndHold",
+    "name": "Buy and Hold",
+    "kind": "strategy",
+    "rarity": "common",
+    "emoji": "⏳",
+    "traits": [
+      "Buy broad, good-quality investments",
+      "Hold for years through ups and downs",
+      "Few trades, low costs, lower tax"
+    ],
+    "oneLiner": "Buy a diversified investment and keep it for the long run.",
+    "realLife": "In India, shares held over a year pay a lower long-term capital gains tax, and every trade you skip saves brokerage and STT.",
+    "goodFor": [
+      "Long goals",
+      "Busy people"
+    ],
+    "watchOut": [
+      "Needs patience in crashes",
+      "Still review once a year"
+    ],
+    "world": 7
+  },
+  {
+    "id": "fundamentals",
+    "name": "Fundamental Analysis",
+    "kind": "strategy",
+    "rarity": "rare",
+    "emoji": "🔎",
+    "traits": [
+      "Study the business, not just the price",
+      "Compare price with profit (P/E)",
+      "Check debt, ROE and growth together"
+    ],
+    "oneLiner": "Judge a company by its profits, debt and growth before trusting its price.",
+    "realLife": "Listed companies publish quarterly results and annual reports, free on the NSE and BSE websites.",
+    "goodFor": [
+      "Checking a tip",
+      "Avoiding hype"
+    ],
+    "watchOut": [
+      "Great companies can still be overpriced",
+      "The numbers look backwards"
+    ],
+    "world": 8
+  },
+  {
+    "id": "termInsurance",
+    "name": "Insurance",
+    "kind": "strategy",
+    "rarity": "common",
+    "emoji": "☂️",
+    "traits": [
+      "Turns a disaster into a small yearly cost",
+      "Cheapest when you're young and healthy",
+      "Keep it separate from investing"
+    ],
+    "oneLiner": "Term life and health insurance protect your family and your plan from one bad event.",
+    "realLife": "Insurance in India is regulated by IRDAI. Term life pays your family if you die during the term; health insurance pays hospital bills.",
+    "goodFor": [
+      "Anyone with dependants (term)",
+      "Everyone (health)"
+    ],
+    "watchOut": [
+      "Plans that mix insurance and investing often do both badly",
+      "Read the exclusions"
+    ],
+    "regulator": "IRDAI",
+    "world": 9
+  },
+  {
+    "id": "nps",
+    "name": "National Pension System",
+    "kind": "asset",
+    "rarity": "rare",
+    "emoji": "🧓",
+    "stats": {
+      "return": 3,
+      "risk": 2,
+      "liquidity": 1,
+      "lockIn": 5,
+      "complexity": 2
+    },
+    "oneLiner": "A low-cost pension scheme: invest while you work, draw a pension after 60.",
+    "realLife": "NPS is regulated by PFRDA. You choose a mix of shares, corporate bonds and government bonds. Most of it stays locked until 60, and part must buy a pension (an annuity).",
+    "goodFor": [
+      "Retirement",
+      "Extra tax deduction"
+    ],
+    "watchOut": [
+      "Locked until 60",
+      "Part must buy an annuity"
+    ],
+    "regulator": "PFRDA",
+    "world": 9
+  }
+]

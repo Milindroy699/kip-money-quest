@@ -1,0 +1,585 @@
+{
+  "id": "w4",
+  "index": 4,
+  "title": "Product Bazaar",
+  "tagline": "Bonds, shares, funds, gold and REITs",
+  "principle": "Product classes and what they mean",
+  "product": "Government bonds, shares, mutual funds, index funds and ETFs, gold, REITs",
+  "philosophy": "Know what you own",
+  "color": "#7C3AED",
+  "lessons": [
+    {
+      "id": "w4-l1",
+      "title": "Bonds: lending for interest",
+      "subtitle": "Why bond prices fall when rates rise",
+      "capability": "Explain what a bond is and why its price moves with interest rates.",
+      "unlockCards": [
+        "govBond"
+      ],
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "dash",
+          "mood": "think",
+          "lines": [
+            "My uncle says bonds are 'boring'. What even is a bond?"
+          ]
+        },
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "talk",
+          "lines": [
+            "A bond is a loan you give, to the government or a company.",
+            "It pays you interest every year, called the coupon, and returns your money at the end."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "rateSeesaw",
+          "title": "The rate seesaw",
+          "caption": "Drag the rate new bonds pay. Watch your old bond's price."
+        },
+        {
+          "type": "quiz",
+          "question": "Interest rates rise. What happens to the price of bonds you already own?",
+          "options": [
+            {
+              "text": "It falls",
+              "why": "Right. New bonds pay more, so yours is worth less to a buyer.",
+              "correct": true
+            },
+            {
+              "text": "It rises",
+              "why": "That happens when rates fall."
+            },
+            {
+              "text": "Nothing",
+              "why": "Bond prices move with rates every day."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "When you buy a government bond, who is borrowing?",
+          "options": [
+            {
+              "text": "The government",
+              "why": "Yes. You lend; it pays interest and repays you.",
+              "correct": true
+            },
+            {
+              "text": "You",
+              "why": "You're the lender."
+            },
+            {
+              "text": "Your bank",
+              "why": "The bank might hold it for you, but the government borrows."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "cardId": "govBond",
+          "title": "Card unlocked: Government Bond",
+          "realLife": "Individuals can buy government securities through RBI Retail Direct. Held to the end, you get the interest and your money back; sold early, you get the market price.",
+          "deeper": "Yield to maturity is the return if you hold to the end. 'Duration' measures how much a bond's price moves when rates change: longer bonds move more."
+        }
+      ]
+    },
+    {
+      "id": "w4-l2",
+      "title": "Shares: owning a slice",
+      "subtitle": "A piece of a real business",
+      "capability": "Explain what owning a share means, and the risk of one company.",
+      "unlockCards": [
+        "stock"
+      ],
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "dash",
+          "mood": "cheer",
+          "lines": [
+            "I'm buying shares! Shares of what? Doesn't matter, the price will go up!"
+          ]
+        },
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "think",
+          "lines": [
+            "A share is a slice of a real business. Over time, its value follows how that business does."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "ownSlice",
+          "title": "Own a slice of Meena's Chai",
+          "caption": "Buy some shares, then try three different years."
+        },
+        {
+          "type": "quiz",
+          "question": "Owning a share means…",
+          "options": [
+            {
+              "text": "You own a small part of the company",
+              "why": "Right. Its profits and its losses are partly yours.",
+              "correct": true
+            },
+            {
+              "text": "You lent the company money",
+              "why": "That's a bond."
+            },
+            {
+              "text": "You get a fixed return",
+              "why": "Shares have no fixed return. That's the risk, and the reward."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Why is putting everything in one company risky?",
+          "options": [
+            {
+              "text": "It can go bust, taking your money with it",
+              "why": "Exactly. That's why investors spread out.",
+              "correct": true
+            },
+            {
+              "text": "Companies never go bust",
+              "why": "Some do, every year."
+            },
+            {
+              "text": "Shares can't be sold",
+              "why": "They can, on the stock exchange."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "cardId": "stock",
+          "title": "Card unlocked: Shares",
+          "realLife": "Indian shares trade on the NSE and BSE through a demat account. A minor's demat account is opened and run by a parent or guardian.",
+          "mission": "Pick a company whose product you use. What does it sell, and does it make a profit?",
+          "deeper": "Earnings per share (EPS) is the profit for each share; the P/E ratio compares the share price to it. You'll use both in Analyst HQ."
+        }
+      ]
+    },
+    {
+      "id": "w4-l3",
+      "title": "Mutual funds: pooling",
+      "subtitle": "Own 50 companies with ₹500",
+      "capability": "Explain how a mutual fund pools money and spreads risk.",
+      "unlockCards": [
+        "mutualFund"
+      ],
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "talk",
+          "lines": [
+            "What if you could own a little of 50 companies at once, with ₹500?",
+            "That's a mutual fund: many people pool their money, and a professional invests it."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "basket",
+          "title": "Basket builder",
+          "caption": "Pick a basket size. See what one bad year can do."
+        },
+        {
+          "type": "quiz",
+          "question": "Why does a fund with 50 companies lose less when one fails?",
+          "options": [
+            {
+              "text": "Each company is only a small slice",
+              "why": "Right. One failure barely dents the basket.",
+              "correct": true
+            },
+            {
+              "text": "Funds can't lose money",
+              "why": "They can. The whole market can fall."
+            },
+            {
+              "text": "The government pays for losses",
+              "why": "No such guarantee for funds."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "What is a fund's NAV?",
+          "options": [
+            {
+              "text": "The price of one unit",
+              "why": "Yes: Net Asset Value, the value of everything the fund owns, per unit.",
+              "correct": true
+            },
+            {
+              "text": "The manager's salary",
+              "why": "That's part of the fee, the expense ratio."
+            },
+            {
+              "text": "A guaranteed return",
+              "why": "Funds don't guarantee returns."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "cardId": "mutualFund",
+          "title": "Card unlocked: Mutual Fund",
+          "realLife": "SEBI regulates mutual funds, and every fund publishes what it holds each month. You can start a SIP from about ₹100–₹500.",
+          "deeper": "'Direct' plans skip the distributor's commission, so their yearly fee is lower than 'regular' plans of the same fund."
+        }
+      ]
+    },
+    {
+      "id": "w4-l4",
+      "title": "Index funds and ETFs",
+      "subtitle": "The fee that compounds",
+      "capability": "Compare index funds with active funds, and see how fees compound.",
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "dash",
+          "mood": "happy",
+          "lines": [
+            "My fund manager is a genius! He charges 2% a year, but it's worth it, right?"
+          ]
+        },
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "worry",
+          "lines": [
+            "Maybe. But over the long run, most active funds don't beat their index after fees. And fees compound, just like returns."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "feeDrag",
+          "title": "The fee that compounds",
+          "caption": "Drag the yearly fee. Watch 20 years of a ₹1,000-a-month SIP."
+        },
+        {
+          "type": "quiz",
+          "question": "An index fund…",
+          "options": [
+            {
+              "text": "Copies a market index, like the Nifty 50, at low cost",
+              "why": "Right. No stock picking, so fees stay tiny.",
+              "correct": true
+            },
+            {
+              "text": "Lets a manager pick hot shares",
+              "why": "That's an active fund."
+            },
+            {
+              "text": "Is guaranteed",
+              "why": "Its value goes up and down with the market."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "What's an ETF?",
+          "options": [
+            {
+              "text": "A fund that trades on the stock exchange like a share",
+              "why": "Yes. Exchange-traded fund: bought and sold during market hours.",
+              "correct": true
+            },
+            {
+              "text": "A kind of FD",
+              "why": "No, it holds shares, bonds or gold."
+            },
+            {
+              "text": "A crypto coin",
+              "why": "No, it's a regulated fund."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "title": "In real life",
+          "realLife": "Nifty 50 index funds and ETFs often charge about 0.05–0.3% a year. ETFs need a demat account; index funds can be bought straight from the fund house.",
+          "deeper": "'Tracking error' measures how closely a fund follows its index. The lower, the better."
+        }
+      ]
+    },
+    {
+      "id": "w4-l5",
+      "title": "Gold and commodities",
+      "subtitle": "Shine, with no interest",
+      "capability": "Explain what gold does in a portfolio, and the ways to own it.",
+      "unlockCards": [
+        "gold"
+      ],
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "dash",
+          "mood": "cheer",
+          "lines": [
+            "Grandma says gold always goes up. So I'll put everything in gold!"
+          ]
+        },
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "think",
+          "lines": [
+            "Gold often shines when people are scared or prices rise. But it pays no interest, and it has had long flat years.",
+            "A small slice can steady a portfolio."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "reveal",
+          "title": "Ways to own gold",
+          "caption": "Tap each one.",
+          "items": [
+            {
+              "emoji": "💍",
+              "title": "Jewellery",
+              "text": "Making charges and storage costs, and hard to sell at full value."
+            },
+            {
+              "emoji": "🪙",
+              "title": "Coins and bars",
+              "text": "Pure gold, but you have to store it safely."
+            },
+            {
+              "emoji": "📊",
+              "title": "Gold ETFs and funds",
+              "text": "Track the gold price, with no storage worries."
+            },
+            {
+              "emoji": "🏛️",
+              "title": "Gold-linked government bonds",
+              "text": "Follow the gold price and paid a little interest on top. Check whether new ones are on offer."
+            }
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "bazaar",
+          "title": "Open your stall",
+          "caption": "Three customers. Recommend the right product.",
+          "params": {
+            "customers": "inflation,grandpa,trip",
+            "rounds": 3
+          }
+        },
+        {
+          "type": "quiz",
+          "question": "What is gold usually good for in a portfolio?",
+          "options": [
+            {
+              "text": "A steadying slice when fear or inflation rises",
+              "why": "Right. A slice, not the whole thing.",
+              "correct": true
+            },
+            {
+              "text": "Steady monthly income",
+              "why": "Gold pays no income."
+            },
+            {
+              "text": "Guaranteed growth every year",
+              "why": "Gold has had long flat and falling years."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "cardId": "gold",
+          "title": "Card unlocked: Gold",
+          "realLife": "Indian households hold a lot of gold, mostly as jewellery. Investors who want gold usually prefer ETFs or funds, which skip making charges and storage.",
+          "deeper": "Gold is priced in dollars globally, so in India its rupee price also moves when the rupee weakens or strengthens."
+        }
+      ]
+    },
+    {
+      "id": "w4-l6",
+      "title": "REITs: rent from big buildings",
+      "subtitle": "Be a landlord with ₹500",
+      "capability": "Explain what a REIT owns and how it pays you.",
+      "unlockCards": [
+        "reit"
+      ],
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "dash",
+          "mood": "think",
+          "lines": [
+            "Can I be a landlord with ₹500?"
+          ]
+        },
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "happy",
+          "lines": [
+            "Kind of! A REIT owns big rent-paying buildings, like offices and malls, and shares the rent with its unit holders."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "reveal",
+          "title": "How a REIT works",
+          "caption": "Tap each card.",
+          "items": [
+            {
+              "emoji": "🏢",
+              "title": "What it owns",
+              "text": "Offices, malls and warehouses that pay rent."
+            },
+            {
+              "emoji": "💸",
+              "title": "What you get",
+              "text": "Most of the rent, paid out regularly."
+            },
+            {
+              "emoji": "📉",
+              "title": "The catch",
+              "text": "Unit prices swing, and empty buildings mean less rent."
+            },
+            {
+              "emoji": "🛣️",
+              "title": "Its cousin, the InvIT",
+              "text": "The same idea for roads and power lines."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Where does a REIT's income mainly come from?",
+          "options": [
+            {
+              "text": "Rent from its buildings",
+              "why": "Right. Most of it is paid out to unit holders.",
+              "correct": true
+            },
+            {
+              "text": "Interest on FDs",
+              "why": "No, it's property income."
+            },
+            {
+              "text": "Selling gold",
+              "why": "Unrelated."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Why might a REIT's price fall?",
+          "options": [
+            {
+              "text": "Offices sit empty and rents drop",
+              "why": "Yes. Less rent, less income, lower price.",
+              "correct": true
+            },
+            {
+              "text": "Rent is guaranteed by law",
+              "why": "It isn't."
+            },
+            {
+              "text": "REITs can't fall",
+              "why": "They trade like shares and can fall."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "cardId": "reit",
+          "title": "Card unlocked: REIT",
+          "realLife": "India has listed REITs that own office parks and malls. They trade on the stock exchange, and SEBI requires them to pay out most of their income.",
+          "deeper": "Small and medium REITs (SM REITs) are a newer SEBI category for smaller properties, with higher minimum investments."
+        }
+      ]
+    },
+    {
+      "id": "w4-l7",
+      "title": "Boss: Bazaar Bargain",
+      "subtitle": "Everyone at your stall",
+      "capability": "Match products to people's goals, time and risk.",
+      "boss": true,
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "cheer",
+          "lines": [
+            "The final test of the Product Bazaar! Customers are queuing at your stall.",
+            "Match each one to the right product."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "bazaar",
+          "title": "Bazaar Bargain",
+          "caption": "Six customers. Earn their trust.",
+          "params": {
+            "customers": "retire,tip,tax,rent,emergency,pick",
+            "rounds": 6
+          }
+        },
+        {
+          "type": "play",
+          "mode": "risk",
+          "durationSec": 60,
+          "brief": "Market day! A Risk Lanes run: spread across SAFE, BALANCED and WILD, and keep cash for surprises."
+        },
+        {
+          "type": "quiz",
+          "question": "Someone wants steady income and can't afford losses. Best fit?",
+          "options": [
+            {
+              "text": "A government bond",
+              "why": "Right. Regular interest, very low risk.",
+              "correct": true
+            },
+            {
+              "text": "A single company's shares",
+              "why": "Too risky for that goal."
+            },
+            {
+              "text": "Crypto",
+              "why": "No income, wild swings."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "The cheapest way to own the whole market?",
+          "options": [
+            {
+              "text": "An index fund",
+              "why": "Yes. Low fees, no stock picking.",
+              "correct": true
+            },
+            {
+              "text": "A hot tip",
+              "why": "That's a gamble, not the market."
+            },
+            {
+              "text": "Gold jewellery",
+              "why": "Making charges, and it isn't the share market."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "title": "World complete: Product Bazaar",
+          "realLife": "You now know what each product is, what it's for, and what it costs. They're all in your Practice Portfolio. Next, Portfolio Fort: combining them to survive market storms.",
+          "deeper": "Whatever the product, ask the same four things: what am I really owning, how could I lose money, how fast can I get it out, and what does it cost every year?"
+        }
+      ]
+    }
+  ]
+}

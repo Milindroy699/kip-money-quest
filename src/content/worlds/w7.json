@@ -1,0 +1,354 @@
+{
+  "id": "w7",
+  "index": 7,
+  "title": "Time Tracks",
+  "tagline": "Scalping, intraday, swing and long term",
+  "principle": "Scalping, intraday, swing and long-term investing",
+  "product": "Brokerage, STT, short- and long-term capital gains tax",
+  "philosophy": "Costs and stress rise as the horizon shrinks",
+  "color": "#2563EB",
+  "track": "builder",
+  "lessons": [
+    {
+      "id": "w7-l1",
+      "title": "Four speeds",
+      "subtitle": "Seconds, a day, weeks or years",
+      "capability": "Describe scalping, intraday, swing trading and long-term investing.",
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "dash",
+          "mood": "cheer",
+          "lines": [
+            "I watch charts all day and trade every five minutes. That's investing, right?"
+          ]
+        },
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "think",
+          "lines": [
+            "That's one speed, Dash. There are four.",
+            "The faster you go, the more you pay in costs and stress, and the more you're fighting random noise."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "reveal",
+          "title": "The four tracks",
+          "caption": "Tap each speed.",
+          "items": [
+            {
+              "emoji": "⚡",
+              "title": "Scalping",
+              "text": "Seconds to minutes. Dozens of trades a day for tiny moves. Costs and noise dominate."
+            },
+            {
+              "emoji": "☀️",
+              "title": "Intraday",
+              "text": "Opened and closed the same day, before the market shuts at 3:30 pm. No overnight risk, but costs every day."
+            },
+            {
+              "emoji": "🌙",
+              "title": "Swing",
+              "text": "Days to weeks. Held overnight, so surprise news can open a gap against you."
+            },
+            {
+              "emoji": "🐢",
+              "title": "Long term",
+              "text": "Years. Few trades, low costs, lower tax, and time for businesses to grow."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "A trade opened and closed on the same day is…",
+          "options": [
+            {
+              "text": "Intraday",
+              "why": "Yes. Indian stock markets close at 3:30 pm, and intraday positions are squared off by then.",
+              "correct": true
+            },
+            {
+              "text": "Long term",
+              "why": "Long term means years."
+            },
+            {
+              "text": "Swing",
+              "why": "Swing trades are held overnight, for days or weeks."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "As the horizon gets shorter, what grows?",
+          "options": [
+            {
+              "text": "Costs and noise",
+              "why": "Right. More trades, more fees, and price moves that are mostly random.",
+              "correct": true
+            },
+            {
+              "text": "Your guaranteed return",
+              "why": "Nothing is guaranteed at any speed."
+            },
+            {
+              "text": "Your tax benefits",
+              "why": "Short-term gains are taxed more, not less."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "title": "In real life",
+          "realLife": "SEBI studies of intraday traders found about 7 in 10 lost money. Over long periods, broad Indian share indices have grown, with big dips along the way.",
+          "deeper": "Intraday trading in India uses leverage from the broker, which SEBI has steadily restricted with margin rules since 2020."
+        }
+      ]
+    },
+    {
+      "id": "w7-l2",
+      "title": "The toll on every trade",
+      "subtitle": "Brokerage, taxes and spread",
+      "capability": "Explain how trading costs compound against frequent traders.",
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "dash",
+          "mood": "happy",
+          "lines": [
+            "Brokerage is only ₹20 a trade. That's nothing!"
+          ]
+        },
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "think",
+          "lines": [
+            "Add exchange charges, STT, GST, stamp duty and the spread between buy and sell prices.",
+            "It's small each time, but it comes off every single trade."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "tradeCosts",
+          "title": "How often do you trade?",
+          "caption": "Slide from a couple of trades a year to one every day."
+        },
+        {
+          "type": "quiz",
+          "question": "Why do costs hurt frequent traders so much?",
+          "options": [
+            {
+              "text": "They're paid on every trade, and add up",
+              "why": "Yes. Costs compound against you, the way returns compound for you.",
+              "correct": true
+            },
+            {
+              "text": "Brokers charge more to frequent traders",
+              "why": "Costs per trade are similar; you just pay them far more often."
+            },
+            {
+              "text": "They don't",
+              "why": "Try 250 trades a year on the slider."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Shares held for over a year in India are taxed…",
+          "options": [
+            {
+              "text": "At a lower long-term rate",
+              "why": "Right. Long-term capital gains on shares are taxed lower than short-term gains, with an exemption limit.",
+              "correct": true
+            },
+            {
+              "text": "At a higher rate",
+              "why": "It's the other way round."
+            },
+            {
+              "text": "Never",
+              "why": "Gains above the exemption are taxed."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "title": "In real life",
+          "realLife": "On Indian shares, gains held under a year are taxed as short-term capital gains (20% in 2024 rules). Held over a year, long-term gains above ₹1.25 lakh a year are taxed at 12.5%. Rules change, so check the current ones.",
+          "deeper": "STT (Securities Transaction Tax) is charged on every share trade in India, even losing ones. Your contract note lists every charge on each trade."
+        }
+      ]
+    },
+    {
+      "id": "w7-l3",
+      "title": "Timeframe Racer",
+      "subtitle": "Same market, two speeds",
+      "capability": "Compare frantic short-term trading with holding, on the same market.",
+      "unlockCards": [
+        "buyAndHold"
+      ],
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "dash",
+          "mood": "cheer",
+          "lines": [
+            "Race you! I'll scalp, you hold. Same money, same market."
+          ]
+        },
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "happy",
+          "lines": [
+            "Deal. You tap as fast as you like. I'll tap once."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "timeframe",
+          "title": "Timeframe Racer",
+          "caption": "Round 1: scalp for 36 ticks. Round 2: hold for 5 years.",
+          "predict": {
+            "question": "Who usually ends up ahead?",
+            "options": [
+              "The holder",
+              "The scalper",
+              "Always a tie"
+            ],
+            "correct": 0,
+            "reveal": "Over many tries, the holder usually wins: tiny moves are mostly noise, but costs are certain."
+          }
+        },
+        {
+          "type": "quiz",
+          "question": "Why does scalping usually lose to costs?",
+          "options": [
+            {
+              "text": "Tiny moves are mostly noise; costs are certain",
+              "why": "Yes. You pay every time, but the gains are random.",
+              "correct": true
+            },
+            {
+              "text": "Markets fall every minute",
+              "why": "They don't. They mostly wiggle."
+            },
+            {
+              "text": "Scalpers are taxed at 100%",
+              "why": "Not true, though short-term gains are taxed more."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "What makes long-term holding work?",
+          "options": [
+            {
+              "text": "Time for businesses and returns to compound",
+              "why": "Right. Growth needs years, not minutes.",
+              "correct": true
+            },
+            {
+              "text": "Luckier timing",
+              "why": "Holding avoids needing good timing."
+            },
+            {
+              "text": "No chance of a fall",
+              "why": "Holders ride falls too. They just don't have to sell in them."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "title": "Card unlocked: Buy and Hold",
+          "realLife": "A low-cost index fund SIP, held for years, is buy-and-hold on autopilot. Fewer trades mean fewer costs, lower tax and calmer evenings.",
+          "cardId": "buyAndHold",
+          "deeper": "Studies of retail investors in many countries find that those who trade most earn the least, after costs."
+        }
+      ]
+    },
+    {
+      "id": "w7-l4",
+      "title": "Boss: The Long Track",
+      "subtitle": "Patience as a superpower",
+      "capability": "Choose a sensible time horizon and explain why it matters.",
+      "boss": true,
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "dash",
+          "mood": "think",
+          "lines": [
+            "I traded 400 times this year and ended up where I started. Minus fees."
+          ]
+        },
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "cheer",
+          "lines": [
+            "Then let’s run all four tracks in one go: scalping, intraday, swing, then long term.",
+            "Watch which one keeps the most coins after fees."
+          ]
+        },
+        {
+          "type": "play",
+          "mode": "timeframe",
+          "durationSec": 60,
+          "brief": "Time Tracks! Four speeds in one run. Count the fees in the fast lanes, jump the overnight gaps, then enjoy the calm long-term road."
+        },
+        {
+          "type": "concept",
+          "widget": "timeframe",
+          "title": "Rematch",
+          "caption": "One more race: scalp, then hold."
+        },
+        {
+          "type": "quiz",
+          "question": "Which horizon fits money for retirement 40 years away?",
+          "options": [
+            {
+              "text": "Long term",
+              "why": "Yes. Decades let compounding do the heavy lifting.",
+              "correct": true
+            },
+            {
+              "text": "Scalping",
+              "why": "Minutes for a 40-year goal makes no sense."
+            },
+            {
+              "text": "Intraday",
+              "why": "Same-day trades are for short-term speculation."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "A swing trader holds over the weekend. What's the extra risk?",
+          "options": [
+            {
+              "text": "News can open a gap on Monday",
+              "why": "Right. Prices can jump overnight before you can react.",
+              "correct": true
+            },
+            {
+              "text": "None",
+              "why": "Overnight news is the swing trader's big risk."
+            },
+            {
+              "text": "The exchange might close forever",
+              "why": "Very unlikely. The real risk is a price gap."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "title": "World complete: Time Tracks",
+          "realLife": "You know the four speeds, what each costs, and why the slow track is where most long-term wealth is built."
+        }
+      ]
+    }
+  ]
+}

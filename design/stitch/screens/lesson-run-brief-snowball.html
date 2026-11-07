@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Lesson Player · Snowball Run Brief</title>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;family=Space+Grotesk:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['"Space Grotesk"', 'sans-serif'],
+            body: ['Outfit', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              mint: '#38e399',
+              mintDark: '#1ca66b',
+              honey: '#f5b041',
+              navy: '#0b1420',
+              navyLight: '#141f30',
+              teal: '#2dd4bf',
+              alertRed: '#f87171'
+            }
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #060e1b;
+      font-family: 'Outfit', sans-serif;
+      color: #f1f5f9;
+      -webkit-font-smoothing: antialiased;
+      user-select: none;
+    }
+    .safe-top {
+      padding-top: max(16px, env(safe-area-inset-top));
+    }
+    .safe-bottom {
+      padding-bottom: max(20px, env(safe-area-inset-bottom));
+    }
+    /* 3D Chunky Mechanical Buttons */
+    .btn-3d-mint {
+      background: #38e399;
+      color: #061a11;
+      border: 1px solid #5ef7b4;
+      box-shadow: 0 5px 0 #128052, 0 10px 20px rgba(56, 227, 153, 0.35);
+      transition: all 0.12s ease;
+    }
+    .btn-3d-mint:active {
+      transform: translateY(4px);
+      box-shadow: 0 1px 0 #128052, 0 4px 10px rgba(56, 227, 153, 0.2);
+    }
+    /* Frosted navy glass panel with 85% opacity & high contrast */
+    .glass-navy-85 {
+      background: rgba(14, 24, 38, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+    }
+    .speech-bubble {
+      background: rgba(16, 28, 44, 0.94);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(56, 227, 153, 0.3);
+      position: relative;
+    }
+    .speech-bubble::before {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 36px;
+      border-width: 10px 10px 0 0;
+      border-style: solid;
+      border-color: rgba(16, 28, 44, 0.94) transparent transparent transparent;
+      display: block;
+      width: 0;
+    }
+    .speech-bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -11px;
+      left: 35px;
+      border-width: 11px 11px 0 0;
+      border-style: solid;
+      border-color: rgba(56, 227, 153, 0.3) transparent transparent transparent;
+      display: block;
+      width: 0;
+      z-index: -1;
+    }
+    /* Kip cutout circular avatar container */
+    .mascot-container {
+      filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.5));
+    }
+    .snowball-sphere {
+      background: radial-gradient(circle at 35% 30%, #ffffff 0%, #d8ecf8 40%, #9fc8e8 80%, #6ba2cc 100%);
+      box-shadow: inset -4px -6px 12px rgba(35, 78, 120, 0.45), 0 12px 24px rgba(0, 0, 0, 0.35);
+    }
+    .pulse-glow {
+      box-shadow: 0 0 0 0 rgba(56, 227, 153, 0.4);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(56, 227, 153, 0.5); }
+      70% { box-shadow: 0 0 0 10px rgba(56, 227, 153, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(56, 227, 153, 0); }
+    }
+  </style>
+</head>
+<body class="flex justify-center items-center min-h-screen bg-[#030712] p-0 sm:p-4">
+<!-- iPhone 390x844 Screen Container -->
+<div class="relative w-[390px] h-[844px] max-h-[844px] overflow-hidden flex flex-col justify-between bg-[#07111e] shadow-2xl rounded-[46px] border border-slate-800">
+<!-- Background Image: Snowball Valley with Dark Scrim Overlay -->
+<div class="absolute inset-0 z-0">
+<img alt="Snowball Valley" class="w-full h-full object-cover object-top opacity-55 scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjW6hEjCbvMlQZSSnwQMTIlMgNZC8pyRPG7TOLeis6EMbZ30DO0C4fPEtXTQe0bI9ijcx1suQBDJ37t3YIZ9eZyjq6m-95fjqYMFX0zR3W2AWgvFQeNLgcLuhQtGdorDB94TZkluWT4g15xXYDusaJFRoX3NGdxpaxnLn3c7YWDpaWeLCvkV3rUwnfxAqG0OdgRFIH46i5CFsOi2jQiU5cZ0W4dEiWG26Kn3s5mjIKRE5-7krttyfgl8oj6FDItvzrBz9kYsD-3BAW"/>
+<!-- Atmospheric dark gradient scrims for maximum contrast (WCAG AAA) -->
+<div class="absolute inset-0 bg-gradient-to-b from-[#0b1420]/95 via-[#0b1420]/75 to-[#060e1b]/95"></div>
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_15%,rgba(56,227,153,0.08),transparent_70%)]"></div>
+</div>
+<!-- Content Wrapper -->
+<div class="relative z-10 flex flex-col h-full safe-top safe-bottom px-5 justify-between">
+<!-- Top Section: Header & Step Indicator -->
+<div class="pt-2">
+<!-- Navigation Bar -->
+<div class="flex items-center justify-between gap-3 mb-3">
+<!-- Step Pill Badge -->
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900/80 border border-slate-700/60 backdrop-blur-md">
+<span class="w-2 h-2 rounded-full bg-brand-mint animate-pulse"></span>
+<span class="text-[11px] font-semibold tracking-wider uppercase text-slate-300">Level 2 of 5</span>
+</div>
+<!-- Close Button -->
+<button aria-label="Close" class="w-11 h-11 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-full bg-slate-900/80 border border-slate-700/70 text-slate-300 hover:text-white active:scale-95 transition-all shadow-md">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
+<path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+<!-- Progress Bar (Step 2 of 5: 40%) -->
+<div class="w-full mb-3.5">
+<div class="w-full h-2 rounded-full bg-slate-800/90 p-[1px] border border-slate-700/50 overflow-hidden shadow-inner">
+<div class="h-full rounded-full bg-gradient-to-r from-brand-mint via-[#45f3a8] to-brand-mint w-2/5 shadow-[0_0_12px_rgba(56,227,153,0.8)] transition-all duration-500"></div>
+</div>
+</div>
+<!-- Mode Label and Heading Title -->
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-brand-mint/15 border border-brand-mint/30 text-[10px] font-extrabold tracking-widest uppercase text-brand-mint font-heading">
+              KIP RUN · SNOWBALL RUN
+            </span>
+<span class="text-[11px] font-medium text-slate-400">World 2 · Snowball Valley</span>
+</div>
+<h1 class="text-[22px] font-bold tracking-tight text-white font-heading mt-1 flex items-center gap-1.5">
+            Play-Step Brief <span>❄️</span>
+</h1>
+</div>
+</div>
+<!-- Center Area: Kip Mascot + Cheering Speech Bubble + Growing Snowball -->
+<div class="my-auto py-2 flex flex-col gap-2.5">
+<!-- Speech Bubble (Above Kip) -->
+<div class="speech-bubble rounded-2xl p-3.5 shadow-lg border border-brand-mint/35">
+<div class="flex items-start gap-2.5">
+<span class="text-base leading-none mt-0.5">💬</span>
+<p class="text-[13px] leading-relaxed text-slate-100 font-medium tracking-tight">
+<span class="text-brand-mint font-semibold">Coins in a row grow your snowball.</span>
+<span class="text-slate-300"> SIP gates bank your coins. </span>
+<span class="text-[#fca5a5] font-medium">Avoid CASH OUT ramps:</span> they reset the snowball!
+            </p>
+</div>
+</div>
+<!-- Mascot Display: Kip Cheering on Left + Big Snowball Beside Him -->
+<div class="flex items-center justify-between px-2 pt-1 pb-1">
+<!-- Kip Avatar / Mascot -->
+<div class="flex items-center gap-3">
+<div class="relative mascot-container">
+<!-- Glow ring behind Kip -->
+<div class="w-16 h-16 rounded-full bg-brand-mint/20 border-2 border-brand-mint/60 overflow-hidden shadow-[0_0_16px_rgba(56,227,153,0.35)] flex items-center justify-center bg-gradient-to-b from-[#183638] to-[#0e2226]">
+<img alt="Kip the Mascot" class="w-full h-full object-cover scale-110 object-top" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2irT8VKByqPkJmodDmUMzR0-lyIpTmfc_Jw5yTXALnlt_YAHXkgT3tmBg08Pr-DExO4Cu-VVXJstqd1x5B4ejsk3_ameqPN7cktq6RzihFGWEum9YGPWBd1_B5JK56x0LiYsD5tJWkjWQ8Ff2Wokr6UZ_hzru-huJMGFrERYA3whEcC3pTUlCBsFMeSF8wou8TvqUf8du3Sxuokl2Wlyahti4fM1qhZ5qVPe65BLfUjdJ1TMCfTGi5bHnELnVafFzFK8HO2Q2GHK9"/>
+</div>
+<!-- Mini Cheering Status Indicator Badge -->
+<div class="absolute -bottom-1 -right-1 bg-brand-honey text-[#07130e] text-[9px] font-extrabold px-1.5 py-0.5 rounded-full border border-yellow-200 shadow-md font-heading flex items-center gap-0.5">
+<span>🙌</span> READY
+              </div>
+</div>
+<div>
+<div class="text-[14px] font-bold text-white font-heading leading-tight flex items-center gap-1.5">
+                Kip the Navigator
+                <span class="text-[10px] text-brand-mint bg-brand-mint/15 px-1.5 py-0.5 rounded font-mono font-bold">LVL 3</span>
+</div>
+<p class="text-[11px] text-slate-300 font-medium">Ready to roll the snowball!</p>
+</div>
+</div>
+<!-- Big Snowball Graphic Visual -->
+<div class="flex flex-col items-center">
+<div class="relative w-14 h-14 rounded-full snowball-sphere flex items-center justify-center border border-white/60">
+<span class="text-xl filter drop-shadow">💎</span>
+<div class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-brand-mint flex items-center justify-center text-[9px] font-bold text-[#061a11] shadow">
+                +
+              </div>
+</div>
+<span class="text-[10px] font-semibold text-slate-300 mt-1 uppercase tracking-wider">SIP Ball</span>
+</div>
+</div>
+<!-- Glass Legend Card with 4 Defined Mechanics Rows -->
+<div class="glass-navy-85 rounded-2xl p-3.5 border border-white/10 shadow-xl">
+<div class="text-[11px] font-bold text-slate-300 uppercase tracking-wider mb-2.5 flex items-center justify-between font-heading">
+<span>RUN MECHANICS &amp; OBSTACLES</span>
+<span class="text-[10px] font-medium text-brand-honey">4 Rules</span>
+</div>
+<div class="flex flex-col gap-2">
+<!-- Row 1: Teal SIP gate: banks your coins +10% -->
+<div class="flex items-center justify-between p-2 rounded-xl bg-teal-950/40 border border-teal-500/30">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-teal-500/20 border border-teal-400/50 flex items-center justify-center text-teal-300 font-bold text-sm shadow-sm">
+                  ⛩️
+                </div>
+<div>
+<div class="text-[12px] font-bold text-teal-300 font-heading leading-none">SIP Gate</div>
+<div class="text-[11px] text-slate-200 font-normal">Banks your coins +10%</div>
+</div>
+</div>
+<span class="text-[11px] font-bold text-teal-300 bg-teal-500/15 px-2 py-0.5 rounded border border-teal-500/30">+10% bonus</span>
+</div>
+<!-- Row 2: Gold CASH OUT +15: resets your snowball -->
+<div class="flex items-center justify-between p-2 rounded-xl bg-amber-950/35 border border-amber-500/35">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-amber-500/20 border border-amber-400/50 flex items-center justify-center text-amber-300 font-bold text-sm shadow-sm">
+                  🪙
+                </div>
+<div>
+<div class="text-[12px] font-bold text-amber-300 font-heading leading-none">CASH OUT (+15)</div>
+<div class="text-[11px] text-slate-200 font-normal">Resets your snowball size</div>
+</div>
+</div>
+<span class="text-[10px] font-bold text-amber-300 bg-amber-500/15 px-2 py-0.5 rounded border border-amber-500/30">TRAP ⚠️</span>
+</div>
+<!-- Row 3: Red FEE booth: jump -->
+<div class="flex items-center justify-between p-2 rounded-xl bg-red-950/35 border border-red-500/35">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-red-500/20 border border-red-400/50 flex items-center justify-center text-red-300 font-bold text-sm shadow-sm">
+                  🚧
+                </div>
+<div>
+<div class="text-[12px] font-bold text-red-300 font-heading leading-none">FEE Booth</div>
+<div class="text-[11px] text-slate-200 font-normal">Action: Jump over hurdle</div>
+</div>
+</div>
+<span class="text-[11px] font-bold text-red-300 bg-red-500/15 px-2 py-0.5 rounded border border-red-500/30">JUMP ⬆</span>
+</div>
+<!-- Row 4: SALE sign: slide under -->
+<div class="flex items-center justify-between p-2 rounded-xl bg-indigo-950/35 border border-indigo-400/30">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-indigo-500/20 border border-indigo-400/40 flex items-center justify-center text-indigo-300 font-bold text-sm shadow-sm">
+                  🏷️
+                </div>
+<div>
+<div class="text-[12px] font-bold text-indigo-200 font-heading leading-none">SALE Sign</div>
+<div class="text-[11px] text-slate-200 font-normal">Action: Slide under discount sign</div>
+</div>
+</div>
+<span class="text-[11px] font-bold text-indigo-300 bg-indigo-500/15 px-2 py-0.5 rounded border border-indigo-400/30">SLIDE ⬇</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Section: Primary CTA in Thumb Zone & SEBI Educational Disclaimer -->
+<div class="pt-2 pb-1 flex flex-col gap-2.5">
+<!-- Primary Action Button: Start Run ▶ -->
+<button class="btn-3d-mint w-full h-14 min-h-[48px] rounded-2xl font-heading font-extrabold text-[17px] tracking-wide flex items-center justify-center gap-2 cursor-pointer shadow-lg active:scale-98">
+<span>Start run</span>
+<span class="text-xl">▶</span>
+</button>
+<!-- Compliance & Educational Footer Note (Simulated Indian Rupee Game) -->
+<p class="text-[10px] text-slate-400 text-center font-medium leading-tight px-3">
+          ₹ Simulated tokens only. Learn compounding principles through gameplay. Not financial advice.
+        </p>
+<!-- iOS Home Bar Indicator -->
+<div class="w-32 h-1 bg-slate-600/70 rounded-full mx-auto mt-1 mb-0.5"></div>
+</div>
+</div>
+</div>
+</body>
+</html>

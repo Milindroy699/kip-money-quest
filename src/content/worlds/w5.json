@@ -1,0 +1,445 @@
+{
+  "id": "w5",
+  "index": 5,
+  "title": "Portfolio Fort",
+  "tagline": "Mix, rebalance and hedge",
+  "principle": "Allocation across asset classes; hedging and risk management",
+  "product": "Asset allocation, multi-asset funds, protective puts",
+  "philosophy": "Don't put all your eggs in one basket",
+  "color": "#0E7490",
+  "lessons": [
+    {
+      "id": "w5-l1",
+      "title": "Your mix: asset allocation",
+      "subtitle": "How much in shares, how much in safety",
+      "capability": "Choose a mix of shares and safer assets that fits a goal's timeline.",
+      "unlockCards": [
+        "assetAllocation"
+      ],
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "dash",
+          "mood": "cheer",
+          "lines": [
+            "Shares grow fastest, right? So I'll put 100% in shares. Easy!"
+          ]
+        },
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "think",
+          "lines": [
+            "Fastest on average, Dash. But some years they fall hard.",
+            "The real question is: how much in shares, and how much somewhere calmer? That split is your asset allocation."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "allocation",
+          "title": "The mix dial",
+          "caption": "Turn the dial from all-FD to all-index-fund. Watch a typical year and a bad one.",
+          "predict": {
+            "question": "What happens to the bad years as you add more shares?",
+            "options": [
+              "They get deeper",
+              "They get milder",
+              "Nothing changes"
+            ],
+            "correct": 0,
+            "reveal": "More shares means more growth on average, and deeper bad years. Time is what lets you ride them out."
+          }
+        },
+        {
+          "type": "quiz",
+          "question": "Your goal is 2 years away. Which mix fits best?",
+          "options": [
+            {
+              "text": "Mostly safe, a little in shares",
+              "why": "Right. Little time to recover from a bad year, so keep most of it calm.",
+              "correct": true
+            },
+            {
+              "text": "100% shares",
+              "why": "A crash in year 2 could leave you short exactly when you need the money."
+            },
+            {
+              "text": "100% cash at home",
+              "why": "Safe from crashes, but The Melt eats it."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Why do long goals usually hold more shares?",
+          "options": [
+            {
+              "text": "There's time to recover from bad years",
+              "why": "Yes. Over 10+ years, shares have usually beaten safer options, despite the dips.",
+              "correct": true
+            },
+            {
+              "text": "Shares never fall over 10 years",
+              "why": "They can. Time makes recovery likely, not certain."
+            },
+            {
+              "text": "Banks require it",
+              "why": "No rule says so. It's about time and risk."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "title": "Card unlocked: Asset Allocation",
+          "realLife": "Multi-asset and balanced advantage funds in India manage a mix of shares, bonds and gold for you. A simple DIY version: an index fund plus a debt fund, in your chosen split.",
+          "cardId": "assetAllocation",
+          "mission": "Ask a parent: if they invest, roughly what share is in shares versus FDs or gold?",
+          "deeper": "A famous study of big pension funds found the asset mix explained most of how much their returns swung over time, far more than which shares they picked."
+        }
+      ]
+    },
+    {
+      "id": "w5-l2",
+      "title": "Fort Defense",
+      "subtitle": "Every asset has a weakness",
+      "capability": "Explain why a mix of assets survives more kinds of trouble than any single one.",
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "melt",
+          "mood": "cheer",
+          "lines": [
+            "Hee hee. My fog is rolling in, and I've brought friends: Crash Goblins, Rate-Hike Golems, Surprise-Bill Bats…"
+          ]
+        },
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "talk",
+          "lines": [
+            "Every monster hits a different asset. Shares fall in crashes, bonds dip when rates rise, cash melts in the fog.",
+            "Build a fort that can face all of them."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "fortDefense",
+          "title": "Defend Kip's fort",
+          "caption": "Place 5 towers, then face 5 waves. After each wave you may move one tower.",
+          "params": {
+            "waves": 5
+          },
+          "predict": {
+            "question": "Which fort survives the most waves?",
+            "options": [
+              "All shares",
+              "All cash",
+              "A mix"
+            ],
+            "correct": 2,
+            "reveal": "A mix. Each tower covers another's weakness. All-cash survives but barely grows; all-shares grows but often falls."
+          }
+        },
+        {
+          "type": "quiz",
+          "question": "Which tower beats the Surprise-Bill Bats?",
+          "options": [
+            {
+              "text": "The cash gate",
+              "why": "Yes. Bills need money you can reach today.",
+              "correct": true
+            },
+            {
+              "text": "The shares tower",
+              "why": "Shares might be down when the bill arrives."
+            },
+            {
+              "text": "The bond wall",
+              "why": "Bonds help, but selling takes time and the price may be low."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Why does a mixed fort hold up better?",
+          "options": [
+            {
+              "text": "Its assets don't all fall at once",
+              "why": "Right. When shares crash, gold and bonds often hold. That's diversification across asset classes.",
+              "correct": true
+            },
+            {
+              "text": "Mixed forts earn the most",
+              "why": "Not in boom years. It wins by surviving everything."
+            },
+            {
+              "text": "Monsters avoid mixed forts",
+              "why": "They attack everyone. A mix just takes less damage."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "title": "In real life",
+          "realLife": "In 2008 and in March 2020, Indian shares fell over 35% in a few months while gold rose. People holding both fell far less than people holding only shares.",
+          "deeper": "Correlation measures how much two assets move together. Diversification only helps with assets that don't move in lockstep. In a panic, many risky assets fall together, which is why safe assets matter."
+        }
+      ]
+    },
+    {
+      "id": "w5-l3",
+      "title": "Rebalancing",
+      "subtitle": "Sell high, buy low, by rule",
+      "capability": "Explain rebalancing and why it makes you sell high and buy low.",
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "dash",
+          "mood": "cheer",
+          "lines": [
+            "My shares went up 30%! Now they're most of my money. That's good, right?"
+          ]
+        },
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "think",
+          "lines": [
+            "It feels good. But your plan was 50/50, and now you're taking more risk than you chose.",
+            "Rebalancing means moving money back to your plan, usually once a year."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "rebalance",
+          "title": "Boom, then crash",
+          "caption": "Play two years. After the boom, choose: rebalance or leave it?",
+          "predict": {
+            "question": "After a boom, rebalancing means you…",
+            "options": [
+              "Sell some shares",
+              "Buy more shares",
+              "Do nothing"
+            ],
+            "correct": 0,
+            "reveal": "You sell some of what rose and buy what lagged. It's a rule that makes you sell high and buy low."
+          }
+        },
+        {
+          "type": "concept",
+          "widget": "rebalanceRush",
+          "title": "Rebalance Rush",
+          "caption": "Six market years. After each one you have 10 seconds to get back to 60/30/10."
+        },
+        {
+          "type": "quiz",
+          "question": "Your 50/50 plan drifted to 70% shares. Rebalancing means…",
+          "options": [
+            {
+              "text": "Selling some shares to get back to 50/50",
+              "why": "Right. Back to the risk you chose.",
+              "correct": true
+            },
+            {
+              "text": "Buying more shares, they're winning",
+              "why": "That's chasing performance: more risk, not less."
+            },
+            {
+              "text": "Selling everything",
+              "why": "That's quitting the plan, not rebalancing."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "A sensible rebalancing habit?",
+          "options": [
+            {
+              "text": "Once a year, or when the mix drifts a lot",
+              "why": "Yes. Often enough to control risk, rarely enough to keep costs and taxes low.",
+              "correct": true
+            },
+            {
+              "text": "Every day",
+              "why": "Costs and taxes would eat you alive."
+            },
+            {
+              "text": "Never",
+              "why": "Then a boom quietly turns a calm plan into a risky one."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "title": "In real life",
+          "realLife": "Many investors rebalance on a fixed date, like their birthday. You can also rebalance by sending new SIP money to whatever is below target, which avoids selling.",
+          "deeper": "In India, selling equity held under a year triggers short-term capital gains tax, so many investors rebalance with new money first, or after the one-year mark."
+        }
+      ]
+    },
+    {
+      "id": "w5-l4",
+      "title": "Hedging: insurance for investments",
+      "subtitle": "Pay a little to avoid losing a lot",
+      "capability": "Explain a hedge as insurance: a small cost that limits a big loss.",
+      "unlockCards": [
+        "hedge",
+        "derivative"
+      ],
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "dash",
+          "mood": "worry",
+          "lines": [
+            "I'm scared of a crash, Kip. Should I just sell everything?"
+          ]
+        },
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "talk",
+          "lines": [
+            "There's a middle way: a hedge. It's like insurance on your investments.",
+            "You pay a small price, and if things crash, the hedge pays out."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "hedge",
+          "title": "Crash insurance",
+          "caption": "Try each year, insured and not. Is the insurance worth it?"
+        },
+        {
+          "type": "quiz",
+          "question": "A hedge is most like…",
+          "options": [
+            {
+              "text": "Insurance",
+              "why": "Yes. A small, certain cost to avoid a big, uncertain loss.",
+              "correct": true
+            },
+            {
+              "text": "A lottery ticket",
+              "why": "A lottery ticket is a gamble. A hedge reduces risk."
+            },
+            {
+              "text": "A free lunch",
+              "why": "Hedges always cost something: a fee, or giving up some gain."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "In a good year, the insured investor…",
+          "options": [
+            {
+              "text": "Gains a bit less, because of the cost",
+              "why": "Right. Like health insurance in a healthy year: you paid, and that's fine.",
+              "correct": true
+            },
+            {
+              "text": "Loses everything",
+              "why": "The insurance only costs ₹300."
+            },
+            {
+              "text": "Gains more",
+              "why": "The cost comes off the gain."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "title": "Card unlocked: Hedge + Futures & Options",
+          "realLife": "A put option gives you the right to sell at a set price: a floor under your shares. Futures and options trade on the NSE. A SEBI study found about 9 in 10 individuals who traded them lost money, mostly by speculating rather than hedging.",
+          "cardId": "hedge",
+          "deeper": "Hedging with puts is how many big funds protect a portfolio. For most individuals, a sensible asset mix and an emergency fund are cheaper hedges."
+        }
+      ]
+    },
+    {
+      "id": "w5-l5",
+      "title": "Boss: Fortress Siege",
+      "subtitle": "Eight waves. One fort.",
+      "capability": "Build and rebalance a mixed portfolio through many kinds of market trouble.",
+      "boss": true,
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "melt",
+          "mood": "cheer",
+          "lines": [
+            "The final siege! Eight waves, every monster I have. Let's see your fort melt."
+          ]
+        },
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "cheer",
+          "lines": [
+            "Mix your towers, keep a cash gate, and rebalance after each wave. We've got this."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "fortDefense",
+          "title": "Fortress Siege",
+          "caption": "Eight waves. Survive them all and grow.",
+          "params": {
+            "waves": 8
+          }
+        },
+        {
+          "type": "play",
+          "mode": "risk",
+          "durationSec": 60,
+          "brief": "Siege run! Spread your coins across SAFE, BALANCED and WILD, and keep cash for surprises."
+        },
+        {
+          "type": "quiz",
+          "question": "The best defence against unknown market monsters?",
+          "options": [
+            {
+              "text": "A mix of assets, rebalanced",
+              "why": "Yes. You can't predict the next wave, so be ready for all of them.",
+              "correct": true
+            },
+            {
+              "text": "Predict the next monster",
+              "why": "Nobody can, reliably."
+            },
+            {
+              "text": "All in one strong asset",
+              "why": "Every asset has a weakness."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "What does a hedge cost you in good years?",
+          "options": [
+            {
+              "text": "A little return",
+              "why": "Right. That's the price of protection.",
+              "correct": true
+            },
+            {
+              "text": "Nothing at all",
+              "why": "There's always a cost."
+            },
+            {
+              "text": "Your whole investment",
+              "why": "Only the premium."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "title": "World complete: Portfolio Fort",
+          "realLife": "You can now build a mix that fits a goal, keep it on plan with rebalancing, and explain hedging as insurance. That's how professional portfolios are run.",
+          "deeper": "Next: Builders head to Three Doors (arbitrage, speculation and hedging). Explorers go to Future You."
+        }
+      ]
+    }
+  ]
+}

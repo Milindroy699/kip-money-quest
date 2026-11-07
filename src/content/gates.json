@@ -1,0 +1,1062 @@
+{
+  "w0-l1": [
+    {
+      "q": "Barter's big problem?",
+      "options": [
+        "Matching wants",
+        "Too cheap",
+        "No markets"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "What fixed barter?",
+      "options": [
+        "Money",
+        "More mangoes",
+        "Chickens"
+      ],
+      "correct": 0
+    }
+  ],
+  "w0-l2": [
+    {
+      "q": "Comparing prices is money's job as a…",
+      "options": [
+        "Unit of account",
+        "Store of value",
+        "Gift"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Why are tomatoes bad money?",
+      "options": [
+        "They rot",
+        "Too red",
+        "Too cheap"
+      ],
+      "correct": 0
+    }
+  ],
+  "w0-l3": [
+    {
+      "q": "UPI moves money between…",
+      "options": [
+        "Bank accounts",
+        "App wallets",
+        "Gold vaults"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "A ₹500 note is worth ₹500 because of…",
+      "options": [
+        "Trust",
+        "Its ink",
+        "Gold inside"
+      ],
+      "correct": 0
+    }
+  ],
+  "w0-l4": [
+    {
+      "q": "Which is a NEED?",
+      "options": [
+        "Bus pass",
+        "Game skin",
+        "New sneakers"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Money put to work to grow is…",
+      "options": [
+        "Investing",
+        "Spending",
+        "Hiding it"
+      ],
+      "correct": 0
+    }
+  ],
+  "w1-l1": [
+    {
+      "q": "Inflation makes money buy…",
+      "options": [
+        "Less",
+        "More",
+        "The same"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "₹20 chai in 20 years at 6%?",
+      "options": [
+        "₹64",
+        "₹26",
+        "₹44"
+      ],
+      "correct": 0
+    }
+  ],
+  "w1-l2": [
+    {
+      "q": "To cool inflation, the RBI…",
+      "options": [
+        "Raises rates",
+        "Prints money",
+        "Bans prices"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Fuel costs jump. Samosa prices…",
+      "options": [
+        "Rise",
+        "Fall",
+        "Stay forever"
+      ],
+      "correct": 0
+    }
+  ],
+  "w1-l3": [
+    {
+      "q": "Savings 3%, inflation 6%. Real return?",
+      "options": [
+        "About −3%",
+        "About 3%",
+        "About 9%"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Real return ≈ interest rate minus…",
+      "options": [
+        "Inflation",
+        "Tax only",
+        "Nothing"
+      ],
+      "correct": 0
+    }
+  ],
+  "w1-l4": [
+    {
+      "q": "FD 7%, inflation 6%. Real return?",
+      "options": [
+        "About 1%",
+        "About 7%",
+        "About 13%"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "DICGC insures bank deposits up to…",
+      "options": [
+        "₹5 lakh/bank",
+        "Any amount",
+        "₹500"
+      ],
+      "correct": 0
+    }
+  ],
+  "w1-l5": [
+    {
+      "q": "₹1 lakh cash, 24 years at 6%. Buys about…",
+      "options": [
+        "₹25,000",
+        "₹1 lakh",
+        "₹50,000"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Start retirement saving…",
+      "options": [
+        "Early",
+        "At 59",
+        "Never"
+      ],
+      "correct": 0
+    }
+  ],
+  "w2-l1": [
+    {
+      "q": "Rule of 72: at 12%, money doubles in…",
+      "options": [
+        "6 years",
+        "12 years",
+        "72 years"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Compounding pays interest on…",
+      "options": [
+        "Past interest",
+        "Only principal",
+        "Tax"
+      ],
+      "correct": 0
+    }
+  ],
+  "w2-l2": [
+    {
+      "q": "Same SIP to 60. Who ends with more?",
+      "options": [
+        "Starts at 15",
+        "Starts at 25",
+        "Same"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Starting early wins because money…",
+      "options": [
+        "Compounds longer",
+        "Is free",
+        "Hates waiting"
+      ],
+      "correct": 0
+    }
+  ],
+  "w2-l3": [
+    {
+      "q": "A SIP invests…",
+      "options": [
+        "Fixed, monthly",
+        "All at once",
+        "Randomly"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "SIP returns are…",
+      "options": [
+        "Not guaranteed",
+        "Guaranteed",
+        "Always 12%"
+      ],
+      "correct": 0
+    }
+  ],
+  "w2-l4": [
+    {
+      "q": "Prices dip, then recover. Who wins?",
+      "options": [
+        "SIP",
+        "Lump sum",
+        "Neither"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Steady rise all year. Who wins?",
+      "options": [
+        "Lump sum",
+        "SIP",
+        "Neither"
+      ],
+      "correct": 0
+    }
+  ],
+  "w2-l5": [
+    {
+      "q": "Cashing out every few years…",
+      "options": [
+        "Resets growth",
+        "Boosts growth",
+        "Changes nothing"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "A Recurring Deposit is like a…",
+      "options": [
+        "Monthly FD",
+        "Stock",
+        "Loan"
+      ],
+      "correct": 0
+    }
+  ],
+  "w2-l6": [
+    {
+      "q": "PPF locks money for…",
+      "options": [
+        "15 years",
+        "1 month",
+        "Forever"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Time in the market beats…",
+      "options": [
+        "Timing it",
+        "Saving",
+        "Learning"
+      ],
+      "correct": 0
+    }
+  ],
+  "w3-l1": [
+    {
+      "q": "A whole-market fall is usually a…",
+      "options": [
+        "Wobble",
+        "Wipe-out",
+        "Scam"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "'Guaranteed 5% a week' is a…",
+      "options": [
+        "Red flag",
+        "Bargain",
+        "Bond"
+      ],
+      "correct": 0
+    }
+  ],
+  "w3-l2": [
+    {
+      "q": "More expected return means…",
+      "options": [
+        "Bigger swings",
+        "A guarantee",
+        "Less risk"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Lowest rung on the ladder?",
+      "options": [
+        "Savings",
+        "Index fund",
+        "Crypto"
+      ],
+      "correct": 0
+    }
+  ],
+  "w3-l3": [
+    {
+      "q": "Need the money in 1 year? Pick:",
+      "options": [
+        "FD",
+        "Shares",
+        "Crypto"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Share losses get rarer with…",
+      "options": [
+        "More time",
+        "More tips",
+        "Less time"
+      ],
+      "correct": 0
+    }
+  ],
+  "w3-l4": [
+    {
+      "q": "Most liquid?",
+      "options": [
+        "Savings",
+        "PPF",
+        "A house"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Selling shares after a fall…",
+      "options": [
+        "Locks the loss",
+        "Is free money",
+        "Is illegal"
+      ],
+      "correct": 0
+    }
+  ],
+  "w3-l5": [
+    {
+      "q": "ELSS lock-in?",
+      "options": [
+        "3 years",
+        "15 years",
+        "None"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "PPF lock-in?",
+      "options": [
+        "15 years",
+        "1 month",
+        "None"
+      ],
+      "correct": 0
+    }
+  ],
+  "w3-l6": [
+    {
+      "q": "What comes first?",
+      "options": [
+        "Emergency fund",
+        "Crypto",
+        "Shopping"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Emergency money lives in…",
+      "options": [
+        "Savings",
+        "PPF",
+        "ELSS"
+      ],
+      "correct": 0
+    }
+  ],
+  "w3-l7": [
+    {
+      "q": "WILD fell 30%, goal 10 yrs away:",
+      "options": [
+        "Stay invested",
+        "Sell it all",
+        "Borrow more"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Goal 2 years away? Mostly…",
+      "options": [
+        "SAFE",
+        "WILD",
+        "Crypto"
+      ],
+      "correct": 0
+    }
+  ],
+  "w4-l1": [
+    {
+      "q": "Rates rise. Old bond prices…",
+      "options": [
+        "Fall",
+        "Rise",
+        "Stay put"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "A bond is a…",
+      "options": [
+        "Loan you give",
+        "Slice of a firm",
+        "Gold coin"
+      ],
+      "correct": 0
+    }
+  ],
+  "w4-l2": [
+    {
+      "q": "A share is a…",
+      "options": [
+        "Slice of a firm",
+        "Loan",
+        "Promise"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "All your money in 1 company is…",
+      "options": [
+        "Risky",
+        "Safe",
+        "Guaranteed"
+      ],
+      "correct": 0
+    }
+  ],
+  "w4-l3": [
+    {
+      "q": "More companies in a fund means…",
+      "options": [
+        "Less single risk",
+        "More fees",
+        "No swings"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "NAV is a fund's…",
+      "options": [
+        "Unit price",
+        "Manager",
+        "Promise"
+      ],
+      "correct": 0
+    }
+  ],
+  "w4-l4": [
+    {
+      "q": "An index fund…",
+      "options": [
+        "Copies an index",
+        "Picks hot tips",
+        "Is guaranteed"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Fees compound…",
+      "options": [
+        "Against you",
+        "For you",
+        "Never"
+      ],
+      "correct": 0
+    }
+  ],
+  "w4-l5": [
+    {
+      "q": "Does gold pay interest?",
+      "options": [
+        "No",
+        "Yes, 7%",
+        "Monthly"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Gold often rises when…",
+      "options": [
+        "Fear rises",
+        "Shops close",
+        "Never"
+      ],
+      "correct": 0
+    }
+  ],
+  "w4-l6": [
+    {
+      "q": "REIT income comes from…",
+      "options": [
+        "Rent",
+        "Gold",
+        "Lottery"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Empty offices mean…",
+      "options": [
+        "Less rent",
+        "More rent",
+        "No change"
+      ],
+      "correct": 0
+    }
+  ],
+  "w4-l7": [
+    {
+      "q": "Steady income, no losses?",
+      "options": [
+        "Govt bond",
+        "Crypto",
+        "One stock"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Cheapest way to own a market?",
+      "options": [
+        "Index fund",
+        "Hot tip",
+        "Gold bar"
+      ],
+      "correct": 0
+    }
+  ],
+  "w5-l1": [
+    {
+      "q": "Goal in 2 years. Mostly…",
+      "options": [
+        "Safe assets",
+        "Shares",
+        "Crypto"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "More shares means bad years are…",
+      "options": [
+        "Deeper",
+        "Milder",
+        "Gone"
+      ],
+      "correct": 0
+    }
+  ],
+  "w5-l2": [
+    {
+      "q": "What stops surprise bills?",
+      "options": [
+        "Cash",
+        "Shares",
+        "Gold"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Which fort survives most waves?",
+      "options": [
+        "A mix",
+        "All shares",
+        "All crypto"
+      ],
+      "correct": 0
+    }
+  ],
+  "w5-l3": [
+    {
+      "q": "Plan drifted to 70% shares. You…",
+      "options": [
+        "Sell some",
+        "Buy more",
+        "Panic"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "How often to rebalance?",
+      "options": [
+        "Once a year",
+        "Every day",
+        "Never"
+      ],
+      "correct": 0
+    }
+  ],
+  "w5-l4": [
+    {
+      "q": "A hedge is most like…",
+      "options": [
+        "Insurance",
+        "A lottery",
+        "Free money"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "A put option gives you a…",
+      "options": [
+        "Price floor",
+        "Price ceiling",
+        "Dividend"
+      ],
+      "correct": 0
+    }
+  ],
+  "w5-l5": [
+    {
+      "q": "Best defence vs unknown crashes?",
+      "options": [
+        "A mix",
+        "Predicting",
+        "One asset"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "In good years a hedge costs…",
+      "options": [
+        "A little",
+        "Nothing",
+        "Everything"
+      ],
+      "correct": 0
+    }
+  ],
+  "w6-l1": [
+    {
+      "q": "Farmer locks her crop price:",
+      "options": [
+        "Hedging",
+        "Speculation",
+        "Arbitrage"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Buy A, sell B for a price gap:",
+      "options": [
+        "Arbitrage",
+        "Hedging",
+        "Saving"
+      ],
+      "correct": 0
+    }
+  ],
+  "w6-l2": [
+    {
+      "q": "10× leverage, 10% fall. You lose…",
+      "options": [
+        "Everything",
+        "10%",
+        "Nothing"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Leverage multiplies…",
+      "options": [
+        "Gains & losses",
+        "Only gains",
+        "Only fees"
+      ],
+      "correct": 0
+    }
+  ],
+  "w6-l3": [
+    {
+      "q": "Arbitrage pays when the gap beats…",
+      "options": [
+        "Fees + delay",
+        "Zero",
+        "Inflation"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Crypto gains in India are taxed at…",
+      "options": [
+        "30%",
+        "0%",
+        "5%"
+      ],
+      "correct": 0
+    }
+  ],
+  "w6-l4": [
+    {
+      "q": "Fixed ₹2,500, price hits ₹3,200. Gets…",
+      "options": [
+        "₹2,500",
+        "₹3,200",
+        "₹0"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Hedgers mainly want to avoid…",
+      "options": [
+        "Disaster",
+        "Profit",
+        "Taxes"
+      ],
+      "correct": 0
+    }
+  ],
+  "w6-l5": [
+    {
+      "q": "Gold to guard against a weak rupee:",
+      "options": [
+        "Hedging",
+        "Arbitrage",
+        "Scalping"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Which door loses most people money?",
+      "options": [
+        "Speculation",
+        "Hedging",
+        "Arbitrage"
+      ],
+      "correct": 0
+    }
+  ],
+  "w7-l1": [
+    {
+      "q": "Opened and closed the same day:",
+      "options": [
+        "Intraday",
+        "Long term",
+        "Swing"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Indian stock markets close at…",
+      "options": [
+        "3:30 pm",
+        "6 pm",
+        "Midnight"
+      ],
+      "correct": 0
+    }
+  ],
+  "w7-l2": [
+    {
+      "q": "More trades a year means more…",
+      "options": [
+        "Costs",
+        "Free money",
+        "Safety"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Shares held 1+ year pay tax at a…",
+      "options": [
+        "Lower rate",
+        "Higher rate",
+        "Zero rate"
+      ],
+      "correct": 0
+    }
+  ],
+  "w7-l3": [
+    {
+      "q": "Who usually wins the race?",
+      "options": [
+        "The holder",
+        "The scalper",
+        "Nobody"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Tiny price moves are mostly…",
+      "options": [
+        "Noise",
+        "Signals",
+        "Profit"
+      ],
+      "correct": 0
+    }
+  ],
+  "w7-l4": [
+    {
+      "q": "Retirement in 40 years. Horizon?",
+      "options": [
+        "Long term",
+        "Scalping",
+        "Intraday"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Swing traders fear…",
+      "options": [
+        "Overnight news",
+        "Dividends",
+        "SIPs"
+      ],
+      "correct": 0
+    }
+  ],
+  "w8-l1": [
+    {
+      "q": "Price ₹200, profit/share ₹10. P/E?",
+      "options": [
+        "20",
+        "2,000",
+        "10"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Very high P/E means buyers expect…",
+      "options": [
+        "Big growth",
+        "Losses",
+        "Dividends"
+      ],
+      "correct": 0
+    }
+  ],
+  "w8-l2": [
+    {
+      "q": "High debt-to-equity is risky when…",
+      "options": [
+        "Rates rise",
+        "Rates fall",
+        "It rains"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "ROE measures profit on…",
+      "options": [
+        "Owners' money",
+        "Share price",
+        "Sales"
+      ],
+      "correct": 0
+    }
+  ],
+  "w8-l3": [
+    {
+      "q": "A red candle closed…",
+      "options": [
+        "Below its open",
+        "Above its open",
+        "At zero"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "A moving average shows the…",
+      "options": [
+        "Trend",
+        "Future",
+        "Profit"
+      ],
+      "correct": 0
+    }
+  ],
+  "w8-l4": [
+    {
+      "q": "Protective put gives a…",
+      "options": [
+        "Loss floor",
+        "Gain cap",
+        "Free share"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "A covered call caps your…",
+      "options": [
+        "Gains",
+        "Losses",
+        "Fees"
+      ],
+      "correct": 0
+    }
+  ],
+  "w8-l5": [
+    {
+      "q": "Low P/E, falling profits, big debt:",
+      "options": [
+        "Value trap",
+        "Bargain",
+        "Safe bet"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "What beats a hot tip?",
+      "options": [
+        "Analysis",
+        "A louder tip",
+        "Luck"
+      ],
+      "correct": 0
+    }
+  ],
+  "w9-l1": [
+    {
+      "q": "New salary. First priority?",
+      "options": [
+        "Emergency fund",
+        "New phone",
+        "Crypto"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Credit card interest is about…",
+      "options": [
+        "36% a year",
+        "3% a year",
+        "0%"
+      ],
+      "correct": 0
+    }
+  ],
+  "w9-l2": [
+    {
+      "q": "Term insurance pays out if you…",
+      "options": [
+        "Die in term",
+        "Survive",
+        "Get rich"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Insurance and investing: best to…",
+      "options": [
+        "Keep separate",
+        "Mix them",
+        "Skip both"
+      ],
+      "correct": 0
+    }
+  ],
+  "w9-l3": [
+    {
+      "q": "Starting 10 years later can…",
+      "options": [
+        "Halve the pot",
+        "Double it",
+        "Change nothing"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "The 4% rule is about…",
+      "options": [
+        "Withdrawing",
+        "Saving",
+        "Tax"
+      ],
+      "correct": 0
+    }
+  ],
+  "w9-l4": [
+    {
+      "q": "Most startups…",
+      "options": [
+        "Fail",
+        "Win big",
+        "Pay interest"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "VC money is usually locked for…",
+      "options": [
+        "7–10 years",
+        "A week",
+        "A day"
+      ],
+      "correct": 0
+    }
+  ],
+  "w9-l5": [
+    {
+      "q": "First-job plan starts with…",
+      "options": [
+        "Buffers",
+        "Crypto",
+        "Spending"
+      ],
+      "correct": 0
+    },
+    {
+      "q": "Kip's motto: build slowly, build…",
+      "options": [
+        "Surely",
+        "Quickly",
+        "Loudly"
+      ],
+      "correct": 0
+    }
+  ]
+}

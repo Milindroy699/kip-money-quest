@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Kip: Money Quest - Snowball Valley</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-container": "#38e399",
+            "on-tertiary": "#381385",
+            "secondary-fixed-dim": "#f3be53",
+            "surface-container-high": "#222a38",
+            "primary-fixed-dim": "#34e197",
+            "surface-container-lowest": "#060e1b",
+            "primary": "#6bffb6",
+            "on-secondary": "#412d00",
+            "background": "#0b1420",
+            "surface-container-highest": "#2d3543",
+            "secondary": "#f3be53",
+            "on-primary": "#003821",
+            "surface-variant": "#2d3543",
+            "on-primary-fixed": "#002112",
+            "on-tertiary-fixed-variant": "#4f319c",
+            "on-surface-variant": "#bbcabe",
+            "on-error": "#690005",
+            "surface-dim": "#0b1420",
+            "tertiary": "#eae0ff",
+            "primary-fixed": "#5cfeb1",
+            "error": "#ffb4ab",
+            "secondary-container": "#b78920",
+            "error-container": "#93000a",
+            "on-primary-container": "#00613c",
+            "on-surface": "#dbe2f5",
+            "surface-bright": "#323948",
+            "tertiary-fixed-dim": "#cebdff",
+            "tertiary-fixed": "#e8ddff",
+            "outline": "#859489",
+            "on-tertiary-fixed": "#21005e",
+            "on-secondary-fixed": "#261900",
+            "on-tertiary-container": "#5c3faa",
+            "on-error-container": "#ffdad6",
+            "secondary-fixed": "#ffdea5",
+            "on-background": "#dbe2f5",
+            "surface-tint": "#34e197",
+            "inverse-on-surface": "#29313f",
+            "surface-container-low": "#141c29",
+            "surface": "#0b1420",
+            "inverse-surface": "#dbe2f5",
+            "on-secondary-fixed-variant": "#5d4200",
+            "on-secondary-container": "#382700",
+            "on-primary-fixed-variant": "#005232",
+            "surface-container": "#18202d",
+            "inverse-primary": "#006c44",
+            "tertiary-container": "#d0bfff",
+            "outline-variant": "#3c4a40"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.75rem",
+            "space-2xl": "3rem",
+            "space-2xs": "0.25rem",
+            "space-xs": "0.5rem",
+            "space-xl": "2rem",
+            "gutter": "1rem",
+            "space-lg": "1.5rem",
+            "space-md": "1rem",
+            "margin": "1.25rem"
+          },
+          "fontFamily": {
+            "display-hero": ["Space Grotesk"],
+            "headline-md": ["Space Grotesk"],
+            "display-hero-mobile": ["Space Grotesk"],
+            "label-currency-sm": ["Space Grotesk"],
+            "label-currency-lg": ["Space Grotesk"],
+            "headline-sm": ["Space Grotesk"],
+            "body-md": ["Outfit"],
+            "body-sm": ["Outfit"],
+            "headline-lg": ["Space Grotesk"],
+            "label-btn": ["Space Grotesk"],
+            "body-lg": ["Outfit"],
+            "label-badge": ["Space Grotesk"]
+          },
+          "fontSize": {
+            "display-hero": ["40px", {"lineHeight": "48px", "fontWeight": "700"}],
+            "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+            "display-hero-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+            "label-currency-sm": ["15px", {"lineHeight": "20px", "fontWeight": "700"}],
+            "label-currency-lg": ["24px", {"lineHeight": "28px", "fontWeight": "700"}],
+            "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+            "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+            "label-btn": ["15px", {"lineHeight": "20px", "fontWeight": "700"}],
+            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "500"}],
+            "label-badge": ["11px", {"lineHeight": "14px", "fontWeight": "700"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      display: inline-block;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+    }
+    /* Hide scrollbar for clean mobile presentation */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    * {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+  </style>
+</head>
+<body class="bg-[#070d18] text-on-surface antialiased flex justify-center items-center min-h-screen p-0 sm:p-4 select-none">
+<!-- iPhone Canvas Shell (390px x 844px target) -->
+<div class="relative w-full max-w-[390px] h-[844px] overflow-hidden rounded-[40px] bg-background shadow-[0_25px_70px_rgba(0,0,0,0.9)] border-[4px] border-surface-container-high/60 flex flex-col justify-between">
+<!-- Background Image Asset (Snowball Valley) with Midnight Frost Scrim -->
+<div class="absolute inset-0 z-0">
+<img alt="Snowball Valley Background" class="w-full h-full object-cover object-center filter blur-[1px] scale-105" src="https://lh3.googleusercontent.com/aida/AEtjO1XrvWTeXUglP5Rk9YGV3ckJO5MdyekLPz-SdhAPFn1gqIAo0MwMegV9Uvsxx7Kv9v3zVptxsP6NoRhbfvx-0xu57lp9U9GFXtKHSlpFObiGdZCptO-kSSv5SIu1hs4Qkkf2DUesaZ0zsOhruheT9DDo6yTwenqca8OkgGvErOTYk2ckqHuP5L9IN4sG2LVrsXIAXUTcL2k-K8TTaJL578LTHREE2u80rYLK7YPNLFh8PsALMcB2IpB6tUI"/>
+<!-- Ambient Deep Midnight Scrim Layer (85% depth overlay) -->
+<div class="absolute inset-0 bg-gradient-to-b from-[#070d18]/90 via-[#0b1420]/88 to-[#060e1b]/98 backdrop-blur-[6px]"></div>
+<!-- Bioluminescent cyan glow pocket -->
+<div class="absolute -top-12 left-1/2 -translate-x-1/2 w-64 h-64 bg-primary/10 rounded-full blur-[80px] pointer-events-none"></div>
+<div class="absolute bottom-40 right-4 w-48 h-48 bg-secondary/10 rounded-full blur-[70px] pointer-events-none"></div>
+</div>
+<!-- Header / Top Bar (Task-focused journey: linear quest step) -->
+<header class="relative z-30 pt-4 px-4 pb-2 flex flex-col gap-2">
+<!-- Status pill & Close trigger -->
+<div class="flex items-center justify-between">
+<!-- Close Button (44pt touch target) -->
+<button class="w-10 h-10 rounded-full bg-surface-container/85 border border-white/10 flex items-center justify-center text-on-surface hover:text-primary active:scale-95 transition-all shadow-[0_4px_12px_rgba(0,0,0,0.4)]">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+<!-- World & Lesson Badge -->
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high/85 border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_#38e399]"></span>
+<span class="font-label-badge text-label-badge text-primary uppercase tracking-wider">World 2: Snowball Valley</span>
+</div>
+<!-- Heart/XP Mini Badge -->
+<div class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container/85 border border-secondary/40 shadow-sm"><span class="text-[13px]">🔥</span><span class="font-label-badge text-[10px] text-secondary font-bold tracking-wide uppercase">×1.04 Streak</span></div>
+</div>
+<!-- Segmented Step Progress Bar (Step 3 of 5) -->
+<div class="flex items-center gap-1.5 pt-1 px-1">
+<div class="flex-1 h-1.5 rounded-full bg-primary shadow-[0_0_8px_#38e399]"></div>
+<div class="flex-1 h-1.5 rounded-full bg-primary shadow-[0_0_8px_#38e399]"></div>
+<div class="flex-1 h-1.5 rounded-full bg-primary shadow-[0_0_8px_#38e399]"></div>
+<div class="flex-1 h-1.5 rounded-full bg-surface-container-highest/80 border border-white/5"></div>
+<div class="flex-1 h-1.5 rounded-full bg-surface-container-highest/80 border border-white/5"></div>
+<span class="font-label-badge text-label-badge text-on-surface-variant ml-1.5">3/5</span>
+</div>
+</header>
+<!-- Main Content Canvas (Scrollable Body) -->
+<main class="relative z-20 flex-1 overflow-y-auto px-4 py-1 flex flex-col gap-3">
+<!-- Narrative Title & Subheading -->
+<div class="pt-0.5">
+<h1 class="font-headline-md text-headline-md text-on-surface tracking-tight font-bold">
+          Same money, three markets
+        </h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5 leading-snug">
+          Pick a market. The same <span class="text-on-surface font-semibold">₹12,000</span> is invested either way.
+        </p>
+</div>
+<!-- Segmented Control Pill Switcher -->
+<div class="bg-surface-container-lowest/80 p-1 rounded-xl border border-white/10 backdrop-blur-xl flex items-center justify-between gap-1 shadow-inner">
+<button class="flex-1 py-1.5 px-2 rounded-lg text-center font-body-sm text-body-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors">
+          Steady rise
+        </button>
+<button class="flex-1 py-1.5 px-2 rounded-lg text-center font-body-sm text-body-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors">
+          Choppy
+        </button>
+<!-- Active Pill Highlighted -->
+<button class="flex-1 py-1.5 px-2 rounded-lg text-center font-body-sm text-body-sm font-bold bg-primary text-on-primary shadow-[0_2px_0_0_#1EAC70] active:translate-y-0.5 transition-all">
+          Dip, then recover
+        </button>
+</div>
+<!-- Card 1: Interactive Line Chart Panel (Price over 12 months) -->
+<div class="bg-surface-container/85 border border-white/10 rounded-2xl p-3.5 backdrop-blur-2xl shadow-[0_12px_28px_-6px_rgba(4,7,12,0.7)] flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px]">show_chart</span>
+<span class="font-headline-sm text-[13px] font-semibold text-on-surface tracking-wide">Price over 12 months</span>
+</div>
+<span class="font-label-badge text-label-badge px-2 py-0.5 rounded-full bg-primary/10 border border-primary/20 text-primary">
+            Unit NAV Path
+          </span>
+</div>
+<!-- SVG Line Chart (Dip to ₹60 at Month 7, rally to ₹115 at Month 12) -->
+<div class="relative w-full h-[98px] pt-1">
+<svg class="w-full h-full overflow-visible" fill="none" viewbox="0 0 320 85">
+<defs>
+<lineargradient id="chartGradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#38E399" stop-opacity="0.38"></stop>
+<stop offset="60%" stop-color="#38E399" stop-opacity="0.08"></stop>
+<stop offset="100%" stop-color="#38E399" stop-opacity="0"></stop>
+</lineargradient>
+<filter height="140%" id="glow" width="140%" x="-20%" y="-20%">
+<fedropshadow dx="0" dy="2" flood-color="#38E399" flood-opacity="0.6" stddeviation="3"></fedropshadow>
+</filter>
+</defs>
+<!-- Horizontal Baseline Grids -->
+<line stroke="rgba(255,255,255,0.06)" stroke-dasharray="3 3" x1="0" x2="320" y1="15" y2="15"></line>
+<line stroke="rgba(255,255,255,0.06)" stroke-dasharray="3 3" x1="0" x2="320" y1="52" y2="52"></line>
+<line stroke="rgba(255,255,255,0.04)" x1="0" x2="320" y1="78" y2="78"></line>
+<!-- Area Fill -->
+<path d="M 10 32 C 45 42, 90 60, 150 72 C 180 77, 215 65, 255 35 C 280 18, 295 12, 310 10 L 310 82 L 10 82 Z" fill="url(#chartGradient)"></path>
+<!-- Smooth Trend Line Curve -->
+<path d="M 10 32 C 45 42, 90 60, 150 72 C 180 77, 215 65, 255 35 C 280 18, 295 12, 310 10" filter="url(#glow)" stroke="#38E399" stroke-linecap="round" stroke-width="3"></path>
+<!-- Key Points & Annotations -->
+<!-- Start Point (₹100) -->
+<circle cx="10" cy="32" fill="#38E399" r="3.5" stroke="#0B1420" stroke-width="2"></circle>
+<!-- Dip Point (Month 6-7: ₹60) -->
+<circle cx="165" cy="74" fill="#F3BE53" r="4.5" stroke="#0B1420" stroke-width="2"></circle>
+<!-- Recovery Peak (Month 12: ₹115) -->
+<circle cx="310" cy="10" fill="#6BFFB6" r="4.5" stroke="#0B1420" stroke-width="2"></circle>
+</svg>
+<!-- Interactive Float Badges (Dip & Recovery) -->
+<div class="absolute left-[38%] top-[56px] -translate-x-1/2 flex items-center gap-1 bg-[#1a2332]/95 border border-secondary/50 px-1.5 py-0.5 rounded-md shadow-md pointer-events-none">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-label-badge text-[10px] text-secondary font-bold">Dip: ₹60</span>
+</div>
+<div class="absolute right-[4px] top-[1px] flex items-center gap-1 bg-[#142621]/95 border border-primary/50 px-1.5 py-0.5 rounded-md shadow-md pointer-events-none">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span>
+<span class="font-label-badge text-[10px] text-primary font-bold">Recovery: ₹115</span>
+</div>
+</div>
+<!-- Month Axis Labels -->
+<div class="flex justify-between items-center text-[10px] font-label-badge text-on-surface-variant/80 px-1 pt-0.5 border-t border-white/5">
+<span>M1</span>
+<span>M4</span>
+<span class="text-secondary font-bold">M7 (Trough)</span>
+<span>M10</span>
+<span class="text-primary font-bold">M12</span>
+</div>
+</div>
+<!-- Card 2: Investment Returns Comparison (Bar Chart Breakdown) -->
+<div class="bg-surface-container/85 border border-white/10 rounded-2xl p-3.5 backdrop-blur-2xl shadow-[0_12px_28px_-6px_rgba(4,7,12,0.7)] flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-[13px] font-semibold text-on-surface">Result after 12 months</span>
+<span class="text-body-sm text-[11px] text-on-surface-variant font-medium">Calculated Value</span>
+</div>
+<!-- Three Vertical Comparison Bars with Heights and Value Tags -->
+<div class="grid grid-cols-3 gap-2 items-end pt-5 pb-1 px-1 min-h-[148px]">
+<!-- Bar 1: Put in (Baseline) -->
+<div class="flex flex-col items-center gap-1.5">
+<span class="font-label-currency-sm text-[12px] text-on-surface-variant font-bold">₹12,000</span>
+<div class="w-full h-16 rounded-xl bg-surface-variant/70 border border-white/10 flex flex-col justify-end p-1 shadow-inner">
+<div class="w-full h-full rounded-lg bg-outline/25 border-t border-white/20"></div>
+</div>
+<div class="text-center">
+<p class="font-body-sm text-[11px] text-on-surface-variant font-medium">Put in</p>
+<p class="font-label-badge text-[10px] text-outline font-bold">Baseline</p>
+</div>
+</div>
+<!-- Bar 2: Lump Sum -->
+<div class="flex flex-col items-center gap-1.5">
+<div class="flex flex-col items-center">
+<span class="font-label-currency-sm text-[12px] text-secondary font-bold">₹13,800</span>
+<span class="font-label-badge text-[10px] text-secondary font-semibold">+15.0%</span>
+</div>
+<div class="w-full h-[76px] rounded-xl bg-secondary-container/20 border border-secondary/40 flex flex-col justify-end p-1 shadow-inner">
+<div class="w-full h-full rounded-lg bg-gradient-to-t from-secondary-container/70 to-secondary/80 border-t border-white/40"></div>
+</div>
+<div class="text-center">
+<p class="font-body-sm text-[11px] text-on-surface font-medium">Lump sum</p>
+<p class="font-label-badge text-[10px] text-secondary font-bold">One-time</p>
+</div>
+</div>
+<!-- Bar 3: SIP (Champion Neon Bar with Trophy) -->
+<div class="flex flex-col items-center gap-1.5 relative">
+<!-- Trophy Badge Floating on top -->
+<div class="absolute -top-6 flex items-center gap-0.5 bg-[#003821] border border-primary px-1.5 py-0.5 rounded-full shadow-[0_0_12px_rgba(56,227,153,0.4)]">
+<span class="text-[11px]">🏆</span>
+<span class="font-label-badge text-[9px] text-primary font-bold tracking-tight">WINNER</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-label-currency-sm text-[13px] text-primary font-bold">₹16,907</span>
+<span class="font-label-badge text-[10px] text-primary font-extrabold">+40.8%</span>
+</div>
+<div class="w-full h-[100px] rounded-xl bg-primary-container/20 border border-primary flex flex-col justify-end p-1 shadow-[0_0_16px_rgba(56,227,153,0.25)]">
+<div class="w-full h-full rounded-lg bg-gradient-to-t from-[#1eac70] to-[#38e399] border-t-2 border-white/50 shadow-[inset_0_2px_4px_rgba(255,255,255,0.4)]"></div>
+</div>
+<div class="text-center">
+<p class="font-body-sm text-[11px] text-primary font-bold">SIP ₹1k/mo</p>
+<p class="font-label-badge text-[10px] text-primary/80 font-bold">Disciplined</p>
+</div>
+</div>
+</div>
+<!-- Core Insight Callout with Mascot Kip cleanly anchored -->
+<div class="relative mt-1 bg-surface-container-low/95 border border-primary/30 rounded-xl p-2.5 flex items-center gap-3 overflow-hidden shadow-sm">
+<!-- Ambient mini glow in the insight card -->
+<div class="absolute -right-4 -bottom-4 w-16 h-16 bg-primary/10 rounded-full blur-xl pointer-events-none"></div>
+<!-- Mascot Kip Character Avatar -->
+<div class="relative w-12 h-12 flex-shrink-0 flex items-center justify-center">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary/50 bg-[#0e1c27] shadow-[0_0_10px_rgba(56,227,153,0.3)]">
+<!-- Masccot image positioned smiling and engaged -->
+<img alt="Kip the Tortoise Guide" class="w-full h-full object-cover object-top scale-125 translate-y-1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtFA-weP7BaVUBf0kvqy2thEwfVsN2YR1ZtGWRwgI9L0ePXnBJAaZnbkCTXB1pGo-_oMoIKZVEV_opYc5Q25WwE2HGb8kXrKYsHOLCL2rWNiNWRvMDZ6qjhJOSd2ZlSC_kEnVHgOzXiSw6WOErNUhUPvTfu4LClFXHNNRA41o-AghQcKdNwpp5NqLCf1oIyg0uThRIBeSokc-tNy0TmGO34gPiBwmw3m84PIuD0DZYena4XyCf0BptyTruTiGpb1yBIsMlYm1MiMHZ"/>
+</div>
+<!-- Eyeline indicator star -->
+<span class="absolute -top-1 -right-1 text-[11px] animate-bounce">✨</span>
+</div>
+<!-- Insight Copy directed downward to action -->
+<div class="flex-1 pr-1">
+<p class="font-body-sm text-body-sm text-on-surface leading-snug">
+<span class="text-primary font-bold">SIP wins:</span> it bought more units while prices were low during the trough.
+            </p>
+</div>
+</div>
+</div>
+<!-- Regulatory Disclaimer Note -->
+<div class="text-center px-2 py-0.5">
+<p class="font-body-sm text-[10.5px] text-on-surface-variant/70 leading-tight">
+          Illustrative price paths. Hypothetical returns for learning. Not financial advice.
+        </p>
+</div>
+</main>
+<!-- Bottom Thumb Zone & Primary Action Button -->
+<footer class="relative z-30 px-4 pt-1 pb-6 flex flex-col gap-2">
+<!-- Chunky 3D Arcade Neon Button (Kip Neon Green with #1EAC70 bevel) -->
+<button class="w-full min-h-[52px] bg-primary-container text-on-primary font-display-hero text-label-btn rounded-xl shadow-[0_4px_0_0_#1EAC70] active:translate-y-1 active:shadow-none hover:brightness-105 transition-all flex items-center justify-center gap-2 tracking-wide uppercase">
+<span>Got it</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">arrow_forward</span>
+</button>
+<!-- iPhone Home Indicator Line -->
+<div class="w-32 h-1 bg-white/20 rounded-full mx-auto mt-1"></div>
+</footer>
+</div>
+</body></html>

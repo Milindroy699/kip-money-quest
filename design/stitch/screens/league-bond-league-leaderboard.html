@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-secondary-fixed": "#261900", "surface": "#0b1420", "surface-container-high": "#222a38", "secondary-fixed-dim": "#f3be53", "on-tertiary-container": "#5c3faa", "surface-container-highest": "#2d3543", "on-primary-container": "#00613c", "surface-container-low": "#141c29", "surface-tint": "#34e197", "surface-container": "#18202d", "surface-bright": "#323948", "on-secondary-container": "#382700", "primary-fixed-dim": "#34e197", "error": "#ffb4ab", "secondary-fixed": "#ffdea5", "tertiary": "#eae0ff", "surface-variant": "#2d3543", "on-primary-fixed-variant": "#005232", "on-tertiary-fixed-variant": "#4f319c", "error-container": "#93000a", "on-primary": "#003821", "inverse-on-surface": "#29313f", "on-surface-variant": "#bbcabe", "secondary": "#f3be53", "tertiary-fixed": "#e8ddff", "surface-dim": "#0b1420", "inverse-surface": "#dbe2f5", "tertiary-fixed-dim": "#cebdff", "outline-variant": "#3c4a40", "secondary-container": "#b78920", "on-background": "#dbe2f5", "primary": "#6bffb6", "primary-container": "#38e399", "background": "#0b1420", "outline": "#859489", "on-primary-fixed": "#002112", "surface-container-lowest": "#060e1b", "on-secondary": "#412d00", "on-error": "#690005", "primary-fixed": "#5cfeb1", "tertiary-container": "#d0bfff", "on-surface": "#dbe2f5", "inverse-primary": "#006c44", "on-tertiary": "#381385", "on-error-container": "#ffdad6", "on-tertiary-fixed": "#21005e", "on-secondary-fixed-variant": "#5d4200" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-md": "1rem", "space-2xl": "3rem", "space-xl": "2rem", "space-2xs": "0.25rem", "space-lg": "1.5rem", "space-xs": "0.5rem", "gutter": "1rem", "space-sm": "0.75rem", "margin": "1.25rem" }, fontFamily: { "display-hero": ["Space Grotesk"], "headline-md": ["Space Grotesk"], "label-badge": ["Space Grotesk"], "body-sm": ["Outfit"], "label-btn": ["Space Grotesk"], "body-lg": ["Outfit"], "display-hero-mobile": ["Space Grotesk"], "headline-lg": ["Space Grotesk"], "headline-sm": ["Space Grotesk"], "label-currency-sm": ["Space Grotesk"], "body-md": ["Outfit"], "label-currency-lg": ["Space Grotesk"] }, fontSize: { "display-hero": ["40px", { "lineHeight": "48px", "fontWeight": "700" }], "headline-md": ["22px", { "lineHeight": "28px", "fontWeight": "600" }], "label-badge": ["11px", { "lineHeight": "14px", "fontWeight": "700" }], "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "label-btn": ["15px", { "lineHeight": "20px", "fontWeight": "700" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "500" }], "display-hero-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "700" }], "headline-lg": ["28px", { "lineHeight": "36px", "fontWeight": "700" }], "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }], "label-currency-sm": ["15px", { "lineHeight": "20px", "fontWeight": "700" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "label-currency-lg": ["24px", { "lineHeight": "28px", "fontWeight": "700" }] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style></head><body class="bg-surface text-on-surface font-body-md text-body-md min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between gap-space-xs"><div class="flex items-center gap-space-xs"><div class="w-9 h-9 rounded-xl bg-surface-container flex items-center justify-center text-primary"><span class="material-symbols-outlined text-[20px]">shield</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm tracking-tight text-on-surface leading-none">Kip</span><span class="font-label-badge text-label-badge text-primary uppercase tracking-widest">Quest</span></div></div><div class="flex items-center gap-space-xs overflow-x-auto no-scrollbar py-1"><div class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container/70 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><span class="material-symbols-outlined text-[14px] text-tertiary">psychology</span><span class="font-label-badge text-label-badge text-on-surface">420</span></div><div class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container/70 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><span class="material-symbols-outlined text-[14px] text-secondary">monetization_on</span><span class="font-label-badge text-label-badge text-secondary">240</span></div><div class="flex items-center gap-1 px-2 py-1 rounded-full bg-surface-container/70 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><span class="material-symbols-outlined text-[14px] text-error">local_fire_department</span><span class="font-label-badge text-label-badge text-on-surface">5d</span></div></div><div class="flex items-center pl-1"><img alt="Profile" class="w-8 h-8 rounded-full object-cover shadow-[0_1px_8px_rgba(0,0,0,0.04)]" src="https://lh3.googleusercontent.com/aida/AEtjO1XWe6quPdazIycwxpB3PoPKerU0rm9tN11_X7Jbks1JPoKlSE6B0ZKbHCHCBJllzi5cJrTXjmAEN0snfDqCbI8pILS6QKU8sYt54xM6EZv2XKvUaunmDTUHkNPuRemhbaniASWv0HjRhne_q8PJ4NIHMkp96iSsb1IPII-4OyljZ16VtTBg6DVhyES6OmpBjWcLpyKFJB4KasyraQ2ceIlZb3FthS5u644ucnfHX1B5xC5vmaG3AGvwB9E"/></div></div></header><main class="flex flex-col flex-1 relative w-full pt-16 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full relative">
+<!-- Fixed Ambient Atmospheric Backdrop with Darkened Glass Scrim -->
+<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+<div class="w-full h-full bg-cover bg-top opacity-35" data-alt="Stylized clay rendered town landscape under sunset sky with falling golden coins and floating cloud lanterns in warm terracotta tones." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDbCHFJiK7hhyENABxgz5F_ABrNKHoDRt1a68R5WUcnO8U5qWl2z0Y4CbvlJ3w6QOICnvovqN5SYu628r6umTcsdB78pr0WzO1U-5cAXsUmwCTL80ZzJMt8vMO3rtwsDVNkrCmCJdh2SDZvtsNN-87hp6W8KMqzp0zRYVR94wjSYBlKaoj9wViOwU0AQVdoYvbsbQr6gGJcjh6v8ZvLmS4sOBfYY9z1F-bWAI2bTzAR')"></div>
+<div class="absolute inset-0 bg-surface/90 backdrop-blur-xl"></div>
+<!-- Bioluminescent Ambient Radial Glows -->
+<div class="absolute -top-16 -left-16 w-80 h-80 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute top-1/2 -right-20 w-80 h-80 bg-secondary/10 rounded-full blur-3xl pointer-events-none"></div>
+</div>
+<!-- Content Layer -->
+<div class="relative z-10 px-margin flex flex-col gap-space-md pb-8">
+<!-- Top League Status Banner Card -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container/70 backdrop-blur-2xl shadow-xl p-space-md flex flex-col gap-space-xs">
+<!-- Ambient Card Accents -->
+<div class="absolute -top-10 -right-10 w-32 h-32 bg-primary-container/20 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<!-- Ornate Bronze/Silver Bond Shield Badge -->
+<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center relative shadow-md">
+<span class="material-symbols-outlined text-[26px] text-secondary">workspace_premium</span>
+<div class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[10px] text-on-primary font-bold">verified_user</span>
+</div>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<h1 class="font-headline-sm text-headline-sm text-on-surface">Bond League</h1>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-secondary text-label-badge font-label-badge tracking-wider">TIER III</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[13px] text-secondary">schedule</span>
+<span>Week 12 · 3 days left</span>
+</div>
+</div>
+</div>
+<!-- Info / Countdown Pill -->
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-high/90 text-primary font-label-badge text-label-badge">
+<span class="material-symbols-outlined text-[14px]">lock_reset</span>
+<span>71h 14m</span>
+</div>
+</div>
+</div>
+<!-- Promotion Target Pill -->
+<div class="flex items-center justify-between px-3 py-1.5 rounded-lg bg-surface-container-lowest/80 text-primary font-label-badge text-label-badge">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-primary">rocket_launch</span>
+<span class="text-on-surface">Target:</span>
+<span class="text-primary tracking-wide">Top 7 advance to Index League</span>
+</div>
+<span class="text-on-surface-variant">Rank #5</span>
+</div>
+<!-- Streak Compounding Boost Card -->
+<div class="flex items-center justify-between px-3 py-2 rounded-lg bg-surface-container-high/60 backdrop-blur-md">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-md bg-secondary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-[15px] text-secondary">bolt</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">
+            Streak boost multiplier active: <span class="font-label-badge text-label-badge text-secondary">×1.04 XP</span>
+</span>
+</div>
+<div class="flex items-center gap-0.5 px-2 py-0.5 rounded-full bg-secondary/15 text-secondary font-label-badge text-label-badge">
+<span>Compounding 🔥</span>
+</div>
+</div>
+</div>
+<!-- Leaderboard Header Zone -->
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">leaderboard</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Weekly Standings</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span>15 Competitors</span>
+</div>
+</div>
+<!-- Leaderboard List Canvas -->
+<div class="flex flex-col gap-2">
+<!-- PROMOTION ZONE HEADER -->
+<div class="flex items-center gap-2 my-1 px-1">
+<div class="h-0.5 flex-1 bg-gradient-to-r from-transparent to-primary/40"></div>
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/10 text-primary font-label-badge text-label-badge tracking-wider">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span>
+<span>PROMOTION ZONE · TOP 7 MOVE TO INDEX LEAGUE</span>
+</div>
+<div class="h-0.5 flex-1 bg-gradient-to-l from-transparent to-primary/40"></div>
+</div>
+<!-- Rank 1: Aarav_FinTech -->
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container/60 backdrop-blur-xl transition-all">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-7 flex items-center justify-center flex-shrink-0">
+<div class="w-6 h-6 rounded-full bg-secondary flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-[14px] text-on-secondary font-bold">emoji_events</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex-shrink-0 flex items-center justify-center text-secondary font-headline-sm text-headline-sm">
+            A
+          </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-btn text-label-btn text-on-surface truncate">Aarav_FinTech</span>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[12px] text-primary">trending_up</span>
+<span>12d streak</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1 text-primary font-label-currency-sm text-label-currency-sm flex-shrink-0">
+<span>2,480</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">XP</span>
+</div>
+</div>
+<!-- Rank 2: PriyaTrades -->
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container/60 backdrop-blur-xl transition-all">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-7 flex items-center justify-center flex-shrink-0">
+<div class="w-6 h-6 rounded-full bg-outline flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[13px] text-surface-container-lowest font-bold">military_tech</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex-shrink-0 flex items-center justify-center text-primary font-headline-sm text-headline-sm">
+            P
+          </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-btn text-label-btn text-on-surface truncate">PriyaTrades</span>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[12px] text-secondary">bolt</span>
+<span>SIP Master</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1 text-primary font-label-currency-sm text-label-currency-sm flex-shrink-0">
+<span>2,340</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">XP</span>
+</div>
+</div>
+<!-- Rank 3: Rohan_Alpha -->
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container/60 backdrop-blur-xl transition-all">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-7 flex items-center justify-center flex-shrink-0">
+<div class="w-6 h-6 rounded-full bg-secondary-container flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[13px] text-on-secondary-container font-bold">workspace_premium</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex-shrink-0 flex items-center justify-center text-tertiary font-headline-sm text-headline-sm">
+            R
+          </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-btn text-label-btn text-on-surface truncate">Rohan_Alpha</span>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[12px] text-primary">token</span>
+<span>Index Bull</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1 text-primary font-label-currency-sm text-label-currency-sm flex-shrink-0">
+<span>2,210</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">XP</span>
+</div>
+</div>
+<!-- Rank 4: Zara_Invest -->
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container/50 backdrop-blur-xl transition-all">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-7 flex items-center justify-center flex-shrink-0 font-label-badge text-label-badge text-on-surface-variant">
+            #4
+          </div>
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex-shrink-0 flex items-center justify-center text-primary font-headline-sm text-headline-sm">
+            Z
+          </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-btn text-label-btn text-on-surface truncate">Zara_Invest</span>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[12px] text-primary">verified</span>
+<span>Bondholder</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1 text-primary font-label-currency-sm text-label-currency-sm flex-shrink-0">
+<span>2,090</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">XP</span>
+</div>
+</div>
+<!-- Rank 5 (CURRENT USER - HIGHLIGHTED ROW & MASCOT KIP INTERACTION) -->
+<div class="relative mt-2 mb-3">
+<!-- Glowing Ambient Under-glow -->
+<div class="absolute -inset-1 rounded-2xl bg-gradient-to-r from-primary/30 via-primary-container/20 to-secondary/20 blur-md pointer-events-none"></div>
+<!-- Main User Card -->
+<div class="relative flex items-center justify-between p-3.5 rounded-xl bg-surface-container-high/90 backdrop-blur-2xl shadow-2xl">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-7 flex items-center justify-center flex-shrink-0">
+<div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center shadow-md">
+<span class="font-label-badge text-label-badge text-on-primary">5</span>
+</div>
+</div>
+<div class="relative w-11 h-11 flex-shrink-0">
+<img alt="Your Avatar" class="w-11 h-11 rounded-full object-cover shadow-lg" src="https://lh3.googleusercontent.com/aida/AEtjO1XWe6quPdazIycwxpB3PoPKerU0rm9tN11_X7Jbks1JPoKlSE6B0ZKbHCHCBJllzi5cJrTXjmAEN0snfDqCbI8pILS6QKU8sYt54xM6EZv2XKvUaunmDTUHkNPuRemhbaniASWv0HjRhne_q8PJ4NIHMkp96iSsb1IPII-4OyljZ16VtTBg6DVhyES6OmpBjWcLpyKFJB4KasyraQ2ceIlZb3FthS5u644ucnfHX1B5xC5vmaG3AGvwB9E"/>
+<div class="absolute -bottom-1 -right-1 px-1 py-0.2 rounded-full bg-primary text-on-primary font-label-badge text-[9px] font-bold">
+                YOU
+              </div>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-btn text-label-btn text-primary truncate">You (Kipster)</span>
+<span class="material-symbols-outlined text-[15px] text-secondary">star</span>
+</div>
+<div class="flex items-center gap-1 text-primary font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[13px]">trending_up</span>
+<span class="font-semibold">+180 today</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end flex-shrink-0">
+<div class="flex items-center gap-1 text-primary font-label-currency-lg text-label-currency-lg">
+<span>1,980</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">XP</span>
+</div>
+<span class="text-label-badge font-label-badge text-secondary tracking-wide">SAFE IN TOP 5</span>
+</div>
+</div>
+<!-- Companion Anchor & Joyful Speech Bubble -->
+<div class="mt-2 flex items-center justify-between px-2 py-2 rounded-xl bg-surface-container/70 backdrop-blur-md">
+<div class="flex items-center gap-2.5">
+<!-- Kip Mascot Avatar -->
+<div class="w-12 h-12 rounded-xl overflow-hidden bg-surface-container-highest flex-shrink-0 relative">
+<img alt="Mascot Kip" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6qtMb3kLtQF_hc3hB0guQ_dqf7hr1jFTeyXCycKbsABnlqGu3IUobA4n_j130_9nTAaSGs08UpoAwCqsLEHN619l2FE46_LMIb1N1OA9bod9URp3bmfFrNgU7HtL2hN4PDUsyxfaJQU7SfWDYVMo-79efjnJCPR3X-ttkf9Ug_oTuq4NXBuOEoJb2CbXWrMJsoNM78K4ywC6b4kNcui32yWfSjY_1xTVKLL55Ai5W6iq7-W9FeV6XNg"/>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1">
+<span class="font-label-badge text-label-badge text-secondary uppercase tracking-wider">Kip Cheers</span>
+<span class="material-symbols-outlined text-[13px] text-secondary">celebration</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface">"Top 5 spot secured! Let's hold the rank! 🏆🐢"</p>
+</div>
+</div>
+<!-- Tactile Arcade Mini Boost Button -->
+<button class="flex-shrink-0 px-3 py-1.5 rounded-lg bg-primary text-on-primary font-label-badge text-label-badge uppercase shadow-[0_3px_0_0_#1eac70] active:translate-y-[3px] active:shadow-none transition-all" id="boostBtn">
+            Compounding
+          </button>
+</div>
+</div>
+<!-- Rank 6: Dev_Nifty -->
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container/50 backdrop-blur-xl transition-all">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-7 flex items-center justify-center flex-shrink-0 font-label-badge text-label-badge text-on-surface-variant">
+            #6
+          </div>
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex-shrink-0 flex items-center justify-center text-on-surface-variant font-headline-sm text-headline-sm">
+            D
+          </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-btn text-label-btn text-on-surface truncate">Dev_Nifty</span>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[12px] text-secondary">show_chart</span>
+<span>4d streak</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1 text-primary font-label-currency-sm text-label-currency-sm flex-shrink-0">
+<span>1,890</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">XP</span>
+</div>
+</div>
+<!-- Rank 7: Ananya_SIP -->
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container/50 backdrop-blur-xl transition-all">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-7 flex items-center justify-center flex-shrink-0 font-label-badge text-label-badge text-on-surface-variant">
+            #7
+          </div>
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex-shrink-0 flex items-center justify-center text-primary font-headline-sm text-headline-sm">
+            A
+          </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-btn text-label-btn text-on-surface truncate">Ananya_SIP</span>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[12px] text-primary">savings</span>
+<span>Promotion Line</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1 text-primary font-label-currency-sm text-label-currency-sm flex-shrink-0">
+<span>1,810</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">XP</span>
+</div>
+</div>
+<!-- SAFE / NEUTRAL ZONE DIVIDER -->
+<div class="flex items-center gap-2 my-2 px-1">
+<div class="h-0.5 flex-1 bg-gradient-to-r from-transparent to-outline/30"></div>
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-high/80 text-on-surface-variant font-label-badge text-label-badge tracking-wider">
+<span class="material-symbols-outlined text-[14px]">shield</span>
+<span>SAFE ZONE · MAINTAIN RANK</span>
+</div>
+<div class="h-0.5 flex-1 bg-gradient-to-l from-transparent to-outline/30"></div>
+</div>
+<!-- Rank 8: Kabir_99 -->
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container/40 backdrop-blur-xl transition-all">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-7 flex items-center justify-center flex-shrink-0 font-label-badge text-label-badge text-on-surface-variant">
+            #8
+          </div>
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex-shrink-0 flex items-center justify-center text-on-surface-variant font-headline-sm text-headline-sm">
+            K
+          </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-btn text-label-btn text-on-surface truncate">Kabir_99</span>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[12px]">account_balance</span>
+<span>Bond Tier</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1 text-on-surface font-label-currency-sm text-label-currency-sm flex-shrink-0">
+<span>1,640</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">XP</span>
+</div>
+</div>
+<!-- Rank 9: Sneha_Vault -->
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container/40 backdrop-blur-xl transition-all">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-7 flex items-center justify-center flex-shrink-0 font-label-badge text-label-badge text-on-surface-variant">
+            #9
+          </div>
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex-shrink-0 flex items-center justify-center text-on-surface-variant font-headline-sm text-headline-sm">
+            S
+          </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-btn text-label-btn text-on-surface truncate">Sneha_Vault</span>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[12px]">lock</span>
+<span>Cold Storage</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1 text-on-surface font-label-currency-sm text-label-currency-sm flex-shrink-0">
+<span>1,520</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">XP</span>
+</div>
+</div>
+<!-- Rank 10: Vikram_Growth -->
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container/40 backdrop-blur-xl transition-all">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-7 flex items-center justify-center flex-shrink-0 font-label-badge text-label-badge text-on-surface-variant">
+            #10
+          </div>
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex-shrink-0 flex items-center justify-center text-on-surface-variant font-headline-sm text-headline-sm">
+            V
+          </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-btn text-label-btn text-on-surface truncate">Vikram_Growth</span>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[12px]">query_stats</span>
+<span>Steady</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1 text-on-surface font-label-currency-sm text-label-currency-sm flex-shrink-0">
+<span>1,410</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">XP</span>
+</div>
+</div>
+<!-- DEMOTION ZONE DIVIDER -->
+<div class="flex items-center gap-2 my-2 px-1">
+<div class="h-0.5 flex-1 bg-gradient-to-r from-transparent to-error/30"></div>
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-error-container/40 text-error font-label-badge text-label-badge tracking-wider">
+<span class="material-symbols-outlined text-[14px]">arrow_downward</span>
+<span>DEMOTION ZONE · FALL TO LIQUIDITY LEAGUE</span>
+</div>
+<div class="h-0.5 flex-1 bg-gradient-to-l from-transparent to-error/30"></div>
+</div>
+<!-- Rank 11: Arjun_Coins -->
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container-low/50 backdrop-blur-xl transition-all">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-7 flex items-center justify-center flex-shrink-0 font-label-badge text-label-badge text-error">
+            #11
+          </div>
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex-shrink-0 flex items-center justify-center text-error font-headline-sm text-headline-sm">
+            A
+          </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-btn text-label-btn text-on-surface truncate">Arjun_Coins</span>
+<div class="flex items-center gap-1 text-error font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[12px]">warning</span>
+<span>-120 from safety</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant font-label-currency-sm text-label-currency-sm flex-shrink-0">
+<span>1,290</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">XP</span>
+</div>
+</div>
+<!-- Rank 12: Diya_Saver -->
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container-low/50 backdrop-blur-xl transition-all">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-7 flex items-center justify-center flex-shrink-0 font-label-badge text-label-badge text-error">
+            #12
+          </div>
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex-shrink-0 flex items-center justify-center text-error font-headline-sm text-headline-sm">
+            D
+          </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-btn text-label-btn text-on-surface truncate">Diya_Saver</span>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[12px]">hourglass_empty</span>
+<span>Inactive 1d</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant font-label-currency-sm text-label-currency-sm flex-shrink-0">
+<span>1,180</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">XP</span>
+</div>
+</div>
+<!-- Rank 13: Meera_Hedge -->
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container-low/50 backdrop-blur-xl transition-all">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-7 flex items-center justify-center flex-shrink-0 font-label-badge text-label-badge text-error">
+            #13
+          </div>
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex-shrink-0 flex items-center justify-center text-error font-headline-sm text-headline-sm">
+            M
+          </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-btn text-label-btn text-on-surface truncate">Meera_Hedge</span>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[12px]">schedule</span>
+<span>Last active 2d</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant font-label-currency-sm text-label-currency-sm flex-shrink-0">
+<span>1,050</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">XP</span>
+</div>
+</div>
+<!-- Rank 14: Tanmay_Bulls -->
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container-low/50 backdrop-blur-xl transition-all">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-7 flex items-center justify-center flex-shrink-0 font-label-badge text-label-badge text-error">
+            #14
+          </div>
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex-shrink-0 flex items-center justify-center text-error font-headline-sm text-headline-sm">
+            T
+          </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-btn text-label-btn text-on-surface truncate">Tanmay_Bulls</span>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[12px]">motion_photos_off</span>
+<span>Streak Lost</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant font-label-currency-sm text-label-currency-sm flex-shrink-0">
+<span>920</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">XP</span>
+</div>
+</div>
+<!-- Rank 15: Rahul_Idle -->
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container-low/50 backdrop-blur-xl transition-all">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-7 flex items-center justify-center flex-shrink-0 font-label-badge text-label-badge text-error">
+            #15
+          </div>
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex-shrink-0 flex items-center justify-center text-error font-headline-sm text-headline-sm">
+            R
+          </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-btn text-label-btn text-on-surface truncate">Rahul_Idle</span>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[12px]">pause_circle</span>
+<span>Idle</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant font-label-currency-sm text-label-currency-sm flex-shrink-0">
+<span>810</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">XP</span>
+</div>
+</div>
+</div>
+<!-- Persistent Bottom Action Area (Thumb-Zone Trigger) -->
+<div class="mt-4 flex flex-col gap-2">
+<div class="p-4 rounded-xl bg-surface-container-high/80 backdrop-blur-xl flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-secondary/15 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[24px]">quiz</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-btn text-label-btn text-on-surface">Daily League Quest</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">+60 XP · 3/3 questions left</span>
+</div>
+</div>
+<!-- Chunky Arcade CTA Button -->
+<button class="px-5 py-2.5 rounded-xl bg-primary text-on-primary font-label-btn text-label-btn uppercase tracking-wider shadow-[0_4px_0_0_#1eac70] active:translate-y-[4px] active:shadow-none transition-all flex items-center gap-1.5">
+<span>Play</span>
+<span class="material-symbols-outlined text-[18px]">play_arrow</span>
+</button>
+</div>
+<!-- Secondary Rule Explainer Pill -->
+<div class="flex items-center justify-center gap-1.5 py-1 text-center font-body-sm text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px] text-outline">info</span>
+<span>Leagues finalize every Sunday at 23:59 IST</span>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Ensure the bottom navigation League tab reflects active state
+  (function initLeagueState() {
+    const navItems = document.querySelectorAll('nav a');
+    navItems.forEach(item => {
+      if (item.getAttribute('data-path') === 'league') {
+        item.classList.remove('text-on-surface-variant');
+        item.classList.add('text-primary', 'font-bold');
+      } else {
+        item.classList.remove('text-primary', 'font-bold');
+        item.classList.add('text-on-surface-variant');
+      }
+    });
+
+    const boostBtn = document.getElementById('boostBtn');
+    if (boostBtn) {
+      boostBtn.addEventListener('click', () => {
+        boostBtn.innerText = 'Boosted! ⚡';
+        boostBtn.classList.remove('bg-primary', 'text-on-primary');
+        boostBtn.classList.add('bg-secondary', 'text-on-secondary');
+        setTimeout(() => {
+          boostBtn.innerText = 'Compounding';
+          boostBtn.classList.add('bg-primary', 'text-on-primary');
+          boostBtn.classList.remove('bg-secondary', 'text-on-secondary');
+        }, 1500);
+      });
+    }
+  })();
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]" data-active-classes="text-primary font-bold"><div class="flex justify-around items-center h-16 px-space-xs"><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-1 text-on-surface-variant transition-colors" data-path="learn" href="#"><span class="material-symbols-outlined text-[24px]">school</span><span class="font-label-badge text-label-badge">Learn</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-1 text-on-surface-variant transition-colors" data-path="cards" href="#"><span class="material-symbols-outlined text-[24px]">style</span><span class="font-label-badge text-label-badge">Cards</span></a><a aria-current="page" class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-1 transition-colors text-primary font-bold" data-path="league" href="#"><span class="material-symbols-outlined text-[24px]">military_tech</span><span class="font-label-badge text-label-badge">League</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-1 text-on-surface-variant transition-colors" data-path="you" href="#"><span class="material-symbols-outlined text-[24px]">account_circle</span><span class="font-label-badge text-label-badge">You</span></a></div></nav></body></html>

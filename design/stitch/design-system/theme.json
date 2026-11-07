@@ -1,0 +1,152 @@
+{
+  "bodyFont": "OUTFIT",
+  "bodyFontFamily": "Outfit",
+  "colorMode": "DARK",
+  "colorVariant": "FIDELITY",
+  "customColor": "#38e399",
+  "font": "SPACE_GROTESK",
+  "headlineFont": "SPACE_GROTESK",
+  "headlineFontFamily": "Space Grotesk",
+  "labelFont": "SPACE_GROTESK",
+  "labelFontFamily": "Space Grotesk",
+  "namedColors": {
+    "background": "#0b1420",
+    "error": "#ffb4ab",
+    "error_container": "#93000a",
+    "inverse_on_surface": "#29313f",
+    "inverse_primary": "#006c44",
+    "inverse_surface": "#dbe2f5",
+    "on_background": "#dbe2f5",
+    "on_error": "#690005",
+    "on_error_container": "#ffdad6",
+    "on_primary": "#003821",
+    "on_primary_container": "#00613c",
+    "on_primary_fixed": "#002112",
+    "on_primary_fixed_variant": "#005232",
+    "on_secondary": "#412d00",
+    "on_secondary_container": "#382700",
+    "on_secondary_fixed": "#261900",
+    "on_secondary_fixed_variant": "#5d4200",
+    "on_surface": "#dbe2f5",
+    "on_surface_variant": "#bbcabe",
+    "on_tertiary": "#381385",
+    "on_tertiary_container": "#5c3faa",
+    "on_tertiary_fixed": "#21005e",
+    "on_tertiary_fixed_variant": "#4f319c",
+    "outline": "#859489",
+    "outline_variant": "#3c4a40",
+    "primary": "#6bffb6",
+    "primary_container": "#38e399",
+    "primary_fixed": "#5cfeb1",
+    "primary_fixed_dim": "#34e197",
+    "secondary": "#f3be53",
+    "secondary_container": "#b78920",
+    "secondary_fixed": "#ffdea5",
+    "secondary_fixed_dim": "#f3be53",
+    "surface": "#0b1420",
+    "surface_bright": "#323948",
+    "surface_container": "#18202d",
+    "surface_container_high": "#222a38",
+    "surface_container_highest": "#2d3543",
+    "surface_container_low": "#141c29",
+    "surface_container_lowest": "#060e1b",
+    "surface_dim": "#0b1420",
+    "surface_tint": "#34e197",
+    "surface_variant": "#2d3543",
+    "tertiary": "#eae0ff",
+    "tertiary_container": "#d0bfff",
+    "tertiary_fixed": "#e8ddff",
+    "tertiary_fixed_dim": "#cebdff"
+  },
+  "overrideNeutralColor": "#0f1724",
+  "overridePrimaryColor": "#38e399",
+  "overrideSecondaryColor": "#ffc95c",
+  "overrideTertiaryColor": "#a78bfa",
+  "roundness": "ROUND_EIGHT",
+  "spacing": {
+    "gutter": "1rem",
+    "margin": "1.25rem",
+    "space-2xl": "3rem",
+    "space-2xs": "0.25rem",
+    "space-lg": "1.5rem",
+    "space-md": "1rem",
+    "space-sm": "0.75rem",
+    "space-xl": "2rem",
+    "space-xs": "0.5rem"
+  },
+  "spacingScale": 2,
+  "typography": {
+    "body-lg": {
+      "fontFamily": "Outfit",
+      "fontSize": "16px",
+      "fontWeight": "500",
+      "lineHeight": "24px"
+    },
+    "body-md": {
+      "fontFamily": "Outfit",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "20px"
+    },
+    "body-sm": {
+      "fontFamily": "Outfit",
+      "fontSize": "12px",
+      "fontWeight": "400",
+      "lineHeight": "16px"
+    },
+    "display-hero": {
+      "fontFamily": "Space Grotesk",
+      "fontSize": "40px",
+      "fontWeight": "700",
+      "lineHeight": "48px"
+    },
+    "display-hero-mobile": {
+      "fontFamily": "Space Grotesk",
+      "fontSize": "32px",
+      "fontWeight": "700",
+      "lineHeight": "40px"
+    },
+    "headline-lg": {
+      "fontFamily": "Space Grotesk",
+      "fontSize": "28px",
+      "fontWeight": "700",
+      "lineHeight": "36px"
+    },
+    "headline-md": {
+      "fontFamily": "Space Grotesk",
+      "fontSize": "22px",
+      "fontWeight": "600",
+      "lineHeight": "28px"
+    },
+    "headline-sm": {
+      "fontFamily": "Space Grotesk",
+      "fontSize": "18px",
+      "fontWeight": "600",
+      "lineHeight": "24px"
+    },
+    "label-badge": {
+      "fontFamily": "Space Grotesk",
+      "fontSize": "11px",
+      "fontWeight": "700",
+      "lineHeight": "14px"
+    },
+    "label-btn": {
+      "fontFamily": "Space Grotesk",
+      "fontSize": "15px",
+      "fontWeight": "700",
+      "lineHeight": "20px"
+    },
+    "label-currency-lg": {
+      "fontFamily": "Space Grotesk",
+      "fontSize": "24px",
+      "fontWeight": "700",
+      "lineHeight": "28px"
+    },
+    "label-currency-sm": {
+      "fontFamily": "Space Grotesk",
+      "fontSize": "15px",
+      "fontWeight": "700",
+      "lineHeight": "20px"
+    }
+  }
+}

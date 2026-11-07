@@ -1,0 +1,21 @@
+/** Kip's run cycle seen from behind: 18 frames = one full stride, cut from design/source-art/characters/kip/kip_run_back.mp4. Generated file. */
+export const KIP_RUN_FRAMES: number[] = [
+  require('../../assets/characters/kip_run/00.webp'),
+  require('../../assets/characters/kip_run/01.webp'),
+  require('../../assets/characters/kip_run/02.webp'),
+  require('../../assets/characters/kip_run/03.webp'),
+  require('../../assets/characters/kip_run/04.webp'),
+  require('../../assets/characters/kip_run/05.webp'),
+  require('../../assets/characters/kip_run/06.webp'),
+  require('../../assets/characters/kip_run/07.webp'),
+  require('../../assets/characters/kip_run/08.webp'),
+  require('../../assets/characters/kip_run/09.webp'),
+  require('../../assets/characters/kip_run/10.webp'),
+  require('../../assets/characters/kip_run/11.webp'),
+  require('../../assets/characters/kip_run/12.webp'),
+  require('../../assets/characters/kip_run/13.webp'),
+  require('../../assets/characters/kip_run/14.webp'),
+  require('../../assets/characters/kip_run/15.webp'),
+  require('../../assets/characters/kip_run/16.webp'),
+  require('../../assets/characters/kip_run/17.webp'),
+];

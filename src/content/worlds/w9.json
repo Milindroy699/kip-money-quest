@@ -1,0 +1,435 @@
+{
+  "id": "w9",
+  "index": 9,
+  "title": "Future You",
+  "tagline": "Your Launch Plan",
+  "principle": "Retirement and goal planning; PE/VC as the long, illiquid end",
+  "product": "Emergency fund, insurance, goal SIPs, NPS, VC funds",
+  "philosophy": "Build slowly, build surely",
+  "color": "#DB2777",
+  "lessons": [
+    {
+      "id": "w9-l1",
+      "title": "Your first paycheck",
+      "subtitle": "22, and paid at last",
+      "capability": "Split a first salary between needs, wants, an emergency fund and investing.",
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "cheer",
+          "lines": [
+            "Jump ahead with me. You're 22, and your first salary just landed: ₹30,000 a month!"
+          ]
+        },
+        {
+          "type": "story",
+          "speaker": "dash",
+          "mood": "cheer",
+          "lines": [
+            "New phone, new shoes, weekend trips! Investing can wait, I'm young!"
+          ]
+        },
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "think",
+          "lines": [
+            "Let's see where each choice leads. You'll split the paycheck, then live the next 18 years: a job loss, a hospital bill, a wedding, a crash."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "paycheck",
+          "title": "First Paycheck",
+          "caption": "Set your split, then live it. Try a few different splits."
+        },
+        {
+          "type": "quiz",
+          "question": "Which should usually come first with a new salary?",
+          "options": [
+            {
+              "text": "An emergency fund and health insurance",
+              "why": "Yes. Buffers first, so one bad month doesn't become years of debt.",
+              "correct": true
+            },
+            {
+              "text": "A new phone on EMI",
+              "why": "Debt before buffers is how small shocks become big problems."
+            },
+            {
+              "text": "Crypto",
+              "why": "Speculation before safety is backwards."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Why is credit card debt so dangerous?",
+          "options": [
+            {
+              "text": "Interest around 36% a year compounds against you",
+              "why": "Right. Compounding works against borrowers too.",
+              "correct": true
+            },
+            {
+              "text": "Cards are illegal for young people",
+              "why": "They aren't. They're just expensive if you carry a balance."
+            },
+            {
+              "text": "It's not dangerous",
+              "why": "At 36% a year, a balance can double in about two years."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "title": "In real life",
+          "realLife": "A common starting rule is 50/30/20: about 50% on needs, 30% on wants and 20% on saving and investing. Adjust it to your life, but pay yourself first, on payday.",
+          "mission": "Ask a working adult you trust: what do they wish they'd done with their first salary?",
+          "deeper": "Setting up SIPs to run on salary day, before you can spend, is the single most effective habit for most new earners."
+        }
+      ]
+    },
+    {
+      "id": "w9-l2",
+      "title": "Protect before you grow",
+      "subtitle": "Insurance and the emergency fund",
+      "capability": "Explain term insurance, health insurance and why they come before investing.",
+      "unlockCards": [
+        "termInsurance"
+      ],
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "dash",
+          "mood": "worry",
+          "lines": [
+            "Insurance is money you pay and never get back. Isn't that a waste?"
+          ]
+        },
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "talk",
+          "lines": [
+            "Only if nothing goes wrong. Insurance turns a disaster you can't afford into a small cost you can.",
+            "It's the hedge for your whole life plan."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "reveal",
+          "title": "Your safety layers",
+          "caption": "Tap each layer.",
+          "items": [
+            {
+              "emoji": "🧯",
+              "title": "Emergency fund",
+              "text": "3–6 months of expenses somewhere instant. Covers job loss and small shocks without selling investments."
+            },
+            {
+              "emoji": "🏥",
+              "title": "Health insurance",
+              "text": "Pays big hospital bills. One stay can cost lakhs without it."
+            },
+            {
+              "emoji": "☂️",
+              "title": "Term life insurance",
+              "text": "If you die during the term, your family gets a payout. Cheap when you're young; needed once others depend on you."
+            },
+            {
+              "emoji": "🚫",
+              "title": "Don't mix them",
+              "text": "Plans that bundle insurance with investing often give weak cover and weak returns. Keep them separate."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Term life insurance pays out…",
+          "options": [
+            {
+              "text": "If you die during the term",
+              "why": "Yes. That's all it does, which is why it's cheap.",
+              "correct": true
+            },
+            {
+              "text": "A big bonus at the end",
+              "why": "Pure term plans don't pay anything if you survive."
+            },
+            {
+              "text": "When markets fall",
+              "why": "That's a hedge, not life insurance."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Why buy health insurance young?",
+          "options": [
+            {
+              "text": "It's cheaper, and it covers you before problems appear",
+              "why": "Right. Premiums rise with age and with existing illnesses.",
+              "correct": true
+            },
+            {
+              "text": "Young people get sick most",
+              "why": "Not usually. It's about cost and future cover."
+            },
+            {
+              "text": "It's an investment",
+              "why": "It's protection, not an investment."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "title": "Card unlocked: Insurance",
+          "realLife": "Insurance in India is regulated by IRDAI. Many planners suggest life cover of 10–15 times your yearly income once others rely on you, and family health cover of at least a few lakh rupees.",
+          "cardId": "termInsurance",
+          "deeper": "Check the claim settlement ratio, waiting periods and exclusions before buying. A cheap policy that doesn't pay claims is worthless."
+        }
+      ]
+    },
+    {
+      "id": "w9-l3",
+      "title": "Retirement: the longest goal",
+      "subtitle": "Start early, and the 4% rule",
+      "capability": "Estimate a retirement corpus and explain why starting early matters so much.",
+      "unlockCards": [
+        "nps"
+      ],
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "dash",
+          "mood": "happy",
+          "lines": [
+            "Retirement? I'm 16! That's a problem for old Dash."
+          ]
+        },
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "talk",
+          "lines": [
+            "It's the one goal where starting early does most of the work. Compounding needs decades.",
+            "Let's see how much a ₹5,000 monthly SIP becomes, depending on when you start."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "retirement",
+          "title": "The start-age slider",
+          "caption": "Slide the start age. Try raising the SIP every year."
+        },
+        {
+          "type": "quiz",
+          "question": "Waiting 10 years to start a retirement SIP…",
+          "options": [
+            {
+              "text": "Can cut the final pot by more than half",
+              "why": "Yes. The last decade of compounding is the biggest.",
+              "correct": true
+            },
+            {
+              "text": "Makes no difference",
+              "why": "It makes a huge difference."
+            },
+            {
+              "text": "Is smart, you'll earn more later",
+              "why": "Earning more later rarely makes up for lost compounding."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "The 4% rule is about…",
+          "options": [
+            {
+              "text": "How much you can take out each year in retirement",
+              "why": "Right. Take about 4% a year and the money should last around 30 years.",
+              "correct": true
+            },
+            {
+              "text": "How much to save each month",
+              "why": "It's about withdrawing, not saving."
+            },
+            {
+              "text": "A guaranteed return",
+              "why": "Nothing is guaranteed. It's a rule of thumb."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "title": "Card unlocked: NPS",
+          "realLife": "The National Pension System, regulated by PFRDA, is a low-cost way to invest for retirement in shares and bonds. Most of it stays locked until 60, and part must buy a pension.",
+          "cardId": "nps",
+          "deeper": "The 4% rule came from US data. With higher inflation in India, many planners use 3–3.5% to be safe. Raising your SIP each year with your salary (a step-up SIP) makes a big difference."
+        }
+      ]
+    },
+    {
+      "id": "w9-l4",
+      "title": "Backing startups",
+      "subtitle": "The power law of VC",
+      "capability": "Explain why startup investing needs many bets, long lock-ins and only a small slice of wealth.",
+      "unlockCards": [
+        "peVc"
+      ],
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "dash",
+          "mood": "cheer",
+          "lines": [
+            "Forget index funds. I'll put everything into one startup and be the next unicorn investor!"
+          ]
+        },
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "think",
+          "lines": [
+            "Most startups fail. A few win huge. Venture capital funds back dozens to find those few.",
+            "Let's see what happens with one bet versus many."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "startups",
+          "title": "Build a VC fund",
+          "caption": "Slide how many startups your fund backs."
+        },
+        {
+          "type": "quiz",
+          "question": "Why do VC funds back many startups?",
+          "options": [
+            {
+              "text": "A few big winners pay for the many failures",
+              "why": "Yes. That's the power law.",
+              "correct": true
+            },
+            {
+              "text": "They can't decide",
+              "why": "It's deliberate: diversification across many risky bets."
+            },
+            {
+              "text": "It's required by law",
+              "why": "No law requires it."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Money in a VC fund is usually…",
+          "options": [
+            {
+              "text": "Locked for 7–10 years",
+              "why": "Right. Very illiquid. Never use money you might need.",
+              "correct": true
+            },
+            {
+              "text": "Available any day",
+              "why": "That's a savings account."
+            },
+            {
+              "text": "Guaranteed to grow",
+              "why": "Most startups fail."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "title": "Card unlocked: Private Equity & VC",
+          "realLife": "In India, most people access startups through SEBI-registered Alternative Investment Funds, which usually need at least ₹1 crore. Angel investing is also high risk. For most people it comes after everything else is in place.",
+          "cardId": "peVc",
+          "deeper": "VC returns are extremely uneven: the top few funds earn most of the gains. Fees are high, often a 2% yearly fee plus 20% of profits."
+        }
+      ]
+    },
+    {
+      "id": "w9-l5",
+      "title": "Boss: Launch Day",
+      "subtitle": "Everything, applied",
+      "capability": "Combine buffers, protection, a sensible mix and steady investing into one plan.",
+      "boss": true,
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "cheer",
+          "lines": [
+            "This is it. Everything you've learned, from Money Town to here, goes into one plan: your Launch Plan."
+          ]
+        },
+        {
+          "type": "story",
+          "speaker": "dash",
+          "mood": "happy",
+          "lines": [
+            "Kip… I think I finally get it. Buffers first. Protection. Then slow and steady."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "paycheck",
+          "title": "The final paycheck",
+          "caption": "Make Future You thrive: no card interest, and a strong net worth at 40."
+        },
+        {
+          "type": "play",
+          "mode": "risk",
+          "durationSec": 60,
+          "brief": "Launch run! Keep cash for surprises, spread across lanes and outrun The Melt one last time."
+        },
+        {
+          "type": "quiz",
+          "question": "What's the right order for a first-job plan?",
+          "options": [
+            {
+              "text": "Emergency fund → insurance → steady SIPs",
+              "why": "Yes. Protect the downside, then grow.",
+              "correct": true
+            },
+            {
+              "text": "Crypto → shares → maybe savings",
+              "why": "Speculation first leaves you exposed."
+            },
+            {
+              "text": "Spend now, plan at 40",
+              "why": "That costs decades of compounding."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Kip's whole philosophy in four words?",
+          "options": [
+            {
+              "text": "Build slowly, build surely",
+              "why": "That's it. Consistency, compounding and risk you understand.",
+              "correct": true
+            },
+            {
+              "text": "Get rich quick",
+              "why": "That's Dash's old motto."
+            },
+            {
+              "text": "Never take risk",
+              "why": "Some risk is how money grows. Just the right amount, for the right time."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "title": "World complete: Future You",
+          "realLife": "You've finished every world. Your Launch Plan lives in the You tab. Share it with a parent, keep your streak going, and review the ideas that slip.",
+          "deeper": "Real next steps at 18: a bank account in your name, KYC, and a small SIP in a broad index fund, with a parent's help."
+        }
+      ]
+    }
+  ]
+}

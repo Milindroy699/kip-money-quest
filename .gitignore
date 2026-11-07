@@ -41,3 +41,14 @@ example
 # generated native folders
 /ios
 /android
+
+# art pipeline
+.venv-art/
+
+# not game art (a screen recording dropped into the art folder by mistake)
+design/source-art/_not-game-art/
+
+# build outputs
+*.apk
+*.aab
+*.ipa

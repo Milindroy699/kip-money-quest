@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kip Money Quest Proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  /* Layout idea: a single reading column for the argument, widening for the two tables that
+     carry the substance (principles → mechanics, and retention that teaches). */
+  :root {
+    color-scheme: light;
+    --paper: #f7f8f5;
+    --surface: #ffffff;
+    --ink: #17212e;
+    --muted: #556070;
+    --line: #dfe3dc;
+    --kip: #1f9a63;        /* Kip, the accent */
+    --kip-soft: #e3f4ea;
+    --melt: #6d3fd6;       /* The Melt / Dash: the problems */
+    --melt-soft: #efe9fc;
+    --display: "Nunito", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+    --body: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --paper: #12171c;
+      --surface: #1a2027;
+      --ink: #e8ece9;
+      --muted: #a3adb7;
+      --line: #2c353e;
+      --kip: #4cc98c;
+      --kip-soft: #173528;
+      --melt: #a98bf5;
+      --melt-soft: #2a2140;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --paper: #12171c;
+    --surface: #1a2027;
+    --ink: #e8ece9;
+    --muted: #a3adb7;
+    --line: #2c353e;
+    --kip: #4cc98c;
+    --kip-soft: #173528;
+    --melt: #a98bf5;
+    --melt-soft: #2a2140;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16.5px/1.6 var(--body); }
+  main { max-width: 1040px; margin: 0 auto; padding: 48px 24px 72px; display: flex; flex-direction: column; gap: 56px; }
+  .col { max-width: 700px; }
+  h1, h2, h3 { font-family: var(--display); text-wrap: balance; letter-spacing: -0.01em; margin: 0; }
+  h1 { font-size: clamp(34px, 6vw, 48px); line-height: 1.05; font-weight: 900; }
+  h2 { font-size: 26px; line-height: 1.2; font-weight: 800; }
+  h3 { font-size: 18px; font-weight: 800; }
+  p { margin: 0; }
+  section { display: flex; flex-direction: column; gap: 16px; }
+  .eyebrow { font: 600 13px/1 var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--kip); }
+  .lede { font-size: 19px; line-height: 1.55; color: var(--ink); }
+  .muted { color: var(--muted); }
+  .small { font-size: 14px; color: var(--muted); }
+
+  header { display: flex; flex-direction: column; gap: 18px; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-top: 8px; }
+  .stat { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; }
+  .stat b { display: block; font: 800 24px/1.1 var(--display); font-variant-numeric: tabular-nums; }
+  .stat span { font-size: 13.5px; color: var(--muted); }
+
+  .problems { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+  .problem { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--melt); border-radius: 12px; padding: 16px 18px; display: flex; flex-direction: column; gap: 6px; }
+  .problem p { font-size: 15px; color: var(--muted); }
+
+  .cast { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+  .who { border-radius: 12px; padding: 16px 18px; display: flex; flex-direction: column; gap: 4px; }
+  .who.kip { background: var(--kip-soft); }
+  .who.foil { background: var(--melt-soft); }
+  .who p { font-size: 15px; }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; min-width: 760px; font-size: 14.5px; line-height: 1.45; }
+  th, td { text-align: left; vertical-align: top; padding: 12px 14px; border-bottom: 1px solid var(--line); }
+  thead th { font: 600 12.5px/1.3 var(--body); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); background: var(--paper); }
+  tbody tr:last-child td { border-bottom: 0; }
+  td.world { white-space: nowrap; font-weight: 600; }
+  td.world span { display: block; font-weight: 400; font-size: 12.5px; color: var(--muted); }
+  td.world .tag { display: inline-block; font-size: 11.5px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--melt-soft); color: var(--melt); margin-top: 4px; }
+  td.wrong { color: var(--melt); }
+
+  .rules { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px 28px; list-style: none; padding: 0; margin: 0; }
+  .rules li { display: flex; flex-direction: column; gap: 4px; padding: 14px 0; border-top: 2px solid var(--kip); }
+  .rules li p { font-size: 15px; color: var(--muted); }
+
+  .cases { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+  .case { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 8px; }
+  .case .who-line { font-size: 13px; font-weight: 600; color: var(--kip); text-transform: uppercase; letter-spacing: .06em; }
+  .case p { font-size: 15px; color: var(--muted); }
+
+  .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+  ul.plain { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; font-size: 15.5px; }
+  ul.plain li::marker { color: var(--kip); }
+  .note { border-left: 3px solid var(--kip); padding: 4px 0 4px 14px; font-size: 15px; color: var(--muted); }
+  footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 16px; }
+  a { color: var(--kip); }
+  a:focus-visible { outline: 2px solid var(--kip); outline-offset: 2px; }
+
+  @media (max-width: 480px) {
+    main { padding: 32px 16px 56px; gap: 44px; }
+    .lede { font-size: 17.5px; }
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <header class="col">
+    <p class="eyebrow">Product proposal · November 2026</p>
+    <h1>Kip: Money Quest</h1>
+    <p class="lede">A mobile game that teaches Indian teens, aged 13 to 19, to invest from first principles. Each principle is learned by playing it, then tied to the real products they will meet: FDs, SIPs, index funds, bonds, gold, REITs, derivatives and startups. The promise to the player is simple: every lesson makes Future You richer and wiser.</p>
+  </header>
+
+  <div class="stats" aria-label="Where it stands">
+    <div class="stat"><b>10 worlds</b><span>53 lessons, from barter to a first-salary plan</span></div>
+    <div class="stat"><b>24 cards</b><span>Products and strategies, earned by mastery</span></div>
+    <div class="stat"><b>5 run modes</b><span>Plus Market Duel and a Practice Portfolio</span></div>
+    <div class="stat"><b>156 tests</b><span>The simulation and game logic are checked automatically</span></div>
+    <div class="stat"><b>Android</b><span>Installable build ready; iOS TestFlight next</span></div>
+  </div>
+
+  <section class="col" aria-labelledby="problem">
+    <p class="eyebrow">The problem</p>
+    <h2 id="problem">Teens meet money through tips and FOMO, not principles</h2>
+    <p>Teenagers start earning, saving pocket money and opening bank accounts before anyone explains how money grows or shrinks. School rarely covers investing. Family advice often stops at FDs and gold. The loudest teachers are finfluencers and WhatsApp groups.</p>
+  </section>
+
+  <div class="problems">
+    <div class="problem"><h3>Low literacy to start from</h3><p>The S&amp;P Global FinLit Survey found 24% of Indian adults financially literate. Most teens grow up without a working model of interest, inflation or risk.</p></div>
+    <div class="problem"><h3>Speculation sold as investing</h3><p>SEBI’s own study found 9 in 10 individual F&amp;O traders lost money (FY22). Young people are a prime audience for “quick profit” content.</p></div>
+    <div class="problem"><h3>The key ideas are invisible</h3><p>Compounding, inflation and risk play out over years. On a teenager’s time scale they can’t be felt, so they don’t stick.</p></div>
+    <div class="problem"><h3>Finance education doesn’t retain</h3><p>Text and video courses lose people quickly. Gamified finance apps often reward risk-taking and start to look like betting.</p></div>
+    <div class="problem"><h3>Teens can’t practise for real</h3><p>Under-18s can’t trade, and shouldn’t. They need a safe place to make mistakes, with no real money and no tips.</p></div>
+    <div class="problem"><h3>Strict rules for minors</h3><p>India’s DPDP Act requires verifiable parental consent and bars behavioural tracking of children. SEBI rules forbid investment advice.</p></div>
+  </div>
+
+  <section aria-labelledby="idea">
+    <div class="col" style="display:flex;flex-direction:column;gap:16px">
+      <p class="eyebrow">The idea</p>
+      <h2 id="idea">Make every principle something you can play, then name the real product</h2>
+      <p>The format blends three things teens already love: a Subway-Surfers-style runner, collectible cards, and Duolingo-style three-minute lessons. A small cast carries the story. At onboarding each player names a dream goal, such as a laptop, college or a bike, and a <b>Future You</b> plan fills in as they learn: the goal’s price after inflation, the monthly SIP that reaches it, the products and the risk mix. Finishing the game produces a Launch Plan they can share with a parent.</p>
+    </div>
+    <div class="cast">
+      <div class="who kip"><h3>Kip the tortoise</h3><p>The calm, nerdy teacher in big round specs. Wins by consistency, like the fable. His shell grows a ring for every streak week, so compounding shows on the mascot itself.</p></div>
+      <div class="who foil"><h3>Dash the hare</h3><p>Chases hot tips and trades on impulse. Makes the mistakes teens are tempted to make, so the player learns from his, not their own money.</p></div>
+      <div class="who foil"><h3>The Melt</h3><p>A purple fog that stands for inflation. It chases the player in the runner and shrinks any idle coins it touches.</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="principles">
+    <div class="col" style="display:flex;flex-direction:column;gap:16px">
+      <p class="eyebrow">First principles, solved by play</p>
+      <h2 id="principles">Ten worlds, each built on one principle and one common mistake</h2>
+      <p>Each world takes a principle, names the misconception it fixes, and turns it into a mechanic where the right money behaviour is the winning move. Worlds 6 to 8 are for the 16 to 19 Builder track; younger Explorers go from World 5 straight to World 9.</p>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th scope="col">World</th><th scope="col">First principle</th><th scope="col">The mistake it fixes</th><th scope="col">How the game makes you feel it</th><th scope="col">Real products</th></tr></thead>
+        <tbody>
+          <tr><td class="world">0 · Money Town<span>4 lessons</span></td><td>Money exists because barter needs both people to want what the other has</td><td class="wrong">“Money is just notes”</td><td>A barter puzzle: try to trade your way to what you need, then see money solve it</td><td>Cash, UPI, savings account</td></tr>
+          <tr><td class="world">1 · The Melt<span>5 lessons</span></td><td>Inflation shrinks money that sits idle</td><td class="wrong">“A savings account is safe”</td><td>Inflation Chase: idle coins shrink when The Melt is close; INVEST gates bank them</td><td>Savings vs FD, real return</td></tr>
+          <tr><td class="world">2 · Snowball Valley<span>6 lessons</span></td><td>Compounding rewards consistency and time</td><td class="wrong">“I’ll start later with more”</td><td>Snowball Run: each coin in a row is worth 4% more; cash-out ramps reset it</td><td>SIP, index fund, RD, PPF</td></tr>
+          <tr><td class="world">3 · Risk Ridge<span>7 lessons</span></td><td>Higher return comes with bigger swings; cash you can reach matters</td><td class="wrong">“High return is free”</td><td>Risk Lanes: SAFE, BALANCED and WILD lanes swing differently; surprise bills force sales at a loss without cash</td><td>Lock-ins (FD, ELSS, PPF), emergency fund</td></tr>
+          <tr><td class="world">4 · Product Bazaar<span>7 lessons</span></td><td>Know what you own</td><td class="wrong">“A product is a product”</td><td>Bazaar Bargain: run a stall and match each customer’s goal to the right product</td><td>Bonds, shares, mutual funds, ETFs, gold, REITs</td></tr>
+          <tr><td class="world">5 · Portfolio Fort<span>5 lessons</span></td><td>Diversify, rebalance, and treat hedging as insurance</td><td class="wrong">“Put it all in the winner”</td><td>Fort Defense tower defence; Rebalance Rush against a twin who never rebalances</td><td>Asset allocation, protective put</td></tr>
+          <tr><td class="world">6 · Three Doors<span>5 lessons</span><span class="tag">16–19</span></td><td>Know your intent: hedging, speculation or arbitrage</td><td class="wrong">“Trading is investing”</td><td>Swipe trades to the right door; Arbitrage Rush with fees and transfer delays; a leverage dial</td><td>Futures, options, crypto as a case study</td></tr>
+          <tr><td class="world">7 · Time Tracks<span>4 lessons</span><span class="tag">16–19</span></td><td>Costs and noise grow as the horizon shrinks</td><td class="wrong">“Daily trading is faster wealth”</td><td>One run through scalping, intraday, swing and long term, showing what each kept after fees</td><td>Brokerage, STT, capital gains tax</td></tr>
+          <tr><td class="world">8 · Analyst HQ<span>5 lessons</span><span class="tag">16–19</span></td><td>Analysis beats tips, and has limits</td><td class="wrong">“Charts predict the future”</td><td>Ratio Detective case files; Chart Surfer, where textbook patterns hold about 6 times in 10; the Payoff Puzzle</td><td>P/E, ROE, debt, candles, option strategies</td></tr>
+          <tr><td class="world">9 · Future You<span>5 lessons</span></td><td>Protect first, then grow; start early</td><td class="wrong">“I’ll plan later”</td><td>First Paycheck life sim to age 40; a retirement start-age slider; backing one startup versus forty</td><td>Emergency fund, insurance, NPS, PE and VC</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="col" aria-labelledby="rules">
+    <p class="eyebrow">House rules</p>
+    <h2 id="rules">The principles every feature follows</h2>
+    <ul class="rules" style="max-width:none">
+      <li><h3>The mechanic is the lesson</h3><p>If you win by doing the right money thing, the lesson lands without a lecture.</p></li>
+      <li><h3>One honest simulation</h3><p>Every mode runs on the same seeded market model, and every projection is labelled hypothetical.</p></li>
+      <li><h3>Reward reasoning, not luck</h3><p>Duels and leagues score reaching the goal, a calm ride and having cash when needed. A reckless all-in can’t win on average.</p></li>
+      <li><h3>No gambling mechanics</h3><p>No loot boxes and no paid currency. Cards are earned by mastery, never bought or drawn.</p></li>
+      <li><h3>Teach, then ramp up</h3><p>Each mechanic starts gentle and gets harder only as the player shows mastery.</p></li>
+      <li><h3>Value before sign-up</h3><p>No account is asked for until the player has finished 3 lessons and a run.</p></li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="retention">
+    <div class="col" style="display:flex;flex-direction:column;gap:16px">
+      <p class="eyebrow">Engagement</p>
+      <h2 id="retention">The habit loop is itself the lesson</h2>
+      <p>Most apps borrow streaks and rewards from games. Here each one is a money principle in disguise, so coming back every day teaches consistency, compounding and patience.</p>
+    </div>
+    <div class="table-wrap">
+      <table style="min-width:600px">
+        <thead><tr><th scope="col">Mechanic</th><th scope="col">Framed as</th><th scope="col">What it teaches</th></tr></thead>
+        <tbody>
+          <tr><td>Daily streak</td><td>Your Knowledge SIP, a daily deposit</td><td>Consistency</td></tr>
+          <tr><td>XP boost of 1% a day, capped</td><td>Compound interest on your streak</td><td>Compounding</td></tr>
+          <tr><td>A missed day resets the boost</td><td>A withdrawal from your SIP</td><td>Don’t interrupt an investment</td></tr>
+          <tr><td>Streak freeze, bought with coins</td><td>Your emergency fund</td><td>Keep a liquid buffer</td></tr>
+          <tr><td>Weekly Dividend Day reward</td><td>A fixed payout scaled by consistency, never a random chest</td><td>Holding is rewarded</td></tr>
+          <tr><td>Practice Portfolio</td><td>Game coins in a shared simulated market; one day is one market month</td><td>Patience through ups and downs</td></tr>
+          <tr><td>Comeback bonus</td><td>Kip saved your seat: no shame for a gap</td><td>Restarting beats quitting</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="cases">
+    <div class="col" style="display:flex;flex-direction:column;gap:16px">
+      <p class="eyebrow">Key use cases</p>
+      <h2 id="cases">Who uses it, and for what</h2>
+    </div>
+    <div class="cases">
+      <div class="case"><span class="who-line">Explorer, 13–15</span><h3>First three minutes to a daily habit</h3><p>Names a goal, drags a slider to watch Kip’s SIP outgrow Dash’s cash, plays a 45-second Inflation Chase and earns a first card. After that, one 3 to 5 minute lesson, a run and a review a day keep the Knowledge SIP going.</p></div>
+      <div class="case"><span class="who-line">Builder, 16–19</span><h3>Deeper worlds and real-world detail</h3><p>Unlocks trading, arbitrage and analysis, plus deep dives on tax, KYC and how products really work. Chart Surfer and Time Tracks join the runner modes.</p></div>
+      <div class="case"><span class="who-line">Competitive player</span><h3>Leagues and duels that reward good decisions</h3><p>Weekly leagues across six tiers under pseudonymous handles. Market Duel against Dash or a friend by code: same goal, same market, and the calmer path to the goal wins.</p></div>
+      <div class="case"><span class="who-line">Planner</span><h3>A real plan for a real goal</h3><p>The Future You plan builds itself world by world: the goal’s future price, the monthly SIP, where to put it and the risk mix. It ends as a Launch Plan for a first salary.</p></div>
+      <div class="case"><span class="who-line">Parent</span><h3>Consent, visibility and conversation</h3><p>Gives consent when a teen under 18 saves progress. Gets a weekly report of what was learned, with dinner-table questions, shared over WhatsApp or email.</p></div>
+      <div class="case"><span class="who-line">School, later</span><h3>Classroom mode and competitions</h3><p>Teacher dashboards and an inter-school Investing Olympiad, built on the same simulation. This is a distribution channel as well as a use case.</p></div>
+    </div>
+  </section>
+
+  <section class="two" aria-labelledby="safety">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <p class="eyebrow">Safety and compliance</p>
+      <h2 id="safety">Built for minors from day one</h2>
+      <ul class="plain">
+        <li>Simulated money only: no real trading, no tips and no investment advice.</li>
+        <li>Parental consent for under-18s, with consent records stored, as India’s DPDP Act requires.</li>
+        <li>No behavioural ads or tracking; nudges use only in-app activity, at most one a day, outside quiet hours.</li>
+        <li>No free-text chat. Players appear under pseudonyms and add friends only by code.</li>
+        <li>Every projection is labelled hypothetical, and all numbers go to a SEBI-registered reviewer before launch.</li>
+      </ul>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <p class="eyebrow">How we’ll know it works</p>
+      <h2>Success measures</h2>
+      <ul class="plain">
+        <li><b>Activation:</b> 3 lessons, 1 run and a reminder set within 72 hours, plus a return on day 1.</li>
+        <li><b>Retention:</b> day 1, 7 and 30 return rates, and how long streaks last.</li>
+        <li><b>Learning:</b> a literacy test before and after, and how well concepts hold up in spaced reviews.</li>
+        <li><b>Behaviour:</b> the share of duels won with diversified, goal-fit portfolios. This shows the philosophy stuck.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="two" aria-labelledby="status">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <p class="eyebrow">Where it stands</p>
+      <h2 id="status">Built and working</h2>
+      <ul class="plain">
+        <li>All 10 worlds and 53 lessons, with an Explorer and a Builder track.</li>
+        <li>Five runner modes, Chart Surfer, Market Duel, and a Practice Portfolio on a shared simulated market.</li>
+        <li>Streaks, freezes, Dividend Day, spaced reviews, nudges and a comeback bonus.</li>
+        <li>Apple and Google sign-in with parental consent, cloud backup and real weekly leagues.</li>
+        <li>An installable Android build; the iOS TestFlight build is next.</li>
+      </ul>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <p class="eyebrow">What’s next</p>
+      <h2>Before launch, and after</h2>
+      <ul class="plain">
+        <li><b>Launch:</b> SEBI-registered review of all numbers, a lawyer’s review of consent, privacy policy and terms, device testing, and a 50 to 100 teen beta.</li>
+        <li><b>Product:</b> friends and Investment Clubs, server-run leagues and automatic parent emails, Dash’s Scam Hotline, a daily Market Minute, Hindi.</li>
+        <li><b>To decide:</b> the business model. Options include free for teens with school licences, kept free of pay-to-win and of any product sales to minors.</li>
+      </ul>
+    </div>
+  </section>
+
+  <p class="note col">The short version: teens learn money the way they learn games, by doing. Kip turns each investing principle into a game where the right money behaviour is how you win, and the daily habit itself teaches consistency and compounding.</p>
+
+  <footer>Kip: Money Quest · product proposal · All returns in the game are hypothetical and for education only.</footer>
+</main>
+</body>
+</html>

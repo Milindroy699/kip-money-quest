@@ -1,0 +1,335 @@
+<!DOCTYPE html><html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"><meta content="mobile_stack" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{width:100vw;min-height:100vh;margin:0;padding:0;}body{overscroll-behavior:none;background-color:#0b1420;color:#dbe2f5;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "surface-container-lowest": "#060e1b", "primary-container": "#38e399", "secondary-fixed-dim": "#f3be53", "tertiary-fixed-dim": "#cebdff", "surface-container-highest": "#2d3543", "error-container": "#93000a", "tertiary-container": "#d0bfff", "on-secondary": "#412d00", "primary-fixed": "#5cfeb1", "on-error-container": "#ffdad6", "on-secondary-fixed-variant": "#5d4200", "surface-variant": "#2d3543", "on-tertiary-fixed-variant": "#4f319c", "surface-bright": "#323948", "primary-fixed-dim": "#34e197", "on-error": "#690005", "error": "#ffb4ab", "inverse-surface": "#dbe2f5", "secondary-container": "#b78920", "background": "#0b1420", "outline-variant": "#3c4a40", "on-secondary-fixed": "#261900", "on-tertiary": "#381385", "surface-container-high": "#222a38", "on-primary": "#003821", "surface-container-low": "#141c29", "on-tertiary-container": "#5c3faa", "on-surface": "#dbe2f5", "surface-container": "#18202d", "surface-dim": "#0b1420", "on-surface-variant": "#bbcabe", "on-primary-container": "#00613c", "tertiary": "#eae0ff", "surface-tint": "#34e197", "inverse-primary": "#006c44", "on-tertiary-fixed": "#21005e", "tertiary-fixed": "#e8ddff", "outline": "#859489", "on-secondary-container": "#382700", "surface": "#0b1420", "on-background": "#dbe2f5", "primary": "#6bffb6", "inverse-on-surface": "#29313f", "secondary": "#f3be53", "secondary-fixed": "#ffdea5", "on-primary-fixed-variant": "#005232", "on-primary-fixed": "#002112" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-2xs": "0.25rem", "space-xs": "0.5rem", "gutter": "1rem", "space-sm": "0.75rem", "space-2xl": "3rem", "space-md": "1rem", "space-lg": "1.5rem", "margin": "1.25rem", "space-xl": "2rem" }, fontFamily: { "label-btn": ["Space Grotesk"], "body-sm": ["Outfit"], "headline-lg": ["Space Grotesk"], "display-hero": ["Space Grotesk"], "body-lg": ["Outfit"], "display-hero-mobile": ["Space Grotesk"], "headline-md": ["Space Grotesk"], "headline-sm": ["Space Grotesk"], "label-badge": ["Space Grotesk"], "body-md": ["Outfit"], "label-currency-lg": ["Space Grotesk"], "label-currency-sm": ["Space Grotesk"] }, fontSize: { "label-btn": ["15px", { lineHeight: "20px", fontWeight: "700" }], "body-sm": ["12px", { lineHeight: "16px", fontWeight: "400" }], "headline-lg": ["28px", { lineHeight: "36px", fontWeight: "700" }], "display-hero": ["40px", { lineHeight: "48px", fontWeight: "700" }], "body-lg": ["16px", { lineHeight: "24px", fontWeight: "500" }], "display-hero-mobile": ["32px", { lineHeight: "40px", fontWeight: "700" }], "headline-md": ["22px", { lineHeight: "28px", fontWeight: "600" }], "headline-sm": ["18px", { lineHeight: "24px", fontWeight: "600" }], "label-badge": ["11px", { lineHeight: "14px", fontWeight: "700" }], "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }], "label-currency-lg": ["24px", { lineHeight: "28px", fontWeight: "700" }], "label-currency-sm": ["15px", { lineHeight: "20px", fontWeight: "700" }] } } } }</script></head><body class="bg-surface text-on-surface font-body-md text-body-md min-h-screen relative flex flex-col overflow-x-hidden"><div class="fixed inset-0 pointer-events-none z-0"><div class="absolute -top-24 -left-20 w-80 h-80 rounded-full bg-primary/10 blur-[90px]"></div><div class="absolute top-1/2 -right-24 w-88 h-88 rounded-full bg-secondary/10 blur-[100px]"></div><div class="absolute -bottom-20 left-10 w-96 h-96 rounded-full bg-tertiary-container/15 blur-[110px]"></div></div><header class="fixed top-0 inset-x-0 z-50 bg-surface/70 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.12)]"><div class="h-16 px-margin flex items-center justify-between"><button aria-label="Go Back" class="w-11 h-11 rounded-xl flex items-center justify-center text-on-surface hover:text-primary transition-colors bg-surface-container-high/60 backdrop-blur-md active:translate-y-0.5" onclick="history.back()"><span class="material-symbols-outlined text-[22px]">arrow_back</span></button><div class="flex flex-col items-center justify-center"><span class="font-headline-sm text-headline-sm tracking-tight text-on-surface">Budget Calibration</span><div class="flex items-center gap-space-2xs mt-1"><span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span><span class="font-label-badge text-label-badge text-on-surface-variant uppercase tracking-wider">Money Quest</span></div></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="flex-1 flex flex-col relative w-full z-10 pt-16 pb-safe bg-surface/30 backdrop-blur-[2px]"><div class="flex flex-col w-full relative">
+<!-- Full-bleed background from inspiration with ambient blend -->
+<div class="fixed inset-0 pointer-events-none z-0">
+<div class="w-full h-full bg-cover bg-center opacity-30" data-alt="Soft ethereal sunrise over a glowing golden city on the horizon with distant neoclassical towers, dreamy pastel orange and warm peach clouds, winding smooth road through rolling sand hills with floating glossy golden coins, high quality 3D clay render, warm cinematic atmospheric perspective" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDpp8qWfj0idVYPqWhyXZek6z3eiry-yAOM3dVeAafelt6oqnOOtjbK_DaWA6-8b0jmqCS8IvKEqAqMqrXcN_in1LAWAHRz-sYVdpCu84_e3RID-IF5rJtpGONERJHEGxeRZo_TRgSRZ9v5yOM0YqUFXuPH--uo5LHZnkNIsP9NUe6e4nPcUlPz-2T8B4ofMgCi9HjlcAcImyPuC3Vy3V-JyXEIEeRzjTvOIrzmVBv3')"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-surface/85 via-surface/75 to-surface"></div>
+</div>
+<div class="relative z-10 flex flex-col px-margin pb-space-xl">
+<!-- 6-Step Onboarding Progress Indicator -->
+<div class="pt-space-sm pb-space-xs flex items-center justify-between gap-space-2xs">
+<div class="h-1.5 flex-1 rounded-full bg-primary shadow-[0_0_8px_rgba(107,255,182,0.4)]"></div>
+<div class="h-1.5 flex-1 rounded-full bg-primary shadow-[0_0_8px_rgba(107,255,182,0.4)]"></div>
+<div class="h-1.5 flex-1 rounded-full bg-primary shadow-[0_0_12px_rgba(107,255,182,0.7)] animate-pulse"></div>
+<div class="h-1.5 flex-1 rounded-full bg-surface-container-high/60"></div>
+<div class="h-1.5 flex-1 rounded-full bg-surface-container-high/60"></div>
+<div class="h-1.5 flex-1 rounded-full bg-surface-container-high/60"></div>
+</div>
+<!-- Onboarding Step Indicator Tag -->
+<div class="flex items-center justify-between my-space-xs">
+<span class="font-label-badge text-label-badge tracking-wider uppercase text-primary">Step 3 of 6 • The Magic Moment</span>
+<span class="font-label-badge text-label-badge text-on-surface-variant bg-surface-container-high/80 px-2 py-0.5 rounded-full">₹500 / mo</span>
+</div>
+<!-- Main Title Card with Frosted Depth -->
+<div class="mb-space-sm">
+<h1 class="font-headline-lg text-headline-lg tracking-tight text-on-surface">Same ₹500 a month.<br><span class="text-primary font-headline-lg text-headline-lg">Two choices.</span></h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">Watch compounding defeat inflation over time.</p>
+</div>
+<!-- Side-by-side Character Badges -->
+<div class="grid grid-cols-2 gap-space-xs mb-space-sm">
+<!-- Dash (Hare) Badge -->
+<div class="relative rounded-xl p-space-xs bg-surface-container-high/70 backdrop-blur-xl shadow-lg flex flex-col justify-between overflow-hidden">
+<div class="absolute -right-3 -top-3 w-12 h-12 bg-secondary/10 rounded-full blur-md"></div>
+<div class="flex items-center gap-space-2xs mb-1.5">
+<div class="w-8 h-8 rounded-lg bg-secondary-container/50 flex items-center justify-center shadow-[0_3px_0_0_#b78920] overflow-hidden"><img class="w-full h-full object-cover scale-150" style="object-position: 28% 85%;" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBM9r7Yu5WlH_54GqsiZ3-MH9XLdJezjGwtblmZ-bhYezs-vHxM9nRQnRe2Bxxtf-bNhxQUuf98wijP1CJMkIdKCPdj12_4fhkiTR0ipqSfYYxRxQdwPjXI91Jy7yfLe_mlla34iYPl1qH_A4V_gfxfUDO2PMVM8O0ZkMjG7xIb_iQXIHM5GLSd3cASejuT9e8jZ86VagGkBxDb3dSpvJoBoF8h4OmIG_8YB1DoMLWbH3goVplgmyWR8Q" alt="Dash the Fast Hare"></div>
+<div class="min-w-0">
+<span class="font-label-btn text-label-btn text-secondary block leading-none">Dash</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[11px] leading-tight">The Fast Hare</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest/80 rounded-lg p-1.5 mt-1">
+<p class="font-body-sm text-body-sm text-on-surface font-medium leading-tight">Keeps cash in a drawer</p>
+<span class="font-label-badge text-label-badge text-secondary block mt-0.5">0% Real Yield</span>
+</div>
+</div>
+<!-- Kip (Tortoise) Badge with direct eyeline vector to CTA -->
+<div class="relative rounded-xl p-space-xs bg-surface-container-high/70 backdrop-blur-xl shadow-lg flex flex-col justify-between overflow-hidden">
+<div class="absolute -right-3 -top-3 w-12 h-12 bg-primary/15 rounded-full blur-md"></div>
+<div class="flex items-center gap-space-2xs mb-1.5">
+<div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center shadow-[0_3px_0_0_#00613c] overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Charming 3D rendered mint-green baby tortoise Kip with round navy eyeglasses, looking cheerful and wise, wearing a tiny shell backpack, smooth glossy clay style, character sheet closeup on face" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPAhU2s41NWt0-0D8lIJPRFBXAaEV_zuhFs0JA6r64fN23yjCqWgYgQ9eMOVnEweVxQkMoRHs5NUsBUXSe44lQ7YWOzWyLt72earFluibwJXPO6ax-8Pqu_hHXH3Jl9rUQQQ8hsQZ3zzB0-AcOuPC3gP3p3fHGHqDV6ywzkuhSaLwIv8vV-BWHRYqHzAR06wdM3sMgv9t3vi8fv4F9vxjRruPOTOsdMAasF2aYVS8f">
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-1">
+<span class="font-label-btn text-label-btn text-primary-fixed block leading-none">Kip</span>
+<span class="material-symbols-outlined text-[13px] text-primary" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[11px] leading-tight">Steady Guide</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest/80 rounded-lg p-1.5 mt-1">
+<p class="font-body-sm text-body-sm text-on-surface font-medium leading-tight">Monthly SIP Index</p>
+<span class="font-label-badge text-label-badge text-primary block mt-0.5">+12% Compounding</span>
+</div>
+</div>
+</div>
+<!-- Toggle Strip -->
+<div class="flex items-center justify-between bg-surface-container-high/50 backdrop-blur-md px-3 py-1.5 rounded-full mb-space-sm">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary">flare</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Show real inflation impact</span>
+</div>
+<button aria-label="Toggle Inflation Adjusted View" class="relative w-11 h-6 rounded-full bg-primary-container p-0.5 transition-colors focus:outline-none" id="inflationToggle">
+<div class="w-5 h-5 rounded-full bg-on-primary-container shadow-md transform translate-x-5 transition-transform" id="toggleThumb"></div>
+</button>
+</div>
+<!-- Main High-Readability Projection Stage Card -->
+<div class="relative bg-surface-container-lowest/90 backdrop-blur-2xl rounded-2xl p-space-md shadow-2xl flex flex-col overflow-hidden">
+<!-- Card Live Readouts Header -->
+<div class="flex items-start justify-between pb-space-xs">
+<div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">At Year <span class="text-on-surface font-bold" id="yearDisplayVal">20</span></span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-headline-md text-headline-md text-primary" id="kipValHeadline">₹5.00 Lakh</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Dash Cash Value</span>
+<div class="flex items-center justify-end gap-1 mt-0.5">
+<span class="font-headline-sm text-headline-sm text-secondary" id="dashValHeadline">₹1.20 Lakh</span>
+</div>
+<span class="font-label-badge text-label-badge text-tertiary-fixed-dim" id="dashPurchasingVal" style="display: block;">Buys only ₹37,417</span>
+</div>
+</div>
+<!-- Projection Graph Visual -->
+<div class="relative w-full h-44 my-space-xs flex flex-col justify-end">
+<svg class="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 340 160">
+<defs>
+<!-- Kip Radiant Gradient -->
+<linearGradient id="kipAreaGrad" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#38E399" stop-opacity="0.35"></stop>
+<stop offset="100%" stop-color="#38E399" stop-opacity="0.0"></stop>
+</linearGradient>
+<!-- Dash Inflation Melt (Purple Fog) -->
+<linearGradient id="theMeltGrad" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#cebdff" stop-opacity="0.25"></stop>
+<stop offset="100%" stop-color="#5c3faa" stop-opacity="0.05"></stop>
+</linearGradient>
+</defs>
+<!-- Horizontal Reference Gridlines -->
+<line stroke="#222a38" stroke-dasharray="3 3" x1="10" x2="330" y1="20" y2="20"></line>
+<line stroke="#222a38" stroke-dasharray="3 3" x1="10" x2="330" y1="70" y2="70"></line>
+<line stroke="#222a38" stroke-dasharray="3 3" x1="10" x2="330" y1="120" y2="120"></line>
+<line stroke="#2d3543" stroke-width="1.5" x1="10" x2="330" y1="150" y2="150"></line>
+<!-- Area Under Dash Line: The Melt (Inflation Loss) -->
+<polygon fill="url(#theMeltGrad)" id="meltPolygon" points="20,145 182.85714285714283,127.85714285714286 182.85714285714283,148 20,148" style="display: block;"></polygon>
+<!-- Kip Area Gradient -->
+<path d="M 20 145 C 93.28571428571428 145, 142.1428571428571 121.16024867694884, 182.85714285714283 101.65499759445244 L 182.85714285714283 150 L 20 150 Z" fill="url(#kipAreaGrad)" id="kipArea"></path>
+<!-- Dash Linear Line (Cash in Drawer) -->
+<path d="M 20 145 L 182.85714285714283 127.85714285714286" fill="none" id="dashLine" stroke="#f3be53" stroke-linecap="round" stroke-width="3"></path>
+<!-- Kip Exponential Line (Compounding SIP) -->
+<path d="M 20 145 C 93.28571428571428 145, 142.1428571428571 121.16024867694884, 182.85714285714283 101.65499759445244" fill="none" id="kipLine" stroke="#38e399" stroke-linecap="round" stroke-width="4"></path>
+<!-- The Melt Shading Text Callout inside graph -->
+<g transform="translate(190, 134)">
+<rect fill="#141c29" height="15" opacity="0.85" rx="4" width="118" x="-6" y="-11"></rect>
+<text fill="#cebdff" font-family="Space Grotesk" font-size="9" font-weight="700" x="0" y="0">THE MELT (Inflation Loss)</text>
+</g>
+<!-- Interactive Target Nodes at End of Lines -->
+<!-- Dash Node -->
+<circle cx="182.85714285714283" cy="127.85714285714286" fill="#f3be53" id="dashNode" r="5" stroke="#060e1b" stroke-width="2"></circle>
+<!-- Kip Apex Node with Pulse Ring -->
+<circle class="animate-ping" cx="182.85714285714283" cy="101.65499759445244" fill="#38e399" id="kipNodePulse" opacity="0.3" r="10"></circle>
+<circle cx="182.85714285714283" cy="101.65499759445244" fill="#38e399" id="kipNode" r="6" stroke="#003821" stroke-width="2"></circle>
+</svg>
+<!-- Floating Dynamic End-Caps / Badges inside graph zone -->
+<div class="absolute right-0 top-1 bg-surface-container-high/90 backdrop-blur-md px-2 py-0.5 rounded-lg flex items-center gap-1 shadow-md">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-badge text-label-badge text-primary-fixed" id="kipBadgeLabel">Kip: ₹5.00 Lakh</span>
+</div>
+<div class="absolute right-0 bottom-7 bg-surface-container-high/90 backdrop-blur-md px-2 py-0.5 rounded-lg flex items-center gap-1 shadow-md">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-badge text-label-badge text-secondary" id="dashBadgeLabel">Dash: ₹1.20 Lakh</span>
+</div>
+</div>
+<!-- Year Axis Scale Labels -->
+<div class="flex items-center justify-between text-on-surface-variant font-label-badge text-label-badge pt-1">
+<span class="">Year 0</span>
+<span class="">Year 10</span>
+<span class="text-primary font-bold">Year 20 (Target)</span>
+<span class="">Year 30</span>
+<span class="">Year 40</span>
+</div>
+<!-- Chunky Tactile Slider Control Bay -->
+<div class="mt-space-md pt-space-xs bg-surface-container/60 rounded-xl p-space-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary">schedule</span>
+<span class="font-label-btn text-label-btn text-on-surface">Time Horizon</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-primary" id="sliderValueText">20 Years</span>
+</div>
+<!-- Custom Touch Slider -->
+<div class="relative py-2 flex items-center">
+<input class="w-full h-3 bg-surface-container-lowest rounded-full appearance-none cursor-pointer accent-primary focus:outline-none" id="timeSlider" max="40" min="5" step="1" type="range" value="20">
+</div>
+<div class="flex items-center justify-between text-on-surface-variant">
+<p class="font-body-sm text-body-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-primary">touch_app</span>
+            Drag slider to see time do the work.
+          </p>
+<span class="font-label-badge text-label-badge text-on-surface-variant">5 to 40 yrs</span>
+</div>
+</div>
+<!-- Compliance Mandate Disclaimer -->
+<p class="font-body-sm text-body-sm text-on-surface-variant/70 text-center mt-space-xs text-[11px] leading-tight">
+        *Hypothetical 12% p.a. equity index return, 6% inflation. For illustration only, not financial advice.
+      </p>
+</div>
+<!-- Companion Micro-Callout anchored to lower thumb zone -->
+<div class="flex items-center gap-space-xs mt-space-sm mb-space-xs px-space-xs">
+<div class="w-10 h-10 rounded-full bg-surface-container-high/80 p-0.5 flex-shrink-0 shadow-md">
+<img class="w-full h-full rounded-full object-cover" data-alt="Charming cute baby tortoise Kip portrait, mint green skin, oversized round navy glasses, cheering expression looking excitedly towards the user bottom button" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDH2nhmvixUFverAJxOZhwnm6UBZ8ccddDyXQ3ZyfGOjUfrOeTRfVW5r0bGdDd6Y5taHbu9YvR5KddNQTG2B4F99OCur_8skTiq5mh4wFgRuLUIjPPbYbL0G2fcs4MdRiQU-AYlrkKngif3leWdmRNKlO74chhShfkCFXycxtshhVWkDBI_buoRnNKdyuYjgXoaV36HsbzmxR5W9UUIwY1eiEyzOMOlYT1QEyIidRw">
+</div>
+<div class="bg-surface-container/70 backdrop-blur-md rounded-xl px-3 py-1.5 flex-1">
+<p class="font-body-sm text-body-sm text-on-surface">
+<span class="font-bold text-primary">Kip says:</span> "Patience beats speed every single round!"
+        </p>
+</div>
+</div>
+<!-- Bottom Thumb Zone Primary CTA: Solid 3D Arcade Button -->
+<div class="pt-space-xs pb-space-md">
+<button class="w-full h-14 rounded-2xl bg-primary text-on-primary font-headline-sm text-headline-sm flex items-center justify-center gap-space-xs shadow-[0_5px_0_0_#006c44,0_10px_24px_rgba(107,255,182,0.3)] active:translate-y-1 active:shadow-[0_1px_0_0_#006c44] transition-all tracking-tight cursor-pointer" id="continueBtn">
+<span class="">Whoa. Show me how!</span>
+<span class="material-symbols-outlined text-[24px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<script>
+    // Mathematical engine for dynamic compounding & inflation comparison
+    const monthlyDeposit = 500;
+    const returnRate = 0.12;      // 12% p.a.
+    const inflationRate = 0.06;   // 6% p.a.
+
+    const timeSlider = document.getElementById('timeSlider');
+    const sliderValueText = document.getElementById('sliderValueText');
+    const yearDisplayVal = document.getElementById('yearDisplayVal');
+    const kipValHeadline = document.getElementById('kipValHeadline');
+    const dashValHeadline = document.getElementById('dashValHeadline');
+    const dashPurchasingVal = document.getElementById('dashPurchasingVal');
+    const kipBadgeLabel = document.getElementById('kipBadgeLabel');
+    const dashBadgeLabel = document.getElementById('dashBadgeLabel');
+    const inflationToggle = document.getElementById('inflationToggle');
+    const toggleThumb = document.getElementById('toggleThumb');
+    const meltPolygon = document.getElementById('meltPolygon');
+    const kipLine = document.getElementById('kipLine');
+    const kipArea = document.getElementById('kipArea');
+    const dashLine = document.getElementById('dashLine');
+    const kipNode = document.getElementById('kipNode');
+    const kipNodePulse = document.getElementById('kipNodePulse');
+    const dashNode = document.getElementById('dashNode');
+
+    let showInflation = true;
+
+    function formatLakhs(val) {
+      if (val >= 10000000) {
+        return '₹' + (val / 10000000).toFixed(2) + ' Cr';
+      }
+      if (val >= 100000) {
+        return '₹' + (val / 100000).toFixed(2) + ' Lakh';
+      }
+      return '₹' + Math.round(val).toLocaleString('en-IN');
+    }
+
+    function calculateValues(years) {
+      const months = years * 12;
+      const monthlyRate = returnRate / 12;
+      
+      // Future value of SIP: PMT * [((1 + r)^n - 1) / r] * (1 + r)
+      const sipFutureValue = monthlyDeposit * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) * (1 + monthlyRate);
+      
+      // Dash raw cash saved
+      const dashTotalSaved = monthlyDeposit * months;
+      
+      // Dash purchasing power after inflation: PV = FV / (1 + i)^t
+      const dashRealPurchasing = dashTotalSaved / Math.pow(1 + inflationRate, years);
+
+      return {
+        years,
+        sipFutureValue,
+        dashTotalSaved,
+        dashRealPurchasing
+      };
+    }
+
+    function updateProjection() {
+      const years = parseInt(timeSlider.value, 10);
+      const data = calculateValues(years);
+
+      sliderValueText.textContent = years + ' Years';
+      yearDisplayVal.textContent = years;
+
+      kipValHeadline.textContent = formatLakhs(data.sipFutureValue);
+      dashValHeadline.textContent = formatLakhs(data.dashTotalSaved);
+      
+      if (showInflation) {
+        dashPurchasingVal.textContent = 'Buys only ' + formatLakhs(data.dashRealPurchasing);
+        dashPurchasingVal.style.display = 'block';
+        meltPolygon.style.display = 'block';
+      } else {
+        dashPurchasingVal.textContent = 'Nominal Cash Val';
+        meltPolygon.style.display = 'none';
+      }
+
+      kipBadgeLabel.textContent = 'Kip: ' + formatLakhs(data.sipFutureValue);
+      dashBadgeLabel.textContent = 'Dash: ' + formatLakhs(data.dashTotalSaved);
+
+      // SVG dynamic graph path mapping (years 5 to 40 scaled along width)
+      const minYears = 5;
+      const maxYears = 40;
+      const progress = (years - minYears) / (maxYears - minYears);
+      
+      // Coordinates mapping
+      const endX = 80 + progress * 240; // X spans from 80px to 320px
+      const kipY = 145 - Math.pow(progress, 1.25) * 125; // exponential curve upward
+      const dashY = 145 - progress * 40; // linear mild slope upward
+
+      // Kip Line & Area
+      const cp1X = 20 + (endX - 20) * 0.45;
+      const cp1Y = 145;
+      const cp2X = 20 + (endX - 20) * 0.75;
+      const cp2Y = kipY + (145 - kipY) * 0.45;
+
+      const pathString = `M 20 145 C ${cp1X} ${cp1Y}, ${cp2X} ${cp2Y}, ${endX} ${kipY}`;
+      kipLine.setAttribute('d', pathString);
+      kipArea.setAttribute('d', `${pathString} L ${endX} 150 L 20 150 Z`);
+
+      // Dash Line
+      dashLine.setAttribute('d', `M 20 145 L ${endX} ${dashY}`);
+
+      // Nodes
+      kipNode.setAttribute('cx', endX);
+      kipNode.setAttribute('cy', kipY);
+      kipNodePulse.setAttribute('cx', endX);
+      kipNodePulse.setAttribute('cy', kipY);
+
+      dashNode.setAttribute('cx', endX);
+      dashNode.setAttribute('cy', dashY);
+
+      // Melt polygon
+      meltPolygon.setAttribute('points', `20,145 ${endX},${dashY} ${endX},148 20,148`);
+    }
+
+    timeSlider.addEventListener('input', updateProjection);
+
+    inflationToggle.addEventListener('click', () => {
+      showInflation = !showInflation;
+      if (showInflation) {
+        toggleThumb.classList.remove('translate-x-0');
+        toggleThumb.classList.add('translate-x-5');
+        inflationToggle.classList.replace('bg-surface-container-high', 'bg-primary-container');
+        toggleThumb.classList.replace('bg-on-surface-variant', 'bg-on-primary-container');
+      } else {
+        toggleThumb.classList.remove('translate-x-5');
+        toggleThumb.classList.add('translate-x-0');
+        inflationToggle.classList.replace('bg-primary-container', 'bg-surface-container-high');
+        toggleThumb.classList.replace('bg-on-primary-container', 'bg-on-surface-variant');
+      }
+      updateProjection();
+    });
+
+    // Initial projection setup
+    updateProjection();
+  </script>
+</div></main>
+
+</body></html>

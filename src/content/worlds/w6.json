@@ -1,0 +1,396 @@
+{
+  "id": "w6",
+  "index": 6,
+  "title": "Three Doors",
+  "tagline": "Arbitrage, speculation or hedging?",
+  "principle": "Arbitrage vs speculation vs hedging",
+  "product": "Futures, options, crypto exchanges (as a case study), arbitrage funds",
+  "philosophy": "Know your intent before you act",
+  "color": "#B45309",
+  "track": "builder",
+  "lessons": [
+    {
+      "id": "w6-l1",
+      "title": "Three doors",
+      "subtitle": "Why are you making this trade?",
+      "capability": "Tell apart hedging, speculation and arbitrage from a trade's intent.",
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "dash",
+          "mood": "cheer",
+          "lines": [
+            "I bought a coin because it'll moon. My uncle sold wheat futures. My cousin buys on one exchange and sells on another. We're all investors!"
+          ]
+        },
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "think",
+          "lines": [
+            "You're all trading, but behind three different doors.",
+            "Hedging reduces a risk you already have. Speculation bets on a price move. Arbitrage catches a price gap between two markets."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "intent",
+          "title": "Intent Detective",
+          "caption": "Swipe each case to its door (← ↑ →), or tap a door.",
+          "params": {
+            "rounds": 5
+          }
+        },
+        {
+          "type": "quiz",
+          "question": "A farmer locks today's wheat price for her harvest. That's…",
+          "options": [
+            {
+              "text": "Hedging",
+              "why": "Yes. She already has wheat; she's removing the price risk.",
+              "correct": true
+            },
+            {
+              "text": "Speculation",
+              "why": "She isn't betting on a move. She's avoiding one."
+            },
+            {
+              "text": "Arbitrage",
+              "why": "There's no price gap between two markets here."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Buying a share because you think it'll double by Friday is…",
+          "options": [
+            {
+              "text": "Speculation",
+              "why": "Right. A bet on a price move, with no risk being reduced.",
+              "correct": true
+            },
+            {
+              "text": "Hedging",
+              "why": "Nothing is being protected."
+            },
+            {
+              "text": "Investing for the long term",
+              "why": "Friday isn't long term!"
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "title": "In real life",
+          "realLife": "The same instrument, like a futures contract, can hedge, speculate or arbitrage. What matters is why you use it. Ask yourself first: which door am I walking through?",
+          "deeper": "Exchanges and SEBI watch for manipulation in all three. In India, retail speculation in F&O grew so fast that SEBI tightened the rules in 2024, raising contract sizes and limiting weekly expiries."
+        }
+      ]
+    },
+    {
+      "id": "w6-l2",
+      "title": "Speculation and leverage",
+      "subtitle": "Borrowed power cuts both ways",
+      "capability": "Explain leverage and why it can wipe out an account on a small move.",
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "dash",
+          "mood": "cheer",
+          "lines": [
+            "My app lets me trade 10× my money! ₹10,000 controls ₹1,00,000. If it rises 10%, I double!"
+          ]
+        },
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "worry",
+          "lines": [
+            "And if it falls 10%, Dash?"
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "leverage",
+          "title": "The leverage dial",
+          "caption": "Set the leverage, then try different market moves.",
+          "predict": {
+            "question": "With 10× leverage, a 10% fall does what to your ₹10,000?",
+            "options": [
+              "Wipes it out",
+              "Loses ₹1,000",
+              "Nothing"
+            ],
+            "correct": 0,
+            "reveal": "10 × 10% = 100%. The whole ₹10,000 is gone, and the broker closes your position (a margin call)."
+          }
+        },
+        {
+          "type": "quiz",
+          "question": "Leverage multiplies…",
+          "options": [
+            {
+              "text": "Both gains and losses",
+              "why": "Yes. It's a magnifying glass, not a shield.",
+              "correct": true
+            },
+            {
+              "text": "Only gains",
+              "why": "If only. Losses are magnified exactly the same way."
+            },
+            {
+              "text": "Only losses",
+              "why": "Gains too. That's the temptation."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Why do most F&O speculators lose money?",
+          "options": [
+            {
+              "text": "Leverage, costs, and short-term noise",
+              "why": "Right. Small moves are mostly noise, every trade costs money, and leverage magnifies the mistakes.",
+              "correct": true
+            },
+            {
+              "text": "The markets are closed too often",
+              "why": "Not the reason."
+            },
+            {
+              "text": "They hedge too much",
+              "why": "Most aren't hedging at all."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "title": "In real life",
+          "realLife": "SEBI found that about 9 in 10 individual futures and options traders lost money between FY22 and FY24, with net losses of over ₹1.8 lakh crore. Leverage is a big part of why.",
+          "deeper": "Margin is the deposit a broker demands for a leveraged position. If losses eat into it, you get a margin call: add money now or be closed out at a loss."
+        }
+      ]
+    },
+    {
+      "id": "w6-l3",
+      "title": "Arbitrage Rush",
+      "subtitle": "When is a price gap free money?",
+      "capability": "Explain arbitrage, and why fees and delays make most gaps unprofitable.",
+      "unlockCards": [
+        "crypto"
+      ],
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "dash",
+          "mood": "cheer",
+          "lines": [
+            "Bitcoin is cheaper on Exchange A than on B! I'll buy on A and sell on B. Free money!"
+          ]
+        },
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "think",
+          "lines": [
+            "That's arbitrage. But check the fees on both sides, and how long the coins take to move.",
+            "Gaps often close before you get there."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "arbitrage",
+          "title": "Arbitrage Rush",
+          "caption": "Two exchanges tick side by side. Trade only when the gap beats the fees, and it might hold."
+        },
+        {
+          "type": "quiz",
+          "question": "An arbitrage trade only pays when the gap…",
+          "options": [
+            {
+              "text": "Beats the fees and survives the delay",
+              "why": "Yes. Fees on both sides plus the risk the gap closes in transit.",
+              "correct": true
+            },
+            {
+              "text": "Is above zero",
+              "why": "A tiny gap loses to fees."
+            },
+            {
+              "text": "Is on a famous coin",
+              "why": "The coin doesn't matter; the maths does."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Why do big price gaps rarely last?",
+          "options": [
+            {
+              "text": "Many traders rush to close them",
+              "why": "Right. Arbitrage is fiercely competitive, so gaps vanish fast.",
+              "correct": true
+            },
+            {
+              "text": "The government fixes prices",
+              "why": "Prices are set by buyers and sellers."
+            },
+            {
+              "text": "Exchanges share one price",
+              "why": "They don't, which is why gaps appear at all."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "title": "Card unlocked: Crypto",
+          "realLife": "In India, crypto gains are taxed at 30% with 1% TDS on transfers, which kills most small arbitrage. A regulated version exists: arbitrage mutual funds earn the small gap between share and futures prices.",
+          "cardId": "crypto",
+          "deeper": "Arbitrage funds buy shares in the cash market and sell the same shares in the futures market, pocketing the gap at expiry. Returns are modest and similar to liquid funds, and they're taxed like equity funds."
+        }
+      ]
+    },
+    {
+      "id": "w6-l4",
+      "title": "Hedging with futures",
+      "subtitle": "Asha locks her price",
+      "capability": "Explain how a futures contract lets a business remove price risk.",
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "talk",
+          "lines": [
+            "Meet Asha. She farms wheat. Her costs are fixed, but the price at harvest could be anything.",
+            "A buyer offers to fix the price today, with a futures contract."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "farmerHedge",
+          "title": "Asha's choice",
+          "caption": "Fix the price or wait and see? Try a glut, a normal year and a shortage."
+        },
+        {
+          "type": "quiz",
+          "question": "Asha fixed ₹2,500. At harvest, the price is ₹3,200. She…",
+          "options": [
+            {
+              "text": "Still gets ₹2,500",
+              "why": "Yes. She gave up the windfall in exchange for certainty.",
+              "correct": true
+            },
+            {
+              "text": "Gets ₹3,200",
+              "why": "She agreed to ₹2,500 in advance."
+            },
+            {
+              "text": "Loses everything",
+              "why": "She gets exactly what she agreed."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Why would Asha hedge, even knowing she might miss a windfall?",
+          "options": [
+            {
+              "text": "A glut could ruin her",
+              "why": "Right. Hedgers care more about avoiding disaster than about the best possible outcome.",
+              "correct": true
+            },
+            {
+              "text": "To speculate on wheat",
+              "why": "Hedging is the opposite of speculating."
+            },
+            {
+              "text": "Futures are free",
+              "why": "They aren't, and she gives up upside too."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "title": "In real life",
+          "realLife": "Airlines hedge fuel prices, exporters hedge the rupee–dollar rate, and farmers' groups can lock crop prices on the NCDEX commodity exchange.",
+          "deeper": "The person on the other side of Asha's hedge might be a mill that also wants certainty (both hedge), or a speculator who takes on her risk for a possible profit."
+        }
+      ]
+    },
+    {
+      "id": "w6-l5",
+      "title": "Boss: The Detective's Desk",
+      "subtitle": "Ten cases, three doors",
+      "capability": "Classify trades by intent, and spot speculation dressed up as investing.",
+      "boss": true,
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "dash",
+          "mood": "cheer",
+          "lines": [
+            "Okay Kip, I get it now. Give me the hardest cases you've got!"
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "intent",
+          "title": "The big case file",
+          "caption": "Eight cases. Swipe them all to the right doors.",
+          "params": {
+            "rounds": 8
+          }
+        },
+        {
+          "type": "play",
+          "mode": "risk",
+          "durationSec": 60,
+          "brief": "Three Doors run! Stay calm in the WILD lane, keep a cash cushion, and dodge Dash's hot tips."
+        },
+        {
+          "type": "quiz",
+          "question": "Someone buys gold to protect savings against rupee weakness. That's closest to…",
+          "options": [
+            {
+              "text": "Hedging",
+              "why": "Yes. It's reducing a risk they already have.",
+              "correct": true
+            },
+            {
+              "text": "Arbitrage",
+              "why": "There's no price gap being caught."
+            },
+            {
+              "text": "Scalping",
+              "why": "They're not trading in and out."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Which door has the most people losing money?",
+          "options": [
+            {
+              "text": "Speculation",
+              "why": "Right. Especially with leverage and short horizons.",
+              "correct": true
+            },
+            {
+              "text": "Hedging",
+              "why": "Hedgers usually accept a small cost on purpose."
+            },
+            {
+              "text": "Arbitrage",
+              "why": "Arbitrage profits are small, but it's not where most people lose."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "title": "World complete: Three Doors",
+          "realLife": "You can now name the intent behind any trade. When an app, friend or influencer pitches a trade, ask: is this reducing a risk, betting on a move, or catching a gap?"
+        }
+      ]
+    }
+  ]
+}

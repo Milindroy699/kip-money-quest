@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Lesson Concept · Real value after 10 years</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Outfit', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    .font-heading {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    /* 3D button press effect */
+    .btn-3d {
+      box-shadow: 0 4px 0 #0d965e, 0 8px 18px rgba(56, 227, 153, 0.35);
+      transition: all 0.12s ease-in-out;
+    }
+    .btn-3d:active {
+      transform: translateY(3px);
+      box-shadow: 0 1px 0 #0d965e, 0 3px 8px rgba(56, 227, 153, 0.25);
+    }
+    /* Glass card treatment: 85% opacity frosted navy */
+    .glass-card {
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    }
+    .glass-pill {
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+    }
+  </style>
+</head>
+<body class="bg-[#060b13] text-white flex justify-center items-center min-h-screen p-0 m-0">
+
+  <!-- Mobile Container (390 x 844 iPhone Viewport) -->
+  <div class="relative w-[390px] h-[844px] overflow-hidden bg-[#070e1b] flex flex-col justify-between shadow-2xl">
+    
+    <!-- Background: The Melt Dusk Scene with dark scrim for high contrast (>4.5:1) -->
+    <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+      <img 
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVw3zyfKPC2AKue6KCrJUuyuPIVeJYakkrI9BTJhUooAY6XqePnc2wzIyEfK4TQECiwbYLwPXnd0WBUfF0GVX8toWi20y1CqwSNML7cznKYfEMoMBWrGg5TGHLbebzX-2WYBZeF5PE96hS6qmRacLOrZxNTUfjayvlZhZtjguzElt_P6xta2IC4IHebUOX6dsNGwk2whH8qksbkjIl0u-LV4PIpIUtsdQV2T8rrxoZ_fxRJQ5tV5wjfIjtRH2azkuOyjEr9Q9ajme3" 
+        alt="The Melt Background" 
+        class="w-full h-full object-cover object-bottom opacity-40 mix-blend-luminosity scale-105"
+      />
+      <!-- Radial and linear dark fintech scrims -->
+      <div class="absolute inset-0 bg-gradient-to-b from-[#070e1b]/95 via-[#0b1424]/85 to-[#050b14]/95"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(56,227,153,0.08),transparent_60%)]"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_65%,rgba(168,85,247,0.12),transparent_50%)]"></div>
+    </div>
+
+    <!-- Header Section (Close X, Progress Bar Step 2/5, Streak Chip) -->
+    <header class="relative z-10 px-5 pt-12 pb-3 flex flex-col gap-3">
+      <div class="flex items-center justify-between">
+        <!-- Close Button (min 44pt tap target) -->
+        <button class="w-11 h-11 rounded-full glass-pill flex items-center justify-center text-slate-300 hover:text-white hover:bg-slate-800/60 active:scale-95 transition-all" aria-label="Close lesson">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+        <!-- Progress Tracker (Step 2 of 5) -->
+        <div class="flex flex-col items-center gap-1.5 flex-1 max-w-[170px] mx-2">
+          <span class="text-[11px] font-semibold tracking-wider text-slate-300 uppercase">Step 2 of 5</span>
+          <div class="w-full h-2 rounded-full bg-slate-800/80 p-0.5 border border-white/5 flex gap-1">
+            <div class="h-full rounded-full bg-[#38e399] w-full"></div>
+            <div class="h-full rounded-full bg-[#38e399] w-full shadow-[0_0_8px_rgba(56,227,153,0.6)]"></div>
+            <div class="h-full rounded-full bg-slate-700/60 w-full"></div>
+            <div class="h-full rounded-full bg-slate-700/60 w-full"></div>
+            <div class="h-full rounded-full bg-slate-700/60 w-full"></div>
+          </div>
+        </div>
+
+        <!-- Streak Multiplier Chip (Honey Gold) -->
+        <div class="h-10 px-3 rounded-full glass-pill border-[#f59e0b]/30 flex items-center gap-1.5 shadow-[0_0_12px_rgba(245,158,11,0.15)]">
+          <span class="text-sm">🔥</span>
+          <span class="font-heading text-xs font-bold text-[#fbbf24] tracking-tight">×1.04 STREAK</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="relative z-10 px-5 flex-1 flex flex-col justify-start overflow-y-auto no-scrollbar pb-3">
+      
+      <!-- Title & Concept Briefing with soft backing scrim -->
+      <div class="mb-4 mt-1">
+        <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#38e399]/10 border border-[#38e399]/25 text-[#38e399] text-[11px] font-bold tracking-wide uppercase mb-1.5">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+          Concept Deep Dive
+        </div>
+        <h1 class="font-heading text-[25px] font-bold tracking-tight text-white leading-tight">
+          Real value after 10 years
+        </h1>
+        <p class="text-[13px] text-slate-300 font-medium mt-1">
+          Tap a product. Compare its rate with The Melt.
+        </p>
+      </div>
+
+      <!-- Segmented Control: Cash | Savings 3% (selected) | FD 7% -->
+      <div class="w-full p-1 rounded-2xl bg-[#0d1627]/90 border border-white/10 flex items-center mb-4 shadow-inner">
+        <!-- Cash Tab -->
+        <button class="flex-1 py-2.5 text-center text-xs font-medium text-slate-400 hover:text-slate-200 transition-colors rounded-xl" aria-selected="false">
+          Cash <span class="text-[10px] text-slate-400 block font-normal">0%</span>
+        </button>
+
+        <!-- Savings 3% (Active State: Solid Navy Glass with Neon Mint accent) -->
+        <button class="flex-1 py-2.5 text-center text-xs font-bold text-white bg-[#1a253a] border border-[#38e399]/40 rounded-xl shadow-[0_2px_10px_rgba(0,0,0,0.4)] relative" aria-selected="true">
+          <span class="text-[#38e399]">Savings 3%</span>
+          <span class="text-[10px] text-emerald-400/80 block font-medium">Safe Liquid</span>
+          <span class="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-[#38e399] animate-pulse"></span>
+        </button>
+
+        <!-- FD 7% Tab -->
+        <button class="flex-1 py-2.5 text-center text-xs font-medium text-slate-400 hover:text-slate-200 transition-colors rounded-xl" aria-selected="false">
+          FD 7% <span class="text-[10px] text-slate-400 block font-normal">Fixed Term</span>
+        </button>
+      </div>
+
+      <!-- Comparison Chart Glass Card (85% Opacity, 3 Vertical Bars) -->
+      <section class="glass-card rounded-2xl p-4 mb-3 relative overflow-hidden">
+        
+        <!-- Subtle Card Top Badge -->
+        <div class="flex justify-between items-center mb-4 pb-2 border-b border-white/5">
+          <span class="text-[11px] font-semibold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-[#38e399]"></span> 10-Year Purchasing Power
+          </span>
+          <span class="text-[11px] font-bold text-slate-300 bg-slate-800/80 px-2 py-0.5 rounded-full border border-white/5">
+            Initial: ₹10,000
+          </span>
+        </div>
+
+        <!-- 3 Vertical Bars Container -->
+        <div class="h-44 w-full flex items-end justify-between gap-3 px-1 pt-6 pb-2">
+          
+          <!-- Bar 1: Put in today (Grey) -->
+          <div class="flex-1 flex flex-col items-center h-full justify-end group">
+            <div class="mb-2 text-center">
+              <span class="block font-heading text-[15px] font-bold text-slate-100 tracking-tight leading-none">₹10,000</span>
+              <span class="text-[9.5px] font-medium text-slate-400 block mt-1 uppercase">Today</span>
+            </div>
+            <!-- Bar Pillar -->
+            <div class="w-full max-w-[62px] h-[95px] rounded-t-xl bg-gradient-to-t from-slate-700/80 to-slate-500/90 border border-slate-400/30 flex items-center justify-center shadow-lg relative">
+              <span class="text-[11px] font-bold text-slate-200">100%</span>
+            </div>
+            <span class="text-[10.5px] font-semibold text-slate-300 text-center mt-2 leading-tight">
+              You put in<br>today
+            </span>
+          </div>
+
+          <!-- Bar 2: Balance in 10 yrs (Neon Mint Green) -->
+          <div class="flex-1 flex flex-col items-center h-full justify-end">
+            <div class="mb-2 text-center">
+              <span class="block font-heading text-[15px] font-bold text-[#38e399] tracking-tight leading-none">₹13,439</span>
+              <span class="text-[9.5px] font-semibold text-emerald-400/90 block mt-1 uppercase">+34.4% nominal</span>
+            </div>
+            <!-- Bar Pillar -->
+            <div class="w-full max-w-[62px] h-[128px] rounded-t-xl bg-gradient-to-t from-[#146b45] to-[#38e399] border border-[#38e399]/60 flex items-center justify-center shadow-[0_0_18px_rgba(56,227,153,0.35)] relative overflow-hidden">
+              <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.25)_1px,transparent_1px)] bg-[size:100%_8px] opacity-30"></div>
+              <span class="text-[11px] font-bold text-slate-950 z-10">Bank 🪙</span>
+            </div>
+            <span class="text-[10.5px] font-bold text-[#38e399] text-center mt-2 leading-tight">
+              Balance in<br>10 yrs
+            </span>
+          </div>
+
+          <!-- Bar 3: What it buys (The Melt Purple) -->
+          <div class="flex-1 flex flex-col items-center h-full justify-end">
+            <div class="mb-2 text-center">
+              <span class="block font-heading text-[15px] font-bold text-[#c084fc] tracking-tight leading-none">₹7,504</span>
+              <span class="text-[9.5px] font-semibold text-purple-300 block mt-1 uppercase">−25% power</span>
+            </div>
+            <!-- Bar Pillar -->
+            <div class="w-full max-w-[62px] h-[72px] rounded-t-xl bg-gradient-to-t from-[#581c87] to-[#a855f7] border border-purple-400/50 flex items-center justify-center shadow-[0_0_15px_rgba(168,85,247,0.3)] relative">
+              <span class="text-[10px] font-bold text-purple-100 flex items-center gap-0.5">
+                Melted 💨
+              </span>
+            </div>
+            <span class="text-[10.5px] font-semibold text-purple-300 text-center mt-2 leading-tight">
+              What it buys<br>in today's ₹
+            </span>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- Result Strip with Purple Tint (The Melt Highlight) + Mascot Kip neatly anchored -->
+      <div class="relative glass-card rounded-2xl p-3.5 border-purple-500/30 bg-[#16122a]/85 mb-2 overflow-visible">
+        
+        <div class="flex items-start gap-3">
+          <!-- The Melt Warning Icon (Purple cloud / hazard) -->
+          <div class="w-10 h-10 rounded-xl bg-purple-900/60 border border-purple-400/40 flex items-center justify-center shrink-0 shadow-[0_0_12px_rgba(168,85,247,0.25)] text-lg">
+            🟣
+          </div>
+
+          <!-- Result Details -->
+          <div class="flex-1 pr-14">
+            <div class="flex items-center gap-1.5 flex-wrap">
+              <span class="font-heading text-[13px] font-bold text-purple-200">
+                Real return ≈ −2.8% a year
+              </span>
+              <span class="px-1.5 py-0.2 rounded text-[10px] font-bold bg-purple-500/20 text-purple-300 border border-purple-500/30">
+                The Melt wins
+              </span>
+            </div>
+            <p class="text-[12px] text-purple-300/80 font-medium mt-0.5">
+              3% interest − 6% inflation
+            </p>
+          </div>
+        </div>
+
+        <!-- Mascot Kip: Clean cutout with NO box behind him, placed on the edge looking toward the main CTA -->
+        <div class="absolute -right-1 -top-6 w-[70px] h-[76px] pointer-events-none drop-shadow-[0_8px_16px_rgba(0,0,0,0.6)]">
+          <div class="relative w-full h-full">
+            <img 
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_ltx12pLajWjGmoPNAZlV6AhL_OhTVND02ZOOaVbgQh4XLyOqhQ4UOpimX5RF6vvI8l4crXOuOet4eclTMYlAgykWysbKNtXWGtd8wzMGCTFu9JI00rP6ozhoE_YObvVmqFp0TbxEwBrfYzkD-Y2ICZomOuSg1SskARN3P6GumSMt8sWViZdC6LPh1-InfvK7qo5T6fwtxiQWPlC7eh_yI8rDfRTiOo3xvHlpu4UTsMRASPv5I8Ix8hogsiZcjqdd3v_vC3B0soGS" 
+              alt="Mascot Kip" 
+              class="w-full h-full object-contain [mask-image:radial-gradient(circle_at_center,black_80%,transparent_100%)] filter brightness-105"
+            />
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Mandatory Indian Financial Education Disclaimer -->
+      <div class="text-center mt-1">
+        <p class="text-[10px] text-slate-400 font-medium tracking-wide">
+          Hypothetical returns for learning. Purely simulated ₹. Not advice.
+        </p>
+      </div>
+
+    </main>
+
+    <!-- Bottom Thumb-Zone CTA Section (min 44pt tap target) -->
+    <footer class="relative z-10 px-5 pt-2 pb-8 bg-gradient-to-t from-[#060b13] via-[#060b13]/90 to-transparent">
+      <button 
+        class="w-full h-14 rounded-2xl bg-[#38e399] text-[#071d13] font-heading text-lg font-bold tracking-wide btn-3d flex items-center justify-center gap-2 cursor-pointer"
+        aria-label="Got it"
+      >
+        <span>Got it</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 stroke-[2.5]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </button>
+      
+      <!-- iOS Home Bar Indicator -->
+      <div class="w-32 h-1 bg-white/20 rounded-full mx-auto mt-4"></div>
+    </footer>
+
+  </div>
+
+</body>
+</html>
