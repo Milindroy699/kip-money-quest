@@ -129,7 +129,23 @@ function label(canvas: SkCanvas, font: SkFont, text: string, x: number, y: numbe
   canvas.restore();
 }
 
-function drawEntity(canvas: SkCanvas, v: View3D, e: Entity, t: number, font: SkFont, sprites: Sprites) {
+/**
+ * Guided Answer Gates: while the question is asked, every gate wears its lane's arrow ('pick'), the
+ * same arrows as on the card; once answered, Kip points at the right gate ('right') and the other
+ * two step back ('other').
+ */
+type GateGuide = 'pick' | 'right' | 'other' | null;
+let dim: SkPaint | null = null;
+/** A layer paint that draws whatever's inside it at 40% opacity (created on first use). */
+function dimLayer(): SkPaint {
+  if (!dim) {
+    dim = Skia.Paint();
+    dim.setAlphaf(0.4);
+  }
+  return dim;
+}
+
+function drawEntity(canvas: SkCanvas, v: View3D, e: Entity, t: number, font: SkFont, sprites: Sprites, guide: GateGuide = null) {
   const s = sOf(e.z);
   const x = laneX(v, e.lane, e.z);
   const gy = groundY(v, e.z);
@@ -151,6 +167,31 @@ function drawEntity(canvas: SkCanvas, v: View3D, e: Entity, t: number, font: SkF
     // Answer Gate: a violet arch with the answer on its banner.
     const w = 0.92 * u;
     const h = 1.15 * u;
+    if (guide === 'other') canvas.saveLayer(dimLayer());
+    if (guide === 'right') {
+      // Kip's pointer: a green glow around the gate and a bouncing arrow above it.
+      const glow = 0.25 + 0.15 * Math.sin(t * 8);
+      canvas.drawRRect(Skia.RRectXY(Skia.XYWHRect(x - w / 2 - 0.12 * u, gy - h - 0.3 * u, w + 0.24 * u, h + 0.36 * u), 0.12 * u, 0.12 * u), fill(colors.kip, glow * fade));
+      canvas.drawRRect(Skia.RRectXY(Skia.XYWHRect(x - w / 2 - 0.12 * u, gy - h - 0.3 * u, w + 0.24 * u, h + 0.36 * u), 0.12 * u, 0.12 * u), stroke(colors.kipDark, 0.05 * u, fade));
+      const bob = Math.abs(Math.sin(t * 6)) * 0.18 * u;
+      const ay = gy - h - 0.42 * u - bob;
+      const arrow = Skia.PathBuilder.Make().moveTo(x - 0.22 * u, ay - 0.3 * u).lineTo(x + 0.22 * u, ay - 0.3 * u).lineTo(x, ay).close().build();
+      canvas.drawPath(arrow, fill(colors.kip, fade));
+      canvas.drawPath(arrow, stroke('#FFFFFF', 0.04 * u, fade));
+    }
+    if (guide === 'pick') {
+      // The lane's arrow, matching the card: ◀ left, ▲ middle, ▶ right.
+      const r = Math.max(0.22 * u, 11);
+      const cy = gy - h - 0.16 * u - r - 4;
+      canvas.drawCircle(x, cy, r, fill(colors.meltDark, fade));
+      canvas.drawCircle(x, cy, r, stroke('#FFFFFF', 2, fade));
+      const a = r * 0.5;
+      const tri = Skia.PathBuilder.Make();
+      if (e.lane === -1) tri.moveTo(x - a, cy).lineTo(x + a * 0.7, cy - a).lineTo(x + a * 0.7, cy + a);
+      else if (e.lane === 1) tri.moveTo(x + a, cy).lineTo(x - a * 0.7, cy - a).lineTo(x - a * 0.7, cy + a);
+      else tri.moveTo(x, cy - a).lineTo(x + a, cy + a * 0.7).lineTo(x - a, cy + a * 0.7);
+      canvas.drawPath(tri.close().build(), fill('#FFFFFF', fade));
+    }
     const pulse = 0.14 + 0.06 * Math.sin(t * 5 + e.lane);
     canvas.drawOval(Skia.XYWHRect(x - w * 0.42, gy - 0.06 * u, w * 0.84, 0.12 * u), fill(colors.ink, 0.12 * fade));
     canvas.drawRect(Skia.XYWHRect(x - w / 2, gy - h, w, h), fill(colors.melt, pulse * fade));
@@ -161,6 +202,7 @@ function drawEntity(canvas: SkCanvas, v: View3D, e: Entity, t: number, font: SkF
     const text = e.label ?? '';
     const fit = Math.min(u / 170, (w * 0.92) / Math.max(font.measureText(text).width, 1));
     label(canvas, font, text, x, gy - h + 0.06 * u, fit, colors.ink);
+    if (guide === 'other') canvas.restore();
     return;
   }
   let pop = 1;
@@ -618,10 +660,16 @@ export function drawFrame(canvas: SkCanvas, v: View3D, s: RunState, t: number, f
   const dashBefore = (z: number) => {
     while (dashes.length && dashes[0].z > z) dashes.shift()!.draw();
   };
+  const ask = s.ask && s.ask.phase !== 'coming' ? s.ask : null;
+  const guideOf = (e: Entity): GateGuide => {
+    if (!ask || e.kind !== 'answer' || e.questionId !== ask.questionId) return null;
+    if (ask.phase === 'asking') return 'pick';
+    return e.correct ? 'right' : 'other';
+  };
   for (const e of sorted) {
     if (e.z < 0.3 || e.done) continue;
     dashBefore(e.z);
-    drawEntity(canvas, v, e, s.time, font, sprites);
+    drawEntity(canvas, v, e, s.time, font, sprites, guideOf(e));
   }
   dashBefore(0);
   drawKip(canvas, v, s, t, sprites);

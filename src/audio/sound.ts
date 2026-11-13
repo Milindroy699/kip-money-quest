@@ -1,5 +1,5 @@
 /**
- * Sound effects and run music (synthesised by scripts/make_sounds.py).
+ * Sound effects and run music (synthesised by scripts/make_sounds.py, apart from Kip's "Hii!").
  * Respects the phone's silent switch, mixes with the player's own music, and follows the
  * Sound / Music settings in You.
  */
@@ -14,6 +14,8 @@ const SFX = {
   wrong: require('../../assets/sounds/wrong.wav'),
   shield: require('../../assets/sounds/shield.wav'),
   celebrate: require('../../assets/sounds/celebrate.wav'),
+  /** Kip's "Hii!" and a chime, cut from his Veo clip (design/source-art/characters/kip/kip_hi_1.mp4). */
+  kipHi: require('../../assets/sounds/kip_hi.wav'),
 };
 const MUSIC = require('../../assets/sounds/music_run.wav');
 

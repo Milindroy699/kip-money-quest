@@ -57,7 +57,12 @@ def key_magenta(a, glow=False, pinkless=False):
         pinkish = np.minimum(a[..., 0], a[..., 2]) - a[..., 1] > 20
         alpha = np.where(pinkish, np.minimum(alpha, np.clip((0.22 - m) / 0.2, 0, 1)), alpha)
 
-    # Soft edges: un-mix the local backdrop colour so no pink fringe is left.
+    return unmix_edges(a, alpha, all_edges=pinkless), alpha
+
+
+def unmix_edges(a, alpha, all_edges=False):
+    """Soft edges: un-mix the local backdrop colour so no pink fringe is left. Returns the colour.
+    all_edges: also treat fully solid pixels next to the backdrop as edges (art with no pink)."""
     bgmask = (alpha == 0).astype(np.float32)
     if bgmask.sum() > 100:
         den = ndimage.gaussian_filter(bgmask, 12)
@@ -66,14 +71,28 @@ def key_magenta(a, glow=False, pinkless=False):
         bg = np.where(den[..., None] > 1e-3, num / np.maximum(den, 1e-3)[..., None], fallback)
     else:
         bg = np.broadcast_to(np.array([255, 0, 255], np.float32), a.shape)
-    edge = (alpha > 0) & (alpha < 1) if not pinkless else alpha > 0
+    edge = (alpha > 0) & (alpha < 1) if not all_edges else alpha > 0
     al = np.maximum(alpha, 0.08)[..., None]
     F = np.where(edge[..., None], np.clip((a - (1 - al) * bg) / al, 0, 255), a).astype(np.float32)
     # Whatever tint survives on the edge: no more magenta than neutral.
     excess = np.clip(np.minimum(F[..., 0], F[..., 2]) - F[..., 1] - 10, 0, None) * edge
     F[..., 0] -= excess
     F[..., 2] -= excess
-    return F, alpha
+    return F
+
+
+def key_pink(a):
+    """For a raspberry-pink backdrop (Veo's take on magenta, about RGB 212/90/152), where the
+    magentaness ratio is too low to trust. Kip has almost no pink, so the backdrop is simply
+    whatever is much pinker than him: d = min(R, B) - G is about 55–65 on the backdrop and its
+    floor shadow, and under about 25 on Kip (blush, mouth and tongue included)."""
+    d = np.minimum(a[..., 0], a[..., 2]) - a[..., 1]
+    alpha = np.clip((46 - d) / (46 - 24), 0, 1)
+    # Inside his outline, pinkish bits (open mouth, tongue) are Kip, not backdrop.
+    inside = ndimage.binary_erosion(ndimage.binary_fill_holes(alpha > 0.5), iterations=3) & (d < 40)
+    alpha = np.where(inside | (alpha > 0.9), 1.0, alpha)
+    alpha = np.where(alpha < 0.12, 0, alpha)
+    return unmix_edges(a, alpha), alpha
 
 
 def erase_sparkle(a):

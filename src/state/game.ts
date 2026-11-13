@@ -42,6 +42,8 @@ import {
 import { emptySavePrompt, type SavePromptState } from '../account/prime';
 import { emptyPortfolio, invest, monthOfDay, settle, withdraw, type InvestError, type PortfolioState } from '../portfolio/engine';
 import { emptyDaily, migrateGameState, STATE_VERSION, type DailyTally } from './migrations';
+import type { GateHelp } from '../game/runner/engine';
+import type { GateHelpSetting } from '../game/runner/gateHelp';
 import { mmkvStorage } from './storage';
 
 /** What a game reports to the wallet: Kip Run's RunResult, or Chart Surfer's score. */
@@ -49,6 +51,9 @@ export interface RunScore {
   mode: keyof typeof RUN_COIN_DIVISOR;
   coinsAwarded: number;
   dashDodged: number;
+  /** Answer Gates: how they were played, and how many were answered right. */
+  gateHelp?: GateHelp;
+  answersRight?: number;
 }
 
 /**
@@ -88,6 +93,8 @@ export interface Profile {
   runnerButtons: boolean;
   /** Card equipped for Kip Run. */
   loadout: string;
+  /** How Kip Run's Answer Gates are played (missing = 'auto'). */
+  gateHelp?: GateHelpSetting;
   soundOn: boolean;
   musicOn: boolean;
 }
@@ -125,7 +132,8 @@ export interface GameState {
   lessons: Record<string, LessonRecord>;
   cards: string[];
   /** dashDodged: Dash traps dodged in your own lane, lifetime (sets his difficulty tier). */
-  runs: { count: number; bestScore: number; dashDodged: number };
+  /** guidedRight: Answer Gate questions answered right on the guided card (missing = 0). */
+  runs: { count: number; bestScore: number; dashDodged: number; guidedRight?: number };
   daily: DailyTally;
   lastDividendDay: DayKey | null;
   /** Debug only: shifts "today" forward to test streaks and reviews. */
@@ -363,7 +371,9 @@ export const useGame = create<GameState>()(
           const runs = get().runs;
           // Kip's autopilot dodges for you, so only your own dodges make Dash harder.
           const dodged = runs.dashDodged + (opts?.autopilot ? 0 : result.dashDodged);
-          set({ runs: { count: runs.count + 1, bestScore: newBest ? result.coinsAwarded : previousBest, dashDodged: dodged } });
+          // Right answers on the guided card count toward graduating to slow-mo gates.
+          const guidedRight = (runs.guidedRight ?? 0) + (!opts?.autopilot && result.gateHelp === 'guide' ? (result.answersRight ?? 0) : 0);
+          set({ runs: { count: runs.count + 1, bestScore: newBest ? result.coinsAwarded : previousBest, dashDodged: dodged, guidedRight } });
           return { ...reward, practice: !rewarded, newBest: newBest && previousBest > 0 };
         },
 

@@ -203,6 +203,27 @@ From testing 1.1.0 on an Android phone:
   - **Rewards:** XP for right answers, coins only for the first quiz each day (`src/quiz/quiz.ts`, tested).
   - **Later:** online 1v1 against a friend could reuse Market Duel's friend codes.
 
+## Feedback round, 13 Nov 2026 (version 1.4.0)
+
+From a screen recording on device:
+
+- **Kip says hi.** A ~3 s opener (`src/ui/KipIntro.tsx`) replaces the blink-and-miss splash:
+  - The still splash Kip, drawn in the same box as the native splash so nothing jumps, hops and grows into the wave clip.
+  - A bubble says "Hii {name}! 👋", plus one line picked for the moment by `src/engagement/intro.ts`: new player, streak, goal, or time of day.
+  - Coins burst out and a loader shows Kip's captions.
+  - Tap skips it; Reduce Motion gives a calm 1.5 s hello.
+  - The clip is now the user's own `kip_hi_1.mp4`: a jump out of the splash pose, both arms up, a big "Hii!" with its voice and chime (`playSfx('kipHi')`, which follows the sound setting and the silent switch), a wink, then he settles. The bubble pops on the voiced "Hii!".
+- **Question gates you can actually read.** Answer Gates now have three modes (`GateHelp` in engine.ts, setting in You › Settings):
+  - **Guided:** the run eases to a stop as the gates come close; the question goes on a card with the answers in lane order (matching ◀ ▲ ▶ markers on the gates); Kip says right or wrong and points at the gate; the run goes on in slow-mo until you're through. Guided answers are scored on the card, and the +5 bonus needs a right answer.
+  - **Slow-mo:** time runs at 45% while a question is on its way.
+  - **Full speed:** the old behaviour.
+  - **Auto (default):** guided until 5 right answers on the card (`runs.guidedRight`), then slow-mo.
+- **Home redesign:**
+  - **World hero** (`src/home/WorldHero.tsx`): the world's art, its building, the lessons as stops on a road, and one Continue button. Money Town lives here, so Home no longer repeats it as a path lower down.
+  - **"For you today"** is a swipeable carousel of gradient cards, each with a map building or Kip and a CTA (`src/home/NudgeCarousel.tsx`); up to 4 nudges.
+  - **Quick Run** has its own animated card that starts an Inflation Chase directly (`/run/inflation?quick=1`).
+  - A Stitch prompt for more Home looks is in docs/prompts/home-and-intro.md.
+
 ## Recommended next three builds (as of the original roadmap)
 
 1. **World 4: Product Bazaar, with Bazaar Bargain and Basket Builder.** Products are the core promise, and players who finish World 3 have nothing new.

@@ -5,6 +5,11 @@ appId: com.finlit.kipmoneyquest
 ---
 - launchApp:
     clearState: true
+# Kip's hello plays over the app for ~3 s; let it finish so taps reach the screen underneath.
+- extendedWaitUntil:
+    notVisible:
+      id: "kip-intro"
+    timeout: 60000
 - extendedWaitUntil:
     visible: "What should I call you?"
     timeout: 60000
@@ -70,14 +75,9 @@ appId: com.finlit.kipmoneyquest
       id: "home-continue"
     timeout: 20000
 
-# 6. First lesson: "Before money: the barter mess"
-- scrollUntilVisible:
-    element:
-      id: "lesson-w0-l1"
-    direction: DOWN
-    visibilityPercentage: 50          # the current lesson pulses, so it's rarely 100% still
+# 6. First lesson: "Before money: the barter mess" (Home's Money Town card starts it)
 - tapOn:
-    id: "lesson-w0-l1"
+    id: "home-continue"
 - waitForAnimationToEnd
 - repeat:                              # line 1 → line 2 → Continue (retries a lost tap)
     while:

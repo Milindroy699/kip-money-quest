@@ -45,6 +45,34 @@ export interface Entity {
   row?: number;
 }
 
+/**
+ * How Answer Gates are played:
+ * - guide: as the gates come close the run eases to a stop, the question is asked on a card,
+ *   Kip says if the answer was right and points at the gate to take, then the run goes on.
+ * - slowmo: time slows down while a question is on its way, and you steer into your answer.
+ * - off: full speed (read and steer at once).
+ */
+export type GateHelp = 'guide' | 'slowmo' | 'off';
+/** Guided gates: the run starts easing to a stop when the gates are this close (big enough to see). */
+export const ASK_Z = 21;
+/** Guided gates: after the answer, the run goes on in slow-mo until you're through the gate. */
+export const GUIDED_GO_SCALE = 0.55;
+/** Slow-mo gates: time runs at this share of normal while a question is on its way... */
+export const SLOWMO_SCALE = 0.45;
+/** ...once its gates are this close. */
+export const SLOWMO_Z = 64;
+/** How quickly time eases toward a new pace (per second). */
+const TIME_EASE = 6;
+
+/** A guided question (gateHelp 'guide'): where the right gate is, and what the player picked on the card. */
+export interface Ask {
+  questionId: number;
+  correctLane: Lane;
+  /** coming: gates on their way; asking: paused for an answer; answered: paused on the result; go: running to the gate. */
+  phase: 'coming' | 'asking' | 'answered' | 'go';
+  picked: Lane | null;
+}
+
 /** A short question asked through three Answer Gates (one per lane). */
 export interface GateQuestion {
   q: string;
@@ -102,7 +130,11 @@ export type RunEventKind =
   | 'dividend'
   | 'stage'
   | 'growth'
-  | 'dashOvertake';
+  | 'dashOvertake'
+  | 'ask'
+  | 'askRight'
+  | 'askWrong'
+  | 'slowmo';
 
 /** What Dash is overtaking Kip for: a slip that costs you, or a line of coins left on the road. */
 export type OvertakeReason = 'missedCoins' | 'impulse' | 'hotTip' | 'fee' | 'cashOut' | 'gateMissed' | 'answerWrong' | 'emergencyShort';
@@ -127,6 +159,8 @@ export interface RunConfig {
   loadout?: Loadout;
   /** Dash cameo difficulty (see DASH_TIERS); 0 = Meet Dash. Comes from the player's dodges so far. */
   dashTier?: number;
+  /** How Answer Gates are played (default 'off': full speed). */
+  gateHelp?: GateHelp;
 }
 
 export interface RunState {
@@ -162,6 +196,10 @@ export interface RunState {
   nextQuestionAt: number;
   answersRight: number;
   answersWrong: number;
+  /** Time runs this much slower than real time: 0 while paused on a guided question, 1 normally. */
+  timeScale: number;
+  /** The guided question on its way or being asked (gateHelp 'guide'). */
+  ask: Ask | null;
   /** Final-score multiplier from the loadout (rolled once per run). */
   loadoutMultiplier: number;
   entities: Entity[];
@@ -375,6 +413,8 @@ export function createRun(config: RunConfig): RunState {
     nextQuestionAt: config.tutorial ? Infinity : 140,
     answersRight: 0,
     answersWrong: 0,
+    timeScale: 1,
+    ask: null,
     loadoutMultiplier: rollMultiplier(config),
     entities: [],
     nextSpawnZ: 18,
@@ -468,6 +508,8 @@ function spawnRow(s: RunState) {
       s.entities.push({ id: s.nextId++, kind: 'answer', lane: (i - 1) as Lane, z, done: false, label: q.options[optionIndex], correct: optionIndex === q.correct, questionId: id });
     });
     s.question = { id, text: q.q, options: order.map((o) => q.options[o]) };
+    if (s.config.gateHelp === 'guide') s.ask = { questionId: id, correctLane: (order.indexOf(q.correct) - 1) as Lane, phase: 'coming', picked: null };
+    else if (s.config.gateHelp === 'slowmo') s.events.push({ kind: 'slowmo' });
     s.questionIndex += 1;
     s.nextQuestionAt = s.distance + z + 170 + rng() * 40;
     s.nextGateAt = Math.max(s.nextGateAt, s.distance + z + 30);
@@ -758,18 +800,23 @@ function collide(s: RunState, e: Entity) {
       s.events.push({ kind: 'cashOut', amount: 15 });
       triggerOvertake(s, 'cashOut');
       break;
-    case 'answer':
+    case 'answer': {
       s.question = null;
+      // Guided questions were already scored on the card; the gate only banks (or doesn't).
+      const guided = s.ask?.questionId === e.questionId ? s.ask : null;
+      if (guided) s.ask = null;
       if (e.correct) {
         // Right answer: bank the pocket plus a bonus, and push The Melt back.
-        const amount = s.pocket + 5;
+        // Guided: the bonus is for knowing the answer, not for following Kip's arrow.
+        const knew = !guided || guided.picked === guided.correctLane;
+        const amount = s.pocket + (knew ? 5 : 0);
         s.banked += amount;
         s.pocket = 0;
-        s.answersRight += 1;
+        if (!guided) s.answersRight += 1;
         s.meltGap = Math.min(s.meltGap + 10, MELT_MAX_GAP);
-        s.events.push({ kind: 'answerRight', amount: Math.round(amount) });
+        s.events.push({ kind: knew ? 'answerRight' : 'bank', amount: Math.round(amount) });
       } else {
-        s.answersWrong += 1;
+        if (!guided) s.answersWrong += 1;
         const lost = s.pocket * 0.2;
         s.pocket -= lost;
         s.meltGap = Math.max(s.meltGap - 6, 0);
@@ -778,13 +825,20 @@ function collide(s: RunState, e: Entity) {
         triggerOvertake(s, 'answerWrong');
       }
       break;
+    }
   }
 }
 
 /** Advances the simulation by `dt` seconds. */
 export function step(s: RunState, dt: number): void {
   if (s.over) return;
-  const d = Math.min(dt, 0.05);
+  const real = Math.min(dt, 0.05);
+  updateAsk(s);
+  const target = targetTimeScale(s);
+  s.timeScale += (target - s.timeScale) * Math.min(1, real * TIME_EASE);
+  if (Math.abs(target - s.timeScale) < 0.02) s.timeScale = target;
+  const d = real * s.timeScale;
+  if (d <= 0) return;
   s.time += d;
   if (s.overtake && s.time - s.overtake.start > OVERTAKE_SECONDS) s.overtake = null;
 
@@ -882,6 +936,7 @@ export function step(s: RunState, dt: number): void {
         }
       }
       if (e.kind === 'answer' && s.question?.id === e.questionId) s.question = null;
+      if (e.kind === 'answer' && s.ask?.questionId === e.questionId) s.ask = null;
     }
   }
   s.entities = s.entities.filter((e) => e.z > -6);
@@ -904,6 +959,50 @@ export function step(s: RunState, dt: number): void {
     s.events.push({ kind: 'finished' });
   }
   if (s.outcome === 'caught' && s.config.mode === 'timeframe') s.tf.results[s.tf.stage].net = s.banked - s.tf.stageStartBanked;
+}
+
+/** Guided gates: pause for the question once its gates are close enough to read. */
+function updateAsk(s: RunState) {
+  const a = s.ask;
+  if (!a || a.phase !== 'coming') return;
+  const gate = s.entities.find((e) => e.kind === 'answer' && e.questionId === a.questionId && !e.done);
+  if (gate && gate.z <= ASK_Z) {
+    a.phase = 'asking';
+    s.events.push({ kind: 'ask' });
+  }
+}
+
+/** How fast time should run right now (see GateHelp). */
+function targetTimeScale(s: RunState): number {
+  if (s.ask && (s.ask.phase === 'asking' || s.ask.phase === 'answered')) return 0;
+  if (s.ask?.phase === 'go') return GUIDED_GO_SCALE;
+  if (s.config.gateHelp === 'slowmo' && s.question) {
+    const id = s.question.id;
+    const gate = s.entities.find((e) => e.kind === 'answer' && e.questionId === id && !e.done);
+    if (gate && gate.z <= SLOWMO_Z) return SLOWMO_SCALE;
+  }
+  return 1;
+}
+
+/**
+ * Guided gates: the player's answer on the card. Scores the question (right or wrong) and holds
+ * the pause on the result until resumeAsk. Returns whether it was right (null if nothing was asked).
+ */
+export function answerAsk(s: RunState, lane: Lane): boolean | null {
+  const a = s.ask;
+  if (!a || a.phase !== 'asking') return null;
+  a.picked = lane;
+  a.phase = 'answered';
+  const right = lane === a.correctLane;
+  if (right) s.answersRight += 1;
+  else s.answersWrong += 1;
+  s.events.push({ kind: right ? 'askRight' : 'askWrong' });
+  return right;
+}
+
+/** Guided gates: back to running, with Kip pointing at the right gate. */
+export function resumeAsk(s: RunState): void {
+  if (s.ask?.phase === 'answered') s.ask.phase = 'go';
 }
 
 /** Time Tracks, long-term stage: idle coins are invested automatically, and banked coins compound. */
@@ -947,6 +1046,8 @@ export interface RunResult {
   distance: number;
   answersRight: number;
   answersWrong: number;
+  /** How Answer Gates were played this run (guided answers count toward graduating to slow-mo). */
+  gateHelp?: GateHelp;
   shieldsUsed: number;
   /** The equipped card's final multiplier (1 when none). */
   loadoutMultiplier: number;
@@ -1027,6 +1128,7 @@ export function summarise(s: RunState): RunResult {
     distance: Math.round(s.distance),
     answersRight: s.answersRight,
     answersWrong: s.answersWrong,
+    gateHelp: s.config.gateHelp,
     shieldsUsed: s.shieldsUsed,
     loadoutMultiplier: s.loadoutMultiplier,
     loadoutId: s.config.loadout?.id,
@@ -1092,6 +1194,7 @@ export const KIP_TIPS: Partial<Record<RunEventKind, string>> = {
   dashOvertake: 'Dash zooms past whenever you slip or leave coins behind. Stay steady and keep him behind you!',
   cashOut: 'Cash out = withdrawal. Your snowball reset!',
   meltBite: 'The Melt is eating your idle coins. Bank them!',
+  slowmo: 'Slow-mo question! Read it, then steer into your answer’s gate.',
 };
 
 /**

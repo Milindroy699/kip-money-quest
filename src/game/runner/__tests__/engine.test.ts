@@ -1,4 +1,5 @@
-import { applyInput, autopilot, coinValue, createRun, DASH_DROP_CUE_Z, DASH_TIER_DODGES, DASH_TIERS, dashTierFor, MISS_STREAK, OVERTAKE_COOLDOWN, OVERTAKE_SECONDS, overtakeZ, RISK_EMERGENCY_COST, step, summarise, triggerOvertake, type Entity, type RunState } from '../engine';
+import { answerAsk, applyInput, ASK_Z, autopilot, coinValue, createRun, resumeAsk, SLOWMO_SCALE, DASH_DROP_CUE_Z, DASH_TIER_DODGES, DASH_TIERS, dashTierFor, MISS_STREAK, OVERTAKE_COOLDOWN, OVERTAKE_SECONDS, overtakeZ, RISK_EMERGENCY_COST, step, summarise, triggerOvertake, type Entity, type RunState } from '../engine';
+import { gateHelpFor, GUIDED_TO_GRADUATE } from '../gateHelp';
 import { CARD_LOADOUTS } from '../loadouts';
 
 const DT = 1 / 60;
@@ -170,6 +171,108 @@ describe('Answer Gates', () => {
   it('there are no Answer Gates without questions or in the tutorial', () => {
     expect(play(createRun({ mode: 'inflation', durationSec: 40, seed: 4 }), autopilot).answersRight).toBe(0);
     expect(play(createRun({ mode: 'inflation', durationSec: 40, seed: 4, tutorial: true, questions }), autopilot).answersRight).toBe(0);
+  });
+});
+
+describe('Guided and slow-mo Answer Gates', () => {
+  const questions = [
+    { q: 'Inflation makes money buy…', options: ['Less', 'More', 'The same'], correct: 0 },
+    { q: 'A SIP invests…', options: ['Fixed, monthly', 'All at once', 'Randomly'], correct: 0 },
+  ];
+  const runUntil = (s: RunState, done: (s: RunState) => boolean, bot?: (s: RunState) => void) => {
+    for (let i = 0; i < 60 * 120 && !done(s); i++) {
+      bot?.(s);
+      step(s, DT);
+    }
+  };
+
+  it('guided: the run eases to a stop with the gates close, and waits for an answer', () => {
+    const s = createRun({ mode: 'inflation', durationSec: 60, seed: 4, questions, gateHelp: 'guide' });
+    runUntil(s, (st) => st.ask?.phase === 'asking');
+    expect(s.ask?.phase).toBe('asking');
+    runUntil(s, (st) => st.timeScale === 0);
+    const gate = s.entities.find((e) => e.kind === 'answer' && e.questionId === s.ask!.questionId)!;
+    expect(gate.z).toBeLessThanOrEqual(ASK_Z);
+    expect(gate.z).toBeGreaterThan(ASK_Z - 6);
+    // Paused: nothing moves, no matter how long the player reads.
+    const { distance, time, meltGap } = s;
+    for (let i = 0; i < 600; i++) step(s, DT);
+    expect([s.distance, s.time, s.meltGap]).toEqual([distance, time, meltGap]);
+  });
+
+  it('guided: a right answer on the card earns the bonus at the right gate; the score counts once', () => {
+    const s = createRun({ mode: 'inflation', durationSec: 60, seed: 4, questions, gateHelp: 'guide' });
+    runUntil(s, (st) => st.ask?.phase === 'asking' && st.timeScale === 0);
+    const { correctLane, questionId } = s.ask!;
+    expect(answerAsk(s, correctLane)).toBe(true);
+    expect(s.ask?.phase).toBe('answered');
+    expect(answerAsk(s, correctLane)).toBeNull(); // one answer per question
+    const before = s.distance;
+    for (let i = 0; i < 60; i++) step(s, DT);
+    expect(s.distance).toBe(before); // still paused on the result until Go
+    resumeAsk(s);
+    s.pocket = 10;
+    runUntil(s, (st) => !st.entities.some((e) => e.questionId === questionId && !e.done), (st) => {
+      if (correctLane < st.lane) applyInput(st, 'left');
+      if (correctLane > st.lane) applyInput(st, 'right');
+    });
+    expect(s.answersRight).toBe(1);
+    expect(s.answersWrong).toBe(0);
+    expect(s.ask).toBeNull();
+    expect(s.banked).toBeGreaterThanOrEqual(15); // the pocket plus the 5-coin bonus
+  });
+
+  it('guided: a wrong answer is scored, Kip points at the right gate, and it still banks (no bonus)', () => {
+    const s = createRun({ mode: 'inflation', durationSec: 60, seed: 4, questions, gateHelp: 'guide' });
+    runUntil(s, (st) => st.ask?.phase === 'asking');
+    const { correctLane, questionId } = s.ask!;
+    const wrong = ([-1, 0, 1] as const).find((l) => l !== correctLane)!;
+    expect(answerAsk(s, wrong)).toBe(false);
+    resumeAsk(s);
+    expect(s.ask?.phase).toBe('go');
+    s.pocket = 10;
+    s.events.length = 0;
+    runUntil(s, (st) => !st.entities.some((e) => e.questionId === questionId && !e.done), (st) => {
+      if (correctLane < st.lane) applyInput(st, 'left');
+      if (correctLane > st.lane) applyInput(st, 'right');
+    });
+    expect(s.answersWrong).toBe(1);
+    expect(s.answersRight).toBe(0);
+    const bank = s.events.find((e) => e.kind === 'bank');
+    expect(bank?.amount).toBeGreaterThanOrEqual(9);
+    expect(s.events.some((e) => e.kind === 'answerRight')).toBe(false);
+  });
+
+  it('slow-mo: time slows while a question is on its way, then speeds up again', () => {
+    const s = createRun({ mode: 'inflation', durationSec: 60, seed: 4, questions, gateHelp: 'slowmo' });
+    runUntil(s, (st) => st.question !== null);
+    expect(s.events.some((e) => e.kind === 'slowmo')).toBe(true);
+    runUntil(s, (st) => st.timeScale === SLOWMO_SCALE);
+    expect(s.timeScale).toBe(SLOWMO_SCALE);
+    expect(s.ask).toBeNull();
+    runUntil(s, (st) => st.question === null, autopilot);
+    runUntil(s, (st) => st.timeScale === 1);
+    expect(s.timeScale).toBe(1);
+  });
+
+  it('full speed never slows down, and runs without questions are unchanged', () => {
+    const s = createRun({ mode: 'inflation', durationSec: 40, seed: 4, questions, gateHelp: 'off' });
+    let slowest = 1;
+    runUntil(s, (st) => st.over, (st) => {
+      autopilot(st);
+      slowest = Math.min(slowest, st.timeScale);
+    });
+    expect(slowest).toBe(1);
+    const plain = play(createRun({ mode: 'inflation', durationSec: 30, seed: 7, gateHelp: 'guide' }), goodBot);
+    expect(plain).toEqual({ ...play(createRun({ mode: 'inflation', durationSec: 30, seed: 7 }), goodBot), gateHelp: 'guide' });
+  });
+
+  it('auto help guides until enough right answers, then moves on to slow-mo', () => {
+    expect(gateHelpFor(undefined, 0)).toBe('guide');
+    expect(gateHelpFor('auto', GUIDED_TO_GRADUATE - 1)).toBe('guide');
+    expect(gateHelpFor('auto', GUIDED_TO_GRADUATE)).toBe('slowmo');
+    expect(gateHelpFor('off', 0)).toBe('off');
+    expect(gateHelpFor('guide', 99)).toBe('guide');
   });
 });
 

@@ -7,8 +7,9 @@ For each clip in CLIPS: extract frames at full resolution, key out the green scr
 character (plus nearby coins, drops and fog), crop every frame to one shared box so the character
 doesn't jump, then write assets/characters/<name>/NN.webp and the registry src/art/anims.ts.
 
-Three keyers:
+Four keyers:
 - magenta (Kip's map walks): shared with the campus sprites, see scripts/keying.py.
+- pink    (Kip's "Hii!"): a raspberry backdrop that isn't magenta enough for the magenta keyer.
 - solid  (Dash): alpha from how green a pixel is relative to its brightness, so the floor shadow
   disappears too; green spill is clamped.
 - fog    (The Melt): each pixel is unmixed as a*Lavender + (1-a)*Green, which recovers the
@@ -23,7 +24,7 @@ import numpy as np
 from PIL import Image
 from scipy import ndimage
 
-from keying import erase_sparkle, key_magenta
+from keying import erase_sparkle, key_magenta, key_pink
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 SRC = f"{ROOT}/design/source-art/characters"
@@ -63,6 +64,10 @@ CLIPS = {
                         steady=True, width=220, loop=True, fps=24, about="small sandstone fountain on a grass disc"),
     "fx_seagulls": dict(src="../Campus/fx_seagulls.mp4", keyer="magenta", crop=(284, 4, 994, 716), frames=(18, 68, 2), xfade=2,
                         reach=80, sparkle=False, width=240, loop=True, fps=12, about="two gulls circling (Quest Island sky)"),
+    # The app's opener (src/ui/KipIntro.tsx). Veo faded in from a cream frame, so the clip starts
+    # once the backdrop is fully pink; the "Hii!" caption Veo added sits apart from Kip and is dropped.
+    "kip_hi": dict(src="kip/kip_hi_1.mp4", keyer="pink", frames=(16, 96, 1), height=520, loop=False, fps=24,
+                   about="the opener: a happy hop, both arms up, a big \"Hii!\" wave, a wink, then he settles"),
     "dash_sheepish": dict(src="dash/Dash_Sheepish.mp4", keyer="solid", frames=(0, 96, 2), height=420, loop=False, fps=12,
                           fade=dict(top=18, bottom=70), about="ears droop, rubs his head (think)"),
     "dash_panicked": dict(src="dash/Dash_panicked.mp4", keyer="solid", frames=(1, 96, 2), height=420, loop=False, fps=12,
@@ -172,10 +177,12 @@ def keyed_frame(d, i, spec):
         x0, x1, y0, y1 = x0 - cx0, x1 - cx0, y0 - cy0, y1 - cy0
     if spec["keyer"] == "magenta":
         F, alpha = key_magenta(erase_sparkle(a) if spec.get("sparkle", True) else a, pinkless=spec.get("pinkless", False))
+    elif spec["keyer"] == "pink":
+        F, alpha = key_pink(a)
     else:
         F, alpha = (key_fog if spec["keyer"] == "fog" else key_solid)(a, scale)
     alpha[max(y0, 0):max(y1, 0), max(x0, 0):max(x1, 0)] = 0
-    alpha = keep_character(alpha, scale, spec.get("reach", {"fog": 60, "magenta": 12}.get(spec["keyer"], 50)))
+    alpha = keep_character(alpha, scale, spec.get("reach", {"fog": 60, "magenta": 12, "pink": 12}.get(spec["keyer"], 50)))
     alpha = fade_edges(alpha, spec.get("fade"), scale)
     return np.dstack([F, alpha * 255]).astype(np.float32)
 

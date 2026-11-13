@@ -11,6 +11,7 @@ import { LESSONS, trackFor } from '@/content';
 import { isAdult, TRACK_LABEL } from '@/content/ages';
 import { FINIQ_BANDS, finIQBand, finIQBandProgress } from '@/engagement/rewards';
 import { displayStreak, shellRings } from '@/engagement/streak';
+import { GATE_HELP_OPTIONS, gateHelpFor } from '@/game/runner/gateHelp';
 import { Character } from '@/mascot/Character';
 import { useGame } from '@/state/game';
 import { useNudgePermission } from '@/engagement/useNudgePermission';
@@ -194,6 +195,14 @@ export default function You() {
               <Text style={type.tiny}>Play Kip Run with ◀ ▲ ▼ ▶ buttons instead of swipes. Turns on automatically with VoiceOver or TalkBack.</Text>
             </View>
             <Switch value={g.profile.runnerButtons} onValueChange={(v) => g.setProfile({ runnerButtons: v })} trackColor={{ true: colors.kip }} />
+          </View>
+          <View style={{ gap: 8 }}>
+            <Text style={type.bodyBold}>Question gates in Kip Run</Text>
+            <Segmented options={GATE_HELP_OPTIONS} value={g.profile.gateHelp ?? 'auto'} onChange={(v) => g.setProfile({ gateHelp: v })} />
+            <Text style={type.tiny}>
+              {GATE_HELP_OPTIONS.find((o) => o.id === (g.profile.gateHelp ?? 'auto'))?.text}
+              {(g.profile.gateHelp ?? 'auto') === 'auto' ? ` Right now: ${gateHelpFor('auto', g.runs.guidedRight ?? 0) === 'guide' ? 'paused and guided' : 'slow-mo'}.` : ''}
+            </Text>
           </View>
           <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
             <View style={{ flex: 1 }}>

@@ -1,6 +1,7 @@
 /**
- * Home: your status (streak, coins, FinIQ, Future You), what to do next, today's nudges, and
- * Money Town (World 0). Worlds 1–9 live on the campus map behind the hero button.
+ * Home: your status (streak, coins, FinIQ, Future You), the world you're in with its next lesson
+ * (Money Town, World 0, lives here; Worlds 1–9 are on the campus map behind the hero button),
+ * today's nudges as a swipeable row of cards, and a one-tap Kip Run.
  */
 import { router } from 'expo-router';
 import { useState } from 'react';
@@ -9,20 +10,21 @@ import { Pressable, ScrollView, Text, View } from 'react-native';
 import { newSpots, type SpotContext } from '@/campus/map';
 import { useCampusSeen } from '@/campus/seen';
 import { skinFor } from '@/campus/skins';
-import { getWorldOfLesson, nextLesson, trackFor, WORLDS, type Track } from '@/content';
+import { nextLesson, trackFor, WORLDS, type Track } from '@/content';
 import { quizUnlocked } from '@/content/unlocks';
-import type { LessonT } from '@/content/schema';
 import { allContentComplete, planUnlocks, seasonComplete } from '@/engagement/plan';
 import { dueReviews } from '@/engagement/review';
-import { canClaimDividend, COMEBACK_BONUS, comebackBonus, finIQBand } from '@/engagement/rewards';
+import { canClaimDividend, COMEBACK_BONUS, comebackBonus, finIQBand, REWARDED_RUNS_PER_DAY } from '@/engagement/rewards';
 import { displayStreak, streakMultiplier, streakStatus } from '@/engagement/streak';
-import { todayNudges, type TodayNudge } from '@/engagement/today';
+import { todayNudges } from '@/engagement/today';
 import { useNudgePermission } from '@/engagement/useNudgePermission';
+import { NudgeCarousel } from '@/home/NudgeCarousel';
+import { QuickRunCard } from '@/home/QuickRunCard';
+import { WorldHero } from '@/home/WorldHero';
 import { WorldPath, pathStyles } from '@/lessons/WorldPath';
-import { Character } from '@/mascot/Character';
 import { useGame } from '@/state/game';
 import { Backdrop } from '@/ui/Backdrop';
-import { Button, Card, Chip, ProgressBar, Screen, StatBar } from '@/ui/components';
+import { Card, Chip, Screen, StatBar } from '@/ui/components';
 import { DailyGoalRing } from '@/ui/DailyGoalRing';
 import { PlanCard } from '@/ui/PlanCard';
 import { colors, radius, shadow, space, type } from '@/ui/theme';
@@ -43,6 +45,8 @@ export default function Home() {
   const reminders = useNudgePermission();
   const quizPlayed = useGame((s) => s.quiz?.played ?? 0);
   const quizzesToday = useGame((s) => s.dailyToday().quizzes ?? 0);
+  const runsToday = useGame((s) => s.dailyToday().runs);
+  const bestRun = useGame((s) => s.runs.bestScore);
 
   const status = streakStatus(streak, today);
   const shown = displayStreak(streak, today);
@@ -64,7 +68,6 @@ export default function Home() {
     mapTitle: skin.title,
     dividendReady: dividendReady && (!!lessons['w0-l4'] || lastDividendDay !== null),
     reviewsDue,
-    streakOpen: status === 'at-risk' || status === 'none' || status === 'broken',
     remindersOff: reminders.status === 'off',
     portfolioMove,
     quizNew: quizOpen && quizPlayed === 0,
@@ -87,20 +90,13 @@ export default function Home() {
             </Pressable>
           ) : null}
 
-          {current ? <UpNext lesson={current} lessons={lessons} track={track} /> : null}
+          {current ? <WorldHero lesson={current} lessons={lessons} track={track} /> : null}
 
           <StreakCard status={status} streak={shown} freezes={streak.freezes} minutes={minutesToday} goal={profile.dailyGoalMin} welcomeBonus={comebackBonus(streak.lastActiveDay, today) > 0} />
 
-          {nudges.length ? (
-            <View style={{ gap: space(1) }}>
-              <Text style={[type.tiny, pathStyles.pill, { alignSelf: 'flex-start' }]}>FOR YOU TODAY</Text>
-              {nudges.map((n) => (
-                <NudgeRow key={n.id} nudge={n} onTurnOnReminders={reminders.turnOn} />
-              ))}
-            </View>
-          ) : null}
+          {nudges.length ? <NudgeCarousel nudges={nudges} skin={skin.id} onTurnOnReminders={reminders.turnOn} /> : null}
 
-          {!townDone ? <WorldPath world={MONEY_TOWN} lessons={lessons} currentId={current?.id} track={track} /> : null}
+          <QuickRunCard streakOpen={status === 'at-risk' || status === 'none' || status === 'broken'} best={bestRun} runsLeft={Math.max(REWARDED_RUNS_PER_DAY - runsToday, 0)} />
 
           <PlanCard profile={profile} unlocks={planUnlocks(lessons)} finiq={finiq} compact />
           <Text style={[type.tiny, pathStyles.pill, { alignSelf: 'flex-start', marginTop: -8 }]}>
@@ -128,65 +124,6 @@ export default function Home() {
         </ScrollView>
       </Screen>
     </Backdrop>
-  );
-}
-
-/** The one thing to do next: start the lesson, or open the map at that building. */
-function UpNext({ lesson, lessons, track }: { lesson: LessonT; lessons: Record<string, unknown>; track: Track }) {
-  const world = getWorldOfLesson(lesson.id)!;
-  const skin = skinFor(track);
-  const i = world.lessons.findIndex((l) => l.id === lesson.id);
-  const done = world.lessons.filter((l) => lessons[l.id]).length;
-  const inTown = world.id === 'w0';
-  const place = skin.places[world.id];
-  return (
-    <Card style={{ gap: space(1.5), borderColor: colors.kip, borderWidth: 2 }}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', gap: space(1.5) }}>
-        <Character name="kip" mood="happy" size={64} />
-        <View style={{ flex: 1, gap: 2 }}>
-          <Text style={[type.tiny, { color: colors.kipDark }]}>{inTown ? 'START HERE · MONEY TOWN' : `UP NEXT · ${place?.emoji ?? ''} ${(place?.name ?? world.title).toUpperCase()}`}</Text>
-          <Text style={type.bodyBold} numberOfLines={2}>
-            {lesson.boss ? '👑 ' : ''}
-            {lesson.title}
-          </Text>
-          <Text style={type.tiny}>
-            World {world.index}, {world.title} · lesson {i + 1} of {world.lessons.length}
-          </Text>
-        </View>
-      </View>
-      <ProgressBar value={done / world.lessons.length} color={world.color} height={8} />
-      <View style={{ flexDirection: 'row', gap: space(1) }}>
-        <View style={{ flex: 1 }}>
-          <Button testID="home-continue" title={done ? 'Continue' : 'Start'} onPress={() => router.push(`/lesson/${lesson.id}`)} />
-        </View>
-        {inTown ? null : (
-          <View style={{ flex: 1 }}>
-            <Button title="Open map" variant="secondary" onPress={() => router.navigate('/campus')} />
-          </View>
-        )}
-      </View>
-    </Card>
-  );
-}
-
-function NudgeRow({ nudge: n, onTurnOnReminders }: { nudge: TodayNudge; onTurnOnReminders: () => void }) {
-  const onPress = () => {
-    if (n.action.kind === 'reminders') onTurnOnReminders();
-    else if (n.action.kind === 'campus') router.navigate({ pathname: '/campus', params: { focus: n.action.focus } });
-    else router.push(n.action.href);
-  };
-  const tone = { gold: { bg: '#FFF6DD', edge: colors.shell }, green: { bg: colors.kipLight, edge: colors.kip }, plain: { bg: colors.surface, edge: colors.line } }[n.tone];
-  return (
-    <Pressable testID={`nudge-${n.id}`} onPress={onPress} accessibilityRole="button" accessibilityLabel={`${n.title}. ${n.text}`}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', gap: space(1.5), backgroundColor: tone.bg, borderColor: tone.edge, borderWidth: 1.5, borderRadius: radius.md, padding: space(1.5) }}>
-        <Text style={{ fontSize: 26 }}>{n.emoji}</Text>
-        <View style={{ flex: 1 }}>
-          <Text style={type.bodyBold}>{n.title}</Text>
-          <Text style={type.small}>{n.text}</Text>
-        </View>
-        <Text style={[type.h2, { color: colors.kipDark }]}>›</Text>
-      </View>
-    </Pressable>
   );
 }
 

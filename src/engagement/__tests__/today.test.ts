@@ -1,6 +1,6 @@
 import { listOf, MAX_TODAY, todayNudges, type TodayContext } from '../today';
 
-const base: TodayContext = { newSpots: [], mapTitle: 'Kip Campus', dividendReady: false, reviewsDue: 0, streakOpen: false, remindersOff: false, portfolioMove: null };
+const base: TodayContext = { newSpots: [], mapTitle: 'Kip Campus', dividendReady: false, reviewsDue: 0, remindersOff: false, portfolioMove: null };
 const arena = { id: 'arena', name: 'Duel Arena', emoji: '⚔️', activity: 'Market Duel', blurb: 'Take on Dash.' };
 
 describe('For you today', () => {
@@ -14,8 +14,17 @@ describe('For you today', () => {
   });
 
   it('shows at most three', () => {
-    const all = todayNudges({ ...base, newSpots: [arena], dividendReady: true, reviewsDue: 1, streakOpen: true, remindersOff: true, portfolioMove: 0.02 });
+    const all = todayNudges({ ...base, newSpots: [arena], dividendReady: true, reviewsDue: 1, quizSuggest: true, remindersOff: true, portfolioMove: 0.02 });
     expect(all).toHaveLength(MAX_TODAY);
+  });
+
+  it('gives every card a button and a picture', () => {
+    const all = todayNudges({ ...base, newSpots: [arena], dividendReady: true, reviewsDue: 1, remindersOff: true, portfolioMove: 0.02 });
+    for (const n of all) {
+      expect(n.cta.length).toBeGreaterThan(0);
+      expect(n.art).toBeTruthy();
+    }
+    expect(all[0]).toMatchObject({ cta: 'Go to Duel Arena', art: 'arena' });
   });
 
   it('points new spots at the map', () => {

@@ -1,7 +1,7 @@
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { LogBox } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
@@ -11,6 +11,7 @@ import { configureSound } from '@/audio/sound';
 import { DEMO_ENABLED, DEMO_TOUR, seedDemoState, startDemoTour } from '@/dev/demo';
 import { useNudgeScheduler, useNudgeTapRouting } from '@/engagement/useNudges';
 import { useGame } from '@/state/game';
+import { KipIntro } from '@/ui/KipIntro';
 import { colors } from '@/ui/theme';
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
@@ -30,8 +31,15 @@ export default function RootLayout() {
     configureSound({ sound: soundOn, music: musicOn });
   }, [soundOn, musicOn]);
 
+  // Kip's hello plays over the app while it gets ready (it hides the native splash itself).
+  const [intro, setIntro] = useState(true);
   useEffect(() => {
-    SplashScreen.hideAsync().catch(() => {});
+    // Fallback in case the intro can't take over from the native splash.
+    const id = setTimeout(() => SplashScreen.hideAsync().catch(() => {}), 1500);
+    return () => clearTimeout(id);
+  }, []);
+
+  useEffect(() => {
     if (!DEMO_ENABLED) return;
     seedDemoState();
     if (!DEMO_TOUR) return;
@@ -70,6 +78,7 @@ export default function RootLayout() {
           <Stack.Screen name="quiz" options={{ presentation: 'fullScreenModal' }} />
         </Stack.Protected>
       </Stack>
+      {intro ? <KipIntro onDone={() => setIntro(false)} /> : null}
     </GestureHandlerRootView>
   );
 }

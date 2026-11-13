@@ -16,7 +16,8 @@ import { KIP_RUN_FRAMES } from '../../art/kipRun';
 import { Character } from '../../mascot/Character';
 import { Coin } from '../../ui/components';
 import { colors, radius, type } from '../../ui/theme';
-import { applyInput, autopilot, createRun, KIP_TIPS, KIP_TIPS_RISK, type GateQuestion, type Loadout, MELT_DANGER_GAP, step, summarise, TF_INFO, TF_STAGE_TIPS, TF_STAGES, type RunMode, type RunResult, type RunState, type TfStage } from './engine';
+import { AskCard, LANE_GLYPH, LANE_NAME } from './AskCard';
+import { answerAsk, applyInput, type Ask, autopilot, createRun, type GateHelp, KIP_TIPS, KIP_TIPS_RISK, type GateQuestion, type Lane, type Loadout, MELT_DANGER_GAP, resumeAsk, step, summarise, TF_INFO, TF_STAGE_TIPS, TF_STAGES, type RunMode, type RunResult, type RunState, type TfStage } from './engine';
 import { drawFrame, makeView, type Sprites } from './render';
 import { tauntFor } from './taunts';
 import { useSkiaImages } from './useSkiaImages';
@@ -28,7 +29,14 @@ const TUTORIAL_TIPS: [number, string][] = [
   [19, 'Steer into the green INVEST gate to bank your coins!'],
 ];
 
+/** Guided gates: after an answer, the run goes on by itself after this long (or on Go / a swipe). */
+export const AUTO_GO_MS = 6000;
+
 interface Hud {
+  /** Guided Answer Gates: where the question is at (see Ask). */
+  ask: Pick<Ask, 'phase' | 'picked' | 'correctLane'> | null;
+  /** Slow-mo gates: time is running slow. */
+  slow: boolean;
   /** Risk Lanes: invested coins per risk level. */
   holdings: { safe: number; balanced: number; wild: number };
   question: { text: string; options: string[] } | null;
@@ -51,6 +59,7 @@ export function RunnerScene({
   questions,
   loadout,
   dashTier = 0,
+  gateHelp = 'off',
   onFinish,
 }: {
   mode: RunMode;
@@ -67,6 +76,8 @@ export function RunnerScene({
   loadout?: Loadout;
   /** Dash's difficulty tier, from the player's dodges so far (see dashTierFor). */
   dashTier?: number;
+  /** How Answer Gates are played (see gateHelpFor). Kip's autopilot always plays at full speed. */
+  gateHelp?: GateHelp;
   onFinish: (result: RunResult) => void;
 }) {
   const [screenReader, setScreenReader] = useState(false);
@@ -75,13 +86,13 @@ export function RunnerScene({
   }, []);
   const buttons = !autoplay && (showButtons || screenReader);
   const [size, setSize] = useState({ w: 0, h: 0 });
-  const [hud, setHud] = useState<Hud>({ holdings: { safe: 0, balanced: 0, wild: 0 }, question: null, pocket: 0, banked: 0, progress: 0, danger: false, snowball: 0, stage: 'scalp' });
+  const [hud, setHud] = useState<Hud>({ ask: null, slow: false, holdings: { safe: 0, balanced: 0, wild: 0 }, question: null, pocket: 0, banked: 0, progress: 0, danger: false, snowball: 0, stage: 'scalp' });
   const [tip, setTip] = useState<string | null>(null);
   const [flash, setFlash] = useState<{ text: string; color: string } | null>(null);
   const [taunt, setTaunt] = useState<string | null>(null);
   const [countdown, setCountdown] = useState(3);
   const picture = useSharedValue(createPicture(() => {}, { width: 1, height: 1 }));
-  const [run] = useState<RunState>(() => createRun({ mode, durationSec, seed, tutorial, questions, loadout, dashTier }));
+  const [run] = useState<RunState>(() => createRun({ mode, durationSec, seed, tutorial, questions, loadout, dashTier, gateHelp: autoplay ? 'off' : gateHelp }));
   const font = useMemo(() => matchFont({ fontFamily: Platform.select({ ios: 'Helvetica Neue', default: 'sans-serif' }), fontSize: 34, fontWeight: 'bold' }), []);
   const runFrames = useSkiaImages(KIP_RUN_FRAMES);
   const meltChase = useSkiaImages(ANIMS.meltChase.frames);
@@ -123,6 +134,14 @@ export function RunnerScene({
     return () => clearTimeout(id);
   }, [countdown]);
 
+  // Guided question answered: carry on by itself after a moment, if Go or a swipe didn't already.
+  const answered = hud.ask?.phase === 'answered';
+  useEffect(() => {
+    if (!answered) return;
+    const id = setTimeout(() => resumeAsk(run), AUTO_GO_MS);
+    return () => clearTimeout(id);
+  }, [answered, run]);
+
   // Game loop
   useEffect(() => {
     if (!size.w) return;
@@ -139,7 +158,10 @@ export function RunnerScene({
     let nextTutorialTip = 0;
     let finished = false;
 
+    // While a guided question is on the card, Kip and Dash keep quiet.
+    const asking = () => run.ask?.phase === 'asking' || run.ask?.phase === 'answered';
     const showTip = (text: string) => {
+      if (asking()) return;
       setTip(text);
       clearTimeout(tipTimer);
       tipTimer = setTimeout(() => setTip(null), 2600);
@@ -150,6 +172,7 @@ export function RunnerScene({
       flashTimer = setTimeout(() => setFlash(null), 900);
     };
     const showTaunt = (text: string) => {
+      if (asking()) return;
       setTaunt(text);
       clearTimeout(tauntTimer);
       tauntTimer = setTimeout(() => setTaunt(null), 1800);
@@ -189,6 +212,23 @@ export function RunnerScene({
           showTip(tipText);
         }
         switch (e.kind) {
+          case 'ask':
+            // The run eases to a stop for a guided question: clear the chatter so the card has the stage.
+            clearTimeout(tipTimer);
+            clearTimeout(tauntTimer);
+            setTip(null);
+            setTaunt(null);
+            playSfx('bank', 0.35);
+            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium).catch(() => {});
+            break;
+          case 'askRight':
+            playSfx('correct');
+            Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => {});
+            break;
+          case 'askWrong':
+            playSfx('wrong');
+            Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning).catch(() => {});
+            break;
           case 'coin':
             playSfx('coin', 0.7);
             if (now - lastCoinHaptic > 120) {
@@ -297,6 +337,8 @@ export function RunnerScene({
       if (hudAcc > 0.1) {
         hudAcc = 0;
         setHud({
+          ask: s.ask ? { phase: s.ask.phase, picked: s.ask.picked, correctLane: s.ask.correctLane } : null,
+          slow: s.timeScale < 0.95 && !s.ask,
           holdings: { safe: Math.round(s.holdings.safe), balanced: Math.round(s.holdings.balanced), wild: Math.round(s.holdings.wild) },
           question: s.question, pocket: Math.round(s.pocket), banked: Math.round(s.banked), progress: s.time / s.config.durationSec, danger: s.meltGap < MELT_DANGER_GAP && s.pocket > 0.5, snowball: s.snowball, stage: s.tf.stage });
       }
@@ -326,6 +368,9 @@ export function RunnerScene({
     const gesture = { consumed: false };
     const fire = (dx: number, dy: number) => {
       if (gesture.consumed || Math.max(Math.abs(dx), Math.abs(dy)) < 24) return;
+      // Guided question: answer on the card first; once answered, a swipe also means "go".
+      if (run.ask?.phase === 'asking') return;
+      if (run.ask?.phase === 'answered') resumeAsk(run);
       gesture.consumed = true;
       if (Math.abs(dx) > Math.abs(dy)) applyInput(run, dx > 0 ? 'right' : 'left');
       else applyInput(run, dy < 0 ? 'jump' : 'slide');
@@ -411,8 +456,21 @@ export function RunnerScene({
             <Text style={[type.small, { color: '#fff', fontWeight: '800' }]}>The Melt is eating your idle coins!</Text>
           </View>
         ) : null}
-        {hud.question ? (
-          <View style={styles.question} accessibilityLiveRegion="polite">
+        {hud.ask?.phase === 'coming' ? (
+          <View style={[styles.pill, { alignSelf: 'center', marginTop: 8, backgroundColor: '#fff', borderColor: colors.melt }]} accessibilityLiveRegion="polite">
+            <Text style={[type.small, { color: colors.meltDark, fontWeight: '800' }]}>❓ Question gate coming up…</Text>
+          </View>
+        ) : null}
+        {hud.ask?.phase === 'go' && hud.question ? (
+          <View style={[styles.question, { borderColor: colors.kip, backgroundColor: colors.kipLight }]} accessibilityLiveRegion="polite">
+            <Text style={[type.small, { color: colors.kipDark, fontWeight: '800', textAlign: 'center' }]}>
+              {LANE_GLYPH[hud.ask.correctLane]} Run through the {LANE_NAME[hud.ask.correctLane]} gate: “{hud.question.options[hud.ask.correctLane + 1]}”
+            </Text>
+          </View>
+        ) : null}
+        {hud.question && !hud.ask ? (
+          <View style={[styles.question, hud.slow && { borderColor: colors.meltDark, borderWidth: 3 }]} accessibilityLiveRegion="polite">
+            {hud.slow ? <Text style={[type.tiny, { color: colors.meltDark, fontWeight: '800', textAlign: 'center', letterSpacing: 1 }]}>⏳ SLOW-MO</Text> : null}
             <Text style={[type.small, { color: colors.ink, fontWeight: '800', textAlign: 'center' }]}>❓ {hud.question.text}</Text>
             <View style={{ flexDirection: 'row', gap: 6, marginTop: 6 }}>
               {hud.question.options.map((o, i) => (
@@ -439,6 +497,25 @@ export function RunnerScene({
           </View>
         ) : null}
       </View>
+
+      {hud.ask && hud.question && (hud.ask.phase === 'asking' || hud.ask.phase === 'answered') ? (
+        <AskCard
+          question={hud.question.text}
+          options={hud.question.options}
+          phase={hud.ask.phase}
+          picked={hud.ask.picked}
+          correctLane={hud.ask.correctLane}
+          onPick={(lane: Lane) => {
+            answerAsk(run, lane);
+            setHud((h) => (h.ask ? { ...h, ask: { ...h.ask, phase: 'answered', picked: lane } } : h));
+          }}
+          autoGoMs={AUTO_GO_MS}
+          onGo={() => {
+            resumeAsk(run);
+            setHud((h) => (h.ask ? { ...h, ask: { ...h.ask, phase: 'go' } } : h));
+          }}
+        />
+      ) : null}
 
       {flash ? (
         <View style={styles.flash} pointerEvents="none">

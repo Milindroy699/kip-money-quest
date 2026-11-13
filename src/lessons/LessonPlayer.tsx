@@ -14,6 +14,7 @@ import { CARD_LOADOUTS } from '../game/runner/loadouts';
 import type { LessonT, RunModeT, StepT } from '../content/schema';
 import { AssetCard } from '../game/cards/AssetCard';
 import { dashTierFor, type RunMode, type RunResult } from '../game/runner/engine';
+import { gateHelpFor } from '../game/runner/gateHelp';
 import { RunnerScene } from '../game/runner/RunnerScene';
 import { RunResults } from '../game/runner/RunResults';
 import { ChartResults } from '../game/surfer/ChartResults';
@@ -200,6 +201,7 @@ function PlayStep({ step, lessonId, onNext, setFullscreen }: { step: Extract<Ste
   const chart = step.mode === 'chart';
   const [auto, setAuto] = useState(false);
   const completeRun = useGame((s) => s.completeRun);
+  const gateHelp = useGame((s) => gateHelpFor(s.profile.gateHelp, s.runs.guidedRight ?? 0));
   const runnerButtons = useGame((s) => s.profile.runnerButtons);
   const dashDodged = useGame((s) => s.runs.dashDodged);
   const ownedCards = useGame((s) => s.cards);
@@ -270,7 +272,7 @@ function PlayStep({ step, lessonId, onNext, setFullscreen }: { step: Extract<Ste
                 { img: PROPS.billboard, text: 'SALE sign: swipe ↓ to slide under' },
                 { img: PROPS.hotTip, text: "Dash's HOT TIP: swipe ← → to dodge" },
               ])
-              .concat(questions.length ? [{ img: PROPS.investGate, text: 'ANSWER GATES: run through the right answer to bank a bonus' }] : [])
+              .concat(questions.length ? [{ img: PROPS.investGate, text: gateHelp === 'guide' ? 'ANSWER GATES: the run pauses so you can answer, then run through the right gate to bank a bonus' : 'ANSWER GATES: run through the right answer to bank a bonus' }] : [])
               .map((row) => (
                 <View key={row.text} style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
                   {row.img ? (
@@ -338,6 +340,7 @@ function PlayStep({ step, lessonId, onNext, setFullscreen }: { step: Extract<Ste
           questions={questions}
           loadout={loadout}
           dashTier={dashTierFor(dashDodged)}
+          gateHelp={gateHelp}
           onFinish={(r) => {
             setReward(completeRun(r, { autopilot: auto }));
             setResult(r);
