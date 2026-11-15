@@ -1,0 +1,159 @@
+# End-to-end smoke test: fresh install → onboarding → first lesson → free Kip Run.
+# Run with the app's dev server going (npx expo start) and the iOS simulator booted:
+#   ~/.maestro/maestro/bin/maestro test .maestro/smoke.yaml
+appId: com.finlit.kipmoneyquest
+---
+- launchApp:
+    clearState: true
+# Kip's hello plays over the app for ~3 s; let it finish so taps reach the screen underneath.
+- extendedWaitUntil:
+    notVisible:
+      id: "kip-intro"
+    timeout: 60000
+- extendedWaitUntil:
+    visible: "What should I call you?"
+    timeout: 60000
+
+# 1. Name and age
+- tapOn:
+    id: "name-input"
+- inputText: "Nova"
+- pressKey: Enter
+- tapOn: "16 years old"
+- assertVisible: ".*Builder track.*"
+- tapOn:
+    id: "welcome-continue"
+
+# 2. Dream goal (price is prefilled)
+- tapOn: ".*New laptop.*"
+- assertVisible: "Roughly what does it cost today?"
+- tapOn:
+    id: "dream-continue"
+
+# 3. Personal magic moment: drag the years
+- assertVisible: ".*New laptop by 25.*"
+- scrollUntilVisible:
+    element:
+      id: "concept-slider"
+    direction: DOWN
+- swipe:
+    from:
+      id: "concept-slider"
+    direction: RIGHT
+    duration: 800
+- tapOn:
+    id: "magic-continue"
+
+# 4. First run: step through "How Kip Run works" (7 cards), then let Kip play (accessible path)
+- repeat:
+    times: 7
+    commands:
+      - tapOn:
+          id: "run-guide-next"
+- tapOn:
+    id: "watch-kip"
+- extendedWaitUntil:
+    visible: "Kip.s debrief"
+    timeout: 90000
+- scrollUntilVisible:
+    element: "Collect my first cards"
+    direction: DOWN
+- tapOn: "Collect my first cards"
+
+# 5. First cards, then commit
+- tapOn:
+    id: "collect-cards"
+- tapOn:
+    id: "start-sip"
+- runFlow:
+    when:
+      visible: "Allow"
+    commands:
+      - tapOn: "Allow"
+- extendedWaitUntil:
+    visible:
+      id: "home-continue"
+    timeout: 20000
+
+# 6. First lesson: "Before money: the barter mess" (Home's Money Town card starts it)
+- tapOn:
+    id: "home-continue"
+- waitForAnimationToEnd
+- repeat:                              # line 1 → line 2 → Continue (retries a lost tap)
+    while:
+      notVisible: "Get the cricket bat"
+    times: 4
+    commands:
+      - tapOn:
+          id: "story-next"
+      - waitForAnimationToEnd
+- extendedWaitUntil:
+    visible: "Get the cricket bat"
+    timeout: 10000
+- tapOn: "Meena has.*"
+- tapOn: "Ravi has.*"
+- assertVisible: ".*Got the bat.*"
+- tapOn:
+    id: "concept-next"
+    retryTapIfNoChange: true
+- waitForAnimationToEnd
+- tapOn:
+    id: "story-next"
+    retryTapIfNoChange: true            # Dash's line
+- waitForAnimationToEnd
+- tapOn: "Both people had to want what the other had"
+- tapOn:
+    id: "quiz-check"
+    retryTapIfNoChange: true
+- waitForAnimationToEnd
+- assertVisible: "Correct!"
+- tapOn:
+    id: "quiz-continue"
+    retryTapIfNoChange: true
+- waitForAnimationToEnd
+- tapOn: "Sell rice to anyone, then pay the shoemaker"
+- tapOn:
+    id: "quiz-check"
+    retryTapIfNoChange: true
+- waitForAnimationToEnd
+- tapOn:
+    id: "quiz-continue"
+    retryTapIfNoChange: true
+- waitForAnimationToEnd
+- tapOn:
+    id: "connect-next"
+    retryTapIfNoChange: true
+- waitForAnimationToEnd
+- extendedWaitUntil:
+    visible: "Lesson complete!"
+    timeout: 10000
+- assertVisible: ".*XP.*boost.*"
+- assertVisible: ".*Coins.*"
+- scrollUntilVisible:
+    element:
+      id: "lesson-done"
+    direction: DOWN
+- tapOn:
+    id: "lesson-done"
+
+# 7. Free Kip Run from the campus Sports Ground, with a card loadout
+- tapOn:
+    id: "tab-campus"
+- extendedWaitUntil:
+    visible:
+      id: "spot-track"
+    timeout: 15000
+- tapOn:
+    id: "spot-track"
+- assertVisible: "Power up with a card"
+- tapOn:
+    id: "free-run-start"
+- extendedWaitUntil:
+    visible: "Kip.s debrief"
+    timeout: 90000
+- scrollUntilVisible:
+    element: "Done"
+    direction: DOWN
+- tapOn: "Done"
+- assertVisible:
+    id: "campus-map"

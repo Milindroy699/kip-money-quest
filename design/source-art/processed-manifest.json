@@ -1,0 +1,270 @@
+{
+ "characters/kip_front.webp": [
+  242,
+  366
+ ],
+ "characters/kip_three_quarter.webp": [
+  247,
+  367
+ ],
+ "characters/kip_side.webp": [
+  250,
+  365
+ ],
+ "characters/kip_back.webp": [
+  242,
+  367
+ ],
+ "characters/kip_happy.webp": [
+  194,
+  203
+ ],
+ "characters/kip_talk.webp": [
+  211,
+  202
+ ],
+ "characters/kip_think.webp": [
+  192,
+  204
+ ],
+ "characters/kip_worry.webp": [
+  194,
+  200
+ ],
+ "characters/kip_cheer.webp": [
+  245,
+  200
+ ],
+ "characters/kip_sleepy.webp": [
+  193,
+  200
+ ],
+ "characters/dash_front.webp": [
+  200,
+  435
+ ],
+ "characters/dash_three_quarter.webp": [
+  245,
+  385
+ ],
+ "characters/dash_side.webp": [
+  137,
+  430
+ ],
+ "characters/dash_back.webp": [
+  182,
+  426
+ ],
+ "characters/dash_excited.webp": [
+  161,
+  245
+ ],
+ "characters/dash_smug.webp": [
+  164,
+  263
+ ],
+ "characters/dash_shocked.webp": [
+  158,
+  241
+ ],
+ "characters/dash_sheepish.webp": [
+  186,
+  209
+ ],
+ "characters/dash_panicked.webp": [
+  175,
+  232
+ ],
+ "characters/dash_thoughtful.webp": [
+  187,
+  219
+ ],
+ "characters/melt_drifting.webp": [
+  468,
+  228
+ ],
+ "characters/melt_reaching.webp": [
+  430,
+  299
+ ],
+ "characters/melt_laughing.webp": [
+  302,
+  309
+ ],
+ "characters/kip_full.webp": [
+  440,
+  650
+ ],
+ "props/prop_cash_out_ramp_1.webp": [
+  469,
+  512
+ ],
+ "props/prop_cash_out_ramp_2.webp": [
+  512,
+  488
+ ],
+ "props/prop_coin_1.webp": [
+  488,
+  512
+ ],
+ "props/prop_coin_2.webp": [
+  493,
+  512
+ ],
+ "props/prop_fee_toll_1.webp": [
+  512,
+  351
+ ],
+ "props/prop_fee_toll_2.webp": [
+  512,
+  301
+ ],
+ "props/prop_hot_tip_trap_1.webp": [
+  512,
+  419
+ ],
+ "props/prop_hot_tip_trap_2.webp": [
+  512,
+  401
+ ],
+ "props/prop_impulse_billboard_1.webp": [
+  512,
+  463
+ ],
+ "props/prop_impulse_billboard_2.webp": [
+  321,
+  512
+ ],
+ "props/prop_invest_gate_1.webp": [
+  434,
+  512
+ ],
+ "props/prop_invest_gate_2.webp": [
+  453,
+  512
+ ],
+ "props/prop_sip_gate_1.webp": [
+  462,
+  512
+ ],
+ "props/prop_sip_gate_2.webp": [
+  463,
+  512
+ ],
+ "mentors/mentor_bondi_1.webp": [
+  599,
+  640
+ ],
+ "mentors/mentor_bondi_2.webp": [
+  573,
+  633
+ ],
+ "mentors/mentor_fizz_1.webp": [
+  640,
+  414
+ ],
+ "mentors/mentor_fizz_2.webp": [
+  640,
+  356
+ ],
+ "mentors/mentor_goldie_1.webp": [
+  458,
+  640
+ ],
+ "mentors/mentor_goldie_2.webp": [
+  531,
+  640
+ ],
+ "mentors/mentor_rita_1.webp": [
+  640,
+  448
+ ],
+ "mentors/mentor_rita_2.webp": [
+  640,
+  408
+ ],
+ "mentors/mentor_vee_1.webp": [
+  430,
+  640
+ ],
+ "mentors/mentor_vee_2.webp": [
+  547,
+  640
+ ],
+ "backgrounds/bg_card_vault_1.jpg": [
+  768,
+  1376
+ ],
+ "backgrounds/bg_card_vault_2.jpg": [
+  768,
+  1376
+ ],
+ "backgrounds/bg_celebration_1.jpg": [
+  768,
+  1376
+ ],
+ "backgrounds/bg_celebration_2.jpg": [
+  768,
+  1376
+ ],
+ "backgrounds/bg_money_town_1.jpg": [
+  768,
+  1376
+ ],
+ "backgrounds/bg_money_town_2.jpg": [
+  768,
+  1376
+ ],
+ "backgrounds/bg_night_market_1.jpg": [
+  768,
+  1376
+ ],
+ "backgrounds/bg_night_market_2.jpg": [
+  768,
+  1376
+ ],
+ "backgrounds/bg_onboarding_future_1.jpg": [
+  768,
+  1376
+ ],
+ "backgrounds/bg_onboarding_future_2.jpg": [
+  768,
+  1376
+ ],
+ "backgrounds/bg_snowball_valley_1.jpg": [
+  768,
+  1376
+ ],
+ "backgrounds/bg_snowball_valley_2.jpg": [
+  768,
+  1376
+ ],
+ "backgrounds/bg_the_melt_1.jpg": [
+  768,
+  1376
+ ],
+ "backgrounds/bg_risk_ridge_2.jpg": [
+  768,
+  1376
+ ],
+ "backgrounds/bg_portfolio_fort_1.jpg": [
+  768,
+  1376
+ ],
+ "backgrounds/bg_three_doors_2.jpg": [
+  768,
+  1376
+ ],
+ "backgrounds/bg_analyst_hq_2.jpg": [
+  768,
+  1376
+ ],
+ "backgrounds/bg_future_you_2.jpg": [
+  768,
+  1376
+ ],
+ "backgrounds/bg_time_tracks.jpg": [
+  768,
+  1376
+ ]
+}

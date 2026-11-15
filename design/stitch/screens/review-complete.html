@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Kip: Money Quest - Review Complete</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-variant": "#2d3543",
+            "outline-variant": "#3c4a40",
+            "on-secondary-container": "#382700",
+            "on-tertiary-fixed": "#21005e",
+            "tertiary-container": "#d0bfff",
+            "tertiary-fixed": "#e8ddff",
+            "surface-bright": "#323948",
+            "surface": "#0b1420",
+            "inverse-primary": "#006c44",
+            "secondary-fixed": "#ffdea5",
+            "on-tertiary-fixed-variant": "#4f319c",
+            "on-error-container": "#ffdad6",
+            "primary-fixed-dim": "#34e197",
+            "on-primary-fixed-variant": "#005232",
+            "on-primary": "#003821",
+            "surface-container-lowest": "#060e1b",
+            "surface-container": "#18202d",
+            "secondary": "#f3be53",
+            "tertiary-fixed-dim": "#cebdff",
+            "primary-container": "#38e399",
+            "error": "#ffb4ab",
+            "surface-container-highest": "#2d3543",
+            "tertiary": "#eae0ff",
+            "on-tertiary": "#381385",
+            "on-surface": "#dbe2f5",
+            "primary": "#6bffb6",
+            "on-primary-fixed": "#002112",
+            "surface-container-low": "#141c29",
+            "on-secondary-fixed-variant": "#5d4200",
+            "on-tertiary-container": "#5c3faa",
+            "primary-fixed": "#5cfeb1",
+            "on-secondary": "#412d00",
+            "surface-dim": "#0b1420",
+            "inverse-on-surface": "#29313f",
+            "secondary-fixed-dim": "#f3be53",
+            "on-surface-variant": "#bbcabe",
+            "on-secondary-fixed": "#261900",
+            "on-primary-container": "#00613c",
+            "inverse-surface": "#dbe2f5",
+            "background": "#0b1420",
+            "error-container": "#93000a",
+            "outline": "#859489",
+            "on-error": "#690005",
+            "surface-container-high": "#222a38",
+            "surface-tint": "#34e197",
+            "secondary-container": "#b78920",
+            "on-background": "#dbe2f5"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "3xl": "1.5rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "1rem",
+            "space-2xs": "0.25rem",
+            "space-lg": "1.5rem",
+            "margin": "1.25rem",
+            "gutter": "1rem",
+            "space-xl": "2rem",
+            "space-sm": "0.75rem",
+            "space-2xl": "3rem",
+            "space-xs": "0.5rem"
+          },
+          "fontFamily": {
+            "display-hero": ["Space Grotesk"],
+            "body-sm": ["Outfit"],
+            "headline-sm": ["Space Grotesk"],
+            "display-hero-mobile": ["Space Grotesk"],
+            "body-md": ["Outfit"],
+            "label-currency-lg": ["Space Grotesk"],
+            "label-btn": ["Space Grotesk"],
+            "label-currency-sm": ["Space Grotesk"],
+            "label-badge": ["Space Grotesk"],
+            "body-lg": ["Outfit"],
+            "headline-md": ["Space Grotesk"],
+            "headline-lg": ["Space Grotesk"]
+          },
+          "fontSize": {
+            "display-hero": ["40px", {"lineHeight": "48px", "fontWeight": "700"}],
+            "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+            "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+            "display-hero-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "label-currency-lg": ["24px", {"lineHeight": "28px", "fontWeight": "700"}],
+            "label-btn": ["15px", {"lineHeight": "20px", "fontWeight": "700"}],
+            "label-currency-sm": ["15px", {"lineHeight": "20px", "fontWeight": "700"}],
+            "label-badge": ["11px", {"lineHeight": "14px", "fontWeight": "700"}],
+            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "500"}],
+            "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+            "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "700"}]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-fill {
+      font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Arcade 3D tactile button press mechanics */
+    .btn-arcade-neon {
+      background-color: #38e399;
+      box-shadow: 0 4px 0 0 #009959, 0 8px 24px -2px rgba(56, 227, 153, 0.35);
+      transition: all 0.08s ease-in-out;
+    }
+    .btn-arcade-neon:active {
+      transform: translateY(4px);
+      box-shadow: 0 0 0 0 #009959, 0 2px 10px rgba(56, 227, 153, 0.25);
+    }
+    /* Frosted glass backdrop styling */
+    .glass-bay {
+      background: rgba(24, 32, 45, 0.85);
+      backdrop-filter: blur(28px) saturate(140%);
+      -webkit-backdrop-filter: blur(28px) saturate(140%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 16px 40px -6px rgba(6, 14, 27, 0.8);
+    }
+    .glass-pill {
+      background: rgba(30, 42, 58, 0.65);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+    }
+    /* Mascot cutout framing for cheering Kip */
+    .mascot-avatar-frame {
+      filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 18px rgba(56, 227, 153, 0.25));
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface antialiased flex justify-center items-center min-h-screen p-0 sm:p-4 select-none">
+<!-- Mobile Viewport Shell (390 x 844 aspect ratio container) -->
+<main class="relative w-full max-w-[390px] h-[844px] bg-surface-container-lowest overflow-hidden flex flex-col justify-between shadow-2xl rounded-none sm:rounded-3xl border-0 sm:border border-white/10">
+<!-- Celebration Ambient Background with Confetti Light Burst -->
+<div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+<!-- Confetti & Warm Burst Backdrop Image -->
+<img alt="Celebration bokeh and confetti background" class="w-full h-full object-cover object-top opacity-55 mix-blend-screen scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMG534mudXSrCCCkI_nlCPMVRJRMxlz1nUiwOnUEVVBVxGSc6vVGhaK7K3N6PRU_bFhReljGwpqppfql82Ew1xxdRLjg7b3DeU20o3uXGlSseiaBbhW65q6Kfme9SiDyDwaGKhmBwqWc7rSynEFvyCmBQ5vtvLAKI_oVF2NQgqbVir0JJ513N8YW-J7OLxuIaSmfYWX30X7lQlbyqHUqWkvBG4a3Ov4WCaEJJLHfXbB6n6CId5DN_zS08koRDmB9pww9pHSjXhpELT"/>
+<!-- Ambient midnight gradient overlay to ensure UI contrast -->
+<div class="absolute inset-0 bg-gradient-to-b from-surface-container-lowest/40 via-surface/85 to-surface-container-lowest"></div>
+<div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+</div>
+<!-- Top Navigation Bar (Shared Component Style: TopAppBar) -->
+<header class="relative z-30 flex items-center justify-between px-margin py-space-sm bg-surface-container/70 backdrop-blur-md border-b border-outline-variant/30 shadow-lg shadow-surface-container-lowest/60">
+<!-- Leading Icon: Close / Dismiss -->
+<button aria-label="Close review" class="w-9 h-9 rounded-xl flex items-center justify-center bg-surface-bright/40 text-on-surface hover:bg-surface-bright/70 active:scale-95 transition-transform duration-150 border border-white/10">
+<span class="material-symbols-outlined text-[20px]" data-icon="close">close</span>
+</button>
+<!-- Center Milestone Cleared Pill -->
+<div class="flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-surface-container-high/90 border border-primary/30 shadow-inner">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+<span class="text-label-badge font-label-badge text-primary uppercase tracking-wider">Milestone Cleared</span>
+</div>
+<!-- Trailing Action: Help -->
+<button aria-label="Help" class="w-9 h-9 rounded-xl flex items-center justify-center bg-surface-bright/40 text-on-surface hover:bg-surface-bright/70 active:scale-95 transition-transform duration-150 border border-white/10">
+<span class="material-symbols-outlined text-[20px]" data-icon="help">help</span>
+</button>
+</header>
+<!-- Scrollable Content Canvas (Thumb Ergonomics Priority) -->
+<div class="relative z-10 flex-1 overflow-y-auto px-margin pt-2 pb-4 space-y-3.5 scrollbar-none">
+<!-- Cheering Mascot Kip Hero & Celebration Titles -->
+<div class="flex flex-col items-center text-center pt-1">
+<!-- Kip Character Display (Anchored Cheering Mascot) -->
+<div class="relative w-28 h-28 mascot-avatar-frame mb-1 transform hover:scale-105 transition-transform">
+<!-- Ambient spotlight ring beneath Kip -->
+<div class="absolute bottom-1 left-1/2 -translate-x-1/2 w-20 h-4 bg-primary/20 blur-md rounded-full"></div>
+<!-- Cropped Cheering Mascot Kip from the official character sheet -->
+<div class="w-full h-full rounded-2xl overflow-hidden flex items-center justify-center">
+<img alt="Kip the green tortoise mascot with glasses cheering with joy" class="w-[450%] h-[230%] max-w-none object-cover object-[73%_95%]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjHdwj0CntI6tfgZ0TtdbluHqDEhjqId2IoRRcsMZWLvCzK_QVQCz75laSbvTXcFmMqLSx1fjxIvPBjWr-rPVz8Qk6bTMyD9L2a7at91PQb2WTOngVLwEd56UAVkrWodNoPK9mcF1QWeVRWhTtBvaMbzNZkoHbfV1_bdI7rZjprq6moAn8cQkIULYQEwIPFBWV8E59Pq4Ik1Qs0GfPIuIFe-rWdFTd-rzfh07BwCEIpM6v86IIlNCpoXyURTFDGtsTohOhHcXfTNHK"/>
+</div>
+<!-- Micro floating celebratory spark star -->
+<div class="absolute -top-1 -right-2 bg-secondary text-on-secondary w-6 h-6 rounded-full flex items-center justify-center shadow-md animate-bounce">
+<span class="material-symbols-outlined material-symbols-fill text-[14px]" data-icon="sparkles" data-weight="fill">arrow_back_ios_new</span>
+</div>
+</div>
+<!-- Headline Titles -->
+<h1 class="text-display-hero-mobile font-display-hero-mobile text-on-surface tracking-tight leading-tight drop-shadow-md">
+          Review complete!
+        </h1>
+<!-- Status Subtitle Badge -->
+<div class="inline-flex items-center gap-1.5 mt-1 px-3 py-0.5 rounded-full bg-primary/10 border border-primary/30">
+<span class="material-symbols-outlined material-symbols-fill text-primary text-[14px]" data-icon="verified" data-weight="fill">verified</span>
+<span class="text-label-badge font-label-badge text-primary-fixed tracking-wider uppercase">
+            Knowledge Consolidation
+          </span>
+</div>
+</div>
+<!-- Primary Glass Card: HUD Stats & Spaced Repetition Track -->
+<section class="glass-bay rounded-2xl p-space-md space-y-3.5">
+<!-- Reward Chips Row -->
+<div class="grid grid-cols-3 gap-2">
+<!-- Chip 1: Accuracy -->
+<div class="glass-pill rounded-xl py-2 px-1.5 flex flex-col items-center justify-center border-primary/30 text-center">
+<span class="text-label-badge font-label-badge text-primary-container flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[13px]" data-icon="track_changes">track_changes</span> 3/3
+            </span>
+<span class="text-body-sm font-body-sm text-on-surface-variant font-medium mt-0.5">Correct</span>
+</div>
+<!-- Chip 2: XP Gained -->
+<div class="glass-pill rounded-xl py-2 px-1.5 flex flex-col items-center justify-center border-primary-fixed/20 text-center">
+<span class="text-label-badge font-label-badge text-primary flex items-center gap-0.5">
+<span class="material-symbols-outlined material-symbols-fill text-[13px]" data-icon="bolt" data-weight="fill">bolt</span> +19
+            </span>
+<span class="text-body-sm font-body-sm text-on-surface-variant font-medium mt-0.5">Quest XP</span>
+</div>
+<!-- Chip 3: Gold Coins -->
+<div class="glass-pill rounded-xl py-2 px-1.5 flex flex-col items-center justify-center border-secondary/40 text-center">
+<span class="text-label-badge font-label-badge text-secondary flex items-center gap-0.5">
+<span class="material-symbols-outlined material-symbols-fill text-[13px]" data-icon="monetization_on" data-weight="fill">monetization_on</span> +5
+            </span>
+<span class="text-body-sm font-body-sm text-on-surface-variant font-medium mt-0.5">Kip Coins</span>
+</div>
+</div>
+<!-- Wisdom / Insight Callout Box -->
+<div class="p-space-sm rounded-xl bg-surface-container-lowest/60 border border-outline-variant/30 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5" data-icon="psychology">psychology</span>
+<p class="text-body-sm font-body-sm text-on-surface-variant leading-relaxed text-left">
+<span class="text-on-surface font-semibold">Remembering is compounding</span> for your brain. These concepts return on Day 7 and Day 21 so they stick forever.
+          </p>
+</div>
+<!-- Spaced Repetition Progression Timeline -->
+<div class="pt-1">
+<div class="flex items-center justify-between mb-2">
+<span class="text-label-badge font-label-badge text-on-surface-variant uppercase tracking-wider">Memory Curve Schedule</span>
+<span class="text-label-badge font-label-badge text-primary">Stage 2 of 4</span>
+</div>
+<!-- Horizontal Timeline Nodes -->
+<div class="relative flex items-center justify-between">
+<!-- Connecting Base Bar -->
+<div class="absolute left-4 right-4 top-1/2 -translate-y-1/2 h-[3px] bg-surface-variant z-0 rounded-full"></div>
+<!-- Active Fill Progress Bar (50% complete to Day 3) -->
+<div class="absolute left-4 w-1/3 top-1/2 -translate-y-1/2 h-[3px] bg-primary z-0 rounded-full shadow-[0_0_8px_#38e399]"></div>
+<!-- Milestone 1: Day 1 Cleared -->
+<div class="relative z-10 flex flex-col items-center gap-1">
+<div class="w-7 h-7 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-bold text-[12px] shadow-md border-2 border-surface-container">
+<span class="material-symbols-outlined text-[16px] font-bold" data-icon="check">check</span>
+</div>
+<span class="text-[11px] font-headline-sm font-medium text-on-surface">Day 1</span>
+</div>
+<!-- Milestone 2: Day 3 Cleared (Today) -->
+<div class="relative z-10 flex flex-col items-center gap-1">
+<div class="w-7 h-7 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-bold text-[12px] shadow-md border-2 border-surface-container ring-2 ring-primary/40">
+<span class="material-symbols-outlined text-[16px] font-bold" data-icon="check">check</span>
+</div>
+<span class="text-[11px] font-headline-sm font-medium text-primary-fixed">Day 3</span>
+</div>
+<!-- Milestone 3: Day 7 Next Active Target -->
+<div class="relative z-10 flex flex-col items-center gap-1">
+<div class="w-7 h-7 rounded-full bg-surface-container-high border-2 border-secondary text-secondary flex items-center justify-center text-[11px] font-bold shadow-[0_0_12px_rgba(243,190,83,0.35)] animate-pulse">
+                7
+              </div>
+<span class="text-[10px] font-headline-sm font-semibold text-secondary">Next</span>
+</div>
+<!-- Milestone 4: Day 21 Future Locked -->
+<div class="relative z-10 flex flex-col items-center gap-1 opacity-50">
+<div class="w-7 h-7 rounded-full bg-surface-variant border border-outline/30 text-on-surface-variant flex items-center justify-center text-[10px]">
+<span class="material-symbols-outlined text-[14px]" data-icon="lock">lock</span>
+</div>
+<span class="text-[11px] font-headline-sm text-outline">Day 21</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Knowledge SIP Streak Card -->
+<section class="glass-bay rounded-2xl p-space-md flex items-center justify-between border-secondary/30 relative overflow-hidden">
+<!-- Glow highlight behind flame -->
+<div class="absolute -right-4 -bottom-4 w-24 h-24 bg-secondary/15 rounded-full blur-xl pointer-events-none"></div>
+<div class="space-y-1 pr-2">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined material-symbols-fill text-secondary text-[20px]" data-icon="local_fire_department" data-weight="fill">local_fire_department</span>
+<span class="text-headline-sm font-headline-sm text-on-surface">5-Day Knowledge SIP</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+            Compounding boost active <span class="text-primary font-semibold">XP boost grows 1% a day</span>
+</p>
+<!-- Mini 5-Day Visual Flame Track -->
+<div class="flex items-center gap-1.5 pt-1">
+<span class="w-4 h-1.5 rounded-full bg-secondary"></span>
+<span class="w-4 h-1.5 rounded-full bg-secondary"></span>
+<span class="w-4 h-1.5 rounded-full bg-secondary"></span>
+<span class="w-4 h-1.5 rounded-full bg-secondary"></span>
+<span class="w-4 h-1.5 rounded-full bg-secondary ring-1 ring-white"></span>
+</div>
+</div>
+<!-- 3D Flame Multiplier Badge -->
+<div class="shrink-0 w-12 h-12 rounded-2xl bg-secondary-container/50 border border-secondary/40 flex flex-col items-center justify-center text-center shadow-lg">
+<span class="text-[10px] font-bold text-secondary uppercase leading-none">Streak</span>
+<span class="text-headline-sm font-display-hero text-on-surface leading-tight">×1.04</span>
+</div>
+</section>
+</div>
+<!-- Ergonomic Bottom Thumb Zone & Primary Action Button (Bottom 120px) -->
+<footer class="relative z-30 p-margin pt-space-xs pb-6 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/95 to-transparent flex flex-col items-center">
+<!-- Chunky 3D Arcade Primary CTA Button -->
+<button class="btn-arcade-neon w-full h-14 rounded-2xl flex items-center justify-center gap-2 text-on-primary-container text-label-btn font-label-btn font-bold uppercase tracking-wider text-base cursor-pointer">
+<span>Done</span>
+<span class="material-symbols-outlined text-[20px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<!-- India-First Context Disclaimer -->
+<p class="text-body-sm font-body-sm text-on-surface-variant/70 text-center mt-3 text-[11px] flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-outline" data-icon="shield">shield</span>
+        Purely for financial education • No real money risk (₹0)
+      </p>
+</footer>
+</main>
+</body></html>

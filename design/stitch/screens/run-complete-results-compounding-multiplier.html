@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-primary-container": "#00613c", "on-secondary-fixed": "#261900", "tertiary-fixed-dim": "#cebdff", "tertiary-fixed": "#e8ddff", "inverse-primary": "#006c44", "surface-container-highest": "#2d3543", "inverse-on-surface": "#29313f", "secondary-fixed": "#ffdea5", "on-primary": "#003821", "on-primary-fixed-variant": "#005232", "outline": "#859489", "surface-dim": "#0b1420", "on-tertiary": "#381385", "on-tertiary-fixed": "#21005e", "surface-bright": "#323948", "on-background": "#dbe2f5", "on-surface-variant": "#bbcabe", "error": "#ffb4ab", "on-tertiary-fixed-variant": "#4f319c", "secondary-container": "#b78920", "surface-tint": "#34e197", "surface-container-low": "#141c29", "primary-fixed-dim": "#34e197", "secondary-fixed-dim": "#f3be53", "surface-container-high": "#222a38", "inverse-surface": "#dbe2f5", "surface": "#0b1420", "surface-container": "#18202d", "secondary": "#f3be53", "on-secondary-container": "#382700", "primary": "#6bffb6", "tertiary": "#eae0ff", "on-secondary": "#412d00", "background": "#0b1420", "surface-variant": "#2d3543", "on-surface": "#dbe2f5", "surface-container-lowest": "#060e1b", "on-secondary-fixed-variant": "#5d4200", "primary-fixed": "#5cfeb1", "on-error": "#690005", "on-error-container": "#ffdad6", "outline-variant": "#3c4a40", "error-container": "#93000a", "primary-container": "#38e399", "tertiary-container": "#d0bfff", "on-primary-fixed": "#002112", "on-tertiary-container": "#5c3faa" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-sm": "0.75rem", "space-2xs": "0.25rem", "space-lg": "1.5rem", "gutter": "1rem", "space-xs": "0.5rem", "margin": "1.25rem", "space-md": "1rem", "space-xl": "2rem", "space-2xl": "3rem" }, fontFamily: { "headline-md": ["Space Grotesk"], "label-currency-sm": ["Space Grotesk"], "headline-sm": ["Space Grotesk"], "label-badge": ["Space Grotesk"], "body-sm": ["Outfit"], "display-hero": ["Space Grotesk"], "display-hero-mobile": ["Space Grotesk"], "label-btn": ["Space Grotesk"], "body-md": ["Outfit"], "headline-lg": ["Space Grotesk"], "label-currency-lg": ["Space Grotesk"], "body-lg": ["Outfit"] }, fontSize: { "headline-md": ["22px", { lineHeight: "28px", fontWeight: "600" }], "label-currency-sm": ["15px", { lineHeight: "20px", fontWeight: "700" }], "headline-sm": ["18px", { lineHeight: "24px", fontWeight: "600" }], "label-badge": ["11px", { lineHeight: "14px", fontWeight: "700" }], "body-sm": ["12px", { lineHeight: "16px", fontWeight: "400" }], "display-hero": ["40px", { lineHeight: "48px", fontWeight: "700" }], "display-hero-mobile": ["32px", { lineHeight: "40px", fontWeight: "700" }], "label-btn": ["15px", { lineHeight: "20px", fontWeight: "700" }], "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }], "headline-lg": ["28px", { lineHeight: "36px", fontWeight: "700" }], "label-currency-lg": ["24px", { lineHeight: "28px", fontWeight: "700" }], "body-lg": ["16px", { lineHeight: "24px", fontWeight: "500" }] } } } }</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#0b1420;color:#dbe2f5;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style></head><body class="bg-surface font-body-md text-on-surface flex flex-col min-h-screen relative"><header class="fixed top-0 inset-x-0 z-50 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe"><div class="h-16 px-margin flex items-center justify-between"><button aria-label="Dismiss" class="w-11 h-11 flex items-center justify-center rounded-full bg-surface-container/70 text-on-surface hover:text-primary transition-colors" onclick="history.back()"><span class="material-symbols-outlined text-[24px]">close</span></button><h1 class="font-headline-sm text-headline-sm text-on-surface tracking-tight uppercase">Run Summary</h1><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-safe bg-surface"><div class="flex flex-col w-full relative overflow-hidden select-none">
+<!-- Dynamic Ambient Glow & Background Layer -->
+<div class="absolute inset-0 -z-10 bg-cover bg-center overflow-hidden" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDG0w57fD3CYDaGaWiKsKcYFj0jAz9gXY8lKoXtncpSqZF_IcWquVXN8b8k3K6HO__QN74HyuDJ746kqiquYgnfEPENT0xIDUa9gFv86q_os6nwpedFqF4IxiWMsO49f4InKvTG2KTxoB9VyEnh3dRQ6ZwYO-gSDE0saNCyO1af_LhYEIhzG7khEMu9bvlW9ndCMS_VKm2InVur-INgFccOBzsMRqobtMj56iwVZgE9Y-7AUkSSDw-ZcA');">
+<div class="absolute inset-0 bg-surface/85 backdrop-blur-xl"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-surface/60 via-surface/90 to-surface"></div>
+<!-- Soft Bioluminescent Light Pockets -->
+<div class="absolute top-16 left-1/2 -translate-x-1/2 w-72 h-72 rounded-full bg-secondary/15 blur-3xl pointer-events-none"></div>
+<div class="absolute bottom-32 left-10 w-64 h-64 rounded-full bg-primary/10 blur-3xl pointer-events-none"></div>
+</div>
+<div class="px-margin pt-space-xs pb-space-2xl flex flex-col space-y-space-md">
+<!-- Top Status Bar Row (Under Shell Nav) -->
+<div class="flex items-center justify-between w-full">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high/80 backdrop-blur-md shadow-sm">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-badge text-label-badge text-on-surface-variant uppercase tracking-wider">Run Complete • World 1</span>
+</div>
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-container/30 backdrop-blur-md shadow-sm">
+<span class="text-[14px]">🔥</span>
+<span class="font-label-badge text-label-badge text-secondary-fixed font-bold tracking-tight">5-Day Streak</span>
+</div>
+</div>
+<!-- Mascot & Victory Header -->
+<div class="relative flex flex-col items-center text-center pt-space-2xs pb-space-xs">
+<!-- Mascot Avatar Frame with Radiant Halo -->
+<div class="relative w-36 h-36 flex items-center justify-center mb-space-xs">
+<div class="absolute inset-0 rounded-full bg-gradient-to-tr from-secondary/40 via-primary-container/30 to-transparent blur-xl animate-pulse"></div>
+<div class="w-32 h-32 rounded-full bg-surface-container-high/60 backdrop-blur-md p-1 shadow-[0_12px_32px_rgba(0,0,0,0.45)] flex items-center justify-center relative overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-no-repeat" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDdO_p9xMDc5wAEGiqEeisYasq7IgQuGYXQNBaZhimzzyG5pW6MuzqCNJAH6_Ln4GYBkXUsXtTZk59I-z_sCsGmbdOtuhrfbxo5E5t29whT0lpsXYYOTqWe7pzh75j1lMPtWimmCzDwlDundKoGfRWLDq6v5L-kyh1FCToTjckcjVJr4oycYAlJDtv0r8Ev2-xes4p2d_EB9cJSD-aynbOQ_EH8_upiNlF94R47CZ4NECc8ReOOHIAy4g'); background-position: 72% 88%; background-size: 650%;"></div>
+</div>
+<div class="absolute -top-1 -right-1 w-8 h-8 rounded-full bg-secondary flex items-center justify-center shadow-lg text-on-secondary text-sm font-bold">
+          ⭐
+        </div>
+</div>
+<!-- Celebration Badges & Title -->
+<div class="inline-flex items-center gap-1 px-3 py-0.5 rounded-full bg-primary/15 text-primary text-label-badge font-label-badge mb-1.5">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span>NEW RUN HIGH SCORE!</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Run Complete!</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Great pace! Kip dodged cash drag traps like a pro.</p>
+</div>
+<!-- Slot Machine / Multiplier Reveal Component -->
+<div class="w-full rounded-[24px] bg-surface-container/85 backdrop-blur-2xl p-space-md shadow-[0_16px_36px_rgba(0,0,0,0.5)] relative overflow-hidden">
+<!-- Neon Trim Accent -->
+<div class="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-secondary to-transparent opacity-80"></div>
+<div class="flex items-center justify-between pb-space-xs mb-space-xs">
+<span class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[20px]" style="font-variation-settings: 'FILL' 1;">casino</span>
+          Multiplier Reel
+        </span>
+<span class="font-label-badge text-label-badge px-2 py-0.5 rounded bg-surface-container-highest text-primary-fixed-dim">
+          SYNCED
+        </span>
+</div>
+<!-- Reels Mechanical Bay -->
+<div class="grid grid-cols-11 gap-1 items-center bg-surface-container-lowest/80 rounded-xl p-space-sm shadow-inner">
+<!-- Reel 1: Banked -->
+<div class="col-span-4 flex flex-col items-center justify-center py-1">
+<span class="font-body-sm text-[11px] text-on-surface-variant uppercase font-medium">Banked</span>
+<div class="flex items-center gap-1 mt-0.5">
+<span class="font-label-currency-lg text-label-currency-lg text-secondary-fixed">41</span>
+<span class="text-base">🪙</span>
+</div>
+</div>
+<!-- Math Operator: Multiplier Icon -->
+<div class="col-span-1 flex items-center justify-center text-on-surface-variant font-headline-md opacity-60">
+          ×
+        </div>
+<!-- Reel 2: Streak Multiplier -->
+<div class="col-span-3 flex flex-col items-center justify-center py-1 bg-surface-container/60 rounded-lg">
+<span class="font-body-sm text-[10px] text-primary uppercase font-bold tracking-tight">Streak</span>
+<div class="flex items-center gap-0.5 mt-0.5">
+<span class="font-label-currency-lg text-label-currency-lg text-primary">1.8</span>
+<span class="font-headline-sm text-xs text-primary font-bold">x</span>
+</div>
+</div>
+<!-- Math Operator: Equals -->
+<div class="col-span-1 flex items-center justify-center text-on-surface-variant font-headline-md opacity-60">
+          =
+        </div>
+<!-- Reel 3: Total Harvested -->
+<div class="col-span-2 flex flex-col items-center justify-center py-1">
+<span class="font-body-sm text-[10px] text-on-surface-variant uppercase font-medium">Earned</span>
+<div class="flex items-center gap-0.5 mt-0.5">
+<span class="font-label-currency-lg text-label-currency-lg text-primary font-extrabold" id="slot-total-counter">74</span>
+<span class="text-xs">🪙</span>
+</div>
+</div>
+</div>
+<!-- Streak Bonus Micro Pill -->
+<div class="mt-space-xs flex items-center justify-between px-space-xs text-body-sm">
+<span class="text-on-surface-variant flex items-center gap-1">
+<span class="text-secondary text-xs">✨</span> Consistency Bonus:
+        </span>
+<span class="font-label-badge text-label-badge text-secondary font-bold bg-secondary-container/20 px-2 py-0.5 rounded-full">
+          +33 🪙 Added
+        </span>
+</div>
+</div>
+<!-- Gameplay Stats Breakdown Row -->
+<div class="grid grid-cols-3 gap-2 w-full">
+<!-- Gates Cleared -->
+<div class="flex flex-col items-center text-center p-space-xs rounded-xl bg-surface-container/70 backdrop-blur-md shadow-sm">
+<div class="w-7 h-7 rounded-full bg-primary/15 text-primary flex items-center justify-center mb-1">
+<span class="material-symbols-outlined text-[16px]">task_alt</span>
+</div>
+<span class="font-label-currency-sm text-label-currency-sm text-on-surface">4 / 5</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant leading-tight mt-0.5">Invest Gates</span>
+</div>
+<!-- Lost to The Melt -->
+<div class="flex flex-col items-center text-center p-space-xs rounded-xl bg-surface-container/70 backdrop-blur-md shadow-sm">
+<div class="w-7 h-7 rounded-full bg-tertiary-container/30 text-tertiary-fixed-dim flex items-center justify-center mb-1">
+<span class="material-symbols-outlined text-[16px]">cloud</span>
+</div>
+<span class="font-label-currency-sm text-label-currency-sm text-tertiary-fixed-dim">12 🪙</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant leading-tight mt-0.5">Idle Melted</span>
+</div>
+<!-- Traps Triggered -->
+<div class="flex flex-col items-center text-center p-space-xs rounded-xl bg-surface-container/70 backdrop-blur-md shadow-sm">
+<div class="w-7 h-7 rounded-full bg-error-container/40 text-error flex items-center justify-center mb-1">
+<span class="material-symbols-outlined text-[16px]">warning</span>
+</div>
+<span class="font-label-currency-sm text-label-currency-sm text-on-surface">1</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant leading-tight mt-0.5">Impulse Trap</span>
+</div>
+</div>
+<!-- Mini Chart Card (Real-World Wealth Projection) -->
+<div class="w-full rounded-[24px] bg-surface-container-high/80 backdrop-blur-xl p-space-md shadow-lg flex flex-col space-y-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-[15px] text-on-surface font-bold uppercase tracking-wide">In Real Life</span>
+<span class="text-xs">📈</span>
+</div>
+<span class="font-label-badge text-[10px] text-primary bg-primary/10 px-2 py-0.5 rounded-full uppercase tracking-wider font-semibold">
+          Compounding 10Y
+        </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-snug">
+        If those <strong class="text-on-surface font-semibold">41 🪙</strong> were <strong class="text-secondary-fixed font-semibold">₹4,100</strong> invested at a 12% p.a. pace:
+      </p>
+<!-- Comparison Metric Highlight -->
+<div class="flex items-baseline justify-between pt-1">
+<div class="flex items-baseline gap-1.5">
+<span class="font-headline-lg text-headline-lg text-primary tracking-tight">₹12,734</span>
+<span class="font-body-sm text-xs text-on-surface-variant">in 10 yrs</span>
+</div>
+<div class="inline-flex items-center gap-0.5 text-xs text-primary bg-primary/15 px-2 py-0.5 rounded font-label-badge">
+<span>+₹8,634</span>
+<span class="opacity-70 text-[10px]">(3.1x)</span>
+</div>
+</div>
+<!-- Sparkline Visual Projection: Compounding vs Decay -->
+<div class="w-full pt-1">
+<div class="w-full h-16 relative">
+<svg class="w-full h-full overflow-visible" fill="none" viewbox="0 0 320 64">
+<!-- Grid Reference Lines -->
+<line stroke="#2d3543" stroke-dasharray="3 3" stroke-width="1" x1="0" x2="320" y1="56" y2="56"></line>
+<line stroke="#2d3543" stroke-dasharray="3 3" stroke-width="1" x1="0" x2="320" y1="12" y2="12"></line>
+<!-- Compounding Exponential Curve -->
+<path d="M 0 52 C 90 50, 190 42, 320 12" fill="none" stroke="#38e399" stroke-linecap="round" stroke-width="3"></path>
+<!-- Area Gradient Fill -->
+<path d="M 0 52 C 90 50, 190 42, 320 12 L 320 56 L 0 56 Z" fill="url(#compoundGradient)" opacity="0.25"></path>
+<!-- Idle Cash Decay Curve (Inflation Drag) -->
+<path d="M 0 52 C 100 53, 200 56, 320 58" fill="none" opacity="0.6" stroke="#859489" stroke-dasharray="4 4" stroke-linecap="round" stroke-width="2"></path>
+<!-- Highlight Peak Node -->
+<circle cx="320" cy="12" fill="#38e399" r="4.5"></circle>
+<circle cx="320" cy="12" fill="#38e399" opacity="0.3" r="8"></circle>
+<defs>
+<lineargradient id="compoundGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#38e399" stop-opacity="0.8"></stop>
+<stop offset="100%" stop-color="#38e399" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+</svg>
+</div>
+<!-- Sparkline Legend -->
+<div class="flex items-center justify-between text-[11px] text-on-surface-variant font-body-sm pt-1">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-0.5 bg-primary rounded-full"></span>
+<span>Invested (12% CAGR)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-0.5 bg-outline rounded-full"></span>
+<span>Idle Cash Decay</span>
+</div>
+</div>
+</div>
+<p class="font-body-sm text-[10px] text-outline pt-1 leading-normal italic">
+        *Hypothetical projection at 12% p.a. for educational simulations. Past market performance is not indicative of future returns.
+      </p>
+</div>
+<!-- Thumb-Zone Operational Trays (Chunky 3D Actions) -->
+<div class="pt-space-xs flex flex-col space-y-space-xs w-full">
+<!-- Primary Action: Chunky Tactile Arcade Button -->
+<button class="w-full h-14 rounded-xl bg-primary text-on-primary font-label-btn text-label-btn shadow-[0_4px_0_0_#1EAC70,0_12px_24px_rgba(56,227,153,0.3)] active:translate-y-1 active:shadow-none transition-all flex items-center justify-center gap-2 cursor-pointer" id="collect-btn">
+<span class="tracking-wide uppercase">Collect 74 🪙</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">arrow_back_ios_new</span>
+</button>
+<!-- Secondary Action: Glass Re-Run Button -->
+<button class="w-full h-12 rounded-xl bg-surface-container/60 hover:bg-surface-container text-on-surface font-label-btn text-label-btn shadow-sm active:translate-y-0.5 transition-all flex items-center justify-center gap-1.5 cursor-pointer" onclick="location.reload()">
+<span class="material-symbols-outlined text-[18px]">replay</span>
+<span>Run Again</span>
+</button>
+</div>
+</div>
+<!-- Interactive Slot Reel & Particle Trigger -->
+<script>
+    (function() {
+      const collectBtn = document.getElementById('collect-btn');
+      const counterEl = document.getElementById('slot-total-counter');
+
+      // Subtle Reel Number Ticker Simulation on Screen Load
+      let count = 0;
+      const target = 74;
+      const duration = 850;
+      const stepTime = Math.abs(Math.floor(duration / target));
+
+      const timer = setInterval(() => {
+        count += 2;
+        if (count >= target) {
+          counterEl.innerText = target;
+          clearInterval(timer);
+        } else {
+          counterEl.innerText = count;
+        }
+      }, stepTime);
+
+      // Tactile Feedback on Collect Tap
+      if (collectBtn) {
+        collectBtn.addEventListener('click', function() {
+          this.innerHTML = '<span class="tracking-wide uppercase">Claimed!</span> <span class="material-symbols-outlined text-[20px]">check_circle</span>';
+          this.classList.remove('bg-primary');
+          this.classList.add('bg-primary-container');
+          
+          // Subtle vibration if supported
+          if (navigator.vibrate) {
+            navigator.vibrate([30, 50, 30]);
+          }
+        });
+      }
+    })();
+  </script>
+</div></main></body></html>

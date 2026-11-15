@@ -1,0 +1,507 @@
+{
+  "id": "w2",
+  "index": 2,
+  "title": "Snowball Valley",
+  "tagline": "Compounding, consistency and SIPs",
+  "principle": "Power of compounding; consistency brings wins; SIP discipline; lump sum vs periodic",
+  "product": "SIP, index fund, recurring deposit, PPF",
+  "philosophy": "Time in the market beats timing the market",
+  "color": "#1E88C8",
+  "lessons": [
+    {
+      "id": "w2-l1",
+      "title": "Interest on interest",
+      "subtitle": "The snowball effect",
+      "capability": "Explain compounding and the Rule of 72.",
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "cheer",
+          "lines": [
+            "Welcome to Snowball Valley! Here's my favourite idea in all of money.",
+            "When your interest earns interest, money snowballs. That's compounding."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "compoundChart",
+          "title": "Simple vs compound",
+          "caption": "₹10,000 at 10% a year. Drag the years.",
+          "params": {
+            "mode": "simpleVsCompound",
+            "amount": 10000,
+            "rate": 0.1,
+            "maxYears": 30
+          },
+          "predict": {
+            "question": "₹10,000 at 10% a year for 20 years. Simple interest gives ₹30,000. Compound interest gives…",
+            "options": [
+              "₹32,000",
+              "₹45,000",
+              "₹67,000"
+            ],
+            "correct": 2,
+            "reveal": "About ₹67,000, more than double simple interest, because interest keeps earning interest."
+          }
+        },
+        {
+          "type": "quiz",
+          "question": "What makes compound interest different from simple interest?",
+          "options": [
+            {
+              "text": "The rate is higher",
+              "why": "Same rate! The difference is what the interest is paid on."
+            },
+            {
+              "text": "You earn interest on past interest too",
+              "correct": true,
+              "why": "Exactly. Each year's interest joins the pile and starts earning too."
+            },
+            {
+              "text": "It's only for big amounts",
+              "why": "Compounding works on ₹100 just like on ₹1 crore."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Rule of 72: at 12% a year, money doubles in about…",
+          "options": [
+            {
+              "text": "6 years",
+              "correct": true,
+              "why": "Yes! 72 ÷ 12 = 6. A handy shortcut for compounding."
+            },
+            {
+              "text": "12 years",
+              "why": "That's at 6% a year (72 ÷ 6 = 12)."
+            },
+            {
+              "text": "72 years",
+              "why": "Divide 72 by the rate: 72 ÷ 12 = 6 years."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "title": "Compounding in real life",
+          "realLife": "Banks compound FD interest, often every quarter. Investments like index funds compound when gains stay invested and keep growing."
+        }
+      ]
+    },
+    {
+      "id": "w2-l2",
+      "title": "Time is the secret ingredient",
+      "subtitle": "Start early beats start big",
+      "capability": "Explain why starting early beats starting big.",
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "dash",
+          "mood": "happy",
+          "lines": [
+            "I'll start investing at 25. I'm a teen, what's the rush?"
+          ]
+        },
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "think",
+          "lines": [
+            "Let's run the numbers, Dash. Same ₹1,000 a month, same returns. Only the starting age changes."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "compoundChart",
+          "title": "Start at 15 vs start at 25",
+          "caption": "Both invest ₹1,000 a month until 60.",
+          "params": {
+            "mode": "startEarly",
+            "monthly": 1000,
+            "rate": 0.12
+          },
+          "predict": {
+            "question": "Starting at 15 vs at 25 (both stop at 60). How much more does the early starter end with?",
+            "options": [
+              "About 10% more",
+              "About 2× more",
+              "About 3× more"
+            ],
+            "correct": 2,
+            "reveal": "About 3×! Ten extra years at the start means ten more years of snowballing at the end."
+          }
+        },
+        {
+          "type": "quiz",
+          "question": "Why does starting early matter so much?",
+          "options": [
+            {
+              "text": "Early money compounds for the longest",
+              "correct": true,
+              "why": "Yes. The first rupees you invest get the most years of snowballing."
+            },
+            {
+              "text": "Markets go up more for young people",
+              "why": "Markets don't care how old you are. Your edge is time."
+            },
+            {
+              "text": "It doesn't; amount matters more",
+              "why": "Amount matters, but time multiplies everything. Early beats big."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Aarav invests ₹1,000 a month from 15 to 25, then stops. Dash invests ₹1,000 a month from 25 to 60. At a hypothetical 12%, who has more at 60?",
+          "options": [
+            {
+              "text": "Dash, he invested for 35 years",
+              "why": "Surprise! Aarav's early money had 45 years to snowball."
+            },
+            {
+              "text": "Aarav, even though he invested far less",
+              "correct": true,
+              "why": "Yes! Aarav ends with about ₹1.5 crore from ₹1.2 lakh invested. Dash ends with about ₹65 lakh from ₹4.2 lakh. Hypothetical numbers, real lesson."
+            },
+            {
+              "text": "They end up the same",
+              "why": "Not even close. Time in the market makes the difference."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "title": "Teens can start",
+          "realLife": "In India, a minor can invest in mutual funds through an account in their own name, operated by a parent or guardian.",
+          "mission": "Work out how many years you have until you turn 60."
+        }
+      ]
+    },
+    {
+      "id": "w2-l3",
+      "title": "SIP: investing on autopilot",
+      "subtitle": "Small amounts, every month",
+      "capability": "Explain how a SIP works.",
+      "unlockCards": [
+        "sip",
+        "indexFund"
+      ],
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "talk",
+          "lines": [
+            "Big lump sums are rare for teens. But a small amount every month? You can do that.",
+            "That's a SIP: a Systematic Investment Plan. Same amount, same date, every month."
+          ]
+        },
+        {
+          "type": "play",
+          "mode": "snowball",
+          "durationSec": 45,
+          "brief": "Snowball Run! Coins in a row grow your snowball. SIP gates bank your coins. Avoid CASH OUT ramps: they reset the snowball."
+        },
+        {
+          "type": "quiz",
+          "question": "What is a SIP?",
+          "options": [
+            {
+              "text": "A one-time big investment",
+              "why": "That's a lump sum. A SIP is small and regular."
+            },
+            {
+              "text": "Investing a fixed amount at regular intervals",
+              "correct": true,
+              "why": "Yes: fixed amount, fixed date, automatically. Discipline on autopilot."
+            },
+            {
+              "text": "A type of savings account",
+              "why": "A SIP is a way of investing, usually into a mutual fund."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Why can a SIP build wealth even with small amounts?",
+          "options": [
+            {
+              "text": "It guarantees high returns",
+              "why": "No market investment guarantees returns. SIP returns still go up and down."
+            },
+            {
+              "text": "The bank adds a bonus",
+              "why": "There's no bonus. The power comes from consistency and time."
+            },
+            {
+              "text": "Consistency plus compounding over many years",
+              "correct": true,
+              "why": "Exactly. Small amounts, every month, for years, then the snowball takes over."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "cardId": "indexFund",
+          "title": "Cards unlocked: SIP + Index Fund",
+          "realLife": "Many Indians run SIPs into index funds that track the Nifty 50, India's 50 biggest listed companies. Index funds are low-cost and diversified, but their value swings in the short term.",
+          "deeper": "Mutual funds need KYC: PAN, Aadhaar-based verification and a bank account. A minor's folio is opened in the minor's name with a parent or guardian, and moves to the child's own KYC at 18."
+        }
+      ]
+    },
+    {
+      "id": "w2-l4",
+      "title": "Lump sum vs SIP",
+      "subtitle": "All at once, or bit by bit?",
+      "capability": "Compare lump sum and SIP investing.",
+      "unlockCards": [
+        "lumpSum"
+      ],
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "dash",
+          "mood": "cheer",
+          "lines": [
+            "I got ₹12,000 for my birthday! Should I invest it all today, or ₹1,000 a month for a year?"
+          ]
+        },
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "think",
+          "lines": [
+            "Honest answer: it depends on what the market does next, and nobody knows that.",
+            "Let's test three different markets."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "sipVsLump",
+          "title": "Same money, three markets",
+          "caption": "Pick a market. The same total is invested either way."
+        },
+        {
+          "type": "quiz",
+          "question": "When does a lump sum usually beat a SIP?",
+          "options": [
+            {
+              "text": "When prices rise steadily after you invest",
+              "correct": true,
+              "why": "Right. All your money rides the whole rise from day one."
+            },
+            {
+              "text": "When prices fall first",
+              "why": "Then the SIP wins: it keeps buying at lower prices."
+            },
+            {
+              "text": "Always",
+              "why": "Not always. It depends on the market path, which nobody can predict."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Prices fall for a year, then recover. Why does the SIP do better?",
+          "options": [
+            {
+              "text": "SIPs get a lower fee",
+              "why": "Fees are the same. It's about the price you buy at."
+            },
+            {
+              "text": "It keeps buying more units while prices are low",
+              "correct": true,
+              "why": "Yes! That's rupee-cost averaging: the same ₹1,000 buys more units when prices dip."
+            },
+            {
+              "text": "The SIP is protected from falls",
+              "why": "SIP values fall too. They just buy cheaper on the way down."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "cardId": "lumpSum",
+          "title": "Card unlocked: Lump Sum",
+          "realLife": "Both beat leaving money idle. Many investors with a lump sum split it into a few monthly instalments to reduce timing regret.",
+          "deeper": "A Systematic Transfer Plan (STP) parks a lump sum in a low-risk fund and moves a fixed amount into an equity fund every month: a lump sum and a SIP in one."
+        }
+      ]
+    },
+    {
+      "id": "w2-l5",
+      "title": "Don't break the snowball",
+      "subtitle": "Why in-and-out hurts",
+      "capability": "Explain why consistency beats taking money in and out.",
+      "unlockCards": [
+        "rd"
+      ],
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "dash",
+          "mood": "happy",
+          "lines": [
+            "Every time my investment goes up a bit, I take it out and buy something. Smart, right?"
+          ]
+        },
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "worry",
+          "lines": [
+            "Oh, Dash. Every withdrawal restarts your snowball from scratch."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "compoundChart",
+          "title": "Steady vs in-and-out",
+          "caption": "Both invest ₹500 a month for 20 years. Dash cashes out every 4 years.",
+          "params": {
+            "mode": "withdrawals",
+            "monthly": 500,
+            "rate": 0.12,
+            "everyYears": 4,
+            "maxYears": 20
+          },
+          "predict": {
+            "question": "Kip invests ₹500 a month for 20 years. Dash does the same but cashes out everything every 4 years. Dash ends with…",
+            "options": [
+              "About the same as Kip",
+              "About 70% of Kip's",
+              "About 30% of Kip's"
+            ],
+            "correct": 2,
+            "reveal": "About 30%! Each withdrawal knocked the snowball back to small, so it never got to grow big."
+          }
+        },
+        {
+          "type": "play",
+          "mode": "snowball",
+          "durationSec": 45,
+          "brief": "Resist the CASH OUT ramps! Keep the snowball rolling and bank it at SIP gates."
+        },
+        {
+          "type": "quiz",
+          "question": "Why does taking money in and out hurt your returns?",
+          "options": [
+            {
+              "text": "Compounding restarts every time",
+              "correct": true,
+              "why": "Yes. The biggest growth comes in the later years, and withdrawals keep you stuck in the early ones."
+            },
+            {
+              "text": "Banks charge for every withdrawal",
+              "why": "Fees can apply, but the real cost is lost compounding."
+            },
+            {
+              "text": "It doesn't hurt at all",
+              "why": "It hurts a lot. The chart showed about 70% less!"
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "cardId": "rd",
+          "title": "Card unlocked: Recurring Deposit",
+          "realLife": "A Recurring Deposit is a monthly FD: training wheels for the habit. Banks and post offices offer RDs from about ₹100 a month.",
+          "deeper": "Missing RD instalments usually costs a small penalty, and banks may close the RD after several misses. Set the date just after your money comes in."
+        }
+      ]
+    },
+    {
+      "id": "w2-l6",
+      "title": "Boss: The long game",
+      "subtitle": "Patience is a superpower",
+      "boss": true,
+      "capability": "Plan a long-term, consistent investing habit.",
+      "unlockCards": [
+        "ppf"
+      ],
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "cheer",
+          "lines": [
+            "Final boss of Snowball Valley! Let's put it all together.",
+            "Some investments even lock your money to protect you from… yourself."
+          ]
+        },
+        {
+          "type": "play",
+          "mode": "snowball",
+          "durationSec": 60,
+          "brief": "Boss run! Longer and faster. Bank at every SIP gate and never cash out."
+        },
+        {
+          "type": "quiz",
+          "question": "PPF locks money for 15 years. Who is it good for?",
+          "options": [
+            {
+              "text": "Someone saving for next month's trip",
+              "why": "Locked for 15 years, so that money won't be there next month!"
+            },
+            {
+              "text": "Someone saving for a goal very far away",
+              "correct": true,
+              "why": "Yes. Long lock-ins suit long goals, and they stop you breaking the snowball."
+            },
+            {
+              "text": "Nobody, lock-ins are always bad",
+              "why": "Lock-ins cost flexibility, but they enforce patience. That's useful for long goals."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Which habit builds the biggest snowball?",
+          "options": [
+            {
+              "text": "Invest big once, then check daily",
+              "why": "Daily checking tempts you to react. Consistency beats intensity."
+            },
+            {
+              "text": "Start early, invest every month, don't withdraw",
+              "correct": true,
+              "why": "That's the whole of Snowball Valley in one sentence."
+            },
+            {
+              "text": "Wait for the perfect moment",
+              "why": "Nobody can time the market reliably. Waiting is The Melt's favourite thing."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "A friend says, \"I'll invest when the market is perfect.\" What would Kip say?",
+          "options": [
+            {
+              "text": "Time in the market beats timing the market",
+              "correct": true,
+              "why": "Exactly. Being invested for many years matters more than finding the perfect day."
+            },
+            {
+              "text": "Good idea, wait for a crash",
+              "why": "Crashes can't be predicted, and waiting means losing years of compounding."
+            },
+            {
+              "text": "Only invest after a big rise",
+              "why": "Chasing rises is Dash's move. Steady SIPs don't need perfect timing."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "cardId": "ppf",
+          "title": "Card unlocked: PPF",
+          "realLife": "The PPF is a government-backed scheme with a 15-year lock-in, tax-free interest and a rate set every quarter. You can put in ₹500 to ₹1.5 lakh a year, and a parent can open one for a minor.",
+          "deeper": "PPF deposits can be claimed under Section 80C in the old tax regime, and the interest and maturity amount are tax-free. After 15 years you can extend a PPF in 5-year blocks."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Kip: Money Quest - Barter &amp; Trade</title>
+<!-- Google Fonts: Space Grotesk & Outfit -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration verbatim from instructions -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container": "#18202d",
+            "surface-container-low": "#141c29",
+            "outline-variant": "#3c4a40",
+            "on-tertiary-fixed-variant": "#4f319c",
+            "primary-fixed": "#5cfeb1",
+            "on-secondary-container": "#382700",
+            "on-tertiary-fixed": "#21005e",
+            "on-error": "#690005",
+            "tertiary-container": "#d0bfff",
+            "error-container": "#93000a",
+            "surface": "#0b1420",
+            "secondary-container": "#b78920",
+            "background": "#0b1420",
+            "secondary-fixed": "#ffdea5",
+            "tertiary": "#eae0ff",
+            "on-primary-container": "#00613c",
+            "on-secondary-fixed": "#261900",
+            "surface-bright": "#323948",
+            "on-secondary": "#412d00",
+            "on-primary": "#003821",
+            "surface-container-lowest": "#060e1b",
+            "tertiary-fixed": "#e8ddff",
+            "inverse-surface": "#dbe2f5",
+            "on-error-container": "#ffdad6",
+            "on-secondary-fixed-variant": "#5d4200",
+            "outline": "#859489",
+            "primary": "#6bffb6",
+            "surface-container-high": "#222a38",
+            "primary-fixed-dim": "#34e197",
+            "surface-tint": "#34e197",
+            "on-primary-fixed": "#002112",
+            "inverse-on-surface": "#29313f",
+            "surface-dim": "#0b1420",
+            "tertiary-fixed-dim": "#cebdff",
+            "secondary-fixed-dim": "#f3be53",
+            "on-surface": "#dbe2f5",
+            "error": "#ffb4ab",
+            "on-tertiary-container": "#5c3faa",
+            "on-primary-fixed-variant": "#005232",
+            "primary-container": "#38e399",
+            "surface-container-highest": "#2d3543",
+            "surface-variant": "#2d3543",
+            "on-tertiary": "#381385",
+            "secondary": "#f3be53",
+            "on-background": "#dbe2f5",
+            "on-surface-variant": "#bbcabe",
+            "inverse-primary": "#006c44"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1.25rem",
+            "gutter": "1rem",
+            "space-xl": "2rem",
+            "space-2xs": "0.25rem",
+            "space-xs": "0.5rem",
+            "space-sm": "0.75rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "space-2xl": "3rem"
+          },
+          "fontFamily": {
+            "label-currency-lg": ["Space Grotesk"],
+            "headline-md": ["Space Grotesk"],
+            "body-sm": ["Outfit"],
+            "display-hero": ["Space Grotesk"],
+            "label-btn": ["Space Grotesk"],
+            "headline-sm": ["Space Grotesk"],
+            "label-badge": ["Space Grotesk"],
+            "body-md": ["Outfit"],
+            "label-currency-sm": ["Space Grotesk"],
+            "headline-lg": ["Space Grotesk"],
+            "body-lg": ["Outfit"],
+            "display-hero-mobile": ["Space Grotesk"]
+          },
+          "fontSize": {
+            "label-currency-lg": ["24px", { "lineHeight": "28px", "fontWeight": "700" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "display-hero": ["40px", { "lineHeight": "48px", "fontWeight": "700" }],
+            "label-btn": ["15px", { "lineHeight": "20px", "fontWeight": "700" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "label-badge": ["11px", { "lineHeight": "14px", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "label-currency-sm": ["15px", { "lineHeight": "20px", "fontWeight": "700" }],
+            "headline-lg": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "500" }],
+            "display-hero-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "700" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    /* Mascot sprite crop for thinking pose */
+    .kip-thinking-sprite {
+      width: 68px;
+      height: 76px;
+      object-fit: cover;
+      object-position: 49.5% 88%;
+      filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.65));
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface antialiased flex justify-center items-center min-h-screen p-0 sm:p-4 select-none">
+<!-- Mobile Simulator Canvas: 390px x 844px frame -->
+<div class="relative w-[390px] h-[844px] max-w-[390px] max-h-[844px] overflow-hidden rounded-[44px] shadow-[0_24px_70px_rgba(0,0,0,0.95),0_0_0_10px_#18202d] border border-outline-variant/40 flex flex-col justify-between bg-surface">
+<!-- Ambient Layer 0: Background Artwork + Frosted Midnight Scrim -->
+<div class="absolute inset-0 z-0">
+<img alt="Money Town sunrise market" class="w-full h-full object-cover object-center scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-ZgCITFYTKt2asAzwIEGu9aFtHbVrjFe3Qz6FhNkN4sIIsuvfU2BVxukReWLhYGlt_l6hLswaEMTxejdlHj-bBFDIejG6EM8s4PY-rIjPVW0AHN-OtvSPS6DlhcaQ4WLqj_AoXPr3IUI09NzUniXSBlI14ErpaJxcirpntWtsL9JMn-5gGta0emaLxVGT2Jq9IJtWe_Y1Z7SV6lGSGDB9FI1jcDu9tsB-lm2d0Tq2vwrhfM4PJhKUdL6bt-qzR5LP_lG0f0-ztx-w"/>
+<!-- Deep 85% Frosted Navy Scrim + Radial Bioluminescent glow -->
+<div class="absolute inset-0 bg-[#0B1420]/85 backdrop-blur-xl"></div>
+<div class="absolute -top-16 -left-16 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute top-1/3 -right-20 w-72 h-72 bg-secondary/10 rounded-full blur-3xl pointer-events-none"></div>
+</div>
+<!-- Content Wrapper (Layer 1 & 2 Glass Infrastructure) -->
+<div class="relative z-10 flex flex-col h-full justify-between">
+<!-- TOP SECTION: iOS Status, Progress & Quest Category -->
+<div>
+<!-- iOS Status Bar & App Header (Sub-page linear quest journey: TopAppBar suppressed for focused mission shell) -->
+<header class="pt-3 px-5 flex items-center justify-between">
+<!-- Close / Exit button -->
+<button aria-label="Close quest" class="w-8 h-8 rounded-full bg-surface-container/70 border border-outline-variant/40 flex items-center justify-center text-on-surface hover:text-primary active:scale-90 transition-transform shadow-[0_4px_12px_rgba(0,0,0,0.4)]">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+<!-- Step Progression Segment Bars -->
+<div class="flex flex-col items-center gap-1.5 flex-1 mx-4">
+<div class="flex items-center gap-1">
+<span class="font-label-badge text-label-badge text-primary tracking-widest uppercase">STEP 2 OF 6</span>
+</div>
+<div class="flex items-center gap-1.5 w-full max-w-[170px]">
+<span class="h-1.5 flex-1 rounded-full bg-primary shadow-[0_0_8px_rgba(107,255,182,0.6)]"></span>
+<span class="h-1.5 flex-1 rounded-full bg-primary shadow-[0_0_8px_rgba(107,255,182,0.6)]"></span>
+<span class="h-1.5 flex-1 rounded-full bg-surface-bright/80"></span>
+<span class="h-1.5 flex-1 rounded-full bg-surface-bright/80"></span>
+<span class="h-1.5 flex-1 rounded-full bg-surface-bright/80"></span>
+<span class="h-1.5 flex-1 rounded-full bg-surface-bright/80"></span>
+</div>
+</div>
+<!-- Streak Badge -->
+<div class="flex items-center gap-1 bg-surface-container/80 border border-secondary/40 px-2.5 py-1 rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.3)]">
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span class="font-label-badge text-label-badge text-secondary">3</span>
+</div>
+</header>
+<!-- Category Tag & Quest Headline -->
+<div class="px-5 pt-3 pb-1">
+<!-- Pill Badge: Barter Concept -->
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-high/90 border border-primary/30 shadow-[0_0_12px_rgba(56,227,153,0.15)] mb-2">
+<span class="material-symbols-outlined text-primary text-[14px]">swap_horiz</span>
+<span class="font-label-badge text-label-badge text-primary tracking-wide">CONCEPT · BARTER &amp; TRADE (WORLD 0: MONEY TOWN)</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight leading-tight flex items-center gap-1.5">
+            Get the cricket bat 🏏
+          </h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+            You have mangoes. You want a cricket bat. Tap a villager to trade.
+          </p>
+</div>
+<!-- CURRENT INVENTORY CARD: Layer 2 Floating Frosted Glass Panel -->
+<div class="mx-5 mt-2 p-3 rounded-2xl bg-surface-container/85 border border-white/15 shadow-[0_12px_32px_-4px_rgba(7,11,18,0.7),inset_0_1px_1px_rgba(255,255,255,0.12)] backdrop-blur-2xl flex items-center justify-between">
+<div class="flex items-center gap-3">
+<!-- Succulent Mango Token (Tactile chunky badge) -->
+<div class="relative w-12 h-12 rounded-xl bg-gradient-to-b from-[#FFA726] to-[#E65100] p-0.5 shadow-[0_4px_0_0_#BF360C,0_6px_16px_rgba(255,167,38,0.35)] flex items-center justify-center">
+<span class="text-2xl drop-shadow-md">🥭</span>
+<span class="absolute -bottom-1 -right-1 bg-surface-container-lowest text-primary font-label-badge text-[10px] px-1.5 py-0.2 rounded-full border border-primary/40">×3</span>
+</div>
+<div>
+<span class="font-label-badge text-label-badge text-outline tracking-wider block">YOU'RE HOLDING</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Sweet Alphonso Mangoes</span>
+</div>
+</div>
+<!-- Prompt Match Indicator -->
+<div class="text-right">
+<div class="inline-flex items-center gap-1 bg-primary/10 border border-primary/40 px-2 py-1 rounded-lg">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-badge text-[10px] text-primary font-bold">Meena wants 🥭</span>
+</div>
+</div>
+</div>
+<!-- VILLAGERS BARTER 2x2 GRID -->
+<div class="px-5 mt-3">
+<div class="flex items-center justify-between mb-1.5">
+<span class="font-label-badge text-label-badge text-on-surface-variant tracking-wider uppercase">MARKET BAZAAR RESIDENTS</span>
+<span class="font-body-sm text-[11px] text-outline">Select partner</span>
+</div>
+<div class="grid grid-cols-2 gap-2.5">
+<!-- Card 1: Ravi (Blocked) -->
+<div class="relative p-3 rounded-2xl bg-surface-container/70 border border-outline-variant/30 backdrop-blur-xl transition-all opacity-85 hover:opacity-100 flex flex-col justify-between h-[108px] shadow-[0_8px_20px_rgba(7,11,18,0.4)]">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-bright border border-white/10 flex items-center justify-center text-sm shadow-inner">
+                  🧢
+                </div>
+<div>
+<h3 class="font-headline-sm text-[14px] leading-tight text-on-surface">Ravi</h3>
+<span class="font-body-sm text-[11px] text-outline">The Batsman</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest/60 rounded-lg px-2 py-1 border border-white/5">
+<p class="font-body-sm text-[11px] text-on-surface leading-tight font-medium">Has 🏏 · Wants 🐔</p>
+</div>
+<div class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+<span class="font-label-badge text-[10px] text-outline">Need chicken first</span>
+</div>
+</div>
+<!-- Card 2: Meena (HIGHLIGHTED ACTIVE TARGET MATCH) -->
+<div class="relative p-3 rounded-2xl bg-surface-container/90 border-2 border-primary shadow-[0_0_24px_rgba(56,227,153,0.35),0_8px_24px_-4px_rgba(7,11,18,0.8)] backdrop-blur-2xl flex flex-col justify-between h-[108px] ring-2 ring-primary/20 cursor-pointer active:scale-98 transition-transform">
+<!-- Radiant Active Pill -->
+<div class="absolute -top-2.5 right-2 bg-primary text-on-primary font-label-badge text-[9px] px-2 py-0.5 rounded-full shadow-[0_2px_6px_rgba(56,227,153,0.5)] font-bold tracking-wider flex items-center gap-0.5 animate-bounce">
+                READY TO TRADE! ⚡
+              </div>
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary/20 border border-primary/50 flex items-center justify-center text-sm shadow-[0_0_10px_rgba(56,227,153,0.4)]">
+                  👧
+                </div>
+<div>
+<h3 class="font-headline-sm text-[14px] leading-tight text-primary font-bold">Meena</h3>
+<span class="font-body-sm text-[11px] text-primary-fixed-dim">Poultry Farmer</span>
+</div>
+</div>
+<div class="bg-primary/10 rounded-lg px-2 py-1 border border-primary/30">
+<p class="font-body-sm text-[11px] text-primary font-semibold leading-tight">Has 🐔 · Wants 🥭</p>
+</div>
+<div class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+<span class="font-label-badge text-[10px] text-primary font-bold">Tap to swap for 🐔</span>
+</div>
+</div>
+<!-- Card 3: Asha (Inert) -->
+<div class="relative p-3 rounded-2xl bg-surface-container/70 border border-outline-variant/30 backdrop-blur-xl opacity-75 hover:opacity-95 flex flex-col justify-between h-[108px] shadow-[0_8px_20px_rgba(7,11,18,0.4)]">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-bright border border-white/10 flex items-center justify-center text-sm shadow-inner">
+                  👓
+                </div>
+<div>
+<h3 class="font-headline-sm text-[14px] leading-tight text-on-surface">Asha</h3>
+<span class="font-body-sm text-[11px] text-outline">Storyteller</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest/60 rounded-lg px-2 py-1 border border-white/5">
+<p class="font-body-sm text-[11px] text-on-surface leading-tight font-medium">Has 📚 · Wants 🏏</p>
+</div>
+<div class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+<span class="font-label-badge text-[10px] text-outline">No trade yet</span>
+</div>
+</div>
+<!-- Card 4: Imran (Inert) -->
+<div class="relative p-3 rounded-2xl bg-surface-container/70 border border-outline-variant/30 backdrop-blur-xl opacity-75 hover:opacity-95 flex flex-col justify-between h-[108px] shadow-[0_8px_20px_rgba(7,11,18,0.4)]">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-bright border border-white/10 flex items-center justify-center text-sm shadow-inner">
+                  👦
+                </div>
+<div>
+<h3 class="font-headline-sm text-[14px] leading-tight text-on-surface">Imran</h3>
+<span class="font-body-sm text-[11px] text-outline">Dairy Boy</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest/60 rounded-lg px-2 py-1 border border-white/5">
+<p class="font-body-sm text-[11px] text-on-surface leading-tight font-medium">Has 🥛 · Wants 📚</p>
+</div>
+<div class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+<span class="font-label-badge text-[10px] text-outline">No trade yet</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- BOTTOM INTERACTION & THUMB ZONE -->
+<div class="px-5 pb-5 pt-1 flex flex-col gap-2.5">
+<!-- Mascot Kip Dialogue & Eyeline Guiding Vector -->
+<div class="flex items-end gap-2.5 relative">
+<!-- Kip Avatar: Thinking pose from character sheet https://lh3.googleusercontent.com/aida-public/AB6AXuBVYiPf7oQtuyuk-62Sqx2vX4bds9aBuCMP7DPPrdpk5FtUqkuhRWZt-Y82Dqz9nqi9bRp9tNFuJZ8ZZ2py7uS_dMYt5TbRe6_l9Q5Ift2CSu0RvXTTmUFyMc55kLFKM0QmUntcuYZePjQYRRmqyX1mVh3lTiKEZ2NL3SboGk2DTa8_6HLTimDCbvVk3MxWbSsTF60cl2e-s4DZHWCOpo8RGtM9IJbn9C0OXEPEiWOJW8uUJdr_wiec9XS1w_y0N2hnfhpiyflWx-1h cleanly clipped into avatar shell -->
+<div class="relative shrink-0 flex items-end">
+<div class="w-[66px] h-[66px] rounded-2xl bg-surface-container-high/90 border border-primary/30 p-1 flex items-center justify-center overflow-hidden shadow-[0_8px_20px_rgba(0,0,0,0.6)]">
+<img alt="Kip the Tortoise in thinking expression with glasses" class="kip-thinking-sprite" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVYiPf7oQtuyuk-62Sqx2vX4bds9aBuCMP7DPPrdpk5FtUqkuhRWZt-Y82Dqz9nqi9bRp9tNFuJZ8ZZ2py7uS_dMYt5TbRe6_l9Q5Ift2CSu0RvXTTmUFyMc55kLFKM0QmUntcuYZePjQYRRmqyX1mVh3lTiKEZ2NL3SboGk2DTa8_6HLTimDCbvVk3MxWbSsTF60cl2e-s4DZHWCOpo8RGtM9IJbn9C0OXEPEiWOJW8uUJdr_wiec9XS1w_y0N2hnfhpiyflWx-1h"/>
+</div>
+<!-- Name tag on character -->
+<span class="absolute -bottom-1 -left-1 bg-primary text-on-primary font-label-badge text-[9px] px-1.5 py-0.2 rounded-md font-bold shadow">KIP</span>
+</div>
+<!-- Speech bubble pointing towards thumb zone CTA -->
+<div class="relative flex-1 bg-surface-container/90 border border-white/15 p-2.5 rounded-2xl rounded-bl-sm shadow-[0_8px_24px_rgba(4,7,12,0.85)] backdrop-blur-xl">
+<div class="flex items-center gap-1 mb-0.5">
+<span class="material-symbols-outlined text-secondary text-[14px]" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+<span class="font-label-badge text-[10px] text-secondary tracking-wider uppercase font-bold">ECONOMICS INSIGHT</span>
+</div>
+<p class="font-body-sm text-[11.5px] leading-snug text-on-surface">
+<span class="font-bold text-primary">The Double Coincidence of Wants!</span> You need a chain of trades to get that bat.
+            </p>
+</div>
+</div>
+<!-- Primary CTA: Chunky 3D Arcade Button (Locked state per trade prerequisite) -->
+<div class="w-full">
+<button class="w-full h-13 py-3 rounded-2xl bg-surface-bright/70 text-on-surface-variant font-label-btn text-label-btn flex items-center justify-center gap-2 border-t border-white/10 shadow-[0_4px_0_0_#0f5132] cursor-not-allowed opacity-90 transition-all select-none">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+<span>Get the bat to continue</span>
+</button>
+</div>
+<!-- Learning Footnote / Sub-text -->
+<div class="text-center">
+<p class="font-body-sm text-[10px] text-outline tracking-wide">
+            Purely simulated trade mechanics · World 0: Money Town
+          </p>
+</div>
+<!-- iOS Home Indicator bar -->
+<div class="w-32 h-1 bg-white/20 rounded-full mx-auto mt-0.5"></div>
+</div>
+</div>
+</div>
+<!-- Interactive Demo Micro-script for Villager Tap -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.grid > div');
+      cards.forEach(card => {
+        card.addEventListener('click', () => {
+          card.classList.add('scale-95');
+          setTimeout(() => {
+            card.classList.remove('scale-95');
+          }, 150);
+        });
+      });
+    });
+  </script>
+</body></html>

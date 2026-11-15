@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Lesson Player · Predict First</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Space Grotesk', 'sans-serif'],
+            body: ['Outfit', 'sans-serif'],
+          },
+          colors: {
+            kip: {
+              green: '#38e399',
+              greenDark: '#1fa76d',
+              gold: '#f59e0b',
+              goldLight: '#fbbf24',
+              goldDark: '#b45309',
+              bgNavy: '#080d19',
+              cardNavy: 'rgba(15, 23, 42, 0.88)',
+              borderNavy: 'rgba(148, 163, 184, 0.16)',
+            }
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #060a14;
+      font-family: 'Outfit', sans-serif;
+      color: #f1f5f9;
+      -webkit-font-smoothing: antialiased;
+    }
+    .tap-target {
+      min-height: 48px;
+      min-width: 48px;
+    }
+    .chunky-btn-disabled {
+      background: #1e293b;
+      box-shadow: 0 4px 0 #0f172a;
+      color: #64748b;
+    }
+    .chunky-btn-active {
+      background: #38e399;
+      box-shadow: 0 5px 0 #1fa76d;
+      color: #042416;
+    }
+    .glass-card {
+      background: rgba(14, 21, 37, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .answer-card {
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .answer-card:active {
+      transform: scale(0.98);
+    }
+  </style>
+</head>
+<body class="flex justify-center items-center min-h-screen bg-[#060a14] p-0 sm:p-4 select-none">
+<!-- Mobile Container (390 x 844) -->
+<div class="relative w-full max-w-[390px] h-[844px] max-h-[844px] overflow-hidden rounded-[40px] shadow-2xl border border-slate-800/80 bg-[#080d19] flex flex-col justify-between">
+<!-- Background: The Melt Dusk Scene with Dark Frosted Scrim -->
+<div class="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+<img alt="The Melt Background" class="w-full h-full object-cover object-center opacity-70 filter saturate-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxKpTssCHRde_q0qOXwpQ0ki0WnBgD54edXL7GxZwRvJtuI6ii9f1l1PtndkXcTbZrkI8a4Nloe1THgXt7pxOQb_zju3SrQGX-0B4xfG4LZg-si7N8tK8C2yJLQCak1-hjjjxoBsyv3NaDWTo2xSMjeHR2BBvsxvGB25acVlKL27R4KRr8l2pAA0pmwq38WQvHsjccMYiljsTI7xtUcsK95m1-wBIodQpahfTeB0eDJsdIUr33JtIbLMEIxqFI0EEgS88SR-dWsoVL"/>
+<!-- Atmospheric purple/indigo and dark navy gradient scrim for 4.5:1 text contrast -->
+<div class="absolute inset-0 bg-gradient-to-b from-[#080d19]/90 via-[#0b1329]/80 to-[#080d19]/95"></div>
+<div class="absolute inset-0 bg-radial-at-c from-purple-900/20 via-transparent to-[#060a14]/60"></div>
+</div>
+<!-- Top Safe Area & Header Zone -->
+<header class="relative z-10 pt-4 px-5 pb-2">
+<!-- Status bar placeholder spacing -->
+<div class="h-6 w-full flex justify-between items-center text-xs font-semibold text-slate-400 mb-2 px-1">
+<span>9:41</span>
+<div class="flex items-center space-x-1.5 text-slate-300">
+<svg class="w-4 h-3.5" fill="currentColor" viewbox="0 0 16 12"><path d="M1 9h2a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H1a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1zm4 1h2a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zm4 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1zm4 1h2a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1z"></path></svg>
+<svg class="w-3.5 h-3.5" fill="currentColor" viewbox="0 0 16 16"><path d="M8 3.5c2.7 0 5.1 1.2 6.7 3.1l1.3-1.3C13.9 3.2 11.1 1.8 8 1.8 4.9 1.8 2.1 3.2.1 5.3L1.3 6.6C3 4.7 5.3 3.5 8 3.5zm0 4.2c1.7 0 3.2.7 4.2 1.9l1.4-1.4C12.2 6.8 10.2 5.9 8 5.9s-4.2.9-5.6 2.3l1.4 1.4c1-1.2 2.5-1.9 4.2-1.9zm0 4.2c.9 0 1.6.4 2.1 1l1.5-1.5C10.7 10.5 9.4 9.8 8 9.8s-2.7.7-3.6 1.6l1.5 1.5c.5-.6 1.2-1 2.1-1z"></path></svg>
+<div class="w-5 h-2.5 rounded-sm border border-slate-300 p-0.5 flex items-center"><div class="w-3 h-full bg-slate-300 rounded-[1px]"></div></div>
+</div>
+</div>
+<!-- Navigation & Step Bar & Streak Chip -->
+<div class="flex items-center justify-between gap-3 pt-1">
+<!-- Close Button (Min 44pt tap target) -->
+<button aria-label="Close lesson" class="tap-target w-11 h-11 flex items-center justify-center rounded-2xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700/50 text-slate-300 active:scale-95 transition-transform">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24">
+<path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<!-- Segmented Progress Bar (Step 3 of 6) -->
+<div class="flex-1 flex flex-col justify-center">
+<div class="flex items-center justify-between text-[11px] font-semibold text-slate-400 mb-1 px-0.5">
+<span class="tracking-wide">LESSON 1</span>
+<span class="text-slate-300 font-medium">Step 3 of 6</span>
+</div>
+<div class="grid grid-cols-6 gap-1.5 h-2 w-full">
+<div class="h-full rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.5)]"></div>
+<div class="h-full rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.5)]"></div>
+<div class="h-full rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.6)] animate-pulse"></div>
+<div class="h-full rounded-full bg-slate-700/60"></div>
+<div class="h-full rounded-full bg-slate-700/60"></div>
+<div class="h-full rounded-full bg-slate-700/60"></div>
+</div>
+</div>
+<!-- Streak Multiplier Chip (Icon + Label) -->
+<div class="h-9 px-2.5 flex items-center space-x-1.5 rounded-xl bg-amber-500/15 border border-amber-500/35 shadow-sm">
+<span class="text-xs">🔥</span>
+<span class="font-heading font-bold text-xs text-amber-400 tracking-tight">×1.03 STREAK</span>
+</div>
+</div>
+</header>
+<!-- Main Content Area: Concept Step with Predict-First Question -->
+<main class="relative z-10 flex-1 px-5 pt-3 pb-2 flex flex-col justify-between overflow-y-auto no-scrollbar">
+<div class="flex flex-col space-y-4">
+<!-- Label Row: Clean Cutout Mascot Kip (Thinking) + PREDICT FIRST Pill -->
+<div class="flex items-center space-x-3 bg-slate-900/60 p-2.5 rounded-2xl border border-white/5 backdrop-blur-md">
+<!-- Mascot Kip Cutout (Thinking state from KIP Character Sheet, no background box) -->
+<div class="relative w-12 h-12 flex-shrink-0 flex items-center justify-center">
+<div class="absolute inset-0 rounded-full bg-emerald-400/20 blur-md"></div>
+<div class="relative w-12 h-12 rounded-full overflow-hidden border-2 border-emerald-400/40 bg-gradient-to-b from-[#112338] to-[#0c1626] flex items-center justify-center">
+<img alt="Kip Mascot Thinking" class="w-[280%] max-w-none absolute top-[-74%] left-[-86%] object-contain pointer-events-none filter drop-shadow(0 2px 4px rgba(0,0,0,0.5))" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5FI1Sbpq9TorniQS8rZ2xe4o89L3HK5EJVJpMtdrF7BfIED9pqLrSbRh7fLXF2pUSSPKKlLyGBRvNIbww-C4pNcQXEkoCmy5fwBnhl4tbig9Svu_DnTaXk66IFLOMycmLItu7X9czYhIndTjJwPUXiXxRZ_9y2oy2kCNSZ1YUzvi7VZ7C0KngdUx-lu2xKHnaJTvIXTFhV5t279omfx7zgF2tsrzEutLBKnEpx2VxUXCfSHPAEZ9aAle9EwxB4JTYye1rtOVBpWPn"/>
+</div>
+</div>
+<!-- Label Chip -->
+<div class="flex flex-col">
+<div class="flex items-center space-x-1.5">
+<span class="inline-block w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+<span class="font-heading text-xs font-bold tracking-wider text-amber-300 uppercase">PREDICT FIRST</span>
+</div>
+<p class="text-[12px] text-slate-300 font-medium">Test your instinct before we unveil the math</p>
+</div>
+</div>
+<!-- Big Question Card with High Contrast Glass Backing (≥ 85% opacity, > 4.5:1 text contrast) -->
+<div class="glass-card rounded-3xl p-5 shadow-xl relative overflow-hidden border border-slate-700/60">
+<!-- Subtle watermark/icon indicator for Indian Context -->
+<div class="absolute -right-4 -bottom-4 text-7xl opacity-5 select-none font-bold text-amber-300">
+            ₹
+          </div>
+<!-- Context Pill -->
+<div class="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-lg bg-purple-950/60 border border-purple-500/30 text-purple-300 text-[11px] font-semibold mb-3">
+<span>☕</span>
+<span>Everyday Inflation · The Melt</span>
+</div>
+<!-- The Headline Question in Space Grotesk -->
+<h1 class="font-heading text-[21px] leading-[1.3] font-bold text-white tracking-tight">
+            A chai costs <span class="text-amber-300">₹20</span> today. With <span class="text-rose-400">6% inflation</span> every year, what will it cost in <span class="text-emerald-300">20 years</span>?
+          </h1>
+<div class="mt-3 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+<span class="flex items-center space-x-1.5">
+<svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>Rule of 72 &amp; Compounding</span>
+</span>
+<span class="text-slate-400 font-mono text-[11px]">₹ Simulated INR</span>
+</div>
+</div>
+<!-- Three Large Answer Cards (None selected, tap targets > 44pt) -->
+<div class="space-y-3 pt-1">
+<!-- Option A: ₹26 -->
+<button class="answer-card w-full tap-target p-4 rounded-2xl glass-card border border-slate-700/70 hover:border-emerald-400/50 hover:bg-slate-800/90 text-left flex items-center justify-between group active:scale-[0.98]" onclick="selectCard(this, '₹26')">
+<div class="flex items-center space-x-3.5">
+<div class="w-8 h-8 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center font-heading font-bold text-slate-400 group-hover:text-emerald-300 group-hover:border-emerald-500/40 text-sm">
+                A
+              </div>
+<div class="flex flex-col">
+<span class="font-heading text-xl font-bold text-white tracking-tight group-hover:text-emerald-300">₹26</span>
+</div>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-slate-600 group-hover:border-emerald-400 flex items-center justify-center">
+<div class="w-2.5 h-2.5 rounded-full bg-transparent group-hover:bg-emerald-400/30"></div>
+</div>
+</button>
+<!-- Option B: ₹44 -->
+<button class="answer-card w-full tap-target p-4 rounded-2xl glass-card border border-slate-700/70 hover:border-emerald-400/50 hover:bg-slate-800/90 text-left flex items-center justify-between group active:scale-[0.98]" onclick="selectCard(this, '₹44')">
+<div class="flex items-center space-x-3.5">
+<div class="w-8 h-8 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center font-heading font-bold text-slate-400 group-hover:text-emerald-300 group-hover:border-emerald-500/40 text-sm">
+                B
+              </div>
+<div class="flex flex-col">
+<span class="font-heading text-xl font-bold text-white tracking-tight group-hover:text-emerald-300">₹44</span>
+</div>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-slate-600 group-hover:border-emerald-400 flex items-center justify-center">
+<div class="w-2.5 h-2.5 rounded-full bg-transparent group-hover:bg-emerald-400/30"></div>
+</div>
+</button>
+<!-- Option C: ₹64 -->
+<button class="answer-card w-full tap-target p-4 rounded-2xl glass-card border border-slate-700/70 hover:border-emerald-400/50 hover:bg-slate-800/90 text-left flex items-center justify-between group active:scale-[0.98]" onclick="selectCard(this, '₹64')">
+<div class="flex items-center space-x-3.5">
+<div class="w-8 h-8 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center font-heading font-bold text-slate-400 group-hover:text-emerald-300 group-hover:border-emerald-500/40 text-sm">
+                C
+              </div>
+<div class="flex flex-col">
+<span class="font-heading text-xl font-bold text-white tracking-tight group-hover:text-emerald-300">₹64</span>
+</div>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-slate-600 group-hover:border-emerald-400 flex items-center justify-center">
+<div class="w-2.5 h-2.5 rounded-full bg-transparent group-hover:bg-emerald-400/30"></div>
+</div>
+</button>
+</div>
+</div>
+<!-- Helper Text Row -->
+<div class="py-2 flex items-center justify-center space-x-2 text-center">
+<span class="text-amber-400 text-sm">💡</span>
+<p class="text-xs text-slate-300 font-medium tracking-wide">
+          Guess first. Then drag the slider to find out.
+        </p>
+</div>
+</main>
+<!-- Bottom Thumb Zone & Primary Action Button -->
+<footer class="relative z-10 px-5 pb-6 pt-2 bg-gradient-to-t from-[#080d19] via-[#080d19]/90 to-transparent">
+<!-- Primary Chunky Button (Disabled initial state, > 48pt tap target) -->
+<button class="w-full tap-target h-[54px] rounded-2xl chunky-btn-disabled font-heading font-bold text-[16px] tracking-wide flex items-center justify-center space-x-2 cursor-not-allowed transition-all duration-200" disabled="" id="submitBtn">
+<span>Pick an answer</span>
+<svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
+<path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<!-- SEBI Educational Disclaimer (Microcopy) -->
+<p class="text-[10px] text-center text-slate-500 pt-2 tracking-tight">
+        Hypothetical 6% inflation scenario. Purely for financial education.
+      </p>
+<!-- iOS Home Indicator -->
+<div class="w-32 h-1 bg-slate-700/60 rounded-full mx-auto mt-3"></div>
+</footer>
+</div>
+<script>
+    let selectedAnswer = null;
+
+    function selectCard(cardElement, value) {
+      // Deselect all cards
+      document.querySelectorAll('.answer-card').forEach(card => {
+        card.classList.remove('border-emerald-400', 'bg-emerald-950/40', 'shadow-[0_0_15px_rgba(56,227,153,0.2)]');
+        card.classList.add('border-slate-700/70');
+        const badge = card.querySelector('.rounded-xl');
+        badge.classList.remove('bg-emerald-500', 'text-slate-950', 'border-emerald-400');
+        badge.classList.add('bg-slate-800', 'text-slate-400', 'border-slate-700');
+        const indicator = card.querySelector('.w-2\\.5');
+        indicator.classList.remove('bg-emerald-400');
+        indicator.classList.add('bg-transparent');
+      });
+
+      // Select active card
+      cardElement.classList.remove('border-slate-700/70');
+      cardElement.classList.add('border-emerald-400', 'bg-emerald-950/40', 'shadow-[0_0_15px_rgba(56,227,153,0.2)]');
+      
+      const activeBadge = cardElement.querySelector('.rounded-xl');
+      activeBadge.classList.remove('bg-slate-800', 'text-slate-400', 'border-slate-700');
+      activeBadge.classList.add('bg-emerald-500', 'text-slate-950', 'border-emerald-400');
+      
+      const activeIndicator = cardElement.querySelector('.w-2\\.5');
+      activeIndicator.classList.remove('bg-transparent');
+      activeIndicator.classList.add('bg-emerald-400');
+
+      selectedAnswer = value;
+
+      // Enable Primary Action Button with solid chunky green 3D press styling
+      const btn = document.getElementById('submitBtn');
+      btn.disabled = false;
+      btn.className = "w-full tap-target h-[54px] rounded-2xl chunky-btn-active font-heading font-bold text-[16px] tracking-wide flex items-center justify-center space-x-2 cursor-pointer transition-all duration-200 active:translate-y-[2px] active:shadow-[0_2px_0_#1fa76d]";
+      btn.innerHTML = `<span>Check Prediction (${value})</span> <svg class="w-4 h-4 text-emerald-950" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>`;
+    }
+  </script>
+</body>
+</html>

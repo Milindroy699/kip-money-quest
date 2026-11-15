@@ -1,0 +1,596 @@
+{
+  "id": "w3",
+  "index": 3,
+  "title": "Risk Ridge",
+  "tagline": "Risk, reward and liquidity",
+  "principle": "Risk as a concept; growth comes with risk; liquidity",
+  "product": "The risk–return ladder; lock-ins (FD, ELSS, PPF); the emergency fund",
+  "philosophy": "Take risk you understand and can wait out",
+  "color": "#D9480F",
+  "lessons": [
+    {
+      "id": "w3-l1",
+      "title": "What risk really means",
+      "subtitle": "Wobbles vs wipe-outs",
+      "capability": "Tell a temporary dip from a permanent loss.",
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "dash",
+          "mood": "worry",
+          "lines": [
+            "My index fund went down 12% this month! Is my money gone?!"
+          ]
+        },
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "think",
+          "lines": [
+            "Not gone. Down, for now. There are two very different kinds of risk.",
+            "A wobble: prices dip and usually come back, like the whole market after a bad year.",
+            "A wipe-out: the money is gone for good, like a company that goes bust, or a scam."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "reveal",
+          "title": "Two kinds of risk",
+          "caption": "Tap each card.",
+          "items": [
+            {
+              "emoji": "📉",
+              "title": "Volatility (a wobble)",
+              "text": "Prices swing up and down. Spread across many companies and given time, they have usually recovered."
+            },
+            {
+              "emoji": "💥",
+              "title": "Permanent loss (a wipe-out)",
+              "text": "The company fails or the scheme was fake. That money doesn't come back."
+            },
+            {
+              "emoji": "🧺",
+              "title": "How investors handle wobbles",
+              "text": "Spread out (an index fund holds 50 companies) and give it time."
+            },
+            {
+              "emoji": "🚩",
+              "title": "How to dodge wipe-outs",
+              "text": "Avoid 'guaranteed' high returns, pressure to hurry, and tips from strangers."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "The whole share market falls 20% in a year. That's mostly…",
+          "options": [
+            {
+              "text": "A wobble: broad markets have historically recovered, given time",
+              "correct": true,
+              "why": "Right. A broad market falling is volatility. It has historically come back over the years, though nobody knows exactly when."
+            },
+            {
+              "text": "A permanent loss",
+              "why": "Not for a broad market. Individual companies can go bust; a whole spread-out market has historically recovered."
+            },
+            {
+              "text": "Proof it's a scam",
+              "why": "Real markets fall sometimes. Scams are about fake promises, not falling prices."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Which is most likely to be a permanent loss?",
+          "options": [
+            {
+              "text": "A stranger's 'guaranteed 5% a week' scheme",
+              "correct": true,
+              "why": "Yes. 'Guaranteed' sky-high returns are a classic scam sign. That money often never comes back."
+            },
+            {
+              "text": "An index fund that's down 10% this year",
+              "why": "That's a wobble. The fund still owns real companies."
+            },
+            {
+              "text": "An FD paying 7%",
+              "why": "FDs don't swing, and deposits are insured up to ₹5 lakh per bank."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "title": "In real life",
+          "realLife": "Professionals separate volatility (how much prices swing) from the risk of permanent loss. Spreading out and time help with the first. Research, and running from 'too good to be true' offers, protect you from the second.",
+          "mission": "Ask an adult if they've ever heard of an investment that was 'too good to be true'. What happened?",
+          "deeper": "Volatility is usually measured as the standard deviation of returns. A broad index fund has historically swung roughly 15–20% a year; a single stock often 30–50%."
+        }
+      ]
+    },
+    {
+      "id": "w3-l2",
+      "title": "The risk–return ladder",
+      "subtitle": "More return, bigger swings",
+      "capability": "Place products on the risk–return ladder.",
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "talk",
+          "lines": [
+            "Picture a ladder. The higher you climb, the more you can earn, and the bigger the swings.",
+            "Let's climb it."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "riskLadder",
+          "title": "Climb the risk ladder",
+          "caption": "Watch the typical year, and how bad or good one year can get."
+        },
+        {
+          "type": "story",
+          "speaker": "dash",
+          "mood": "cheer",
+          "lines": [
+            "So I just climb to the top! Crypto, here I come!"
+          ]
+        },
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "think",
+          "lines": [
+            "Only if you can handle a year that halves your money, and wait it out. Let's feel it in Risk Lanes."
+          ]
+        },
+        {
+          "type": "play",
+          "mode": "risk",
+          "durationSec": 45,
+          "brief": "Three lanes, three risk levels: SAFE, BALANCED and WILD. Run through a gate to invest your idle coins there, then watch the market swing them. Keep a few coins for surprise expenses!"
+        },
+        {
+          "type": "quiz",
+          "question": "Higher expected return almost always comes with…",
+          "options": [
+            {
+              "text": "Bigger swings, up and down",
+              "correct": true,
+              "why": "That's the ladder. The extra return is the reward for living with bigger swings."
+            },
+            {
+              "text": "A guarantee",
+              "why": "The higher you climb, the fewer guarantees there are."
+            },
+            {
+              "text": "Less risk",
+              "why": "It's the other way round: more return, more risk."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "title": "In real life",
+          "realLife": "From safest to wildest in India: savings account, FD, government bonds, debt funds, index funds, single shares, crypto, and futures and options. Each step up adds possible return, and possible pain.",
+          "deeper": "Finance calls the extra return for taking risk the 'risk premium'. Over long periods, Indian shares have historically returned several percentage points a year more than FDs, with much bigger swings."
+        }
+      ]
+    },
+    {
+      "id": "w3-l3",
+      "title": "Can you wait it out?",
+      "subtitle": "Risk capacity vs risk appetite",
+      "capability": "Match risk to how long you can wait.",
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "dash",
+          "mood": "happy",
+          "lines": [
+            "I'm fearless. I'll put my college fund in shares. I only need it next year."
+          ]
+        },
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "worry",
+          "lines": [
+            "Being brave is your appetite for risk. But how much risk you can afford, your capacity, depends on when you need the money.",
+            "Watch what time does to the chance of a loss."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "lossOdds",
+          "title": "How long can you wait?",
+          "caption": "Drag the years. See the chance an index fund ends below what you put in."
+        },
+        {
+          "type": "quiz",
+          "question": "Dash needs his college money in 1 year. Where should most of it go?",
+          "options": [
+            {
+              "text": "An FD or savings: it'll be there when he needs it",
+              "correct": true,
+              "why": "Right. Over one year, shares have a real chance of being down just when he needs the money."
+            },
+            {
+              "text": "Shares: they grow fastest",
+              "why": "Over long periods, yes. Over one year, about 1 in 4 times they end lower."
+            },
+            {
+              "text": "Crypto: big wins",
+              "why": "And big losses. Money needed next year shouldn't be on the top rung."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Your goal is 15 years away. Why can you take more share-market risk?",
+          "options": [
+            {
+              "text": "There's time for bad years to be balanced by good ones",
+              "correct": true,
+              "why": "Yes. Time is what makes share-market risk worth taking."
+            },
+            {
+              "text": "Shares can't fall over 15 years",
+              "why": "They can. It's just much less likely, historically."
+            },
+            {
+              "text": "Inflation stops after 10 years",
+              "why": "Inflation keeps going. That's another reason long goals need growth."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "title": "In real life",
+          "realLife": "Advisers ask two things: how much risk you can stomach (appetite), and how much you can afford (capacity: your time, income and needs). A common guide: money needed within 3 years stays safe; money for 7+ years can lean towards shares.",
+          "mission": "Pick one of your goals. Is it under 3 years away, 3–7 years, or 7+? Where would its money go?",
+          "deeper": "Your 'risk profile' combines appetite and capacity. SEBI requires registered investment advisers to assess it before recommending anything."
+        }
+      ]
+    },
+    {
+      "id": "w3-l4",
+      "title": "Liquidity",
+      "subtitle": "Can you get your money today?",
+      "capability": "Explain liquidity and why it matters in an emergency.",
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "talk",
+          "lines": [
+            "Liquidity means how fast you can turn something into cash, and what it costs you.",
+            "Some money is like a tap. Some is like a locker."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "liquidity",
+          "title": "A surprise bill",
+          "caption": "Tap each place to see how fast, and at what cost, you'd get ₹4,000."
+        },
+        {
+          "type": "quiz",
+          "question": "Which is the most liquid?",
+          "options": [
+            {
+              "text": "A savings account",
+              "correct": true,
+              "why": "Instant and free. That's liquidity."
+            },
+            {
+              "text": "PPF",
+              "why": "Locked for years. Great for long goals, not for surprises."
+            },
+            {
+              "text": "A house",
+              "why": "Selling a house takes months and costs a lot."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Why is selling shares a bad way to pay a surprise bill?",
+          "options": [
+            {
+              "text": "You may have to sell right after a fall and lock in the loss",
+              "correct": true,
+              "why": "Exactly. Emergencies don't wait for markets to recover."
+            },
+            {
+              "text": "Shares can't be sold",
+              "why": "They can, within a few working days. The problem is the timing."
+            },
+            {
+              "text": "It's illegal",
+              "why": "It's legal. It's just often a bad deal."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "title": "In real life",
+          "realLife": "Savings accounts and liquid funds pay out within a day. FDs can be broken with a small penalty. Shares and mutual funds take 1–3 working days. PPF and ELSS lock your money for years.",
+          "deeper": "Liquid mutual funds invest in very short-term debt. Many offer 'instant redemption' of up to ₹50,000 a day straight to your bank account."
+        }
+      ]
+    },
+    {
+      "id": "w3-l5",
+      "title": "Lock-ins",
+      "subtitle": "FD, ELSS and PPF",
+      "capability": "Compare the lock-ins of FDs, ELSS and PPF.",
+      "unlockCards": [
+        "elss"
+      ],
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "dash",
+          "mood": "think",
+          "lines": [
+            "Why would anyone lock their money away on purpose?"
+          ]
+        },
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "happy",
+          "lines": [
+            "Because locks come with rewards: a better rate, a tax saving, or protection from your own impulses."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "reveal",
+          "title": "Three locks",
+          "caption": "Tap each lock.",
+          "items": [
+            {
+              "emoji": "🔒",
+              "title": "Fixed deposit",
+              "text": "From 7 days to 10 years. Break it early and you lose a little interest."
+            },
+            {
+              "emoji": "🧾",
+              "title": "ELSS fund",
+              "text": "A 3-year lock. Invests in shares and can save tax under Section 80C."
+            },
+            {
+              "emoji": "🛡️",
+              "title": "PPF",
+              "text": "15 years. Government-backed, tax-free interest. Partial withdrawals from year 7."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Which has the shortest lock among these 80C tax savers?",
+          "options": [
+            {
+              "text": "ELSS, at 3 years",
+              "correct": true,
+              "why": "Right. ELSS has the shortest lock-in of the Section 80C options."
+            },
+            {
+              "text": "PPF, at 15 years",
+              "why": "PPF is the longest, though partial withdrawals start in year 7."
+            },
+            {
+              "text": "Neither has a lock",
+              "why": "Both do. The lock is the trade-off for their benefits."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "When is a lock-in a good idea?",
+          "options": [
+            {
+              "text": "For long goals, so you aren't tempted to dip in",
+              "correct": true,
+              "why": "Yes. A lock can protect long-term money from short-term impulses."
+            },
+            {
+              "text": "For your emergency fund",
+              "why": "No! Emergency money must be instantly available."
+            },
+            {
+              "text": "For money you need next month",
+              "why": "You couldn't get it out in time."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "cardId": "elss",
+          "title": "Card unlocked: ELSS Fund",
+          "realLife": "ELSS funds invest mostly in shares and lock each investment for 3 years. Try it in your Practice Portfolio: ELSS and PPF lock there too.",
+          "mission": "Ask a parent whether they use any Section 80C option (PPF, ELSS, life insurance) and why they chose it.",
+          "deeper": "Section 80C applies under the old tax regime; the new default regime doesn't offer it. With an ELSS SIP, each instalment has its own 3-year lock from its own date."
+        }
+      ]
+    },
+    {
+      "id": "w3-l6",
+      "title": "Emergency fund first",
+      "subtitle": "Your money's shock absorber",
+      "capability": "Explain why an emergency fund comes before investing.",
+      "unlockCards": [
+        "emergencyFund"
+      ],
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "dash",
+          "mood": "worry",
+          "lines": [
+            "My cycle got stolen and I need ₹3,000. All my money is in shares that just dropped!"
+          ]
+        },
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "think",
+          "lines": [
+            "That's why the order matters: emergency fund first, then investing.",
+            "An emergency fund is boring money that lets the rest of your money be brave."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "reveal",
+          "title": "Building one",
+          "caption": "Tap each step.",
+          "items": [
+            {
+              "emoji": "1️⃣",
+              "title": "Know your spending",
+              "text": "Roughly how much do you spend in a month?"
+            },
+            {
+              "emoji": "2️⃣",
+              "title": "Keep a cushion that's instant",
+              "text": "Adults aim for 3–6 months of spending in savings or a liquid fund. Teens need far less."
+            },
+            {
+              "emoji": "3️⃣",
+              "title": "Then invest for long goals",
+              "text": "Now the swings can't force you to sell at a bad time."
+            },
+            {
+              "emoji": "🔁",
+              "title": "Refill it",
+              "text": "Used it? Topping it back up comes before new investing."
+            }
+          ]
+        },
+        {
+          "type": "play",
+          "mode": "risk",
+          "durationSec": 45,
+          "brief": "Risk Lanes again. Watch for the surprise expenses: keep some idle coins so you never have to sell investments in a hurry."
+        },
+        {
+          "type": "quiz",
+          "question": "What comes first?",
+          "options": [
+            {
+              "text": "An emergency fund, then investing",
+              "correct": true,
+              "why": "Right. The cushion first, so investments can stay put through the bumps."
+            },
+            {
+              "text": "Invest everything, then save",
+              "why": "Then any surprise forces you to sell, maybe at a loss."
+            },
+            {
+              "text": "Crypto, then an emergency fund",
+              "why": "The riskiest thing first is the exact opposite of the order."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "cardId": "emergencyFund",
+          "title": "Card unlocked: Emergency Fund",
+          "realLife": "A common guide for adults is 3–6 months of expenses, kept in a savings account or a liquid fund. For a teen it can be small: enough for a broken phone or a lost bus pass. In this game, coins left in your wallet are your emergency fund.",
+          "mission": "List three surprise expenses a teen might face. Roughly what would each cost?",
+          "deeper": "Many people keep the emergency fund in a separate savings account or a liquid fund, so it doesn't get spent by accident."
+        }
+      ]
+    },
+    {
+      "id": "w3-l7",
+      "title": "Boss: Risk Lanes marathon",
+      "subtitle": "Return, risk and cash, all at once",
+      "capability": "Balance risk, return and liquidity under pressure.",
+      "boss": true,
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "cheer",
+          "lines": [
+            "The final test of Risk Ridge: a long Risk Lanes run.",
+            "Spread across the levels, keep cash for surprises, and don't panic at the swings."
+          ]
+        },
+        {
+          "type": "play",
+          "mode": "risk",
+          "durationSec": 75,
+          "brief": "The marathon: 75 seconds of swings and surprises. Spread across SAFE, BALANCED and WILD, keep some idle coins, and stay calm."
+        },
+        {
+          "type": "quiz",
+          "question": "WILD just crashed 30%. Your goal is 10 years away. What do you do?",
+          "options": [
+            {
+              "text": "Stay invested: there's time to recover",
+              "correct": true,
+              "why": "Yes. Selling after a crash turns a wobble into a real loss."
+            },
+            {
+              "text": "Sell everything now",
+              "why": "That locks in the loss, often right before a recovery."
+            },
+            {
+              "text": "Borrow money to buy more crypto",
+              "why": "Borrowing to gamble can turn a bad year into debt."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "The best mix for a goal 2 years away?",
+          "options": [
+            {
+              "text": "Mostly SAFE, a little BALANCED",
+              "correct": true,
+              "why": "Right. Short goals can't wait out a crash."
+            },
+            {
+              "text": "All WILD",
+              "why": "One bad year could wreck a 2-year goal."
+            },
+            {
+              "text": "Half WILD, half crypto",
+              "why": "That's the top of the ladder twice over."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Why keep an emergency fund even if you invest?",
+          "options": [
+            {
+              "text": "So a surprise bill never forces you to sell at a bad time",
+              "correct": true,
+              "why": "Exactly. Cash keeps your investments patient."
+            },
+            {
+              "text": "Investing is illegal for teens",
+              "why": "Teens can invest through accounts a parent manages."
+            },
+            {
+              "text": "It earns the highest return",
+              "why": "It earns the least. Its job is to be there when you need it."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "title": "World complete: Risk Ridge",
+          "realLife": "You now know the three questions every investor asks: how much return, how much risk, and how fast can I get my money? Your Future You plan just gained a risk mix for your goal.",
+          "deeper": "How you split money across risk levels (asset allocation) explains most of the difference in long-term results between portfolios, more than picking individual winners."
+        }
+      ]
+    }
+  ]
+}

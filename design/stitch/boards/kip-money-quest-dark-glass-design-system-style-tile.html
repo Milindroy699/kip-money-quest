@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kip: Money Quest — Design System &amp; Style Tile v2</title>
+<!-- Google Fonts: Nunito & JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700;800&amp;family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,600&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 with Forms & Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Nunito', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            kip: {
+              green: '#2DBE7E',
+              greenDark: '#187D4E',
+              greenPressed: '#1F9A63',
+            },
+            honey: {
+              DEFAULT: '#F2B544',
+              shadow: '#B57914',
+              pressed: '#D69724',
+            },
+            gold: {
+              DEFAULT: '#FFC83D',
+              shadow: '#D49C1C',
+            },
+            melt: {
+              purple: '#8B5CF6',
+              shadow: '#6D3AE0',
+            },
+            dash: {
+              orange: '#FF8A3D',
+              shadow: '#D96016',
+            },
+            danger: {
+              DEFAULT: '#E5484D',
+              shadow: '#B3262B',
+              pressed: '#C7383D',
+            },
+            ink: '#1E2A3A',
+            slateText: '#5B6474',
+          },
+          boxShadow: {
+            'glass': '0 8px 32px 0 rgba(30, 42, 58, 0.12)',
+            'glass-sm': '0 4px 16px 0 rgba(30, 42, 58, 0.08)',
+            'btn-green': '0 4px 0 #187D4E',
+            'btn-green-pressed': '0 1px 0 #187D4E',
+            'btn-honey': '0 4px 0 #B57914',
+            'btn-honey-pressed': '0 1px 0 #B57914',
+            'btn-danger': '0 4px 0 #B3262B',
+            'btn-danger-pressed': '0 1px 0 #B3262B',
+            'btn-ghost': '0 4px 0 #CBD5E1',
+            'btn-ghost-pressed': '0 1px 0 #CBD5E1',
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: CSS Stylesheets -->
+<style data-purpose="background-mesh">
+    /* Layer 1: Money Town Sunrise mesh-gradient with grain */
+    body {
+      background-color: #FFD9A8;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(255, 217, 168, 0.95) 0%, transparent 40%),
+        radial-gradient(circle at 85% 15%, rgba(242, 181, 68, 0.85) 0%, transparent 45%),
+        radial-gradient(circle at 50% 60%, rgba(255, 138, 107, 0.75) 0%, transparent 50%),
+        linear-gradient(135deg, #FFD9A8 0%, #F8BA5B 45%, #FF8A6B 100%);
+      background-attachment: fixed;
+      min-height: 100vh;
+      color: #1E2A3A;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Subtle SVG Noise Filter Overlay */
+    .bg-grain {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+  </style>
+<style data-purpose="depth-layers">
+    /* Layer 2: Out of focus floating 3D ambient shapes */
+    .depth-ambient-orb {
+      position: absolute;
+      border-radius: 9999px;
+      filter: blur(48px);
+      pointer-events: none;
+      z-index: 2;
+      animation: floatSlow 14s ease-in-out infinite alternate;
+    }
+    @keyframes floatSlow {
+      0% { transform: translateY(0px) rotate(0deg); }
+      100% { transform: translateY(-30px) rotate(15deg); }
+    }
+
+    /* Layer 3: Frosted Glass Panel Spec */
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      box-shadow: 0 10px 32px -4px rgba(30, 42, 58, 0.12), 0 1px 2px 0 rgba(255, 255, 255, 0.6) inset;
+      border-radius: 24px;
+    }
+
+    /* Layer 4: Near-solid panel spec (High Contrast Reading / Forms) */
+    .near-solid-panel {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 8px 24px rgba(30, 42, 58, 0.08);
+      border-radius: 20px;
+    }
+  </style>
+<style data-purpose="tactile-buttons">
+    /* Chunky Solid Tactile 3D Buttons (Never Glass) */
+    .btn-3d {
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      border-radius: 16px;
+      transition: all 0.1s ease;
+      position: relative;
+      cursor: pointer;
+      user-select: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    /* Primary Kip Green */
+    .btn-3d-primary {
+      background-color: #2DBE7E;
+      color: #FFFFFF;
+      box-shadow: 0 4px 0 #187D4E;
+    }
+    .btn-3d-primary:hover {
+      background-color: #34cf8c;
+    }
+    .btn-3d-primary:active, .btn-3d-primary.is-pressed {
+      transform: translateY(3px);
+      box-shadow: 0 1px 0 #187D4E;
+    }
+
+    /* Reward Honey */
+    .btn-3d-honey {
+      background-color: #F2B544;
+      color: #1E2A3A;
+      box-shadow: 0 4px 0 #B57914;
+    }
+    .btn-3d-honey:hover {
+      background-color: #f7bf56;
+    }
+    .btn-3d-honey:active, .btn-3d-honey.is-pressed {
+      transform: translateY(3px);
+      box-shadow: 0 1px 0 #B57914;
+    }
+
+    /* Danger / Error */
+    .btn-3d-danger {
+      background-color: #E5484D;
+      color: #FFFFFF;
+      box-shadow: 0 4px 0 #B3262B;
+    }
+    .btn-3d-danger:hover {
+      background-color: #ed555a;
+    }
+    .btn-3d-danger:active, .btn-3d-danger.is-pressed {
+      transform: translateY(3px);
+      box-shadow: 0 1px 0 #B3262B;
+    }
+
+    /* Ghost / Tertiary */
+    .btn-3d-ghost {
+      background-color: #F1F5F9;
+      color: #475569;
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 4px 0 #CBD5E1;
+    }
+    .btn-3d-ghost:hover {
+      background-color: #f8fafc;
+    }
+    .btn-3d-ghost:active, .btn-3d-ghost.is-pressed {
+      transform: translateY(3px);
+      box-shadow: 0 1px 0 #CBD5E1;
+    }
+
+    /* Disabled */
+    .btn-3d-disabled {
+      background-color: #E2E8F0 !important;
+      color: #94A3B8 !important;
+      box-shadow: 0 3px 0 #CBD5E1 !important;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+  </style>
+<style data-purpose="holographic-cards">
+    /* Card Rarity Holographic Frames */
+    .card-foil-common {
+      border: 2px solid #CBD5E1;
+      background: linear-gradient(145deg, #ffffff 60%, #e2e8f0 100%);
+      box-shadow: 0 6px 18px rgba(100, 116, 139, 0.15);
+    }
+    
+    .card-foil-rare {
+      border: 2px solid #38BDF8;
+      background: linear-gradient(135deg, #ffffff 70%, #E0F2FE 100%);
+      box-shadow: 0 8px 24px rgba(56, 189, 248, 0.22);
+      position: relative;
+    }
+    .card-foil-rare::after {
+      content: '';
+      position: absolute;
+      top: -2px; left: -2px; right: -2px; bottom: -2px;
+      border-radius: 20px;
+      background: linear-gradient(45deg, transparent 40%, rgba(56, 189, 248, 0.4) 60%, transparent 80%);
+      pointer-events: none;
+    }
+
+    .card-foil-epic {
+      border: 2px solid #A855F7;
+      background: linear-gradient(135deg, #ffffff 65%, #F3E8FF 100%);
+      box-shadow: 0 8px 24px rgba(168, 85, 247, 0.25);
+    }
+
+    .card-foil-legendary {
+      border: 2px solid #F59E0B;
+      background: linear-gradient(135deg, #FFFFFF 60%, #FEF3C7 100%);
+      box-shadow: 0 0 25px rgba(245, 158, 11, 0.35);
+      position: relative;
+      overflow: hidden;
+    }
+    .card-foil-legendary::before {
+      content: '';
+      position: absolute;
+      inset: -50%;
+      background: conic-gradient(from 0deg at 50% 50%, #FFD700 0deg, #FF69B4 90deg, #00FFFF 180deg, #FFD700 360deg);
+      opacity: 0.12;
+      animation: spinSheen 6s linear infinite;
+      pointer-events: none;
+    }
+    @keyframes spinSheen {
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+<!-- END: CSS Stylesheets -->
+</head>
+<body class="font-sans antialiased selection:bg-kip-green selection:text-white pb-24">
+<!-- Noise Overlay -->
+<div aria-hidden="true" class="bg-grain"></div>
+<!-- Depth Layer 2: Floating 3D Ambient Blur Orbs -->
+<div aria-hidden="true" class="depth-ambient-orb w-96 h-96 bg-amber-300 opacity-40 top-10 -left-20"></div>
+<div aria-hidden="true" class="depth-ambient-orb w-[450px] h-[450px] bg-rose-400 opacity-30 top-[40%] right-[-100px]"></div>
+<div aria-hidden="true" class="depth-ambient-orb w-80 h-80 bg-emerald-300 opacity-40 bottom-40 left-10"></div><!-- Floating 3D Clay Objects (Layer 2 - Out-of-Focus Background Depth) -->
+<div aria-hidden="true" class="absolute top-[280px] right-8 w-24 h-24 rounded-full bg-gradient-to-br from-amber-400 via-yellow-500 to-amber-600 shadow-[0_0_30px_rgba(255,201,92,0.6)] opacity-60 pointer-events-none z-0 filter blur-[14px] border border-amber-300 rotate-12"></div>
+<div aria-hidden="true" class="absolute top-[960px] left-6 w-20 h-20 rounded-full bg-gradient-to-tr from-gold via-honey to-amber-500 shadow-xl opacity-40 pointer-events-none z-0 filter blur-[12px] -rotate-12"></div>
+<div aria-hidden="true" class="absolute top-[1650px] right-12 w-28 h-28 rounded-full bg-gradient-to-br from-amber-200 via-gold to-honey-shadow shadow-2xl opacity-40 pointer-events-none z-0 filter blur-[16px] rotate-45"></div>
+<div aria-hidden="true" class="absolute top-[2280px] left-10 w-28 h-28 bg-gradient-to-br from-amber-400 via-honey to-amber-700 shadow-2xl opacity-35 pointer-events-none z-0 filter blur-[15px] rotate-[30deg] [clip-path:polygon(50%_0%,100%_25%,100%_75%,50%_100%,0%_75%,0%_25%)]"></div>
+<!-- Main Container -->
+<main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+<!-- BEGIN: HeaderAndMeta -->
+<header class="glass-panel p-6 sm:p-8 mb-10" data-purpose="system-header"><div class="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-6 mb-6">
+<div>
+<div class="flex items-center gap-3 mb-1">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-black tracking-wider uppercase bg-[#38E399] text-[#052818] shadow-[0_0_12px_rgba(56,227,153,0.5)]">v2.0 DARK SPEC</span>
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold text-amber-200 bg-amber-950/70 border border-amber-500/40">Night Market Mesh</span>
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold text-emerald-300 bg-emerald-950/70 border border-emerald-500/40">SEBI Investor Education Ready</span>
+</div>
+<h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-[#EBEFF5] tracking-tight">Kip: Money Quest — Design System &amp; Style Tile</h1>
+<p class="text-[#B6C0CF] text-base sm:text-lg font-semibold mt-1">2026 Modern Playful Glassmorphism • Teen Fintech (Ages 13–19) • Duolingo Polish × Sovereign Wealth</p>
+</div>
+<!-- Quick 4-Layer Architecture Diagram Badge (Dark) -->
+<div class="flex items-center gap-2 bg-[#121B29]/80 p-3 rounded-2xl border border-white/10 shadow-lg text-xs font-bold text-[#EBEFF5]">
+<div class="flex flex-col items-center px-2 py-1 bg-indigo-950/70 text-indigo-300 border border-indigo-700/50 rounded-lg">
+<span class="text-[10px] text-indigo-400 font-mono">L1</span>
+<span>Mesh</span>
+</div>
+<span>→</span>
+<div class="flex flex-col items-center px-2 py-1 bg-emerald-950/70 text-emerald-300 border border-emerald-700/50 rounded-lg">
+<span class="text-[10px] text-emerald-400 font-mono">L2</span>
+<span>3D Orbs</span>
+</div>
+<span>→</span>
+<div class="flex flex-col items-center px-2 py-1 bg-cyan-950/70 text-cyan-300 border border-cyan-700/50 rounded-lg">
+<span class="text-[10px] text-cyan-400 font-mono">L3</span>
+<span>Glass 28px</span>
+</div>
+<span>→</span>
+<div class="flex flex-col items-center px-2 py-1 bg-[#38E399] text-[#052818] font-black rounded-lg shadow-[0_0_10px_rgba(56,227,153,0.5)]">
+<span class="text-[10px] text-emerald-950 font-mono">L4</span>
+<span>Tactile 3D</span>
+</div>
+</div>
+</div>
+<!-- Mascot Spotlight Bar in Dark Mode with Character Sheet Image -->
+<div class="flex flex-col md:flex-row items-center gap-6 bg-[#162130]/85 p-5 rounded-2xl border border-white/10 shadow-lg">
+<div class="relative w-28 h-28 flex-shrink-0">
+<img alt="Kip the Turtle Mascot" class="w-full h-full object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.6)] rounded-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRawWIG1lXnl4ciYtjqsJG7RQkSN1F084a0Z7ya6t5-dTpKGnnpqWOYrU_O2jR21qyQN9KZNqCKa8lTSA1V8K7PJHDuOLSKX0H2Y3iGzCX22BzrFAg5KqwujgFOR-21iaDbvfKx9HmkTmWWBhYKf-NJN5WwEmirAQnNifrfzg1-zCMbP7AD_ZyLnnxFlcIwJnSh2A3JArHci93YVcHgv2t3MtKPcR6zzQ2M_xdnQVuaUwCsa47IPkzNw"/>
+<div class="absolute -bottom-1 -right-1 bg-[#38E399] text-[#052818] text-[10px] font-black px-2 py-0.5 rounded-full border-2 border-[#162130] shadow-[0_0_8px_rgba(56,227,153,0.6)]">
+  LVL 4
+</div>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="text-lg font-black text-[#EBEFF5]">Kip's Money Law #1</span>
+<span class="text-xs bg-[#38E399]/20 text-[#38E399] border border-[#38E399]/30 font-bold px-2 py-0.5 rounded-md">Inflation Defense</span>
+</div>
+<!-- Speech Bubble in Dark Navy -->
+<div class="relative bg-[#1E2C3F] p-3.5 rounded-2xl rounded-tl-sm border border-white/15 shadow-md text-[#EBEFF5] text-sm sm:text-base font-semibold leading-relaxed">
+  "If inflation in India is 6% every Diwali, ₹1,000 hidden under your pillow loses ₹60 of real buying power this year. Let’s outpace the Melt together with compound growth!"
+</div>
+</div>
+</div></header>
+<!-- END: HeaderAndMeta -->
+<!-- BEGIN: ColorTokensSection -->
+<section class="glass-panel p-6 sm:p-8 mb-10" data-purpose="color-tokens"><div class="flex items-center justify-between mb-6">
+<div>
+<h2 class="text-2xl font-black text-[#EBEFF5]">1. Core Palette &amp; Tactile Shadow Tokens (Night Market)</h2>
+<p class="text-sm font-semibold text-[#B6C0CF]">Vibrant, accessible luminous hues with explicit 4px tactile under-edge specs</p>
+</div>
+<span class="text-xs font-mono font-bold bg-[#141F2D] text-[#38E399] px-3 py-1 rounded-full border border-white/15 shadow-sm">WCAG AA 4.5:1 Compliant</span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4">
+<!-- Kip Green -->
+<div class="bg-[#142030]/85 p-3 rounded-2xl border border-white/10 flex flex-col justify-between shadow-md">
+<div class="h-16 w-full rounded-xl bg-[#38E399] relative shadow-[0_4px_0_#1EAC70,0_0_16px_rgba(56,227,153,0.35)] mb-3"></div>
+<div>
+<div class="text-xs font-black text-[#EBEFF5]">Kip Green</div>
+<div class="text-[11px] font-mono text-[#B6C0CF] font-bold">#38E399</div>
+<div class="text-[10px] text-[#38E399] font-bold mt-1">4px: #1EAC70</div>
+</div>
+</div>
+<!-- Reward Honey -->
+<div class="bg-[#142030]/85 p-3 rounded-2xl border border-white/10 flex flex-col justify-between shadow-md">
+<div class="h-16 w-full rounded-xl bg-[#FFC95C] relative shadow-[0_4px_0_#DDA22E,0_0_16px_rgba(255,201,92,0.3)] mb-3"></div>
+<div>
+<div class="text-xs font-black text-[#EBEFF5]">Reward Honey</div>
+<div class="text-[11px] font-mono text-[#B6C0CF] font-bold">#FFC95C</div>
+<div class="text-[10px] text-amber-300 font-bold mt-1">4px: #DDA22E</div>
+</div>
+</div>
+<!-- Coin Gold -->
+<div class="bg-[#142030]/85 p-3 rounded-2xl border border-white/10 flex flex-col justify-between shadow-md">
+<div class="h-16 w-full rounded-xl bg-[#FFD55C] relative shadow-[0_4px_0_#DDA22E,0_0_16px_rgba(255,213,92,0.3)] mb-3"></div>
+<div>
+<div class="text-xs font-black text-[#EBEFF5]">Coin Gold</div>
+<div class="text-[11px] font-mono text-[#B6C0CF] font-bold">#FFD55C</div>
+<div class="text-[10px] text-amber-300 font-bold mt-1">4px: #DDA22E</div>
+</div>
+</div>
+<!-- Melt Purple -->
+<div class="bg-[#142030]/85 p-3 rounded-2xl border border-white/10 flex flex-col justify-between shadow-md">
+<div class="h-16 w-full rounded-xl bg-[#A78BFA] relative shadow-[0_4px_0_#7C3AED,0_0_16px_rgba(167,139,250,0.3)] mb-3"></div>
+<div>
+<div class="text-xs font-black text-[#EBEFF5]">Melt Purple</div>
+<div class="text-[11px] font-mono text-[#B6C0CF] font-bold">#A78BFA</div>
+<div class="text-[10px] text-purple-300 font-bold mt-1">4px: #7C3AED</div>
+</div>
+</div>
+<!-- Dash Orange -->
+<div class="bg-[#142030]/85 p-3 rounded-2xl border border-white/10 flex flex-col justify-between shadow-md">
+<div class="h-16 w-full rounded-xl bg-[#FFA05C] relative shadow-[0_4px_0_#D96016,0_0_16px_rgba(255,160,92,0.3)] mb-3"></div>
+<div>
+<div class="text-xs font-black text-[#EBEFF5]">Dash Orange</div>
+<div class="text-[11px] font-mono text-[#B6C0CF] font-bold">#FFA05C</div>
+<div class="text-[10px] text-orange-300 font-bold mt-1">4px: #D96016</div>
+</div>
+</div>
+<!-- Danger Red -->
+<div class="bg-[#142030]/85 p-3 rounded-2xl border border-white/10 flex flex-col justify-between shadow-md">
+<div class="h-16 w-full rounded-xl bg-[#FF6368] relative shadow-[0_4px_0_#C9393F,0_0_16px_rgba(255,99,104,0.3)] mb-3"></div>
+<div>
+<div class="text-xs font-black text-[#EBEFF5]">Danger Coral</div>
+<div class="text-[11px] font-mono text-[#B6C0CF] font-bold">#FF6368</div>
+<div class="text-[10px] text-rose-300 font-bold mt-1">4px: #C9393F</div>
+</div>
+</div>
+<!-- Base Dark Navy -->
+<div class="bg-[#142030]/85 p-3 rounded-2xl border border-white/10 flex flex-col justify-between shadow-md">
+<div class="h-16 w-full rounded-xl bg-[#0F1724] relative shadow-[0_4px_0_#05080E] border border-white/15 mb-3"></div>
+<div>
+<div class="text-xs font-black text-[#EBEFF5]">Base Dark Navy</div>
+<div class="text-[11px] font-mono text-[#B6C0CF] font-bold">#0F1724</div>
+<div class="text-[10px] text-cyan-300 font-bold mt-1">Canvas &amp; Rim</div>
+</div>
+</div>
+<!-- Glass Base Navy 55% -->
+<div class="bg-[#142030]/85 p-3 rounded-2xl border border-white/10 flex flex-col justify-between shadow-md">
+<div class="h-16 w-full rounded-xl bg-[#1E2A3A]/55 backdrop-blur-md relative shadow-[0_4px_0_#101722] border border-white/20 mb-3"></div>
+<div>
+<div class="text-xs font-black text-[#EBEFF5]">Glass Base Navy</div>
+<div class="text-[11px] font-mono text-[#B6C0CF] font-bold">#1E2A3A (55%)</div>
+<div class="text-[10px] text-slate-300 font-bold mt-1">Frosted Core</div>
+</div>
+</div>
+</div></section>
+<!-- END: ColorTokensSection -->
+<!-- BEGIN: SurfacesAndTypeGrid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-10">
+<!-- Type Scale (7 cols) -->
+<section class="lg:col-span-7 glass-panel p-6 sm:p-8" data-purpose="type-scale"><h2 class="text-2xl font-black text-[#EBEFF5] mb-1">2. Typography Scale (Nunito + JetBrains Mono)</h2>
+<p class="text-sm font-semibold text-[#B6C0CF] mb-6">Hyper-readable on 55% Dark Navy Glass • WCAG AA 4.5:1 compliant</p>
+<div class="space-y-4">
+<!-- Display -->
+<div class="bg-[#142030]/80 p-4 rounded-xl border border-white/10 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 shadow-sm">
+<div>
+<span class="text-[11px] font-mono uppercase tracking-wider font-extrabold text-[#38E399]">Display • 34px / 1.15 ExtraBold</span>
+<p class="text-[34px] font-extrabold text-[#EBEFF5] leading-tight">Master Compound Growth</p>
+</div>
+<span class="text-xs font-mono font-bold text-[#B6C0CF]">text-4xl</span>
+</div>
+<!-- Title -->
+<div class="bg-[#142030]/80 p-4 rounded-xl border border-white/10 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 shadow-sm">
+<div>
+<span class="text-[11px] font-mono uppercase tracking-wider font-extrabold text-[#FFC95C]">Title • 26px / 1.25 Bold</span>
+<p class="text-[26px] font-bold text-[#EBEFF5] leading-snug">The Tortoise Rule: Time in Market</p>
+</div>
+<span class="text-xs font-mono font-bold text-[#B6C0CF]">text-2xl</span>
+</div>
+<!-- Body -->
+<div class="bg-[#142030]/80 p-4 rounded-xl border border-white/10 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 shadow-sm">
+<div>
+<span class="text-[11px] font-mono uppercase tracking-wider font-extrabold text-[#B6C0CF]">Body • 17px / 1.5 Medium</span>
+<p class="text-[17px] font-medium text-[#EBEFF5] leading-relaxed">Kip locks ₹500/month into low-cost index funds to build sovereign financial freedom.</p>
+</div>
+<span class="text-xs font-mono font-bold text-[#B6C0CF]">text-base</span>
+</div>
+<!-- Monospace Tabular Figures -->
+<div class="bg-[#142030]/80 p-4 rounded-xl border border-white/10 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 shadow-sm">
+<div>
+<span class="text-[11px] font-mono uppercase tracking-wider font-extrabold text-[#A78BFA]">Monospace Tabular • JetBrains Mono</span>
+<p class="text-[22px] font-mono font-extrabold text-[#EBEFF5] tracking-tight">₹1,48,290.00 <span class="text-[#38E399] text-lg font-bold">(+14.2% CAGR)</span></p>
+</div>
+<span class="text-xs font-mono font-bold text-[#B6C0CF]">font-mono</span>
+</div>
+<!-- Caption -->
+<div class="bg-[#142030]/80 p-4 rounded-xl border border-white/10 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 shadow-sm">
+<div>
+<span class="text-[11px] font-mono uppercase tracking-wider font-extrabold text-slate-400">Caption / Disclaimer • 13px Semibold</span>
+<p class="text-[13px] font-semibold text-[#B6C0CF] uppercase tracking-wide">HYPOTHETICAL RETURNS FOR LEARNING PURPOSES. NOT ADVICE.</p>
+</div>
+<span class="text-xs font-mono font-bold text-slate-400">text-xs</span>
+</div>
+</div></section>
+<!-- Glass Spec vs Near Solid Spec (5 cols) -->
+<section class="lg:col-span-5 glass-panel p-6 sm:p-8 flex flex-col justify-between" data-purpose="surface-comparison"><div>
+<div class="flex items-center justify-between mb-1">
+<h2 class="text-2xl font-black text-[#EBEFF5]">3. Dark Surface Architecture</h2>
+<span class="text-xs font-mono font-bold text-[#38E399] bg-emerald-950/70 border border-emerald-500/40 px-2.5 py-0.5 rounded-full">WCAG AA ≥ 4.5:1</span>
+</div>
+<p class="text-sm font-semibold text-[#B6C0CF] mb-6">Navy 55% Glass vs. 88% Near-Solid High Density Contrast</p>
+<div class="space-y-5">
+<!-- Frosted Glass Card Spec -->
+<div class="glass-panel p-5 relative overflow-hidden">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-black uppercase tracking-wider text-[#EBEFF5] bg-white/10 px-2 py-0.5 rounded-md border border-white/10">Dark Glass Spec</span>
+<span class="text-xs font-mono text-[#38E399] font-bold bg-[#101826] px-2 py-0.5 rounded-md border border-white/10">rgba(30, 42, 58, 0.55)</span>
+</div>
+<p class="text-sm font-bold text-[#EBEFF5] mb-2">28px Blur • 1px White/12% Border • Outer Soft Glow Shadow</p>
+<ul class="text-xs font-semibold text-[#B6C0CF] space-y-1 list-disc list-inside">
+<li>Floating top HUD, navigation dock &amp; modal bottom sheets</li>
+<li>All body text strictly achieves WCAG AA ≥ 4.5:1 contrast against dark glass</li>
+<li>Subtle atmospheric night haze shines through with zero eye fatigue</li>
+</ul>
+</div>
+<!-- Near-Solid Card Spec -->
+<div class="near-solid-panel p-5 relative">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-black uppercase tracking-wider text-[#EBEFF5] bg-white/10 px-2 py-0.5 rounded-md border border-white/10">Near-Solid Spec</span>
+<span class="text-xs font-mono text-cyan-300 font-bold bg-[#0D1522] px-2 py-0.5 rounded-md">88% Alpha #141D2C</span>
+</div>
+<p class="text-sm font-bold text-[#EBEFF5] mb-2">14px Blur • 1px White/14% Border • Glare Resistant</p>
+<ul class="text-xs font-semibold text-[#B6C0CF] space-y-1 list-disc list-inside">
+<li>High-density financial quizzes &amp; calculations</li>
+<li>Investment asset specs &amp; numeric tables</li>
+<li>Maximum contrast for OLED deep blacks and night comfort</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-white/10 text-center">
+<span class="text-xs font-bold text-[#B6C0CF]">Engineered for 390×844 OLED Retina Displays • 1px Border Inset Preserved</span>
+</div></section>
+</div>
+<!-- END: SurfacesAndTypeGrid -->
+<!-- BEGIN: TactileButtonsAndStatChips -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-10">
+<!-- Chunky 3D Buttons Matrix (7 cols) -->
+<section class="lg:col-span-7 glass-panel p-6 sm:p-8" data-purpose="button-matrix"><div class="flex items-center justify-between mb-6">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<h2 class="text-2xl font-black text-[#EBEFF5]">4. Tactile 3D Buttons Matrix</h2>
+<span class="text-xs font-mono font-black bg-rose-950 text-rose-300 border border-rose-500/40 px-2.5 py-0.5 rounded-md">Rule: Strictly Solid Only</span>
+</div>
+<p class="text-sm font-semibold text-[#B6C0CF]">100% SOLID opaque fills with 4px darker bottom bevel (NEVER Glass). Primary CTAs stay the most prominent visual anchor on screen.</p>
+</div>
+<span class="text-xs font-mono font-bold bg-emerald-950 text-[#38E399] border border-emerald-500/40 px-2.5 py-1 rounded-md">44pt+ Tap</span>
+</div>
+<div class="space-y-5">
+<!-- Kip Green Primary Row -->
+<div class="bg-[#142030]/80 p-4 rounded-2xl flex flex-wrap items-center justify-between gap-4 border border-white/10 shadow-sm">
+<span class="w-24 text-xs font-black uppercase text-[#EBEFF5]">Primary Green</span>
+<button class="btn-3d btn-3d-primary px-5 py-3 text-sm shadow-[0_4px_0_#1EAC70,0_0_18px_rgba(56,227,153,0.4)]" type="button">Invest Now</button>
+<button class="btn-3d btn-3d-primary is-pressed px-5 py-3 text-sm" type="button">Pressed (-3px)</button>
+<button class="btn-3d btn-3d-disabled px-5 py-3 text-sm" disabled="" type="button">Locked</button>
+</div>
+<!-- Honey Secondary Row -->
+<div class="bg-[#142030]/80 p-4 rounded-2xl flex flex-wrap items-center justify-between gap-4 border border-white/10 shadow-sm">
+<span class="w-24 text-xs font-black uppercase text-[#EBEFF5]">Reward Honey</span>
+<button class="btn-3d btn-3d-honey px-5 py-3 text-sm shadow-[0_4px_0_#DDA22E,0_0_18px_rgba(255,201,92,0.35)]" type="button">Claim +50 XP</button>
+<button class="btn-3d btn-3d-honey is-pressed px-5 py-3 text-sm" type="button">Pressed</button>
+<button class="btn-3d btn-3d-disabled px-5 py-3 text-sm" disabled="" type="button">Claimed</button>
+</div>
+<!-- Danger Row -->
+<div class="bg-[#142030]/80 p-4 rounded-2xl flex flex-wrap items-center justify-between gap-4 border border-white/10 shadow-sm">
+<span class="w-24 text-xs font-black uppercase text-[#EBEFF5]">Danger Coral</span>
+<button class="btn-3d btn-3d-danger px-5 py-3 text-sm shadow-[0_4px_0_#C9393F,0_0_18px_rgba(255,99,104,0.35)]" type="button">Break Lock</button>
+<button class="btn-3d btn-3d-danger is-pressed px-5 py-3 text-sm" type="button">Pressed</button>
+<button class="btn-3d btn-3d-disabled px-5 py-3 text-sm" disabled="" type="button">Protected</button>
+</div>
+<!-- Ghost / Dark Slate Row -->
+<div class="bg-[#142030]/80 p-4 rounded-2xl flex flex-wrap items-center justify-between gap-4 border border-white/10 shadow-sm">
+<span class="w-24 text-xs font-black uppercase text-[#EBEFF5]">Dark Slate</span>
+<button class="btn-3d btn-3d-ghost px-5 py-3 text-sm" type="button">Skip Level</button>
+<button class="btn-3d btn-3d-ghost is-pressed px-5 py-3 text-sm" type="button">Pressed</button>
+<button class="btn-3d btn-3d-disabled px-5 py-3 text-sm" disabled="" type="button">Unavailable</button>
+</div>
+<!-- Visual Noise Reduction Principle in Dark Mode -->
+<div class="p-3.5 bg-amber-950/40 border-2 border-amber-500/40 rounded-2xl flex items-start gap-3 mt-4">
+<span class="text-lg">🎯</span>
+<div>
+<span class="text-xs font-black uppercase text-amber-300 block tracking-wide">Visual Noise Reduction &amp; Accent Hierarchy Principle</span>
+<p class="text-xs font-bold text-amber-200/90 mt-0.5 leading-snug">Besides Kip Green #38E399, use exactly <span class="underline font-black text-amber-300">ONE accent color per screen</span>. Remove extraneous decoration that does not guide the eye to the primary bottom CTA.</p>
+</div>
+</div>
+</div></section>
+<!-- Glass Chips & Glowing Progress Bar (5 cols) -->
+<section class="lg:col-span-5 glass-panel p-6 sm:p-8 flex flex-col justify-between" data-purpose="hud-components"><div>
+<h2 class="text-2xl font-black text-[#EBEFF5] mb-1">5. Glass HUD &amp; Glow Progress</h2>
+<p class="text-sm font-semibold text-[#B6C0CF] mb-6">Top-tier gaming feedback for daily streaks and milestones</p>
+<!-- Glass Stat-Chips Row -->
+<div class="mb-6">
+<label class="block text-xs font-black uppercase text-[#B6C0CF] mb-2">Glass Stat-Chip Tokens</label>
+<div class="flex items-center gap-2 sm:gap-3">
+<!-- Streak Pill -->
+<div class="flex-1 bg-[#142030]/80 backdrop-blur-md px-3 py-2 rounded-2xl border border-white/15 shadow-md flex items-center justify-center gap-2">
+<span class="text-xl">🔥</span>
+<div>
+<div class="text-[10px] uppercase font-bold text-[#B6C0CF] leading-none">Streak</div>
+<div class="text-base font-black text-[#EBEFF5] leading-tight">12 Days</div>
+</div>
+</div>
+<!-- Coin Gold Pill -->
+<div class="flex-1 bg-[#142030]/80 backdrop-blur-md px-3 py-2 rounded-2xl border border-white/15 shadow-md flex items-center justify-center gap-2">
+<span class="text-xl">🪙</span>
+<div>
+<div class="text-[10px] uppercase font-bold text-[#B6C0CF] leading-none">Coins</div>
+<div class="text-base font-black text-[#FFD55C] leading-tight font-mono">340</div>
+</div>
+</div>
+<!-- FinIQ Score -->
+<div class="flex-1 bg-[#142030]/80 backdrop-blur-md px-3 py-2 rounded-2xl border border-white/15 shadow-md flex items-center justify-center gap-2">
+<span class="text-xl">🧠</span>
+<div>
+<div class="text-[10px] uppercase font-bold text-[#B6C0CF] leading-none">FinIQ</div>
+<div class="text-base font-black text-[#38E399] leading-tight font-mono">412</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Progress Bar With Neon Glow in Dark Mode -->
+<div class="bg-[#142030]/90 p-5 rounded-2xl border border-white/15 shadow-md">
+<div class="flex items-center justify-between text-xs font-extrabold text-[#EBEFF5] mb-2">
+<span class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-[#38E399] animate-pulse shadow-[0_0_8px_#38E399]"></span>
+  Level 4: Inflation Shield
+</span>
+<span class="font-mono text-[#B6C0CF]">780 / 1,000 XP</span>
+</div>
+<!-- Track -->
+<div class="w-full h-5 bg-[#0B121C] rounded-full p-0.5 overflow-hidden shadow-inner border border-white/10 relative">
+<!-- Fill with Vibrant Glow -->
+<div class="h-full bg-gradient-to-r from-emerald-400 via-[#38E399] to-[#5CFEB1] rounded-full shadow-[0_0_18px_rgba(56,227,153,0.95)]" style="width: 78%;">
+<div class="w-full h-full opacity-30 bg-[linear-gradient(45deg,rgba(255,255,255,0.4)_25%,transparent_25%,transparent_50%,rgba(255,255,255,0.4)_50%,rgba(255,255,255,0.4)_75%,transparent_75%)] bg-[length:12px_12px]"></div>
+</div>
+</div>
+<div class="flex items-center justify-between mt-3 text-[11px] font-bold text-[#B6C0CF]">
+<span>Next Milestone: SGB Sovereign Bond</span>
+<span class="text-[#38E399] font-extrabold">+220 XP left</span>
+</div>
+</div>
+</div>
+<div class="mt-4 p-3 bg-amber-950/40 rounded-xl border border-amber-500/30 text-xs font-bold text-amber-200 flex items-center gap-2">
+<span class="text-base">⚡</span> Duolingo-style kinetic feedback triggers tactile device vibration on iOS.
+</div></section>
+</div>
+<!-- END: TactileButtonsAndStatChips -->
+<!-- BEGIN: QuizInteractiveCards -->
+<section class="glass-panel p-6 sm:p-8 mb-10" data-purpose="quiz-cards"><div class="flex flex-wrap items-center justify-between gap-2 mb-6">
+<div>
+<h2 class="text-2xl font-black text-[#EBEFF5]">6. Quiz Option Interaction Matrix</h2>
+<p class="text-sm font-semibold text-[#B6C0CF]">4 Active states formatted for standard 44pt mobile tap targets (18px radius)</p>
+</div>
+<div class="flex items-center gap-1.5 text-xs font-extrabold text-[#EBEFF5] bg-[#142030] px-3 py-1.5 rounded-full border border-white/15">
+<span>Question 03 of 10: Purchasing Power</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- 1. Default State -->
+<div class="near-solid-panel p-5 border-2 border-white/10 hover:border-slate-500 transition-all cursor-pointer flex flex-col justify-between h-48">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="w-7 h-7 rounded-full bg-slate-800 font-extrabold text-[#EBEFF5] flex items-center justify-center text-xs border border-white/15">A</span>
+<span class="text-[10px] font-mono uppercase font-black text-slate-400">Default State</span>
+</div>
+<p class="text-sm font-bold text-[#EBEFF5] leading-snug">Keep ₹1,000 cash in a piggy bank for 5 years.</p>
+</div>
+<div class="text-xs text-[#B6C0CF] font-semibold">Tap to select</div>
+</div>
+<!-- 2. Selected State -->
+<div class="near-solid-panel p-5 border-2 border-amber-400/80 ring-2 ring-amber-400/20 shadow-[0_0_16px_rgba(255,201,92,0.25)] flex flex-col justify-between h-48 bg-[#182335]">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="w-7 h-7 rounded-full bg-amber-400 text-[#1E2A3A] font-extrabold flex items-center justify-center text-xs">B</span>
+<span class="text-[10px] font-mono uppercase font-black text-amber-300">Selected Active</span>
+</div>
+<p class="text-sm font-bold text-[#EBEFF5] leading-snug">Lend to a friend with 0% interest and no agreement.</p>
+</div>
+<div class="text-xs text-amber-300 font-bold flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-amber-400"></span> Ready to submit
+</div>
+</div>
+<!-- 3. Correct State -->
+<div class="near-solid-panel p-5 border-2 border-[#38E399] bg-[#0C2A1E]/80 ring-2 ring-[#38E399]/30 shadow-[0_0_20px_rgba(56,227,153,0.35)] flex flex-col justify-between h-48">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="w-7 h-7 rounded-full bg-[#38E399] text-[#052818] font-extrabold flex items-center justify-center text-xs">C</span>
+<span class="text-[10px] font-black uppercase text-[#38E399] bg-emerald-950 border border-[#38E399]/40 px-2 py-0.5 rounded-full">✅ Correct</span>
+</div>
+<p class="text-sm font-black text-[#EBEFF5] leading-snug">Invest in a diversified Index Fund beating 6% inflation.</p>
+</div>
+<div class="text-xs font-black text-[#38E399] flex items-center justify-between">
+<span>+25 XP Earned!</span>
+<span>🔥 Streak Kept</span>
+</div>
+</div>
+<!-- 4. Wrong State -->
+<div class="near-solid-panel p-5 border-2 border-[#FF6368] bg-[#2E1218]/80 ring-2 ring-[#FF6368]/30 shadow-[0_0_20px_rgba(255,99,104,0.35)] flex flex-col justify-between h-48">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="w-7 h-7 rounded-full bg-[#FF6368] text-white font-extrabold flex items-center justify-center text-xs">D</span>
+<span class="text-[10px] font-black uppercase text-rose-300 bg-rose-950 border border-[#FF6368]/40 px-2 py-0.5 rounded-full">❌ Not Quite</span>
+</div>
+<p class="text-sm font-bold text-[#EBEFF5] leading-snug">Buy shiny meme tokens advertised by influencers.</p>
+</div>
+<div class="text-xs font-bold text-rose-300 leading-tight">
+  Melt Sloth strikes: Inflation eats purchasing power.
+</div>
+</div>
+</div></section>
+<!-- END: QuizInteractiveCards -->
+<!-- BEGIN: CollectibleAssetCards -->
+<section class="glass-panel p-6 sm:p-8 mb-10" data-purpose="rarity-cards"><div class="flex flex-wrap items-center justify-between gap-2 mb-6">
+<div>
+<h2 class="text-2xl font-black text-[#EBEFF5]">7. Collectible Asset Cards (4 Holographic Rarities)</h2>
+<p class="text-sm font-semibold text-[#B6C0CF]">Gamified teen fintech collectibles showcasing asset properties &amp; SEBI compliance</p>
+</div>
+<span class="text-xs font-mono font-bold bg-[#142030] text-[#38E399] px-3 py-1.5 rounded-full border border-white/15">Tradeable in Teen League</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- 1. Common: Silver Iridescent -->
+<div class="card-foil-common rounded-3xl p-5 flex flex-col justify-between h-[360px]">
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="text-[10px] font-black uppercase tracking-wider bg-slate-700/80 text-slate-200 px-2.5 py-1 rounded-full border border-slate-500/40">Common</span>
+<span class="text-xs font-mono font-black text-slate-400">#001</span>
+</div>
+<div class="w-full h-32 bg-slate-800/80 rounded-2xl flex items-center justify-center text-4xl mb-4 border border-white/10">
+  📊
+</div>
+<h3 class="text-base font-black text-[#EBEFF5] leading-snug">Nifty Bluechip Index</h3>
+<p class="text-xs font-semibold text-[#B6C0CF] mt-1">Foundation asset. Low volatility equity tracking India's top 50 giants.</p>
+</div>
+<div class="pt-3 border-t border-white/10">
+<div class="flex justify-between text-xs font-bold text-[#EBEFF5]">
+<span>Risk Rating:</span>
+<span class="text-[#38E399] font-extrabold">Moderate (12.2% CAGR)</span>
+</div>
+<div class="text-[9px] font-semibold text-slate-400 mt-1 uppercase">SEBI Educational Simulated Card</div>
+</div>
+</div>
+<!-- 2. Rare: Electric Cyan Holographic -->
+<div class="card-foil-rare rounded-3xl p-5 flex flex-col justify-between h-[360px]">
+<div class="relative z-10">
+<div class="flex items-center justify-between mb-3">
+<span class="text-[10px] font-black uppercase tracking-wider bg-sky-950 text-sky-300 border border-sky-400/50 px-2.5 py-1 rounded-full">Rare</span>
+<span class="text-xs font-mono font-black text-sky-400">#042</span>
+</div>
+<div class="w-full h-32 bg-sky-950/60 rounded-2xl flex items-center justify-center text-4xl mb-4 border border-sky-400/40 shadow-[0_0_14px_rgba(56,189,248,0.25)]">
+  🏛️
+</div>
+<h3 class="text-base font-black text-[#EBEFF5] leading-snug">Sovereign Gold Bond</h3>
+<p class="text-xs font-semibold text-[#B6C0CF] mt-1">Backed by the RBI. Pays 2.50% annual interest with zero default risk.</p>
+</div>
+<div class="pt-3 border-t border-sky-400/30 relative z-10">
+<div class="flex justify-between text-xs font-bold text-[#EBEFF5]">
+<span>Stat Perk:</span>
+<span class="text-sky-300 font-extrabold">+18% Volatility DEF</span>
+</div>
+<div class="text-[9px] font-semibold text-slate-400 mt-1 uppercase">SEBI Educational Simulated Card</div>
+</div>
+</div>
+<!-- 3. Epic: Royal Violet Nebula -->
+<div class="card-foil-epic rounded-3xl p-5 flex flex-col justify-between h-[360px]">
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="text-[10px] font-black uppercase tracking-wider bg-purple-950 text-purple-300 border border-purple-400/50 px-2.5 py-1 rounded-full">Epic</span>
+<span class="text-xs font-mono font-black text-purple-400">#088</span>
+</div>
+<div class="w-full h-32 bg-purple-950/60 rounded-2xl flex items-center justify-center text-4xl mb-4 border border-purple-400/40 shadow-[0_0_14px_rgba(168,85,247,0.3)]">
+  🛡️
+</div>
+<h3 class="text-base font-black text-[#EBEFF5] leading-snug">Hex Shield Compounder</h3>
+<p class="text-xs font-semibold text-[#B6C0CF] mt-1">Automated dividend re-investment algorithm. Cancels out market panic shocks.</p>
+</div>
+<div class="pt-3 border-t border-purple-400/30">
+<div class="flex justify-between text-xs font-bold text-[#EBEFF5]">
+<span>Synergy:</span>
+<span class="text-purple-300 font-extrabold">2.4x Multiplier</span>
+</div>
+<div class="text-[9px] font-semibold text-slate-400 mt-1 uppercase">SEBI Educational Simulated Card</div>
+</div>
+</div>
+<!-- 4. Legendary: Animated Prismatic Gold -->
+<div class="card-foil-legendary rounded-3xl p-5 flex flex-col justify-between h-[360px]">
+<div class="relative z-10">
+<div class="flex items-center justify-between mb-3">
+<span class="text-[10px] font-black uppercase tracking-wider bg-amber-400 text-[#1E2A3A] px-2.5 py-1 rounded-full font-black shadow-[0_0_10px_#F59E0B]">Legendary ★</span>
+<span class="text-xs font-mono font-black text-amber-300">#777</span>
+</div>
+<div class="w-full h-32 bg-amber-950/60 rounded-2xl flex items-center justify-center text-4xl mb-4 border border-amber-400/50 shadow-[0_0_20px_rgba(245,158,11,0.35)]">
+  🐢✨
+</div>
+<h3 class="text-base font-black text-[#EBEFF5] leading-snug">20-Year Tortoise Shell</h3>
+<p class="text-xs font-semibold text-[#B6C0CF] mt-1">The supreme wealth artifact. Unlocks immunity to inflation drag across all worlds.</p>
+</div>
+<div class="pt-3 border-t border-amber-400/30 relative z-10">
+<div class="flex justify-between text-xs font-bold text-[#EBEFF5]">
+<span>Total Immunity:</span>
+<span class="text-amber-300 font-extrabold">100% Melt Res.</span>
+</div>
+<div class="text-[9px] font-semibold text-slate-400 mt-1 uppercase">SEBI Educational Simulated Card</div>
+</div>
+</div>
+</div></section>
+<!-- END: CollectibleAssetCards -->
+<!-- BEGIN: MascotSheetAndExpressions -->
+<section class="glass-panel p-6 sm:p-8 mb-10" data-purpose="mascot-expressions"><div class="flex flex-wrap items-center justify-between gap-2 mb-6">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<h2 class="text-2xl font-black text-[#EBEFF5]">8. Mascot Rigging &amp; Functional Directional Guide</h2>
+<span class="text-xs font-mono font-bold bg-[#38E399]/20 text-[#38E399] border border-[#38E399]/30 px-3 py-0.5 rounded-full">Functional UI Anchor</span>
+</div>
+<p class="text-sm font-semibold text-[#B6C0CF]">Guide, Not Decoration — Placed looking toward the primary CTA thumb zone, with emotional state dynamically mapped to user feedback</p>
+</div>
+<span class="text-xs font-mono font-bold bg-[#142030] text-[#EBEFF5] px-3 py-1 rounded-full border border-white/15">3D Render Asset Pack</span>
+</div>
+<!-- Mascot Character Sheet Image Container with DATA:IMAGE:IMAGE_5 -->
+<div class="bg-[#142030]/85 p-4 rounded-3xl border border-white/15 shadow-xl overflow-hidden mb-6 flex flex-col items-center justify-center">
+<img alt="Kip Character Sheet Turnaround and Expressions" class="w-full h-auto rounded-2xl object-cover shadow-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRawWIG1lXnl4ciYtjqsJG7RQkSN1F084a0Z7ya6t5-dTpKGnnpqWOYrU_O2jR21qyQN9KZNqCKa8lTSA1V8K7PJHDuOLSKX0H2Y3iGzCX22BzrFAg5KqwujgFOR-21iaDbvfKx9HmkTmWWBhYKf-NJN5WwEmirAQnNifrfzg1-zCMbP7AD_ZyLnnxFlcIwJnSh2A3JArHci93YVcHgv2t3MtKPcR6zzQ2M_xdnQVuaUwCsa47IPkzNw"/>
+</div>
+<!-- Kip Directional Guide Principle Callout in Dark Mode -->
+<div class="mb-6 p-4 bg-emerald-950/40 border border-[#38E399]/40 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<span class="text-2xl">🧭</span>
+<div>
+<div class="text-xs font-black uppercase text-[#38E399] tracking-wider">Kip Directional Guide Principle</div>
+<div class="text-xs font-bold text-emerald-200 leading-snug">Kip is positioned facing and glancing directly toward the primary action button (Thumb Zone). Sightlines orient the user's focus straight to the decision path.</div>
+</div>
+</div>
+<div class="flex items-center gap-2 bg-[#122A20] px-3 py-1.5 rounded-xl border border-[#38E399]/50 text-xs font-black text-[#38E399] whitespace-nowrap shadow-[0_0_10px_rgba(56,227,153,0.3)]">
+<span>Sightline Target: Primary CTA</span>
+<span>↘</span>
+</div>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 text-center">
+<div class="bg-[#142030]/80 p-3 rounded-2xl border border-white/10 shadow-sm">
+<span class="text-xs font-black text-[#EBEFF5] block">HAPPY</span>
+<span class="text-[11px] text-[#38E399] font-semibold">Quiz Passed (+25 XP)</span>
+</div>
+<div class="bg-[#142030]/80 p-3 rounded-2xl border border-white/10 shadow-sm">
+<span class="text-xs font-black text-[#EBEFF5] block">TALKING</span>
+<span class="text-[11px] text-[#B6C0CF] font-semibold">Dialogue Tutorials</span>
+</div>
+<div class="bg-[#142030]/80 p-3 rounded-2xl border border-white/10 shadow-sm">
+<span class="text-xs font-black text-[#EBEFF5] block">THINKING</span>
+<span class="text-[11px] text-amber-300 font-semibold">Decision Checkpoint</span>
+</div>
+<div class="bg-[#142030]/80 p-3 rounded-2xl border border-white/10 shadow-sm">
+<span class="text-xs font-black text-[#EBEFF5] block">WORRIED</span>
+<span class="text-[11px] text-rose-300 font-semibold">Inflation Warning</span>
+</div>
+<div class="bg-[#142030]/80 p-3 rounded-2xl border border-white/10 shadow-sm">
+<span class="text-xs font-black text-[#EBEFF5] block">CHEERING</span>
+<span class="text-[11px] text-[#38E399] font-semibold">Tier Level Up</span>
+</div>
+<div class="bg-[#142030]/80 p-3 rounded-2xl border border-white/10 shadow-sm">
+<span class="text-xs font-black text-[#EBEFF5] block">SLEEPY</span>
+<span class="text-[11px] text-purple-300 font-semibold">Streak At Risk</span>
+</div>
+</div></section>
+<!-- END: MascotSheetAndExpressions -->
+<!-- BEGIN: MobileDeviceFrameAndBottomSheet -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-10">
+<!-- iOS 390x844 Shell Preview (5 cols) -->
+<section class="lg:col-span-5 glass-panel p-6 sm:p-8 flex flex-col items-center" data-purpose="mobile-mockup"><div class="w-full text-left mb-4">
+<h2 class="text-2xl font-black text-[#EBEFF5]">9. Native iOS 390×844 Canvas</h2>
+<p class="text-sm font-semibold text-[#B6C0CF]">Dark Night Market Tab Bar &amp; Floating HUD implementation</p>
+</div>
+<!-- iPhone 390px Outer Frame -->
+<div class="w-[340px] sm:w-[360px] h-[720px] bg-[#0A0E17] rounded-[50px] p-3 shadow-2xl border-4 border-slate-700/60 relative flex flex-col justify-between overflow-hidden">
+<!-- Dynamic Island / Speaker cutout -->
+<div class="absolute top-4 left-1/2 -translate-x-1/2 w-28 h-6 bg-black rounded-full z-30 flex items-center justify-end px-3">
+<div class="w-2.5 h-2.5 rounded-full bg-[#111] border border-slate-800"></div>
+</div>
+<!-- Screen Inner Content (Dark Night Market Mesh Background) -->
+<div class="w-full h-full rounded-[40px] overflow-hidden relative flex flex-col justify-between p-4 pt-10" style="background: radial-gradient(circle at 15% 15%, rgba(14, 58, 74, 0.9) 0%, transparent 55%), radial-gradient(circle at 85% 30%, rgba(30, 27, 75, 0.9) 0%, transparent 60%), linear-gradient(135deg, #0F1724 0%, #080D16 100%);">
+<!-- Mobile Top Glass Nav (Dark) -->
+<div class="glass-panel p-2.5 px-3 flex items-center justify-between mb-4 border border-white/15 bg-[#142030]/70">
+<div class="flex items-center gap-1.5">
+<span class="text-sm">🔥</span>
+<span class="text-xs font-black text-[#EBEFF5]">12</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="text-sm">🪙</span>
+<span class="text-xs font-black text-[#FFD55C] font-mono">340</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-[#38E399] shadow-[0_0_6px_#38E399]"></span>
+<span class="text-[11px] font-black text-[#38E399] font-mono">412 FinIQ</span>
+</div>
+</div>
+<!-- In-Game Mission Card in Dark Mode -->
+<div class="near-solid-panel p-4 shadow-lg mb-auto border border-white/15">
+<span class="text-[10px] font-black tracking-wider uppercase text-[#38E399] bg-emerald-950/90 border border-[#38E399]/40 px-2 py-0.5 rounded-full">Chapter 2 • Quest 4</span>
+<h4 class="text-base font-extrabold text-[#EBEFF5] mt-1">Beat the Melt Sloth</h4>
+<p class="text-xs font-semibold text-[#B6C0CF] mt-1">Deploy ₹500 from your piggy bank into a 12% Sovereign Index.</p>
+<div class="mt-3 flex items-center gap-3">
+<div class="w-12 h-12 rounded-xl bg-slate-800/90 border border-white/10 flex items-center justify-center text-2xl shadow-sm">
+  🐢
+</div>
+<button class="flex-1 btn-3d btn-3d-primary py-2 text-xs shadow-[0_4px_0_#1EAC70,0_0_12px_rgba(56,227,153,0.4)]" type="button">Start Challenge</button>
+</div>
+</div>
+<!-- Mascot Peeking in Screen with Sightline -->
+<div class="relative flex flex-col items-center my-2">
+<img alt="Kip looking toward primary CTA" class="w-24 h-24 object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.7)] transform hover:scale-105 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRawWIG1lXnl4ciYtjqsJG7RQkSN1F084a0Z7ya6t5-dTpKGnnpqWOYrU_O2jR21qyQN9KZNqCKa8lTSA1V8K7PJHDuOLSKX0H2Y3iGzCX22BzrFAg5KqwujgFOR-21iaDbvfKx9HmkTmWWBhYKf-NJN5WwEmirAQnNifrfzg1-zCMbP7AD_ZyLnnxFlcIwJnSh2A3JArHci93YVcHgv2t3MtKPcR6zzQ2M_xdnQVuaUwCsa47IPkzNw"/>
+<div class="absolute -top-1 right-12 bg-[#1E2C3F] text-[#38E399] text-[9px] font-black px-2 py-0.5 rounded-full border border-[#38E399]/40 shadow-md flex items-center gap-1">
+<span>Eyes on CTA</span> <span>↓</span>
+</div>
+</div>
+<!-- Floating 4-Tab Dark Glass Pill Bar -->
+<div class="mb-3 bg-[#1A2638]/75 backdrop-blur-2xl p-2 px-3 flex items-center justify-between rounded-full shadow-[0_8px_24px_rgba(0,0,0,0.5)] border border-white/15">
+<!-- Active Learn Tab with Kip Green Glow -->
+<div class="flex items-center gap-1.5 bg-[#38E399] text-[#052818] px-4 py-1.5 rounded-full shadow-[0_0_14px_rgba(56,227,153,0.7)] cursor-pointer">
+<span class="text-xs">📚</span>
+<span class="text-[10px] font-black tracking-wide uppercase">Learn</span>
+<span class="w-1.5 h-1.5 rounded-full bg-[#052818] animate-pulse"></span>
+</div>
+<!-- Cards -->
+<div class="flex flex-col items-center text-[#B6C0CF] px-2 py-1 cursor-pointer hover:text-white transition-all">
+<span class="text-xs">🃏</span>
+<span class="text-[9px] font-bold tracking-wide uppercase">Cards</span>
+</div>
+<!-- League -->
+<div class="flex flex-col items-center text-[#B6C0CF] px-2 py-1 cursor-pointer hover:text-white transition-all">
+<span class="text-xs">🏆</span>
+<span class="text-[9px] font-bold tracking-wide uppercase">League</span>
+</div>
+<!-- You -->
+<div class="flex flex-col items-center text-[#B6C0CF] px-2 py-1 cursor-pointer hover:text-white transition-all">
+<span class="text-xs">👤</span>
+<span class="text-[9px] font-bold tracking-wide uppercase">You</span>
+</div>
+</div>
+<!-- Home Indicator Bar -->
+<div class="w-32 h-1 bg-white/40 rounded-full mx-auto mt-2"></div>
+</div>
+</div></section>
+<!-- Glass Bottom Sheet Modal Spec (7 cols) -->
+<section class="lg:col-span-7 glass-panel p-6 sm:p-8 flex flex-col justify-between" data-purpose="bottom-sheet-spec"><div>
+<div class="flex items-center justify-between mb-4">
+<div>
+<h2 class="text-2xl font-black text-[#EBEFF5]">10. Glass Bottom Sheet System</h2>
+<p class="text-sm font-semibold text-[#B6C0CF]">Radius 24px top, smooth pill grabber handle, and high contrast CTAs</p>
+</div>
+<span class="text-xs font-mono font-bold bg-[#142030] text-[#38E399] px-3 py-1 rounded-full border border-white/15">Modal State</span>
+</div>
+<!-- Dark Interactive Bottom Sheet Component Preview -->
+<div class="bg-[#162232]/85 backdrop-blur-2xl p-6 rounded-t-[32px] rounded-b-2xl border-t border-x border-white/20 shadow-2xl relative mt-4">
+<!-- Center Pill Grabber Handle -->
+<div class="w-12 h-1.5 bg-slate-500/80 rounded-full mx-auto mb-6"></div>
+<div class="flex items-start justify-between mb-4">
+<div>
+<span class="text-xs font-black uppercase text-amber-300 bg-amber-950/80 border border-amber-500/40 px-2.5 py-0.5 rounded-full">Vault Milestone</span>
+<h3 class="text-2xl font-black text-[#EBEFF5] mt-1">Unlock Hex Shell #04?</h3>
+<p class="text-sm font-semibold text-[#B6C0CF]">Requires 250 Kip Coins. Grants permanent 5% discount on inflation defense spells.</p>
+</div>
+<div class="text-3xl bg-amber-950/60 p-3 rounded-2xl border border-amber-500/40 shadow-[0_0_16px_rgba(255,201,92,0.2)]">
+  🛡️
+</div>
+</div>
+<div class="bg-[#121B27] p-4 rounded-2xl border border-white/10 mb-6 flex items-center justify-between">
+<div>
+<span class="text-xs font-bold text-[#B6C0CF]">Your Balance:</span>
+<p class="text-lg font-mono font-extrabold text-[#FFD55C]">340 Kip Coins</p>
+</div>
+<span class="text-xs font-extrabold text-[#38E399] bg-emerald-950/90 border border-[#38E399]/40 px-2.5 py-1 rounded-lg">Funds Sufficient</span>
+</div>
+<!-- Actions Row -->
+<div class="flex flex-col sm:flex-row gap-3">
+<button class="flex-1 btn-3d btn-3d-honey py-3.5 text-sm shadow-[0_4px_0_#DDA22E,0_0_16px_rgba(255,201,92,0.35)]" type="button">Unlock Shell (250 🪙)</button>
+<button class="btn-3d btn-3d-ghost py-3.5 px-6 text-sm" type="button">Keep Coins</button>
+</div>
+<p class="text-[11px] font-semibold text-center text-slate-400 mt-4 uppercase">
+  SEBI Compliant simulation sandbox. Not actual financial advice.
+</p>
+</div>
+</div>
+<div class="mt-6 p-4 bg-[#142030]/80 rounded-2xl border border-white/10 text-xs font-semibold text-[#B6C0CF] flex items-center justify-between">
+<span>Micro-Interactions: Spring physics (stiffness 380, damping 28)</span>
+<span class="font-mono text-[#38E399] font-bold">iOS UIKit / SwiftUI 2026</span>
+</div></section>
+</div>
+<!-- END: MobileDeviceFrameAndBottomSheet -->
+<!-- BEGIN: WorldMeshBackgrounds -->
+<section class="glass-panel p-6 sm:p-8" data-purpose="world-themes"><div class="flex items-center justify-between mb-6">
+<div>
+<h2 class="text-2xl font-black text-[#EBEFF5]">11. World Atmospheric Meshes</h2>
+<p class="text-sm font-semibold text-[#B6C0CF]">3 Thematic color environments for each chapter of Kip's Money Quest</p>
+</div>
+<span class="text-xs font-mono font-bold bg-[#142030] text-[#38E399] px-3 py-1 rounded-full border border-white/15">Level Biomes</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- World 1: Night Market (Active) -->
+<div class="bg-[#142030]/85 p-4 rounded-3xl border border-white/15 flex flex-col justify-between shadow-md">
+<div class="h-32 rounded-2xl relative overflow-hidden shadow-inner mb-3 border border-white/10" style="background: radial-gradient(circle at 15% 15%, #0E3A4A 0%, transparent 60%), radial-gradient(circle at 85% 25%, #1E1B4B 0%, transparent 65%), linear-gradient(135deg, #0F1724, #080D16);">
+<div class="absolute bottom-2 left-3 bg-[#0F1724]/90 border border-white/15 px-2 py-0.5 rounded-md text-[10px] font-black uppercase text-[#38E399]">Chapter 1: Night Market</div>
+</div>
+<div>
+<h4 class="text-base font-black text-[#EBEFF5]">Night Market (Deep Navy Base)</h4>
+<p class="text-xs font-semibold text-[#B6C0CF] mt-1">Deep Navy #0F1724 → Cyan Haze #0E3A4A → Indigo #1E1B4B. Luminous neon contrast, safe compounding shelter.</p>
+</div>
+</div>
+<!-- World 2: The Melt -->
+<div class="bg-[#142030]/85 p-4 rounded-3xl border border-white/15 flex flex-col justify-between shadow-md">
+<div class="h-32 rounded-2xl relative overflow-hidden shadow-inner mb-3 border border-white/10" style="background: radial-gradient(circle at 20% 30%, #4C1D95 0%, transparent 50%), radial-gradient(circle at 80% 80%, #2E1065 0%, transparent 60%), linear-gradient(135deg, #581C87, #0F0A24);">
+<div class="absolute bottom-2 left-3 bg-[#0F1724]/90 border border-white/15 px-2 py-0.5 rounded-md text-[10px] font-black uppercase text-[#A78BFA]">Chapter 2: Inflation Fog</div>
+</div>
+<div>
+<h4 class="text-base font-black text-[#EBEFF5]">The Melt (Dusk Purple)</h4>
+<p class="text-xs font-semibold text-[#B6C0CF] mt-1">Lavender #A78BFA → Dark Violet #4C1D95 → Obsidian. Teaches stealth inflation and purchasing erosion.</p>
+</div>
+</div>
+<!-- World 3: Snowball Valley -->
+<div class="bg-[#142030]/85 p-4 rounded-3xl border border-white/15 flex flex-col justify-between shadow-md">
+<div class="h-32 rounded-2xl relative overflow-hidden shadow-inner mb-3 border border-white/10" style="background: radial-gradient(circle at 20% 20%, #0C4A6E 0%, transparent 50%), radial-gradient(circle at 80% 20%, #064E3B 0%, transparent 60%), linear-gradient(135deg, #082F49, #022C22);">
+<div class="absolute bottom-2 left-3 bg-[#0F1724]/90 border border-white/15 px-2 py-0.5 rounded-md text-[10px] font-black uppercase text-[#38E399]">Chapter 3: Compounding</div>
+</div>
+<div>
+<h4 class="text-base font-black text-[#EBEFF5]">Snowball Valley (Glacial Aurora)</h4>
+<p class="text-xs font-semibold text-[#B6C0CF] mt-1">Glacial Navy #0C4A6E → Emerald Frost #064E3B → Crisp Aurora. Automated compounding and index wealth.</p>
+</div>
+</div>
+</div></section>
+<!-- END: WorldMeshBackgrounds -->
+<!-- BEGIN: FooterSignoff -->
+<!-- BEGIN: MotionAndMicroInteractions -->
+<section class="glass-panel p-6 sm:p-8 mt-10 mb-10" data-purpose="motion-specs"><div class="flex flex-wrap items-center justify-between gap-2 mb-6">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<h2 class="text-2xl font-black text-[#EBEFF5]">12. Motion &amp; Micro-Interactions Spec</h2>
+<span class="text-xs font-mono font-bold bg-amber-950 text-amber-300 border border-amber-500/40 px-2.5 py-0.5 rounded-full">Haptics + Spring Engine</span>
+</div>
+<p class="text-sm font-semibold text-[#B6C0CF]">Interactive feedback physics, fallbacks, and WCAG prefers-reduced-motion accessibility rules</p>
+</div>
+<span class="text-xs font-mono font-bold bg-[#142030] text-[#38E399] px-3 py-1.5 rounded-full border border-white/15">iOS Swift 6 / SwiftUI</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Motion Spec 1: Legendary Holographic Shimmer -->
+<div class="bg-[#142030]/85 p-5 rounded-3xl border border-white/15 flex flex-col justify-between shadow-md">
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="text-xs font-black uppercase text-amber-300 bg-amber-950/80 border border-amber-500/40 px-2.5 py-1 rounded-full">Holographic Shimmer</span>
+<span class="text-xs font-mono font-bold text-[#B6C0CF]">3s Loop</span>
+</div>
+<div class="h-24 rounded-2xl bg-[#1E170A] border-2 border-amber-400/60 relative overflow-hidden flex items-center justify-center mb-3 shadow-[0_0_18px_rgba(255,201,92,0.25)]">
+<div class="absolute inset-[-50%] bg-[conic-gradient(from_0deg_at_50%_50%,#FFD700_0deg,#FF69B4_90deg,#00FFFF_180deg,#FFD700_360deg)] opacity-30 animate-[spinSheen_3s_linear_infinite]"></div>
+<span class="text-3xl relative z-10">🐢✨</span>
+</div>
+<h4 class="text-base font-extrabold text-[#EBEFF5]">Slow Ambient Gradient Sweep</h4>
+<p class="text-xs font-semibold text-[#B6C0CF] mt-1">3s linear infinite iridescent conic sweep across legendary card surface with luminous alpha sheen.</p>
+</div>
+<div class="mt-4 pt-3 border-t border-white/10">
+<div class="text-[11px] font-bold text-[#EBEFF5]"><span class="text-[#FF6368]">Reduced Motion:</span> Static high-contrast gold border (#FFD55C) with zero rotation.</div>
+<div class="text-[10px] font-mono text-slate-400 mt-1">@media (prefers-reduced-motion: reduce)</div>
+</div>
+</div>
+<!-- Motion Spec 2: Active Lesson Quest Node Glow -->
+<div class="bg-[#142030]/85 p-5 rounded-3xl border border-white/15 flex flex-col justify-between shadow-md">
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="text-xs font-black uppercase text-[#38E399] bg-emerald-950/80 border border-[#38E399]/40 px-2.5 py-1 rounded-full">Quest Node Glow</span>
+<span class="text-xs font-mono font-bold text-[#B6C0CF]">2s Pulse</span>
+</div>
+<div class="h-24 rounded-2xl bg-[#0B2319] border-2 border-[#38E399]/50 flex items-center justify-center mb-3 shadow-[0_0_18px_rgba(56,227,153,0.25)]">
+<div class="w-12 h-12 rounded-full bg-[#38E399] text-[#052818] flex items-center justify-center font-black text-sm shadow-[0_0_20px_rgba(56,227,153,0.95)] animate-pulse">
+  Q4
+</div>
+</div>
+<h4 class="text-base font-extrabold text-[#EBEFF5]">Radial Glow &amp; Scale Pulse</h4>
+<p class="text-xs font-semibold text-[#B6C0CF] mt-1">Soft radial glow pulse (2s ease-in-out infinite, scale 1.02) indicating next playable learning checkpoint.</p>
+</div>
+<div class="mt-4 pt-3 border-t border-white/10">
+<div class="text-[11px] font-bold text-[#EBEFF5]"><span class="text-[#FF6368]">Reduced Motion:</span> Static green ring highlight (#38E399 2px border) without scale change.</div>
+<div class="text-[10px] font-mono text-slate-400 mt-1">@media (prefers-reduced-motion: reduce)</div>
+</div>
+</div>
+<!-- Motion Spec 3: Reward XP / Coin Claim Pop-in -->
+<div class="bg-[#142030]/85 p-5 rounded-3xl border border-white/15 flex flex-col justify-between shadow-md">
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="text-xs font-black uppercase text-purple-300 bg-purple-950/80 border border-purple-400/40 px-2.5 py-1 rounded-full">Claim Pop-In</span>
+<span class="text-xs font-mono font-bold text-[#B6C0CF]">250ms Spring</span>
+</div>
+<div class="h-24 rounded-2xl bg-[#1C160B] border-2 border-amber-400/40 flex items-center justify-center mb-3 shadow-[0_0_16px_rgba(255,201,92,0.2)]">
+<div class="bg-[#FFC95C] text-[#241600] font-black px-4 py-2 rounded-2xl shadow-[0_4px_0_#DDA22E,0_0_14px_rgba(255,201,92,0.4)] text-sm flex items-center gap-1.5">
+<span>🪙</span> <span>+50 Kip Coins</span>
+</div>
+</div>
+<h4 class="text-base font-extrabold text-[#EBEFF5]">Spring Physics Pop-In</h4>
+<p class="text-xs font-semibold text-[#B6C0CF] mt-1">250ms spring physics (stiffness 380, damping 26) with tactile iOS haptic tick generator.</p>
+</div>
+<div class="mt-4 pt-3 border-t border-white/10">
+<div class="text-[11px] font-bold text-[#EBEFF5]"><span class="text-[#FF6368]">Reduced Motion:</span> Immediate 150ms opacity crossfade without overshoot or spring bounce.</div>
+<div class="text-[10px] font-mono text-slate-400 mt-1">@media (prefers-reduced-motion: reduce)</div>
+</div>
+</div>
+</div></section>
+<!-- END: MotionAndMicroInteractions --><footer class="mt-12 text-center text-xs font-bold text-slateText/80 py-6" data-purpose="system-footer"><p class="text-[#B6C0CF]">© 2026 Kip: Money Quest Design System v2.0 DARK • Approved for Native iOS Swift 6 Engine</p>
+<p class="text-[11px] font-normal text-slate-400 mt-1">Duolingo-grade polish calibrated for SEBI compliant youth financial literacy in Night Market Dark Mode.</p></footer>
+<!-- END: FooterSignoff -->
+</main>
+</body></html>

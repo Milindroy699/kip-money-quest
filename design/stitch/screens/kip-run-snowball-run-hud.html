@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Snowball Valley · Endless Runner Gameplay</title>
+<!-- Google Fonts: Space Grotesk & Outfit -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['"Space Grotesk"', 'sans-serif'],
+            body: ['"Outfit"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              mint: '#00FFA3',
+              mintDark: '#00C87E',
+              mintShadow: '#008F59',
+              gold: '#FFC837',
+              goldDark: '#D49B0D',
+              purple: '#A855F7',
+              purpleDeep: '#6B21A8',
+              navyDeep: '#080E1B',
+            }
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #050914;
+      font-family: 'Outfit', sans-serif;
+      color: #F1F5F9;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Device frame wrapper for 390 x 844 */
+    .mobile-container {
+      width: 390px;
+      height: 844px;
+      position: relative;
+      overflow: hidden;
+      background: #070D1E;
+      border-radius: 44px;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.9), 0 0 0 10px #1e2638;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Perspective 3D Runner World */
+    .runner-world {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    /* 3D Track Perspective */
+    .perspective-stage {
+      position: absolute;
+      inset: 0;
+      perspective: 460px;
+      perspective-origin: 50% 32%;
+    }
+
+    .track-plane {
+      position: absolute;
+      top: 36%;
+      left: -12%;
+      width: 124%;
+      height: 72%;
+      transform: rotateX(66deg);
+      transform-origin: top center;
+      background: linear-gradient(180deg, #162a4a 0%, #1f385c 40%, #244673 80%, #2b558b 100%);
+      box-shadow: inset 0 0 50px rgba(0, 20, 50, 0.7);
+    }
+
+    /* Lane stripes */
+    .lane-divider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: repeating-linear-gradient(to bottom, rgba(255, 255, 255, 0.45) 0px, rgba(255, 255, 255, 0.45) 24px, transparent 24px, transparent 48px);
+      box-shadow: 0 0 8px rgba(255,255,255,0.4);
+    }
+
+    /* 3D Chunky Mechanical Button */
+    .btn-chunky-green {
+      background: #00FFA3;
+      color: #042416;
+      border-radius: 18px;
+      font-weight: 700;
+      box-shadow: 0 5px 0 #009E63, 0 10px 24px rgba(0, 255, 163, 0.35);
+      transition: all 0.1s ease;
+      min-height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-chunky-green:active {
+      transform: translateY(3px);
+      box-shadow: 0 2px 0 #009E63, 0 4px 12px rgba(0, 255, 163, 0.3);
+    }
+
+    /* Frosted navy glass chips */
+    .glass-chip {
+      background: rgba(13, 22, 39, 0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Kip character cutout container */
+    .kip-cutout {
+      position: absolute;
+      width: 86px;
+      height: 98px;
+      left: 152px; /* Center lane */
+      bottom: 120px;
+      z-index: 25;
+      filter: drop-shadow(0 14px 16px rgba(0, 0, 0, 0.75));
+    }
+
+    /* Snowball companion */
+    .rolling-snowball {
+      position: absolute;
+      width: 58px;
+      height: 58px;
+      left: 96px; /* Rolls beside Kip */
+      bottom: 114px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #ffffff 0%, #d8ecf8 45%, #9ec5e4 80%, #689bc2 100%);
+      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.65), inset -3px -3px 8px rgba(100, 160, 210, 0.6), inset 3px 3px 6px #ffffff;
+      z-index: 24;
+      animation: gentle-bob 1.8s ease-in-out infinite alternate;
+    }
+
+    @keyframes gentle-bob {
+      0% { transform: translateY(0px) rotate(0deg); }
+      100% { transform: translateY(-4px) rotate(15deg); }
+    }
+
+    /* Melt purple mist animation along bottom edge */
+    .melt-fog-layer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 110px;
+      background: linear-gradient(0deg, rgba(88, 28, 135, 0.85) 0%, rgba(126, 34, 206, 0.45) 50%, rgba(168, 85, 247, 0) 100%);
+      pointer-events: none;
+      z-index: 20;
+    }
+
+    /* Tap target helper */
+    .lane-touch-control {
+      touch-action: manipulation;
+      min-height: 48px;
+    }
+  </style>
+</head>
+<body>
+<!-- 390 x 844 iPhone Viewport Frame -->
+<div class="mobile-container select-none">
+<!-- GAME ENVIRONMENT BACKGROUND -->
+<div class="runner-world">
+<!-- Background Sky & Pastel Snow Hills -->
+<img alt="Snowball Valley Background" class="absolute inset-0 w-full h-full object-cover object-top opacity-90" src="https://lh3.googleusercontent.com/aida/AEtjO1XrvWTeXUglP5Rk9YGV3ckJO5MdyekLPz-SdhAPFn1gqIAo0MwMegV9Uvsxx7Kv9v3zVptxsP6NoRhbfvx-0xu57lp9U9GFXtKHSlpFObiGdZCptO-kSSv5SIu1hs4Qkkf2DUesaZ0zsOhruheT9DDo6yTwenqca8OkgGvErOTYk2ckqHuP5L9IN4sG2LVrsXIAXUTcL2k-K8TTaJL578LTHREE2u80rYLK7YPNLFh8PsALMcB2IpB6tUI"/>
+<!-- Gradient Scrim for atmospheric depth -->
+<div class="absolute inset-0 bg-gradient-to-b from-[#060c18]/40 via-transparent to-[#070e1c]/80"></div>
+<!-- 3D Running Track & Ground -->
+<div class="perspective-stage">
+<!-- Snowy receding road in perspective -->
+<div class="track-plane">
+<!-- Lane 1 divider (Left / Mid boundary) -->
+<div class="lane-divider" style="left: 33.3%;"></div>
+<!-- Lane 2 divider (Mid / Right boundary) -->
+<div class="lane-divider" style="left: 66.6%;"></div>
+<!-- Snowy Track Texture lines -->
+<div class="absolute inset-0 opacity-25" style="background-image: radial-gradient(ellipse at 50% 100%, rgba(200, 235, 255, 0.4) 0%, transparent 70%);"></div>
+<!-- Pine Trees Receding on left side -->
+<div class="absolute left-[-18px] top-6 w-8 h-16 opacity-75">
+<svg fill="none" viewbox="0 0 40 70"><path d="M20 0L38 32H28L36 50H26L40 68H0L14 50H4L12 32H2L20 0Z" fill="#143642" stroke="#4fc3f7" stroke-width="1.5"></path></svg>
+</div>
+<div class="absolute left-[-26px] top-28 w-12 h-24 opacity-85">
+<svg fill="none" viewbox="0 0 40 70"><path d="M20 0L38 32H28L36 50H26L40 68H0L14 50H4L12 32H2L20 0Z" fill="#0f2b36" stroke="#81d4fa" stroke-width="1.8"></path></svg>
+</div>
+<div class="absolute left-[-38px] top-64 w-16 h-36 opacity-95">
+<svg fill="none" viewbox="0 0 40 70"><path d="M20 0L38 32H28L36 50H26L40 68H0L14 50H4L12 32H2L20 0Z" fill="#0b2029" stroke="#b3e5fc" stroke-width="2.2"></path></svg>
+</div>
+<!-- Pine Trees Receding on right side -->
+<div class="absolute right-[-18px] top-6 w-8 h-16 opacity-75">
+<svg fill="none" viewbox="0 0 40 70"><path d="M20 0L38 32H28L36 50H26L40 68H0L14 50H4L12 32H2L20 0Z" fill="#143642" stroke="#4fc3f7" stroke-width="1.5"></path></svg>
+</div>
+<div class="absolute right-[-26px] top-28 w-12 h-24 opacity-85">
+<svg fill="none" viewbox="0 0 40 70"><path d="M20 0L38 32H28L36 50H26L40 68H0L14 50H4L12 32H2L20 0Z" fill="#0f2b36" stroke="#81d4fa" stroke-width="1.8"></path></svg>
+</div>
+<div class="absolute right-[-38px] top-64 w-16 h-36 opacity-95">
+<svg fill="none" viewbox="0 0 40 70"><path d="M20 0L38 32H28L36 50H26L40 68H0L14 50H4L12 32H2L20 0Z" fill="#0b2029" stroke="#b3e5fc" stroke-width="2.2"></path></svg>
+</div>
+</div>
+</div>
+<!-- IN-LANE GAME ELEMENTS (Ahead of Runner) -->
+<!-- Left Lane: Teal Archway Gate 'SIP ↑' -->
+<div class="absolute left-[38px] top-[405px] z-10 w-[78px] flex flex-col items-center">
+<!-- Floating Archway Gate -->
+<div class="w-full bg-gradient-to-b from-[#00E5FF]/25 to-[#00ffa3]/35 border-2 border-[#00FFA3] rounded-t-2xl p-2 pb-1 text-center shadow-[0_0_24px_rgba(0,255,163,0.5)] backdrop-blur-sm">
+<div class="bg-[#04251B] border border-[#00FFA3]/60 rounded-lg px-1.5 py-0.5 shadow-inner">
+<span class="font-heading text-[12px] font-bold tracking-wider text-[#00FFA3] flex items-center justify-center gap-0.5">
+              SIP <span class="text-sm">↑</span>
+</span>
+</div>
+<div class="text-[9px] font-body text-cyan-200 font-semibold mt-1 tracking-tight">COMPOUND</div>
+</div>
+<!-- Gate Pillars -->
+<div class="w-full flex justify-between px-1">
+<div class="w-2.5 h-14 bg-gradient-to-b from-[#00FFA3] to-[#008f59] rounded-b shadow-[0_0_8px_#00ffa3]"></div>
+<div class="w-2.5 h-14 bg-gradient-to-b from-[#00FFA3] to-[#008f59] rounded-b shadow-[0_0_8px_#00ffa3]"></div>
+</div>
+<!-- Gate energy floor aura -->
+<div class="w-16 h-3 bg-[#00FFA3]/40 rounded-full blur-[3px] -mt-1"></div>
+</div>
+<!-- Center Lane: Line of Gold Rupee Coins floating toward Kip -->
+<div class="absolute left-[175px] top-[390px] z-10 flex flex-col items-center gap-4">
+<!-- Far coin (smallest) -->
+<div class="w-5 h-5 rounded-full bg-gradient-to-br from-[#FFE79A] to-[#FFC837] border border-[#FFF8DC] flex items-center justify-center shadow-[0_0_10px_#FFC837] scale-75">
+<span class="text-[9px] font-black text-[#5C3D00]">₹</span>
+</div>
+<!-- Mid coin -->
+<div class="w-6 h-6 rounded-full bg-gradient-to-br from-[#FFE79A] to-[#FFC837] border border-[#FFF8DC] flex items-center justify-center shadow-[0_0_12px_#FFC837] scale-90">
+<span class="text-[10px] font-black text-[#5C3D00]">₹</span>
+</div>
+<!-- Close coin -->
+<div class="w-7 h-7 rounded-full bg-gradient-to-br from-[#FFF0B3] to-[#FFB800] border-2 border-[#FFFFFF] flex items-center justify-center shadow-[0_0_16px_rgba(255,200,55,0.9)] animate-pulse">
+<span class="text-[11px] font-extrabold text-[#472E00]">₹</span>
+</div>
+</div>
+<!-- Right Lane: Golden Ramp 'CASH OUT +15' with sparkles -->
+<div class="absolute right-[36px] top-[415px] z-10 w-[84px] flex flex-col items-center">
+<!-- Golden Incline Ramp -->
+<div class="w-full relative">
+<!-- Sparkles -->
+<div class="absolute -top-3 -left-2 text-yellow-200 text-xs animate-ping">✦</div>
+<div class="absolute -top-4 -right-1 text-yellow-300 text-xs">✨</div>
+<div class="absolute -bottom-1 -left-2 text-amber-200 text-[10px]">★</div>
+<div class="w-full h-14 bg-gradient-to-t from-[#B45309] via-[#D97706] to-[#FBBF24] border-2 border-[#FDE047] rounded-lg shadow-[0_0_20px_rgba(245,158,11,0.6)] transform -skew-y-3 flex flex-col items-center justify-center p-1">
+<span class="font-heading text-[10px] font-bold text-[#3E1A00] tracking-wider bg-[#FEF08A] px-1 rounded shadow-sm">
+              CASH OUT
+            </span>
+<span class="font-heading text-[11px] font-extrabold text-[#FFFBEB] drop-shadow-sm mt-0.5">
+              +15 🪙
+            </span>
+</div>
+<!-- Ramp underside / shadow -->
+<div class="w-full h-3 bg-[#78350F] rounded-b-md"></div>
+<div class="w-20 h-2.5 bg-amber-500/30 rounded-full blur-[3px] mx-auto mt-0.5"></div>
+</div>
+</div>
+<!-- RUNNER SPRITES: KIP IN MIDDLE LANE RUNNING AWAY + SNOWBALL BESIDE HIM -->
+<!-- Snowball rolling beside Kip in mid-left position -->
+<div class="rolling-snowball flex items-center justify-center">
+<!-- Snow sparkle detail -->
+<span class="text-[13px] opacity-70">❄️</span>
+<div class="absolute top-1 left-2 w-3 h-2 bg-white/70 rounded-full blur-[1px]"></div>
+</div>
+<!-- MASCOT KIP RUNNING AWAY (From behind - matching character sheet: honey-gold hexagon shell & teal backpack) -->
+<div class="kip-cutout flex items-center justify-center">
+<svg class="w-full h-full" viewbox="0 0 100 120">
+<!-- Subtle Ground Contact Shadow -->
+<ellipse cx="50" cy="114" fill="#000000" filter="blur(3px)" opacity="0.65" rx="30" ry="6"></ellipse>
+<!-- Kip's Mint Green Feet running pose -->
+<ellipse cx="36" cy="108" fill="#38d996" rx="8" ry="5" stroke="#1f8b5f" stroke-width="1.5"></ellipse>
+<ellipse cx="64" cy="106" fill="#38d996" rx="8" ry="5" stroke="#1f8b5f" stroke-width="1.5"></ellipse>
+<!-- Toe claws -->
+<circle cx="33" cy="109" fill="#e6fffa" r="1.5"></circle>
+<circle cx="36" cy="110" fill="#e6fffa" r="1.5"></circle>
+<circle cx="39" cy="109" fill="#e6fffa" r="1.5"></circle>
+<circle cx="61" cy="107" fill="#e6fffa" r="1.5"></circle>
+<circle cx="64" cy="108" fill="#e6fffa" r="1.5"></circle>
+<circle cx="67" cy="107" fill="#e6fffa" r="1.5"></circle>
+<!-- Kip's Mint Green Body & Back of Head -->
+<ellipse cx="50" cy="34" fill="#44e3a4" rx="22" ry="20" stroke="#1f8b5f" stroke-width="1.8"></ellipse>
+<!-- Round Navy Glasses Frame (peeking around side profile from back) -->
+<path d="M26 31 C24 35 23 41 27 45" fill="none" stroke="#14213d" stroke-linecap="round" stroke-width="3.5"></path>
+<path d="M74 31 C76 35 77 41 73 45" fill="none" stroke="#14213d" stroke-linecap="round" stroke-width="3.5"></path>
+<!-- Honey-Gold Hexagon Tortoise Shell (Back view) -->
+<ellipse cx="50" cy="74" fill="#E5A93C" rx="28" ry="32" stroke="#87530E" stroke-width="2.2"></ellipse>
+<!-- Inner Honey Hexagon pattern -->
+<polygon fill="#F4BA49" points="50,56 66,66 66,82 50,92 34,82 34,66" stroke="#9A6013" stroke-width="2"></polygon>
+<!-- Hexagon ridges -->
+<line stroke="#9A6013" stroke-width="2" x1="50" x2="50" y1="42" y2="56"></line>
+<line stroke="#9A6013" stroke-width="2" x1="22" x2="34" y1="74" y2="74"></line>
+<line stroke="#9A6013" stroke-width="2" x1="78" x2="66" y1="74" y2="74"></line>
+<line stroke="#9A6013" stroke-width="2" x1="31" x2="39" y1="52" y2="61"></line>
+<line stroke="#9A6013" stroke-width="2" x1="69" x2="61" y1="52" y2="61"></line>
+<line stroke="#9A6013" stroke-width="2" x1="33" x2="41" y1="96" y2="87"></line>
+<line stroke="#9A6013" stroke-width="2" x1="67" x2="59" y1="96" y2="87"></line>
+<!-- Teal Backpack strapped on shell (from character sheet) -->
+<rect fill="#149696" height="24" rx="5" stroke="#0A5252" stroke-width="1.8" width="20" x="40" y="60"></rect>
+<rect fill="#CBD5E1" height="6" rx="2" stroke="#475569" stroke-width="1" width="8" x="46" y="66"></rect>
+<!-- Backpack straps over shoulders -->
+<path d="M41 62 C37 54 36 46 40 42" fill="none" stroke="#0F766E" stroke-linecap="round" stroke-width="3"></path>
+<path d="M59 62 C63 54 64 46 60 42" fill="none" stroke="#0F766E" stroke-linecap="round" stroke-width="3"></path>
+<!-- Keychain coin medal dangling from backpack -->
+<circle cx="38" cy="85" fill="#FFC837" r="4" stroke="#B45309" stroke-width="1"></circle>
+<text fill="#78350F" font-size="4" font-weight="bold" x="36.5" y="87">₹</text>
+<!-- Little tail peeking out -->
+<path d="M49 104 C50 109 52 108 51 104" fill="#38d996" stroke="#1f8b5f" stroke-width="1"></path>
+</svg>
+</div>
+<!-- THE MELT PURPLE FOG CREEPING ALONG THE BOTTOM EDGE -->
+<div class="melt-fog-layer">
+<!-- Floating purple menace cloud particles -->
+<div class="absolute bottom-2 left-4 flex items-center gap-1.5 opacity-90">
+<div class="w-2.5 h-2.5 rounded-full bg-purple-400 blur-[1px] animate-pulse"></div>
+<span class="text-[11px] font-heading font-semibold text-purple-200 tracking-wide drop-shadow-[0_0_8px_rgba(168,85,247,0.8)]">
+            ⚠️ The Melt is chasing idle coins!
+          </span>
+</div>
+<div class="absolute -bottom-2 -right-4 w-32 h-16 bg-purple-600/35 rounded-full blur-xl pointer-events-none"></div>
+<div class="absolute -bottom-4 -left-4 w-40 h-20 bg-purple-700/40 rounded-full blur-xl pointer-events-none"></div>
+</div>
+</div>
+<!-- FOREGROUND HUD OVERLAY (Non-blocking glass chips, cleanly outside the running lanes) -->
+<div class="relative z-30 flex flex-col justify-between h-full p-4 pointer-events-none">
+<!-- TOP SECTION: System bar, Timer bar, HUD Chips & Tip Bubble -->
+<div class="w-full flex flex-col gap-2 pt-2">
+<!-- iOS Status Bar Simulation -->
+<div class="w-full flex justify-between items-center text-xs font-semibold px-2 text-slate-300">
+<span>9:41</span>
+<div class="flex items-center gap-1.5">
+<span class="text-[11px] font-mono">5G</span>
+<div class="w-5 h-2.5 border border-slate-300 rounded-sm p-0.5 flex items-center">
+<div class="h-full w-full bg-white rounded-2xs"></div>
+</div>
+</div>
+</div>
+<!-- THIN TIMER BAR AT THE TOP -->
+<div class="w-full mt-1 px-1">
+<div class="w-full h-1.5 bg-slate-900/80 rounded-full overflow-hidden border border-white/10 backdrop-blur-md">
+<!-- Active Timer Progress: 68% remaining -->
+<div class="h-full bg-gradient-to-r from-emerald-400 via-brand-mint to-cyan-300 rounded-full shadow-[0_0_8px_#00ffa3]" style="width: 68%;"></div>
+</div>
+<div class="flex justify-between items-center mt-1 px-0.5 text-[10px] text-slate-400 font-medium">
+<span>⏱️ World 2 · Snowball Run</span>
+<span class="text-brand-mint font-semibold">0:42 left</span>
+</div>
+</div>
+<!-- 3 GLASS HUD CHIPS IN ROW (Never covers the running lanes) -->
+<div class="w-full grid grid-cols-3 gap-2 mt-1">
+<!-- Left Chip: Idle 🪙 18 (in Melt purple) -->
+<div class="glass-chip rounded-xl px-2.5 py-1.5 flex items-center justify-center gap-1.5 border border-purple-500/40">
+<span class="w-2 h-2 rounded-full bg-purple-400 shadow-[0_0_6px_#c084fc]"></span>
+<div class="flex flex-col items-start leading-tight">
+<span class="text-[9px] font-semibold text-purple-300 uppercase tracking-wider">Idle</span>
+<span class="font-heading text-[13px] font-bold text-purple-100 flex items-center gap-0.5">
+                🪙 18
+              </span>
+</div>
+</div>
+<!-- Centre Chip: ⛄ ×1.48 (Compounding Snowball Multiplier) -->
+<div class="glass-chip rounded-xl px-2.5 py-1.5 flex items-center justify-center gap-1.5 border border-cyan-400/30">
+<div class="flex flex-col items-center leading-tight">
+<span class="text-[9px] font-semibold text-cyan-300 uppercase tracking-wider">Compounding</span>
+<span class="font-heading text-[14px] font-extrabold text-white flex items-center gap-1">
+                ⛄ <span class="text-cyan-200">×1.48</span>
+</span>
+</div>
+</div>
+<!-- Right Chip: Banked 🪙 64 (in Kip Mint Green) -->
+<div class="glass-chip rounded-xl px-2.5 py-1.5 flex items-center justify-center gap-1.5 border border-brand-mint/40">
+<span class="w-2 h-2 rounded-full bg-brand-mint shadow-[0_0_6px_#00ffa3]"></span>
+<div class="flex flex-col items-start leading-tight">
+<span class="text-[9px] font-semibold text-emerald-300 uppercase tracking-wider">Banked</span>
+<span class="font-heading text-[13px] font-bold text-white flex items-center gap-0.5">
+                🪙 64
+              </span>
+</div>
+</div>
+</div>
+<!-- SMALL NON-BLOCKING KIP TIP BUBBLE NEAR TOP -->
+<div class="w-full flex items-center gap-2 mt-1 px-1">
+<!-- Mini Kip Avatar Badge -->
+<div class="w-7 h-7 rounded-full bg-[#0a1828] border border-brand-mint/60 flex items-center justify-center flex-shrink-0 shadow-[0_0_8px_rgba(0,255,163,0.3)]">
+<span class="text-sm">🐢</span>
+</div>
+<!-- Speech bubble with 85% opacity & crisp 4.5:1 text contrast -->
+<div class="flex-1 bg-[#0b1424]/90 backdrop-blur-md border border-amber-400/40 rounded-2xl rounded-tl-sm px-3 py-1.5 shadow-lg">
+<div class="flex items-center gap-1">
+<span class="text-[10px] text-amber-400 font-bold">💡 Kip's Rule:</span>
+<span class="text-[11px] font-medium text-slate-100">
+                Cash out = withdrawal. <span class="text-amber-300 font-semibold">Your snowball resets!</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+<!-- BOTTOM SECTION: Tactile 3-Lane Controls & Primary Bottom Thumb Action -->
+<div class="w-full flex flex-col gap-2.5 pointer-events-auto pb-2">
+<!-- 3-LANE QUICK TAP DIRECTORS (Min 44pt tap target height) -->
+<!-- PRIMARY SOLID CHUNKY 3D NEON-GREEN BUTTON IN THUMB ZONE -->
+<!-- India-First Disclaimer / Regulatory Subtext -->
+<div class="text-center text-[10px] text-slate-400 tracking-tight">
+          Simulated ₹ INR • Purely for financial education • No real money risk
+        </div>
+<!-- iOS Home Indicator -->
+<div class="w-32 h-1 bg-white/40 rounded-full mx-auto mt-0.5"></div>
+</div>
+</div>
+</div>
+</body>
+</html>

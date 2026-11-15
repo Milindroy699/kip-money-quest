@@ -1,0 +1,356 @@
+{
+  "id": "w0",
+  "index": 0,
+  "title": "Money Town",
+  "tagline": "Why money exists, and what it really is",
+  "principle": "Money as a concept and instrument",
+  "product": "Cash, bank accounts, UPI",
+  "philosophy": "Money is a tool, not the goal",
+  "color": "#E09A1F",
+  "lessons": [
+    {
+      "id": "w0-l1",
+      "title": "Before money: the barter mess",
+      "subtitle": "Why swapping stuff was so hard",
+      "capability": "Explain why money was invented.",
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "happy",
+          "lines": [
+            "Long before coins and UPI, people swapped stuff. It was called barter.",
+            "Sounds simple? Let's try it."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "barter",
+          "title": "Get the cricket bat",
+          "caption": "You have mangoes. You want a cricket bat. Tap a villager to trade with them."
+        },
+        {
+          "type": "story",
+          "speaker": "dash",
+          "mood": "worry",
+          "lines": [
+            "Ugh! I just wanted a bat. Why did I need a chicken first?!"
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "What made barter so hard?",
+          "options": [
+            {
+              "text": "Both people had to want what the other had",
+              "correct": true,
+              "why": "Exactly. Economists call it the 'double coincidence of wants'. Money fixes it, because everyone accepts money."
+            },
+            {
+              "text": "Mangoes aren't valuable",
+              "why": "Mangoes are valuable! The problem was finding someone who had a bat AND wanted mangoes."
+            },
+            {
+              "text": "There were no markets",
+              "why": "Markets existed. The hard part was matching what each person had with what they wanted."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "A farmer has rice and wants shoes. The shoemaker only wants milk. What does money let the farmer do?",
+          "options": [
+            {
+              "text": "Find a cow first",
+              "why": "That's barter thinking! With money, the farmer skips the cow entirely."
+            },
+            {
+              "text": "Sell rice to anyone, then pay the shoemaker",
+              "correct": true,
+              "why": "Yes! Money splits one hard swap into two easy ones: sell to anyone, buy from anyone."
+            },
+            {
+              "text": "Wait until the shoemaker wants rice",
+              "why": "That could take forever. Money means nobody has to wait for a perfect match."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "title": "Money is a shared agreement",
+          "realLife": "Money works because everyone agrees to accept it. That one agreement makes trade fast: sell to anyone, buy from anyone."
+        }
+      ]
+    },
+    {
+      "id": "w0-l2",
+      "title": "What makes money, money",
+      "subtitle": "The three jobs of money",
+      "capability": "Name money's three jobs.",
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "talk",
+          "lines": [
+            "Money has three jobs. Anything that can do all three can work as money.",
+            "Tap each one to see it in action."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "reveal",
+          "title": "Money's three jobs",
+          "items": [
+            {
+              "emoji": "🔁",
+              "title": "Medium of exchange",
+              "text": "Everyone accepts it in trade. You pay ₹40 for a samosa plate, no mangoes needed."
+            },
+            {
+              "emoji": "📏",
+              "title": "Unit of account",
+              "text": "It measures value. A bat costs ₹800 and a chai ₹20, so you can compare anything with anything."
+            },
+            {
+              "emoji": "🏺",
+              "title": "Store of value",
+              "text": "It keeps value over time… mostly. Spoiler: a sneaky villain called The Melt is coming in World 1."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Your bat costs ₹800 and a phone costs ₹16,000. Which job lets you say the phone is worth 20 bats?",
+          "options": [
+            {
+              "text": "Medium of exchange",
+              "why": "That job is about paying. Comparing prices is a different job."
+            },
+            {
+              "text": "Unit of account",
+              "correct": true,
+              "why": "Right! Money is a measuring stick for value, so ₹16,000 ÷ ₹800 = 20 bats."
+            },
+            {
+              "text": "Store of value",
+              "why": "That job is about keeping value over time, not comparing things today."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Why would tomatoes make terrible money?",
+          "options": [
+            {
+              "text": "They rot, so they can't store value",
+              "correct": true,
+              "why": "Yes. Good money has to last. Tomatoes fail the store-of-value job within a week."
+            },
+            {
+              "text": "They're too cheap",
+              "why": "Cheap isn't the problem; coins are cheap too. The problem is they rot."
+            },
+            {
+              "text": "Nobody likes tomatoes",
+              "why": "Lots of people love tomatoes! They just can't keep their value over time."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "title": "The rupee's weak spot",
+          "realLife": "The rupee does all three jobs in India. Its weakest job is store of value, because prices rise over time. You'll see exactly why in World 1."
+        }
+      ]
+    },
+    {
+      "id": "w0-l3",
+      "title": "From coins to UPI",
+      "subtitle": "Money keeps changing shape",
+      "capability": "Explain what UPI really moves.",
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "dash",
+          "mood": "think",
+          "lines": [
+            "Wait. My money is just numbers on my phone now. Is it even real?"
+          ]
+        },
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "think",
+          "lines": [
+            "Great question! Money keeps changing form. What matters is that people trust it."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "reveal",
+          "title": "How money changed shape",
+          "items": [
+            {
+              "emoji": "🐚",
+              "title": "Shells and metal",
+              "text": "Cowrie shells, then metal coins. Hard to fake and easy to carry."
+            },
+            {
+              "emoji": "💵",
+              "title": "Paper notes",
+              "text": "Every Indian note carries a printed promise signed by the RBI Governor: \"I promise to pay the bearer…\""
+            },
+            {
+              "emoji": "🏦",
+              "title": "Bank money",
+              "text": "Most money today is just numbers in bank accounts, not notes in wallets."
+            },
+            {
+              "emoji": "📱",
+              "title": "UPI",
+              "text": "UPI moves bank money between accounts in seconds. It's a super-fast road, not a new kind of money."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "When you pay ₹50 by UPI, what actually moves?",
+          "options": [
+            {
+              "text": "A digital coin owned by the app",
+              "why": "UPI apps don't own your money. They send instructions between banks."
+            },
+            {
+              "text": "Money from your bank account to theirs",
+              "correct": true,
+              "why": "Yes. UPI is a payment rail between bank accounts. The money underneath is still rupees in banks."
+            },
+            {
+              "text": "Nothing, it's a loan",
+              "why": "It's not a loan. Real rupees leave your account and land in theirs."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "A ₹500 note costs only a few rupees to print. Why is it worth ₹500?",
+          "options": [
+            {
+              "text": "It's swapped for gold in a vault",
+              "why": "Not anymore. You can't swap notes for gold. Modern money is 'fiat': its value comes from trust and law."
+            },
+            {
+              "text": "The special ink is expensive",
+              "why": "The ink helps stop fakes, but it's not where the value comes from."
+            },
+            {
+              "text": "People trust the RBI and government behind it",
+              "correct": true,
+              "why": "Right. Money is a shared belief backed by law and a trusted central bank."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "title": "UPI in real life",
+          "realLife": "UPI moves money between bank accounts in seconds. The money is still rupees held in banks, which are regulated by the RBI.",
+          "mission": "Ask a parent how they paid for things when they were your age.",
+          "deeper": "Every UPI payment needs a bank account and a UPI PIN. Never share your PIN or an OTP with anyone: real banks and apps never ask for them."
+        }
+      ]
+    },
+    {
+      "id": "w0-l4",
+      "title": "Money is a tool",
+      "subtitle": "Earn, spend, save, invest",
+      "capability": "Tell needs from wants, and saving from investing.",
+      "unlockCards": [
+        "cash"
+      ],
+      "steps": [
+        {
+          "type": "story",
+          "speaker": "kip",
+          "mood": "happy",
+          "lines": [
+            "Money isn't the goal. It's a tool for the life you want.",
+            "There are four things you can do with it."
+          ]
+        },
+        {
+          "type": "concept",
+          "widget": "reveal",
+          "title": "Four things money can do",
+          "items": [
+            {
+              "emoji": "💼",
+              "title": "Earn",
+              "text": "Swap your time and skills for money: a part-time job, tutoring, a small business."
+            },
+            {
+              "emoji": "🛍️",
+              "title": "Spend",
+              "text": "Needs first (food, travel to school), wants second (that new game skin)."
+            },
+            {
+              "emoji": "🐷",
+              "title": "Save",
+              "text": "Keep money safe for later and for emergencies."
+            },
+            {
+              "emoji": "🌱",
+              "title": "Invest",
+              "text": "Put money to work so it can grow for Future You."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Which of these is a NEED?",
+          "options": [
+            {
+              "text": "Limited-edition sneakers",
+              "why": "Nice to have, but your current shoes still work. That's a want."
+            },
+            {
+              "text": "School bus pass",
+              "correct": true,
+              "why": "Yes. Getting to school is essential. Needs come before wants."
+            },
+            {
+              "text": "A new game skin",
+              "why": "Fun, but definitely a want."
+            }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "What's the difference between saving and investing?",
+          "options": [
+            {
+              "text": "They're the same thing",
+              "why": "Close cousins, but different. Saving keeps money safe; investing puts it to work."
+            },
+            {
+              "text": "Investing is only for rich people",
+              "why": "Not true! In India you can start a SIP with as little as ₹100–₹500 a month."
+            },
+            {
+              "text": "Saving keeps money safe; investing puts it to work so it can grow",
+              "correct": true,
+              "why": "Exactly. You'll want both: savings for emergencies, investments for Future You."
+            }
+          ]
+        },
+        {
+          "type": "connect",
+          "cardId": "cash",
+          "title": "Card: Cash",
+          "realLife": "Cash is perfect for spending today. For Future You, it has a big problem… Meet The Melt in World 1.",
+          "deeper": "A common starting rule for a first income is 50% needs, 30% wants and 20% saving and investing. Adjust it to your life; the habit matters more than the exact split."
+        }
+      ]
+    }
+  ]
+}
