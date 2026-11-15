@@ -17,17 +17,68 @@ A mobile game that teaches teenagers (13–19, India-first) to invest from first
 | Nudges | Local notifications with quiet hours, a school-hours mute, at most one per day and back-off |
 | League | Local preview league against seeded practice rivals |
 
-Everything is stored on the device with MMKV. There are no accounts, network calls or analytics in this phase.
+The core game saves progress on the device with MMKV. Cloud sign-in and backup are optional and use Firebase when configured.
 
 ## Run it
 
-You need Node 20 or later, Xcode with an iOS simulator, and CocoaPods. The Android SDK is optional. The app uses native modules (Skia, MMKV), so it runs as a **development build**, not in Expo Go.
+Use Node.js 24.13 or a newer Node 24 release. From the repository root, install dependencies with `npm ci`. For local development, use Xcode and CocoaPods on macOS for iOS, or the Android SDK and an emulator or connected phone for Android. The app needs a native development build to load modules such as Skia and MMKV.
 
 ```bash
-npm install
-npx expo run:ios                 # builds, installs and opens on the simulator
-npx expo run:android             # needs an emulator or a connected device
+npm ci
+npx expo run:ios                 # iOS simulator on macOS
+npx expo run:android             # Android emulator or connected phone
 ```
+
+## Build an Android APK
+
+Both options produce a standalone APK you can open on a phone without Expo Go or a Metro server. The app uses the Expo SDK for routing and native features. Expo Build (EAS) is the optional cloud service that compiles, signs, and hosts the APK.
+
+Start from the repository root with Node.js 24 and run `npm ci` as above. For a build with Firebase sign-in and backup, follow the [account setup guide](docs/accounts.md#what-you-need-to-set-up). Use the EAS `preview` environment for cloud builds or `.env.local` for a local build. The core game works with local saves either way.
+
+### Cloud build with an Expo account
+
+Sign in with an Expo account that has build access to `@milindroy/kip-money-quest`. The [preview profile](eas.json) sets internal distribution and generates an APK. The build tools run on Expo's servers, so Android Studio is optional on your computer.
+
+```sh
+npx eas-cli@latest login
+npx eas-cli@latest whoami
+npx eas-cli@latest build --platform android --profile preview
+```
+
+When the build finishes, open its build link on your phone, download the APK, and tap it to install. In Windows PowerShell, use `npx.cmd` if script execution blocks `npx`. [Expo APK build guide](https://docs.expo.dev/build-reference/apk/)
+
+### Local build without an Expo account
+
+Install Android Studio and use its SDK Manager to install Android SDK Platform 37.0 (`platforms;android-37.0`), Build-Tools 37.0.0, and NDK 27.1.12297006. Set `ANDROID_HOME` to your Android SDK and `JAVA_HOME` to a standard OpenJDK 17 distribution, such as Amazon Corretto or Eclipse Temurin. [Expo SDK 58 Android requirements](https://docs.expo.dev/versions/v58.0.0/#support-for-android-and-ios-versions)
+
+On Windows, also install CMake 3.31.6 from SDK Manager. The Gradle flags select its newer Ninja, shorten C++ object paths, and choose the JDK set in `JAVA_HOME`. Run these PowerShell commands from the repository root and adjust the SDK and JDK paths for your machine.
+
+```powershell
+$env:ANDROID_HOME = "$env:LOCALAPPDATA\Android\Sdk"
+$env:JAVA_HOME = 'C:\path\to\jdk-17'
+
+npx.cmd expo prebuild --platform android --no-install
+Set-Location android
+.\gradlew.bat :app:assembleRelease `
+  '-PreactNativeArchitectures=arm64-v8a,armeabi-v7a' `
+  '-Pandroid.cmakeVersion=3.31.6' '-Pexpo.android.cmakeObjectPathMax=220' `
+  '-Dorg.gradle.java.installations.auto-detect=false' "-Dorg.gradle.java.installations.paths=$env:JAVA_HOME" `
+  '-Dorg.gradle.jvmargs=-Xmx3g -XX:MaxMetaspaceSize=1g -Dfile.encoding=UTF-8' --no-parallel --max-workers=2
+```
+
+On macOS or Linux, after configuring the SDK and JDK paths, run:
+
+```sh
+npx expo prebuild --platform android --no-install
+cd android
+./gradlew :app:assembleRelease '-PreactNativeArchitectures=arm64-v8a,armeabi-v7a' --max-workers=2
+```
+
+Prebuild generates `android/` from the app configuration. Make native configuration changes in `app.json` or config plugins and regenerate the project as needed. [Expo Prebuild guide](https://docs.expo.dev/workflow/continuous-native-generation/)
+
+If the first Gradle download times out, check `distributionUrl` in `android/gradle/wrapper/gradle-wrapper.properties` for the pinned version. Download the matching binary ZIP from the [Gradle releases page](https://gradle.org/releases/), verify the [SHA-256 checksum](https://gradle.org/release-checksums/), and extract it. From the `android` directory, run the extracted `bin/gradle.bat` on Windows or `bin/gradle` on macOS/Linux with the same build arguments.
+
+Copy `android/app/build/outputs/apk/release/app-release.apk` to your phone and open it. The SDK 58 template signs this build with a debug key for device testing. Updating an existing installation requires the same signing key. If you switch between a cloud-signed APK and a locally signed APK, back up any progress you want to keep before uninstalling the existing copy. [Android command-line build guide](https://developer.android.com/build/building-cmdline)
 
 ## Check it
 
